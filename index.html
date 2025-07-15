@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Play Florroom!</title>
+	<style>
+		body {
+			touch-action: manipulation;
+		}
+		input {
+			width: 30px;
+		}
+		g, path {
+			transform-origin: center;
+		}
+		.tl {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+		}
+		.tr {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+		.bl {
+			position: absolute;
+			bottom: 20px;
+			left: 20px;
+		}
+		.br {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		}
+		.mid {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+		}
+		.bottom {
+			position: absolute;
+			left: 50%;
+			top: 100%;
+			transform: translate(-50%,-50px);
+		}
+		.cmargin {
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.lmargin {
+			margin-left: 20px;
+			margin-right: 20px;
+		}
+		.diag {
+			transform: rotate(45deg);
+		}
+		.rot72 {
+			transform: rotate(72deg);
+		}
+		.rot144 {
+			transform: rotate(144deg);
+		}
+		.rot216 {
+			transform: rotate(216deg);
+		}
+		.rot288 {
+			transform: rotate(288deg);
+		}
+		.nowrap {
+			white-space: nowrap;
+		}
+		.text1 {
+			font-size: 32px;
+		}
+		.text1-c {
+			display: flex;
+			font-size: 32px;
+			justify-content: center;
+			align-items: center;
+		}
+		.text2 {
+			font-size: 24px;
+		}
+		.text2-c {
+			display: flex;
+			font-size: 24px;
+			justify-content: center;
+			align-items: center;
+		}
+		.text3 {
+			font-size: 16px;
+		}
+		.text3-c {
+			display: flex;
+			font-size: 16px;
+			justify-content: center;
+			align-items: center;
+		}
+		.sqrbtn {
+			background: none;
+			border: none;
+			outline: none;
+			height: 50px;
+			width: 50px;
+			padding: 0px;
+		}
+		.sqrbtn:hover {
+			background: #dfffdf;
+		}
+		.recbtn {
+			border: 1.5px solid;
+			outline: none;
+			height: 30px;
+			min-width: 50px;
+			padding: 5px;
+			white-space: nowrap;
+		}
+		.dice {
+			background: none;
+			border: none;
+			outline: none;
+			height: 60px;
+			width: 60px;
+			padding: 0px;
+		}
+		.grid {
+			background: none;
+			position: relative;
+			border: 2px solid;
+			outline: none;
+			height: 60px;
+			width: 60px;
+			padding: 0px;
+		}
+		.bgrid {
+			background: none;
+			position: relative;
+			border: none;
+			outline: none;
+			height: 80px;
+			width: 80px;
+			padding: 0px;
+		}
+		.pointer {
+			cursor: pointer;
+		}
+		.forbidden {
+			cursor: not-allowed;
+		}
+		.in-svg {
+			stroke: #000000;
+			stroke-width: 5px;
+			height: 100%;
+			width: 100%;
+			fill: none;
+		}
+		.f-path {
+			stroke-width: 1px;
+			fill: #000000;
+		}
+		.fgrey-path {
+			stroke-width: 1px;
+			fill: #7f7f7f;
+		}
+		.fred-path {
+			stroke-width: 1px;
+			fill: #ff7f7f;
+		}
+		.flred-path {
+			stroke-width: 1px;
+			fill: #ffbfbf;
+		}
+		.fgreen-path {
+			stroke-width: 1px;
+			fill: #7fff7f;
+		}
+		.flgreen-path {
+			stroke-width: 1px;
+			fill: #bfffbf;
+		}
+		.fblue-path {
+			stroke-width: 1px;
+			fill: #7f7fff;
+		}
+		.flblue-path {
+			stroke-width: 1px;
+			fill: #bfbfff;
+		}
+		.fcyan-path {
+			stroke-width: 1px;
+			fill: #7fffff;
+		}
+		.fpurple-path {
+			stroke-width: 1px;
+			fill: #ff7fff;
+		}
+		.fyellow-path {
+			stroke-width: 1px;
+			fill: #ffff7f;
+		}
+		.sel-f-path {
+			stroke-width: 1px;
+			stroke: #ffff7f;
+			fill: #ffff7f;
+		}
+		.square36 {
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			grid-template-rows: repeat(6, 1fr);
+			background: none;
+			border: none;
+			height: 380px;
+			width: 380px;
+			align-items: center;
+		}
+		.square48 {
+			display: grid;
+			grid-template-columns: repeat(8, 1fr);
+			grid-template-rows: repeat(3, 1fr) 10px repeat(3, 1fr);
+			background: none;
+			border: 2px solid;
+			height: 490px;
+			width: 640px;
+			align-items: center;
+		}
+		.box {
+			display: flex;
+			flex-direction: column;
+			border: 2px solid;
+			overflow-x: hidden;
+			overflow-y: auto;
+			text-align: center;
+		}
+		.grey {
+			color: #7f7f7f;
+		}
+		.grey-bg {
+			background-color: #7f7f7f;
+		}
+		.lgrey {
+			color: #bfbfbf;
+		}
+		.lgrey-bg {
+			background-color: #bfbfbf;
+		}
+		.white {
+			color: #ffffff;
+		}
+		.white-bg {
+			background-color: #ffffff;
+		}
+		.red {
+			color: #ff7f7f;
+		}
+		.red-bg {
+			background-color: #ff7f7f;
+		}
+		.green {
+			color: #7fff7f;
+		}
+		.green-bg {
+			background-color: #7fff7f;
+		}
+		.blue {
+			color: #7f7fff;
+		}
+		.blue-bg {
+			background-color: #7f7fff;
+		}
+		.lred {
+			color: #ffbfbf;
+		}
+		.lred-bg {
+			background-color: #ffbfbf;
+		}
+		.lgreen {
+			color: #bfffbf;
+		}
+		.lgreen-bg {
+			background-color: #bfffbf;
+		}
+		.lblue {
+			color: #bfbfff;
+		}
+		.lblue-bg {
+			background-color: #bfbfff;
+		}
+		.cyan {
+			color: #7fffff;
+		}
+		.cyan-bg {
+			background-color: #7fffff;
+		}
+		.lcyan {
+			color: #bfffff;
+		}
+		.lcyan-bg {
+			background-color: #bfffff;
+		}
+		.llcyan {
+			color: #dfffff;
+		}
+		.llcyan-bg {
+			background-color: #dfffff;
+		}
+		.purple {
+			color: #ff7fff;
+		}
+		.purple-bg {
+			background-color: #ff7fff;
+		}
+		.lpurple {
+			color: #ffbfff;
+		}
+		.lpurple-bg {
+			background-color: #ffbfff;
+		}
+		.llpurple {
+			color: #ffdfff;
+		}
+		.llpurple-bg {
+			background-color: #ffdfff;
+		}
+		.yellow {
+			color: #ffff7f;
+		}
+		.yellow-bg {
+			background-color: #ffff7f;
+		}
+		.lyellow {
+			color: #ffffbf;
+		}
+		.lyellow-bg {
+			background-color: #ffffbf;
+		}
+		.llyellow {
+			color: #ffffdf;
+		}
+		.llyellow-bg {
+			background-color: #ffffdf;
+		}
+		.highz {
+			z-index: 6361;
+		}
+		.wide {
+			stroke-width: 3px;
+		}
+		.hsize {
+			height: 50%;
+			width: 50%;
+		}
+		.ns {
+			stroke: none;
+		}
+		.nd {
+			display: none;
+		}
+	</style>
+	<script>
+		let player=JSON.parse(localStorage.getItem("player"))
+		let explore=JSON.parse(localStorage.getItem("explore"))
+		let fight=JSON.parse(localStorage.getItem("fight"))
+		if(!player) player=new Object()
+		if(!explore) explore=new Object()
+		if(!fight) fight=new Object()
+		if(!player.level) player.level=1
+		if(!player.exp) player.exp=0
+		if(!player.health) player.health=150
+		if(!player.inventory) player.inventory=new Object()
+		if(!player.gallery) player.gallery=new Object()
+		if(!player.rule) player.rule=new Array()
+		if(!player.mod) player.mod=new Object()
+		if(!explore.floor) explore.floor=1
+		if(!explore.biome) explore.biome="Garden"
+		if(!fight.active) fight.active=false
+		localStorage.setItem("player", JSON.stringify(player))
+		localStorage.setItem("explore", JSON.stringify(explore))
+		localStorage.setItem("fight", JSON.stringify(fight))
+		function delay(time) {
+			return new Promise(resolve => setTimeout(resolve, time))
+		}
+		async function copyToClipboard(text) {
+			await navigator.clipboard.writeText(text)
+		}
+		function betterFloor(num) {
+			return Math.floor(num+1e-10)
+		}
+		function isPFLF(num) {
+			return (betterFloor(num**0.5)**2===num || betterFloor(num**(1/3))**3===num)
+		}
+		function numLength(num) {
+			if(num===0) return 0
+			return num.toString().length
+		}
+		function color(type) {
+			switch(type) {
+				case 1:
+				return "#ff0000"
+				case 2:
+				return "#0000ff"
+				case 3:
+				return "#ff00ff"
+				default:
+				return "#00ff00"
+			}
+		}
+		function createDice(value, point) {
+			let newDice=document.createElement("button")
+			newDice.type="button"
+			newDice.setAttribute("class","dice")
+			newDice.setAttribute("onclick","clickDice(this)")
+			newDice.value=value
+			switch(point) {
+				case 1:
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45'></path></svg>1"
+				break
+				case 2:
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M50 30A5 5 0 0 0 50 40A5 5 0 0 0 50 30M50 60A5 5 0 0 0 50 70A5 5 0 0 0 50 60'></path></svg>2"
+				break
+				case 3:
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M33 62A5 5 0 0 0 33 72A5 5 0 0 0 33 62M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45M67 28A5 5 0 0 0 67 38A5 5 0 0 0 67 28'></path></svg>3"
+				break
+				case 4:
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M35 30A5 5 0 0 0 35 40A5 5 0 0 0 35 30M65 30A5 5 0 0 0 65 40A5 5 0 0 0 65 30M35 60A5 5 0 0 0 35 70A5 5 0 0 0 35 60M65 60A5 5 0 0 0 65 70A5 5 0 0 0 65 60'></path></svg>4"
+				break
+				case 5:
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M35 30A5 5 0 0 0 35 40A5 5 0 0 0 35 30M65 30A5 5 0 0 0 65 40A5 5 0 0 0 65 30M35 60A5 5 0 0 0 35 70A5 5 0 0 0 35 60M65 60A5 5 0 0 0 65 70A5 5 0 0 0 65 60M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45'></path></svg>5"
+				break
+				case 6:
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M35 28A5 5 0 0 0 35 38A5 5 0 0 0 35 28M65 28A5 5 0 0 0 65 38A5 5 0 0 0 65 28M35 45A5 5 0 0 0 35 55A5 5 0 0 0 35 45M65 45A5 5 0 0 0 65 55A5 5 0 0 0 65 45M35 62A5 5 0 0 0 35 72A5 5 0 0 0 35 62M65 62A5 5 0 0 0 65 72A5 5 0 0 0 65 62'></path></svg>6"
+				break
+				default:
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path></svg>?"
+			}
+			return newDice
+		}
+		function getDice(value) {
+			return document.querySelector("[value='"+value+"']")
+		}
+		function clickDice(button) {
+			let buttonValue=parseInt(button.value)
+			return
+		}
+		function createGrid(value, x, y, text, size=0) {
+			let newGrid=document.createElement("button")
+			newGrid.type="button"
+			newGrid.setAttribute("class","grid")
+			if(size===1) newGrid.setAttribute("class","bgrid")
+			newGrid.setAttribute("onclick","clickGrid(this)")
+			newGrid.value=value
+			newGrid.dataset.x=x
+			newGrid.dataset.y=y
+			newGrid.innerHTML="·"
+			if(text==="Diamond") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10'></path><path class='fgreen-path' d='M26 46L50 75L74 46L66 32L34 32ZL42 46L50 75L58 46L74 46M50 32L42 46L58 46Z''></path></svg><span style='display: none'>Diamond</span>"
+			if(text==="Cross") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 20L80 80M80 20L20 80'></path></svg><span style='display: none'>Cross</span>"
+			if(text==="Line") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M0 50L100 50'></path></svg><span style='display: none'>Line</span>"
+			if(text==="Empty") newGrid.innerHTML="<span class='lgrey text3'>Empty</span>"
+			if(typeof(text)==="number" && text!==0) newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10L90 50L50 90L10 50Z'></path></svg><span class='mid'>"+text+"</span>"
+			return newGrid
+		}
+		function getGrid(value, x, y) {
+			return document.querySelector("[value='"+value+"'][data-x='"+x+"'][data-y='"+y+"']")
+		}
+		function clickGrid(button) {
+			let buttonValue=parseInt(button.value),buttonX=parseInt(button.getAttribute("data-x")),buttonY=parseInt(button.getAttribute("data-y"))
+			return
+		}
+		function roll(lowerLimit, upperLimit) {
+			return Math.floor(Math.random()*(upperLimit-lowerLimit+1)+lowerLimit)
+		}
+		function dice() {
+			return roll(1,6)
+		}
+		let cogDegree=0
+		function cogRotate() {
+			if(document.getElementById("settings").style.display==="flex") {
+				cogDegree=(cogDegree+1)%360
+				document.getElementById("cog").style.transform="rotate("+cogDegree+"deg)"
+			}
+		}
+		let flowerDegree=0,flowerSpin=1
+		function flowerRotate() {
+			if(document.getElementById("inventory").style.display==="flex") {
+				flowerDegree=(flowerDegree+1)%720
+				document.getElementById("flower").style.transform="rotate("+540*Math.sin(flowerDegree/360*Math.PI)*flowerSpin+"deg)"
+			}
+		}
+		let ladybugDegree=roll(0,359),ladybugMovement=0,ladybugTurn=1,ladybugX=roll(0,99),ladybugY=roll(0,99)
+		function ladybugMove() {
+			if(document.getElementById("gallery").style.display==="flex") {
+				if(ladybugMovement===0) {
+					ladybugTurn=roll(5,12)/10
+					if(dice()<4) ladybugTurn*=-1
+				}
+				if(ladybugMovement<180 && roll(1,90)>Math.abs(90-ladybugMovement)) {
+					ladybugDegree=(ladybugDegree+ladybugTurn+360)%360
+					document.getElementById("ladybug").style.transform="rotate("+ladybugDegree+"deg)"
+				}
+				if(ladybugMovement>=180 && roll(1,90)>Math.abs(270-ladybugMovement)) {
+					ladybugX=(ladybugX+Math.sin(ladybugDegree/180*Math.PI)+100)%100
+					ladybugY=(ladybugY-Math.cos(ladybugDegree/180*Math.PI)+100)%100
+					document.getElementById("ladybug-bg").style.transform="translate(-"+ladybugX+"px, -"+ladybugY+"px)"
+				}
+				ladybugMovement=(ladybugMovement+1)%360
+			}
+		}
+		function closeAll() {
+			if(document.getElementById("settings").style.display==="flex") settings(false)
+			if(document.getElementById("help").style.display==="flex") howToPlay(false)
+			if(document.getElementById("inventory").style.display==="flex") openInventory(false)
+			if(document.getElementById("gallery").style.display==="flex") openGallery(false)
+		}
+		function settings(open=true) {
+			if(open && document.getElementById("settings").style.display==="flex") {
+				settings(false)
+				return
+			}
+			if(!open) {
+				document.getElementById("settings").style.display="none"
+				return
+			}
+			closeAll()
+			document.getElementById("settings").style.display="flex"
+		}
+		function howToPlay(open=true) {
+			if(open && document.getElementById("help").style.display==="flex") {
+				howToPlay(false)
+				return
+			}
+			if(!open) {
+				document.getElementById("help").style.display="none"
+				document.getElementById("helpsvg").setAttribute("d","M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M38 38A12 12 0 1 1 57.2 47.6A18 18 0 0 0 50 62")
+				return
+			}
+			closeAll()
+			document.getElementById("help").style.display="flex"
+			document.getElementById("helpsvg").setAttribute("d","M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M50 25L50 60")
+		}
+		function openInventory(open=true) {
+			if(open && document.getElementById("inventory").style.display==="flex") {
+				openInventory(false)
+				return
+			}
+			if(!open) {
+				document.getElementById("inventory").style.display="none"
+				flowerDegree=0
+				document.getElementById("flower").style.transform=""
+				return
+			}
+			closeAll()
+			document.getElementById("inventory").style.display="flex"
+			flowerSpin=1
+			if(dice()===1) flowerSpin=-1
+			if(dice()===1) flowerSpin*=3
+		}
+		function openGallery(open=true) {
+			if(open && document.getElementById("gallery").style.display==="flex") {
+				openGallery(false)
+				return
+			}
+			if(!open) {
+				document.getElementById("gallery").style.display="none"
+				ladybugMovement=0
+				return
+			}
+			closeAll()
+			document.getElementById("gallery").style.display="flex"
+		}
+		async function importSave() {
+			let getSave=prompt("Import your save here:")
+			if(getSave===null) return
+			console.log("importSave")
+		}
+		async function exportSave() {
+			console.log("exportSave")
+			document.getElementById("export-btn").innerHTML="Exported!"
+			await delay(300)
+			document.getElementById("export-btn").innerHTML="Export Save"
+		}
+		function hardReset() {
+			let getResetSentence=prompt("Are you sure to reset the game and lost all process?\nType 'The game is perfect, there are no bugs' to confirm.")
+			if(getResetSentence!=="The game is perfect, there are no bugs") return
+			console.log("hardReset")
+		}
+		function updateGame() {
+			console.log("updateGame")
+		}
+		function endTurn() {
+			console.log("endTurn")
+		}
+		function tryInput(num) {
+			console.log("tryInput")
+		}
+		document.addEventListener("keydown", function(pressed) {
+			switch(pressed.key) {
+				case "1":
+				tryInput(1)
+				break
+			}
+		} )
+		window.onload=function() {
+			setInterval(cogRotate,10)
+			setInterval(flowerRotate,10)
+			document.getElementById("ladybug").style.transform="rotate("+ladybugDegree+"deg)"
+			document.getElementById("ladybug-bg").style.transform="translate(-"+ladybugX+"px, -"+ladybugY+"px)"
+			setInterval(ladybugMove,10)
+			if(explore.floor>0) {
+				document.getElementById("welcome").innerHTML="Welcome to Florroom (rewritten) ! You are in Floor "+explore.floor
+			} else {
+				document.getElementById("welcome").innerHTML="Welcome to Florroom (rewritten) ! You are in Tutorial"
+			}
+			for(let i=1;i<=3;i++) {
+				for(let j=1;j<=8;j++) {
+					document.getElementById("map-container").appendChild(createGrid(0, i, j, "Empty", 1))
+				}
+			}
+			for(let i=1;i<=8;i++) {
+				document.getElementById("map-container").appendChild(createGrid(0, 0, i, "Line", 1))
+			}
+			for(let i=4;i<=6;i++) {
+				for(let j=1;j<=8;j++) {
+					document.getElementById("map-container").appendChild(createGrid(0, i, j, "Empty", 1))
+				}
+			}
+			document.querySelectorAll("button").forEach(btn => {
+				btn.addEventListener("click", this.blur())
+				btn.addEventListener("keydown", pressed => {
+					if(pressed.key === "Enter") pressed.preventDefault()
+				} )
+			} )
+		}
+	</script>
+</head>
+<body>
+	<div class="cmargin text2-c">
+		<span id="welcome"></span>
+	</div>
+	<div class="tl">
+		<button type="button" onclick="settings()" class="sqrbtn" title="Settings">
+			<svg id="cog" viewBox="0 0 100 100" class="in-svg">
+				<path d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10"></path>
+				<path class="f-path" d="M50 34A16 16 0 0 0 50 66L50 58A8 8 0 0 1 50 42L50 34A16 16 0 0 1 50 66L50 58A8 8 0 0 0 50 42Z"></path>
+				<path class="f-path" d="M46 28L54 28L54 36L46 36ZM72 46L72 54L64 54L64 46ZM54 72L46 72L46 64L54 64ZM28 54L28 46L36 46L36 54Z"></path>
+				<path class="diag f-path" d="M46 28L54 28L54 36L46 36ZM72 46L72 54L64 54L64 46ZM54 72L46 72L46 64L54 64ZM28 54L28 46L36 46L36 54Z"></path>
+			</svg>
+		</button>
+	</div>
+	<div class="tr">
+		<button type="button" onclick="howToPlay()" class="sqrbtn" title="How to play">
+			<svg viewBox="0 0 100 100" class="in-svg">
+				<path id="helpsvg" d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M38 38A12 12 0 1 1 57.2 47.6A18 18 0 0 0 50 62"></path>
+				<path class="f-path" d="M50 70A3 3 0 0 0 50 76A3 3 0 0 0 50 70"></path>
+			</svg>
+		</button>
+	</div>
+	<div class="bl">
+		<button type="button" onclick="openInventory()" class="sqrbtn" title="Inventory">
+			<svg viewBox="0 0 100 100" class="in-svg">
+				<path d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M50 38.1A11.9 11.9 0 0 0 50 61.9A11.9 11.9 0 0 0 50 38.1"></path>
+				<g id="flower">
+					<path class="fgreen-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
+					<path class="rot72 fblue-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
+					<path class="rot144 fred-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
+					<path class="rot216 fcyan-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
+					<path class="rot288 fpurple-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
+				</g>
+			</svg>
+		</button>
+	</div>
+	<div class="br">
+		<button type="button" onclick="openGallery()" class="sqrbtn" title="Gallery">
+			<svg viewBox="0 0 100 100" class="in-svg">
+				<g id="ladybug-bg">
+					<path class="flgreen-path ns" d="M0 0L50 0L50 50L0 50ZM100 0L150 0L150 50L100 50ZM0 100L50 100L50 150L0 150ZM100 100L150 100L150 150L100 150Z"></path>
+					<path class="flred-path ns" d="M50 0L100 0L100 50L50 50ZM150 0L200 0L200 50L150 50ZM50 100L100 100L100 150L50 150ZM150 100L200 100L200 150L150 150Z"></path>
+					<path class="flblue-path ns" d="M0 50L50 50L50 100L0 100ZM100 50L150 50L150 100L100 100ZM0 150L50 150L50 200L0 200ZM100 150L150 150L150 200L100 200Z"></path>
+					<path class="fpurple-path ns" d="M50 50L100 50L100 100L50 100ZM150 50L200 50L200 100L150 100ZM50 150L100 150L100 200L50 200ZM150 150L200 150L200 200L150 200Z"></path>
+				</g>
+				<path d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10"></path>
+				<g id="ladybug">
+					<path class="fred-path wide" d="M62 34A20 20 0 1 1 38 34A12 5 0 0 0 62 34"></path>
+					<path class="f-path" d="M38 34A12 5 0 0 1 62 34A12 5 0 0 1 38 34"></path>
+					<path class="f-path" d="M45 47A3 3 0 0 0 45 53A3 3 0 0 0 45 47"></path>
+					<path class="f-path" d="M48 62A3 3 0 0 0 48 68A3 3 0 0 0 48 62"></path>
+					<path class="f-path" d="M62 51A3 3 0 0 0 62 57A3 3 0 0 0 62 51"></path>
+				</g>
+			</svg>
+		</button>
+	</div>
+	<div id="settings" class="mid grey-bg box highz hsize nd">
+		<h2>Settings</h2>
+		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
+		<br>
+	</div>
+	<div id="help" class="mid llpurple-bg box highz hsize nd">
+		<h2>How to Play Florroom</h2>
+		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
+		<br>
+		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
+		<br>
+		<span>六三六一等于七十九的平方</span>
+		<br>
+		<span>QQ: 807581283</span>
+		<br>
+		<span>Last update: 2024/9/29, 1423²</span>
+		<br>
+	</div>
+	<div id="inventory" class="mid lblue-bg box highz hsize nd">
+		<h2>Inventory</h2>
+		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
+		<br>
+	</div>
+	<div id="gallery" class="mid lblue-bg box highz hsize nd">
+		<h2>Gallery</h2>
+		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
+		<br>
+	</div>
+	<div class="cmargin text3-c">
+		<button type="button" onclick="importSave()" class="lmargin lblue-bg recbtn pointer">Import Save</button>
+		<button type="button" onclick="hardReset()" class="lmargin lred-bg recbtn forbidden">HARD RESET</button>
+		<button type="button" id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer">Export Save</button>
+		<button type="button" id="endturn" onclick="endTurn()" class="lmargin lred-bg recbtn forbidden nd">[E] End Turn</button>
+	</div>
+	<div id="map-container" class="mid square48">
+	</div>
+	<div id="flower-state" class="bottom text3-c">
+	</div>
+</body>
+</html>
