@@ -118,6 +118,19 @@
 			padding: 5px;
 			white-space: nowrap;
 		}
+		.circbtn {
+			background: none;
+			border: none;
+			outline: none;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			padding: 0px;
+			overflow: hidden;
+		}
+		.circbtn:hover {
+			background: #dfffdf;
+		}
 		.dice {
 			background: none;
 			border: none;
@@ -200,6 +213,18 @@
 		.fyellow-path {
 			stroke-width: 1px;
 			fill: #ffff7f;
+		}
+		.fdbrown-path {
+			stroke-width: 1px;
+			fill: #bf3f3f;
+		}
+		.fdgreen-path {
+			stroke-width: 1px;
+			fill: #3fbf3f;
+		}
+		.fdblue-path {
+			stroke-width: 1px;
+			fill: #3f3fbf;
 		}
 		.sel-f-path {
 			stroke-width: 1px;
@@ -348,9 +373,20 @@
 		.wide {
 			stroke-width: 3px;
 		}
+		.shsize {
+			height: 20%;
+			width: 20%;
+		}
 		.hsize {
 			height: 50%;
 			width: 50%;
+		}
+		.lhsize {
+			height: 70%;
+			width: 70%;
+		}
+		.border {
+			border: 3px solid;
 		}
 		.ns {
 			stroke: none;
@@ -371,7 +407,6 @@
 		if(!player.health) player.health=150
 		if(!player.inventory) player.inventory=new Object()
 		if(!player.gallery) player.gallery=new Object()
-		if(!player.rule) player.rule=new Array()
 		if(!player.mod) player.mod=new Object()
 		if(!explore.floor) explore.floor=1
 		if(!explore.biome) explore.biome="Garden"
@@ -532,12 +567,12 @@
 			}
 			if(!open) {
 				document.getElementById("help").style.display="none"
-				document.getElementById("helpsvg").setAttribute("d","M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M38 38A12 12 0 1 1 57.2 47.6A18 18 0 0 0 50 62")
+				document.getElementById("helpsvg").setAttribute("d","M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M35 35A15 15 0 1 1 59 47A22.5 22.5 0 0 0 50 65")
 				return
 			}
 			closeAll()
 			document.getElementById("help").style.display="flex"
-			document.getElementById("helpsvg").setAttribute("d","M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M50 25L50 60")
+			document.getElementById("helpsvg").setAttribute("d","M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M50 18L50 62")
 		}
 		function openInventory(open=true) {
 			if(open && document.getElementById("inventory").style.display==="flex") {
@@ -563,11 +598,15 @@
 			}
 			if(!open) {
 				document.getElementById("gallery").style.display="none"
+				document.getElementById("ladybug").style.scale=1.2
+				document.getElementById("ladybug-bg").style.display="none"
 				ladybugMovement=0
 				return
 			}
 			closeAll()
 			document.getElementById("gallery").style.display="flex"
+			document.getElementById("ladybug").style.scale=1
+			document.getElementById("ladybug-bg").style.display="flex"
 		}
 		async function importSave() {
 			let getSave=prompt("Import your save here:")
@@ -601,9 +640,14 @@
 				break
 			}
 		} )
+		function chooseMap(spot) {
+			let spotValue=parseInt(spot.getAttribute("value"))
+			console.log(spotValue)
+		}
 		window.onload=function() {
 			setInterval(cogRotate,10)
 			setInterval(flowerRotate,10)
+			document.getElementById("ladybug").style.scale=1.2
 			document.getElementById("ladybug").style.transform="rotate("+ladybugDegree+"deg)"
 			document.getElementById("ladybug-bg").style.transform="translate(-"+ladybugX+"px, -"+ladybugY+"px)"
 			setInterval(ladybugMove,10)
@@ -614,16 +658,23 @@
 			}
 			for(let i=1;i<=3;i++) {
 				for(let j=1;j<=8;j++) {
-					document.getElementById("map-container").appendChild(createGrid(0, i, j, "Empty", 1))
+					document.getElementById("fight-container").appendChild(createGrid(0, i, j, "Empty", 1))
 				}
 			}
 			for(let i=1;i<=8;i++) {
-				document.getElementById("map-container").appendChild(createGrid(0, 0, i, "Line", 1))
+				document.getElementById("fight-container").appendChild(createGrid(0, 0, i, "Line", 1))
 			}
 			for(let i=4;i<=6;i++) {
 				for(let j=1;j<=8;j++) {
-					document.getElementById("map-container").appendChild(createGrid(0, i, j, "Empty", 1))
+					document.getElementById("fight-container").appendChild(createGrid(0, i, j, "Empty", 1))
 				}
+			}
+<!--checkPoint-->
+			setContainElement()
+			if(fight.active===true) {
+				document.getElementById("fight-container").style.display="grid"
+			} else {
+				document.getElementById("map-container").style.display="flex"
 			}
 			document.querySelectorAll("button").forEach(btn => {
 				btn.addEventListener("click", this.blur())
@@ -632,6 +683,44 @@
 				} )
 			} )
 		}
+		let drag=false,dragX=0,dragY=0,mapcX=0,mapcY=0,containElement
+		function setContainElement() {
+			containElement=document.getElementById("map-container")
+			containElement.addEventListener("mousedown", function(mouse) {
+				if(mouse.target.id!=="blank") return
+				drag=true
+				dragX=mouse.clientX
+				dragY=mouse.clientY
+			} )
+			document.addEventListener("mousemove", function(mouse) {
+				if(drag!==true) return
+				let scaleSize=Math.min(parseFloat(window.getComputedStyle(containElement).height),parseFloat(window.getComputedStyle(containElement).width))
+				let newDragX=mouse.clientX,newDragY=mouse.clientY
+				mapcX+=(newDragX-dragX)*100/scaleSize,dragX=newDragX
+				mapcY+=(newDragY-dragY)*100/scaleSize,dragY=newDragY
+				document.getElementById("map-trans").style.transform="translate("+mapcX+"px, "+mapcY+"px)"
+				let scaledX=mapcX/parseFloat(window.getComputedStyle(containElement).width)
+				let scaledY=mapcY/parseFloat(window.getComputedStyle(containElement).height)
+				let scaleDistance=Math.max(Math.abs(scaledX),Math.abs(scaledY))
+				let homeElement=document.getElementById("home-btn")
+				if(Math.abs(scaledX)*scaleSize<60 && Math.abs(scaledY)*scaleSize<60) {
+					homeElement.style.display="none"
+				} else {
+					homeElement.style.left=50+scaledX/scaleDistance*40+"%"
+					homeElement.style.top=50+scaledY/scaleDistance*40+"%"
+					homeElement.style.display="flex"
+				}
+			} )
+			document.addEventListener("mouseup", function() {
+				drag=false
+			} )
+		}
+		function home() {
+			mapcX=0
+			mapcY=0
+			document.getElementById("map-trans").style.transform=""
+			document.getElementById("home-btn").style.display="none"
+		}
 	</script>
 </head>
 <body>
@@ -639,47 +728,48 @@
 		<span id="welcome"></span>
 	</div>
 	<div class="tl">
-		<button type="button" onclick="settings()" class="sqrbtn" title="Settings">
+		<button type="button" onclick="settings()" class="circbtn" title="Settings">
 			<svg id="cog" viewBox="0 0 100 100" class="in-svg">
-				<path d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10"></path>
-				<path class="f-path" d="M50 34A16 16 0 0 0 50 66L50 58A8 8 0 0 1 50 42L50 34A16 16 0 0 1 50 66L50 58A8 8 0 0 0 50 42Z"></path>
-				<path class="f-path" d="M46 28L54 28L54 36L46 36ZM72 46L72 54L64 54L64 46ZM54 72L46 72L46 64L54 64ZM28 54L28 46L36 46L36 54Z"></path>
-				<path class="diag f-path" d="M46 28L54 28L54 36L46 36ZM72 46L72 54L64 54L64 46ZM54 72L46 72L46 64L54 64ZM28 54L28 46L36 46L36 54Z"></path>
+				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
+				<path class="f-path" d="M50 30A20 20 0 0 0 50 70L50 60A10 10 0 0 1 50 40L50 30A20 20 0 0 1 50 70L50 60A10 10 0 0 0 50 40Z"></path>
+				<path class="f-path" d="M45 22L55 22L55 35L45 35ZM78 45L78 55L65 55L65 45ZM55 78L45 78L45 65L55 65ZM22 55L22 45L35 45L35 55Z"></path>
+				<path class="diag f-path" d="M45 22L55 22L55 35L45 35ZM78 45L78 55L65 55L65 45ZM55 78L45 78L45 65L55 65ZM22 55L22 45L35 45L35 55Z"></path>
 			</svg>
 		</button>
 	</div>
 	<div class="tr">
-		<button type="button" onclick="howToPlay()" class="sqrbtn" title="How to play">
+		<button type="button" onclick="howToPlay()" class="circbtn" title="How to play">
 			<svg viewBox="0 0 100 100" class="in-svg">
-				<path id="helpsvg" d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M38 38A12 12 0 1 1 57.2 47.6A18 18 0 0 0 50 62"></path>
-				<path class="f-path" d="M50 70A3 3 0 0 0 50 76A3 3 0 0 0 50 70"></path>
+				<path id="helpsvg" d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M35 35A15 15 0 1 1 59 47A22.5 22.5 0 0 0 50 65"></path>
+				<path class="f-path" d="M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75"></path>
 			</svg>
 		</button>
 	</div>
 	<div class="bl">
-		<button type="button" onclick="openInventory()" class="sqrbtn" title="Inventory">
+		<button type="button" onclick="openInventory()" class="circbtn" title="Inventory">
 			<svg viewBox="0 0 100 100" class="in-svg">
-				<path d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10M50 38.1A11.9 11.9 0 0 0 50 61.9A11.9 11.9 0 0 0 50 38.1"></path>
+				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
+				<path class="wide" d="M50 35A15 15 0 0 0 50 65A15 15 0 0 0 50 35"></path>
 				<g id="flower">
-					<path class="fgreen-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
-					<path class="rot72 fblue-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
-					<path class="rot144 fred-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
-					<path class="rot216 fcyan-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
-					<path class="rot288 fpurple-path" d="M44.4 39.5A7 10 0 1 1 55.6 39.5"></path>
+					<path class="fgreen-path" d="M41.5 36.8A10 13 0 1 1 58.5 36.8A15.7 15.7 0 0 0 41.5 36.8"></path>
+					<path class="rot72 fblue-path" d="M41.5 36.8A10 13 0 1 1 58.5 36.8A15.7 15.7 0 0 0 41.5 36.8"></path>
+					<path class="rot144 fred-path" d="M41.5 36.8A10 13 0 1 1 58.5 36.8A15.7 15.7 0 0 0 41.5 36.8"></path>
+					<path class="rot216 fcyan-path" d="M41.5 36.8A10 13 0 1 1 58.5 36.8A15.7 15.7 0 0 0 41.5 36.8"></path>
+					<path class="rot288 fpurple-path" d="M41.5 36.8A10 13 0 1 1 58.5 36.8A15.7 15.7 0 0 0 41.5 36.8"></path>
 				</g>
 			</svg>
 		</button>
 	</div>
 	<div class="br">
-		<button type="button" onclick="openGallery()" class="sqrbtn" title="Gallery">
+		<button type="button" onclick="openGallery()" class="circbtn" title="Gallery">
 			<svg viewBox="0 0 100 100" class="in-svg">
-				<g id="ladybug-bg">
+				<g id="ladybug-bg" class="nd">
 					<path class="flgreen-path ns" d="M0 0L50 0L50 50L0 50ZM100 0L150 0L150 50L100 50ZM0 100L50 100L50 150L0 150ZM100 100L150 100L150 150L100 150Z"></path>
 					<path class="flred-path ns" d="M50 0L100 0L100 50L50 50ZM150 0L200 0L200 50L150 50ZM50 100L100 100L100 150L50 150ZM150 100L200 100L200 150L150 150Z"></path>
 					<path class="flblue-path ns" d="M0 50L50 50L50 100L0 100ZM100 50L150 50L150 100L100 100ZM0 150L50 150L50 200L0 200ZM100 150L150 150L150 200L100 200Z"></path>
 					<path class="fpurple-path ns" d="M50 50L100 50L100 100L50 100ZM150 50L200 50L200 100L150 100ZM50 150L100 150L100 200L50 200ZM150 150L200 150L200 200L150 200Z"></path>
 				</g>
-				<path d="M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10"></path>
+				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
 				<g id="ladybug">
 					<path class="fred-path wide" d="M62 34A20 20 0 1 1 38 34A12 5 0 0 0 62 34"></path>
 					<path class="f-path" d="M38 34A12 5 0 0 1 62 34A12 5 0 0 1 38 34"></path>
@@ -722,9 +812,24 @@
 		<button type="button" onclick="importSave()" class="lmargin lblue-bg recbtn pointer">Import Save</button>
 		<button type="button" onclick="hardReset()" class="lmargin lred-bg recbtn forbidden">HARD RESET</button>
 		<button type="button" id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer">Export Save</button>
-		<button type="button" id="endturn" onclick="endTurn()" class="lmargin lred-bg recbtn forbidden nd">[E] End Turn</button>
 	</div>
-	<div id="map-container" class="mid square48">
+	<div id="fight-container" class="mid square48 nd">
+	</div>
+	<div id="map-container" class="mid lhsize border nd">
+		<svg id="blank" viewBox="0 0 100 100" class="in-svg">
+			<g id="map-trans">
+				<path onclick="chooseMap(this)" value="11" class="fgreen-path pointer ns" d="M40 50A1 1 0 0 0 40 52A1 1 0 0 0 40 50"></path>
+				<path onclick="chooseMap(this)" value="12" class="flgreen-path pointer ns" d="M60 50A1 1 0 0 0 60 52A1 1 0 0 0 60 50"></path>
+			</g>
+		</svg>
+		<button type="button" id="home-btn" onclick="home()" class="mid circbtn nd" title="Home">
+			<svg viewBox="0 0 100 100" class="in-svg">
+				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
+				<path class="fyellow-path" d="M20 45L50 20L80 45Z"></path>
+				<path class="fdbrown-path" d="M30 45L30 75L70 75L70 45Z"></path>
+				<path class="fdgreen-path" d="M52 75L52 55L64 55L64 75Z"></path>
+			</svg>
+		</button>
 	</div>
 	<div id="flower-state" class="bottom text3-c">
 	</div>
