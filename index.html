@@ -7,6 +7,7 @@
 	<style>
 		body {
 			touch-action: manipulation;
+			user-select: none;
 		}
 		input {
 			width: 30px;
@@ -38,7 +39,7 @@
 			position: absolute;
 			left: 50%;
 			top: 50%;
-			transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%) var(--transform2, translate(0px, 0px));
 		}
 		.bottom {
 			position: absolute;
@@ -184,53 +185,92 @@
 			stroke-width: 1px;
 			fill: #7f7f7f;
 		}
+		.grey-path {
+			stroke: #7f7f7f;
+		}
 		.fred-path {
 			stroke-width: 1px;
 			fill: #ff7f7f;
+		}
+		.red-path {
+			stroke: #ff7f7f;
 		}
 		.flred-path {
 			stroke-width: 1px;
 			fill: #ffbfbf;
 		}
+		.lred-path {
+			stroke: #ffbfbf;
+		}
 		.fgreen-path {
 			stroke-width: 1px;
 			fill: #7fff7f;
+		}
+		.green-path {
+			stroke: #7fff7f;
 		}
 		.flgreen-path {
 			stroke-width: 1px;
 			fill: #bfffbf;
 		}
+		.lgreen-path {
+			stroke: #bfffbf;
+		}
 		.fblue-path {
 			stroke-width: 1px;
 			fill: #7f7fff;
+		}
+		.blue-path {
+			stroke: #7f7fff;
 		}
 		.flblue-path {
 			stroke-width: 1px;
 			fill: #bfbfff;
 		}
+		.lblue-path {
+			stroke: #bfbfff;
+		}
 		.fcyan-path {
 			stroke-width: 1px;
 			fill: #7fffff;
+		}
+		.cyan-path {
+			stroke: #7fffff;
 		}
 		.fpurple-path {
 			stroke-width: 1px;
 			fill: #ff7fff;
 		}
+		.purple-path {
+			stroke: #ff7fff;
+		}
 		.fyellow-path {
 			stroke-width: 1px;
 			fill: #ffff7f;
+		}
+		.yellow-path {
+			stroke: #ffff7f;
 		}
 		.fdbrown-path {
 			stroke-width: 1px;
 			fill: #bf3f3f;
 		}
+		.dbrown-path {
+			stroke: #bf3f3f;
+		}
 		.fdgreen-path {
 			stroke-width: 1px;
 			fill: #3fbf3f;
 		}
+		.dgreen-path {
+			stroke: #3fbf3f;
+		}
 		.fdblue-path {
 			stroke-width: 1px;
 			fill: #3f3fbf;
+		}
+		.dblue-path {
+			stroke: #3f3fbf;
 		}
 		.sel-f-path {
 			stroke-width: 1px;
@@ -263,6 +303,16 @@
 			border: 2px solid;
 			overflow-x: hidden;
 			overflow-y: auto;
+			text-align: center;
+		}
+		.infobox {
+			display: flex;
+			flex-direction: column;
+			border: 2px solid;
+			font-size: 16px;
+			width: 350px;
+			padding: 10px;
+			padding-top: 5px;
 			text-align: center;
 		}
 		.grey {
@@ -373,6 +423,24 @@
 		.llyellow-bg {
 			background-color: #ffffdf;
 		}
+		.dbrown {
+			color: #bf3f3f;
+		}
+		.dbrown-bg {
+			background-color: #bf3f3f;
+		}
+		.dgreen {
+			color: #3fbf3f;
+		}
+		.dgreen-bg {
+			background-color: #3fbf3f;
+		}
+		.dblue {
+			color: #3f3fbf;
+		}
+		.dblue-bg {
+			background-color: #3f3fbf;
+		}
 		.highz {
 			z-index: 6361;
 		}
@@ -397,17 +465,24 @@
 			height: 70%;
 			width: 70%;
 		}
+		.bold {
+			font-weight: bold;
+		}
 		.border {
 			border: 3px solid;
 		}
 		.ns {
 			stroke: none;
 		}
+		.npe {
+			pointer-events: none;
+		}
 		.nd {
 			display: none;
 		}
 	</style>
 	<script>
+		const svgNS="http://www.w3.org/2000/svg"
 		const map=[10,11,12,13,14,15,16,17,20,21,22,23,24,25,30,31,32,33,34,35,36,37,38,41,42,43,44,51,52,53,54,55,56,60,61,62,63,64,65,66]
 		let player=JSON.parse(localStorage.getItem("player"))
 		let explore=JSON.parse(localStorage.getItem("explore"))
@@ -420,16 +495,15 @@
 		if(!player.health) player.health=150
 		if(!player.inventory) player.inventory=new Object()
 		if(!player.gallery) player.gallery=new Object()
-		if(!player.mod) player.mod=new Object()
 		if(!explore.floor) explore.floor=1
 		if(!explore.flowerspot) explore.flowerspot=10
 		if(!explore.explored) explore.explored=new Object()
 		for(let i in map) if(!explore.explored[map[i]]) explore.explored[map[i]]=false
-		if(!explore.biome) explore.biome="Garden"
 		if(!fight.active) fight.active=false
 		localStorage.setItem("player", JSON.stringify(player))
 		localStorage.setItem("explore", JSON.stringify(explore))
 		localStorage.setItem("fight", JSON.stringify(fight))
+		let pathArray=[1011,1013,1112,1120,1130,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1723,1738,2021,2123,2124,2125,2223,2224,2253,2360,2425,3031,3032,3132,3135,3138,3233,3234,3335,3337,3436,3437,3538,3637,3660,3843,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5663,6061,6162,6164,6263,6264,6365,6465,6566]
 		function delay(time) {
 			return new Promise(resolve => setTimeout(resolve, time))
 		}
@@ -681,7 +755,8 @@
 					document.getElementById("fight-container").appendChild(createGrid(0, i, j, "Empty", 1))
 				}
 			}
-<!--checkPoint-->
+			homeElement=document.getElementById("home-btn")
+			homeFlowerElement=document.getElementById("flower-btn")
 			setContainElement()
 			setInterval(updateFlowerSpot, 10)
 			if(fight.active===true) {
@@ -689,16 +764,23 @@
 			} else {
 				document.getElementById("map-container").style.display="flex"
 			}
+			createPath()
 			document.querySelectorAll("button").forEach(btn => {
-				btn.addEventListener("click", this.blur())
-				btn.addEventListener("keydown", pressed => {
+				btn.addEventListener("click",this.blur())
+				btn.addEventListener("keydown",pressed => {
 					if(pressed.key === "Enter") pressed.preventDefault()
 				} )
 			} )
+			mapElement.querySelectorAll("path[d*=A2]").forEach(path => {
+				path.addEventListener("mouseenter",() => mapInfo(path))
+				path.addEventListener("mouseleave",closeInfo)
+			} )
 		}
-		let drag=false,dragX=0,dragY=0,mapcX=0,mapcY=0,containElement
+		let drag=false,dragX=0,dragY=0,mapcX=0,mapcY=0,containElement,mapElement,mapInfoElement,homeElement,homeFlowerElement,scaleSize
 		function setContainElement() {
 			containElement=document.getElementById("map-container")
+			mapElement=document.getElementById("map-trans")
+			mapInfoElement=document.getElementById("mapinfo")
 			containElement.addEventListener("mousedown", function(mouse) {
 				if(mouse.target.id!=="blank") return
 				drag=true
@@ -707,76 +789,147 @@
 			} )
 			document.addEventListener("mousemove", function(mouse) {
 				if(drag!==true) return
-				let scaleSize=Math.min(parseFloat(window.getComputedStyle(containElement).height),parseFloat(window.getComputedStyle(containElement).width))
 				let newDragX=mouse.clientX,newDragY=mouse.clientY
 				mapcX+=(newDragX-dragX)*100/scaleSize,dragX=newDragX
 				mapcY+=(newDragY-dragY)*100/scaleSize,dragY=newDragY
-				document.getElementById("map-trans").style.transform="translate("+mapcX+"px, "+mapcY+"px)"
-				let scaledX=mapcX/parseFloat(window.getComputedStyle(containElement).width)
-				let scaledY=mapcY/parseFloat(window.getComputedStyle(containElement).height)
-				let scaleDistance=Math.max(Math.abs(scaledX),Math.abs(scaledY))
-				let homeElement=document.getElementById("home-btn")
-				if(Math.abs(scaledX)*scaleSize<60 && Math.abs(scaledY)*scaleSize<60) {
-					homeElement.style.display="none"
-				} else {
-					homeElement.style.left=50+scaledX/scaleDistance*40+"%"
-					homeElement.style.top=50+scaledY/scaleDistance*40+"%"
-					homeElement.style.display="flex"
-				}
+				mapElement.style.transform="translate("+mapcX+"px, "+mapcY+"px)"
+				updateHome()
 			} )
 			document.addEventListener("mouseup", function() {
 				drag=false
 			} )
 		}
-		function home() {
-			mapcX=0
-			mapcY=0
-			document.getElementById("map-trans").style.transform=""
-			document.getElementById("home-btn").style.display="none"
+		function updateHome() {
+			scaleSize=Math.min(parseFloat(window.getComputedStyle(containElement).height),parseFloat(window.getComputedStyle(containElement).width))
+			let scaledX=mapcX/parseFloat(window.getComputedStyle(containElement).width)
+			let scaledY=mapcY/parseFloat(window.getComputedStyle(containElement).height)
+			let scaledX2=scaledX+(flowerSpotX-50)/parseFloat(window.getComputedStyle(containElement).width)
+			let scaledY2=scaledY+(flowerSpotY-50)/parseFloat(window.getComputedStyle(containElement).height)
+			let scaleDistance=Math.max(Math.abs(scaledX),Math.abs(scaledY))
+			let scaleDistance2=Math.max(Math.abs(scaledX2),Math.abs(scaledY2))
+			if(Math.abs(scaledX)*scaleSize<50 && Math.abs(scaledY)*scaleSize<50) {
+				homeElement.style.display="none"
+			} else {
+				homeElement.style.left=50+scaledX/scaleDistance*40+"%"
+				homeElement.style.top=50+scaledY/scaleDistance*40+"%"
+				homeElement.style.display="flex"
+			}
+			if((Math.abs(scaledX2)*scaleSize<50 && Math.abs(scaledY2)*scaleSize<50) || (flowerSpotX===50 && flowerSpotY===50)) {
+				homeFlowerElement.style.display="none"
+			} else {
+				homeFlowerElement.style.left=50+scaledX2/scaleDistance2*40+"%"
+				homeFlowerElement.style.top=50+scaledY2/scaleDistance2*40+"%"
+				homeFlowerElement.style.display="flex"
+			}
+		}
+		function home(target) {
+			if(target==="origin") {
+				mapcX=0
+				mapcY=0
+				mapElement.style.transform=""
+				updateHome()
+			}
+			if(target==="flower") {
+				mapcX=50-flowerSpotX
+				mapcY=50-flowerSpotY
+				mapElement.style.transform="translate("+mapcX+"px, "+mapcY+"px)"
+				updateHome()
+			}
 		}
 		function getSpotCord(value) {
 			let spotD=document.querySelector("path[value='"+value+"']").getAttribute("d")
 			let spotCord=new Object()
 			spotCord.x=parseInt(/(?<=M)\d+/.exec(spotD))
-			if(!spotCord.x) spotCord.x=-parseInt(/(?<=M-)\d+/.exec(spotD))
+			if(isNaN(spotCord.x)) spotCord.x=-parseInt(/(?<=M-)\d+/.exec(spotD))
 			spotCord.y=parseInt(/(?<=M-?\d+\s)\d+/.exec(spotD))+2
-			if(!spotCord.y) spotCord.y=-parseInt(/(?<=M-?\d+\s-)\d+/.exec(spotD))+2
+			if(isNaN(spotCord.y)) spotCord.y=-parseInt(/(?<=M-?\d+\s-)\d+/.exec(spotD))+2
 			return spotCord
 		}
-		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerStartSpot
+		function distance(cord1, cord2) {
+			if(typeof(cord1)==="string") cord1=parseInt(cord1)
+			if(typeof(cord2)==="string") cord2=parseInt(cord2)
+			if(cord1===cord2) return 0
+			if(pathArray.indexOf(cord1*100+cord2)===-1 && pathArray.indexOf(cord2*100+cord1)===-1) return -1
+			let dx=getSpotCord(cord2).x-getSpotCord(cord1).x,dy=getSpotCord(cord2).y-getSpotCord(cord1).y,dv=(dx*dx+dy*dy)**0.5+20
+			if(cord1-cord1%10!==cord2-cord2%10) dv=dv*1.5+50
+			return betterFloor(dv)
+		}
+		function createPath() {
+			for(let i in pathArray) {
+				let pathStart=betterFloor(pathArray[i]/100),pathEnd=pathArray[i]%100,newPath=document.createElementNS(svgNS,"path")
+				newPath.setAttribute("value",pathArray[i])
+				if(pathEnd-pathEnd%10!==pathStart-pathStart%10) {
+					newPath.setAttribute("class","grey-path pointer narrow")
+				} else if(pathStart<20) {
+					newPath.setAttribute("class","lgreen-path pointer narrow")
+				} else if(pathStart<30) {
+					newPath.setAttribute("class","yellow-path pointer narrow")
+				} else if(pathStart<40) {
+					newPath.setAttribute("class","blue-path pointer narrow")
+				} else if(pathStart<50) {
+					newPath.setAttribute("class","dbrown-path pointer narrow")
+				} else if(pathStart<60) {
+					newPath.setAttribute("class","dbrown-path pointer narrow")
+				} else {
+					newPath.setAttribute("class","dgreen-path pointer narrow")
+				}
+				newPath.setAttribute("d","M"+getSpotCord(pathStart).x+" "+getSpotCord(pathStart).y+"L"+getSpotCord(pathEnd).x+" "+getSpotCord(pathEnd).y)
+				mapElement.insertBefore(newPath,mapElement.children[i])
+			}
+		}
+		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerStartSpot,flowerSpotX=0,flowerSpotY=0
+		function travel(spot) {
+			flowerStartSpot=explore.flowerspot
+			explore.flowerspot=spot
+			flowerMoveStartTime=Date.now()
+			flowerMove=true
+		}
 		function updateFlowerSpot() {
-			let flowerSpotX,flowerSpotY
 			if(document.getElementById("flowerspot").style.transform==="") {
 				flowerSpotX=getSpotCord(explore.flowerspot).x
 				flowerSpotY=getSpotCord(explore.flowerspot).y
 				document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
+				updateHome()
 				return
 			}
 			if(flowerMove===false) return
-			let distancePassed=(Date.now()-flowerMoveStartTime)/5000
+			let distancePassed=(Date.now()-flowerMoveStartTime)/10/distance(flowerStartSpot,explore.flowerspot)
 			if(distancePassed>=1) {
 				flowerSpotX=getSpotCord(explore.flowerspot).x
 				flowerSpotY=getSpotCord(explore.flowerspot).y
 				document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
+				updateHome()
 				flowerMove=false
 				return
 			}
 			flowerSpotX=(1-distancePassed)*getSpotCord(flowerStartSpot).x+distancePassed*getSpotCord(explore.flowerspot).x
 			flowerSpotY=(1-distancePassed)*getSpotCord(flowerStartSpot).y+distancePassed*getSpotCord(explore.flowerspot).y
 			document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
+			updateHome()
 		}
 		function chooseMap(spot) {
-			let spotValue=parseInt(spot.getAttribute("value"))
-			if(spotValue!==explore.flowerspot) {
-				flowerStartSpot=explore.flowerspot
-				explore.flowerspot=spotValue
-				flowerMoveStartTime=Date.now()
-				flowerMove=true
-			}
-		}
-		function clickFlower() {
 			if(flowerMove) return
-			chooseMap(document.querySelector("path[value='"+explore.flowerspot+"']"))
+			let spotValue=parseInt(spot.getAttribute("value"))
+			if(distance(explore.flowerspot,spotValue)===-1) return
+			if(spotValue===explore.flowerspot) {
+				return
+			}
+			travel(spotValue)
+			closeInfo()
+		}
+		function mapInfo(spot) {
+			if(flowerMove) return
+			let spotValue=parseInt(spot.getAttribute("value"))
+			if(distance(explore.flowerspot,spotValue)===-1) return
+			document.getElementById("mapinfo").style.setProperty("--transform2", "translate("+(mapcX+getSpotCord(spotValue).x-50)/100*scaleSize+"px, "+((mapcY+getSpotCord(spotValue).y-50)/100*scaleSize-50)+"px)")
+			document.getElementById("mapinfo").innerHTML="<span>value="+spotValue+"</span>"
+			if(distance(explore.flowerspot,spotValue)>0) {
+				document.getElementById("mapinfo").innerHTML+="<span>distance="+distance(explore.flowerspot,spotValue)+"</span>"
+			}
+			document.getElementById("mapinfo").style.display="flex"
+		}
+		function closeInfo() {
+			document.getElementById("mapinfo").style.display="none"
 		}
 	</script>
 </head>
@@ -860,7 +1013,7 @@
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
 	</div>
-	<div id="gallery" class="mid lblue-bg box highz hsize nd">
+	<div id="gallery" class="mid lyellow-bg box highz hsize nd">
 		<h2>Gallery</h2>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
@@ -875,8 +1028,7 @@
 	<div id="map-container" class="mid lhsize border nd">
 		<svg id="blank" viewBox="0 0 100 100" class="in-svg drag">
 			<g id="map-trans">
-				<path class="narrowp" d="M50 47A3 3 0 0 0 50 53A3 3 0 0 0 50 47"></path>
-				<path onclick="chooseMap(this)" value="10" class="flgreen-path pointer ns" d="M50 48A2 2 0 0 0 50 52A2 2 0 0 0 50 48"></path>
+				<path onclick="chooseMap(this)" value="10" class="fgrey-path pointer ns" d="M50 48A2 2 0 0 0 50 52A2 2 0 0 0 50 48"></path>
 				<path onclick="chooseMap(this)" value="11" class="flgreen-path pointer ns" d="M57 71A2 2 0 0 0 57 75A2 2 0 0 0 57 71"></path>
 				<path onclick="chooseMap(this)" value="12" class="flgreen-path pointer ns" d="M12 68A2 2 0 0 0 12 72A2 2 0 0 0 12 68"></path>
 				<path onclick="chooseMap(this)" value="13" class="flgreen-path pointer ns" d="M10 31A2 2 0 0 0 10 35A2 2 0 0 0 10 31"></path>
@@ -916,10 +1068,10 @@
 				<path onclick="chooseMap(this)" value="64" class="fdgreen-path pointer ns" d="M121 154A2 2 0 0 0 121 158A2 2 0 0 0 121 154"></path>
 				<path onclick="chooseMap(this)" value="65" class="fdgreen-path pointer ns" d="M157 156A2 2 0 0 0 157 160A2 2 0 0 0 157 156"></path>
 				<path onclick="chooseMap(this)" value="66" class="fdgreen-path pointer ns" d="M159 179A2 2 0 0 0 159 183A2 2 0 0 0 159 179"></path>
-				<path onclick="clickFlower()" id="flowerspot" class="fyellow-path pointer narrowp" d="M50 48.5A1.5 1.5 0 0 0 50 51.5A1.5 1.5 0 0 0 50 48.5M49.2 50.4A1 1 0 0 0 50.8 50.4M49.5 49.2L49.5 50M50.5 49.2L50.5 50"></path>
+				<path id="flowerspot" class="fyellow-path pointer narrowp npe" d="M50 48.5A1.5 1.5 0 0 0 50 51.5A1.5 1.5 0 0 0 50 48.5M49.2 50.4A1 1 0 0 0 50.8 50.4M49.5 49.2L49.5 50M50.5 49.2L50.5 50"></path>
 			</g>
 		</svg>
-		<button type="button" id="home-btn" onclick="home()" class="mid circbtn nd" title="Home">
+		<button type="button" id="home-btn" onclick="home('origin')" class="mid circbtn nd" title="Home">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
 				<path class="fyellow-path" d="M20 45L50 20L80 45Z"></path>
@@ -927,6 +1079,18 @@
 				<path class="fdgreen-path" d="M52 75L52 55L64 55L64 75Z"></path>
 			</svg>
 		</button>
+		<button type="button" id="flower-btn" onclick="home('flower')" class="mid circbtn nd" title="Flower">
+			<svg viewBox="0 0 100 100" class="in-svg">
+				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
+				<path class="fyellow-path" d="M50 20A30 30 0 0 0 50 80A30 30 0 0 0 50 20M34 58A20 20 0 0 0 66 58M40 34L40 50M60 34L60 50"></path>
+			</svg>
+		</button>
+		<div id="mapinfo" class="llcyan-bg mid infobox nd">
+			<span class="text2 bold">Centralia (C0)</span>
+			<span class="bold">The beginning of the journey.</span>
+			<br>
+			<span>Mob: Ladybug 6361%, Baby Ant 79%</span>
+		</div>
 	</div>
 	<div id="flower-state" class="bottom text3-c">
 	</div>
