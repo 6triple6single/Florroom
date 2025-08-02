@@ -2,18 +2,41 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Play Florroom!</title>
 	<style>
 		body {
 			touch-action: manipulation;
 			user-select: none;
+			overflow: hidden;
 		}
 		input {
 			width: 30px;
 		}
-		g, path {
+		g,path {
 			transform-origin: center;
+		}
+		#end {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: #000000;
+			height: 100%;
+			width: 100%;
+			opacity: 1;
+			pointer-events: none;
+			z-index: 7976;
+		}
+		#end2 {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			font-size: 32px;
+			color: #ffffff;
+			opacity: 0;
+			pointer-events: none;
+			z-index: 7979;
 		}
 		.tl {
 			position: absolute;
@@ -39,7 +62,7 @@
 			position: absolute;
 			left: 50%;
 			top: 50%;
-			transform: translate(-50%,-50%) var(--transform2, translate(0px, 0px));
+			transform: translate(-50%,-50%) var(--transform2,translate(0px,0px));
 		}
 		.bottom {
 			position: absolute;
@@ -47,13 +70,29 @@
 			top: 100%;
 			transform: translate(-50%,-50px);
 		}
+		.lcmargin {
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
 		.cmargin {
 			margin-top: 20px;
 			margin-bottom: 20px;
 		}
+		.hcmargin {
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+		.llmargin {
+			margin-left: 5px;
+			margin-right: 5px;
+		}
 		.lmargin {
 			margin-left: 20px;
 			margin-right: 20px;
+		}
+		.hlmargin {
+			margin-left: 50px;
+			margin-right: 50px;
 		}
 		.diag {
 			transform: rotate(45deg);
@@ -279,8 +318,8 @@
 		}
 		.square36 {
 			display: grid;
-			grid-template-columns: repeat(6, 1fr);
-			grid-template-rows: repeat(6, 1fr);
+			grid-template-columns: repeat(6,1fr);
+			grid-template-rows: repeat(6,1fr);
 			background: none;
 			border: none;
 			height: 380px;
@@ -289,8 +328,8 @@
 		}
 		.square48 {
 			display: grid;
-			grid-template-columns: repeat(8, 1fr);
-			grid-template-rows: repeat(3, 1fr) 10px repeat(3, 1fr);
+			grid-template-columns: repeat(8,1fr);
+			grid-template-rows: repeat(3,1fr) 10px repeat(3,1fr);
 			background: none;
 			border: 2px solid;
 			height: 490px;
@@ -482,30 +521,62 @@
 		}
 	</style>
 	<script>
+		const PetalNameList=["Basic"]
+		function Petal(id=0,rarity=1,level=0) {
+			this.id=id,this.rarity=rarity,this.level=level
+			this.name="Basic"
+			this.health=79,this.currenthealth=this.health
+			this.damage=56
+			this.speed=20
+			this.reload=20
+			this.atkbuff=roll(-10,10)
+			if(this.atkbuff*this.atkbuff>10) this.atkbuff=roll(-10,10)
+			if(this.atkbuff*this.atkbuff>30) this.atkbuff=roll(-10,10)
+			if(this.atkbuff*this.atkbuff>60) this.atkbuff=roll(-10,10)
+			this.defbuff=roll(-10,10)
+			if(this.defbuff*this.defbuff>10) this.defbuff=roll(-10,10)
+			if(this.defbuff*this.defbuff>30) this.defbuff=roll(-10,10)
+			if(this.defbuff*this.defbuff>60) this.defbuff=roll(-10,10)
+			this.actionbar=0,this.special=0,this.x=0,this.y=0,this.select=0
+		}
+		Petal.prototype.move=function(dir) {
+		}
+	</script>
+	<script>
 		const svgNS="http://www.w3.org/2000/svg"
-		const map=[10,11,12,13,14,15,16,17,20,21,22,23,24,25,30,31,32,33,34,35,36,37,38,41,42,43,44,51,52,53,54,55,56,60,61,62,63,64,65,66]
+		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
+		const pathArray=[1011,1013,1112,1121,1131,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1724,1739,2122,2224,2225,2226,2324,2325,2353,2461,2526,3132,3133,3233,3236,3239,3334,3335,3436,3438,3537,3538,3639,3738,3761,3943,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5664,6162,6263,6265,6364,6365,6466,6566,6667]
+		const tutorialOrder=[10,11,12,14,21,22,24,31,41,42,43,51,52,53,23,61,62,63,64,65,66,67]
 		let player=JSON.parse(localStorage.getItem("player"))
 		let explore=JSON.parse(localStorage.getItem("explore"))
 		let fight=JSON.parse(localStorage.getItem("fight"))
 		if(!player) player=new Object()
 		if(!explore) explore=new Object()
 		if(!fight) fight=new Object()
+		if(!player.version) player.version=20250802
+		if(!player.calendar) player.calendar=new Object()
+		if(!player.calendar.day) player.calendar.day=60
+		if(!player.calendar.hour) player.calendar.hour=1
+		if(!player.calendar.minute) player.calendar.minute=1
+		if(!player.calendar.second) player.calendar.second=0
 		if(!player.level) player.level=1
 		if(!player.exp) player.exp=0
 		if(!player.health) player.health=150
 		if(!player.inventory) player.inventory=new Object()
 		if(!player.gallery) player.gallery=new Object()
-		if(!explore.floor) explore.floor=1
-		if(!explore.flowerspot) explore.flowerspot=10
+		if(!explore.floor) explore.floor=0
+		if(!explore.targetspot) explore.targetspot=10
+		explore.flowerspot=explore.targetspot
+		if(!explore.highest) explore.highest=100*explore.floor+explore.flowerspot
 		if(!explore.explored) explore.explored=new Object()
-		for(let i in map) if(!explore.explored[map[i]]) explore.explored[map[i]]=false
+		for(let i in mapArray) if(!explore.explored[mapArray[i]]) explore.explored[mapArray[i]]=false
+		explore.explored[10]=true
 		if(!fight.active) fight.active=false
-		localStorage.setItem("player", JSON.stringify(player))
-		localStorage.setItem("explore", JSON.stringify(explore))
-		localStorage.setItem("fight", JSON.stringify(fight))
-		let pathArray=[1011,1013,1112,1120,1130,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1723,1738,2021,2123,2124,2125,2223,2224,2253,2360,2425,3031,3032,3132,3135,3138,3233,3234,3335,3337,3436,3437,3538,3637,3660,3843,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5663,6061,6162,6164,6263,6264,6365,6465,6566]
+		localStorage.setItem("player",JSON.stringify(player))
+		localStorage.setItem("explore",JSON.stringify(explore))
+		localStorage.setItem("fight",JSON.stringify(fight))
 		function delay(time) {
-			return new Promise(resolve => setTimeout(resolve, time))
+			return new Promise(resolve => setTimeout(resolve,time))
 		}
 		async function copyToClipboard(text) {
 			await navigator.clipboard.writeText(text)
@@ -532,7 +603,7 @@
 				return "#00ff00"
 			}
 		}
-		function createDice(value, point) {
+		function createDice(value,point) {
 			let newDice=document.createElement("button")
 			newDice.type="button"
 			newDice.setAttribute("class","dice")
@@ -569,7 +640,7 @@
 			let buttonValue=parseInt(button.value)
 			return
 		}
-		function createGrid(value, x, y, text, size=0) {
+		function createGrid(value,x,y,text,size=0) {
 			let newGrid=document.createElement("button")
 			newGrid.type="button"
 			newGrid.setAttribute("class","grid")
@@ -586,14 +657,14 @@
 			if(typeof(text)==="number" && text!==0) newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10L90 50L50 90L10 50Z'></path></svg><span class='mid'>"+text+"</span>"
 			return newGrid
 		}
-		function getGrid(value, x, y) {
+		function getGrid(value,x,y) {
 			return document.querySelector("[value='"+value+"'][data-x='"+x+"'][data-y='"+y+"']")
 		}
 		function clickGrid(button) {
 			let buttonValue=parseInt(button.value),buttonX=parseInt(button.getAttribute("data-x")),buttonY=parseInt(button.getAttribute("data-y"))
 			return
 		}
-		function roll(lowerLimit, upperLimit) {
+		function roll(lowerLimit,upperLimit) {
 			return Math.floor(Math.random()*(upperLimit-lowerLimit+1)+lowerLimit)
 		}
 		function dice() {
@@ -699,20 +770,55 @@
 			document.getElementById("ladybug-bg").style.display="flex"
 		}
 		async function importSave() {
-			let getSave=prompt("Import your save here:")
+			let getSave=prompt("Retrieve your memories...")
 			if(getSave===null) return
-			console.log("importSave")
+			clearAllInterval()
+			document.getElementById("end").style["pointer-events"]="unset"
+			for(let i=0;i<=10;i++) {
+				document.getElementById("end").style.opacity=i/10
+				await delay(100)
+			}
+			location.reload()
 		}
 		async function exportSave() {
-			console.log("exportSave")
-			document.getElementById("export-btn").innerHTML="Exported!"
-			await delay(300)
-			document.getElementById("export-btn").innerHTML="Export Save"
+			document.getElementById("export-btn").innerHTML="Memories Stored!"
+			await delay(1000)
+			document.getElementById("export-btn").innerHTML="Store Memories"
 		}
-		function hardReset() {
+		async function hardReset() {
 			let getResetSentence=prompt("Are you sure to reset the game and lost all process?\nType 'The game is perfect, there are no bugs' to confirm.")
 			if(getResetSentence!=="The game is perfect, there are no bugs") return
-			console.log("hardReset")
+			clearAllInterval()
+			for(let i=0;i<=50;i++) {
+				document.getElementById("end").style.opacity=i/50
+				await delay(100)
+			}
+			document.getElementById("end").style["pointer-events"]="unset"
+			localStorage.removeItem("player")
+			localStorage.removeItem("explore")
+			localStorage.removeItem("fight")
+			document.getElementById("end2").innerText="The story of the Florroom continues..."
+			for(let i=0;i<=20;i++) {
+				document.getElementById("end2").style.opacity=i/20
+				await delay(100)
+			}
+			await delay(1000)
+			for(let i=0;i<=20;i++) {
+				document.getElementById("end2").style.opacity=1-i/20
+				await delay(100)
+			}
+			document.getElementById("end2").innerText="Forever."
+			for(let i=0;i<=20;i++) {
+				document.getElementById("end2").style.opacity=i/20
+				await delay(100)
+			}
+			await delay(2000)
+			for(let i=0;i<=20;i++) {
+				document.getElementById("end2").style.opacity=1-i/20
+				await delay(100)
+			}
+			await delay(3000)
+			location.reload()
 		}
 		function updateGame() {
 			console.log("updateGame")
@@ -723,47 +829,43 @@
 		function tryInput(num) {
 			console.log("tryInput")
 		}
-		document.addEventListener("keydown", function(pressed) {
+		document.addEventListener("keydown",function(pressed) {
 			switch(pressed.key) {
 				case "1":
 				tryInput(1)
 				break
 			}
 		} )
-		window.onload=function() {
+		let intervalFlower,intervalCalendar
+		function clearAllInterval() {
+			clearInterval(intervalFlower)
+			clearInterval(intervalCalendar)
+		}
+		window.onload=async function() {
+			document.getElementById("end").style["pointer-events"]="unset"
 			setInterval(cogRotate,10)
 			setInterval(flowerRotate,10)
 			document.getElementById("ladybug").style.scale=1.2
 			document.getElementById("ladybug").style.transform="rotate("+ladybugDegree+"deg)"
 			document.getElementById("ladybug-bg").style.transform="translate(-"+ladybugX+"px, -"+ladybugY+"px)"
 			setInterval(ladybugMove,10)
-			if(explore.floor>0) {
-				document.getElementById("welcome").innerHTML="Welcome to Florroom (rewritten) ! You are in Floor "+explore.floor
-			} else {
-				document.getElementById("welcome").innerHTML="Welcome to Florroom (rewritten) ! You are in Tutorial"
-			}
 			for(let i=1;i<=3;i++) {
 				for(let j=1;j<=8;j++) {
-					document.getElementById("fight-container").appendChild(createGrid(0, i, j, "Empty", 1))
+					document.getElementById("fight-container").appendChild(createGrid(0,i,j,"Empty",1))
 				}
 			}
 			for(let i=1;i<=8;i++) {
-				document.getElementById("fight-container").appendChild(createGrid(0, 0, i, "Line", 1))
+				document.getElementById("fight-container").appendChild(createGrid(0,0,i,"Line",1))
 			}
 			for(let i=4;i<=6;i++) {
 				for(let j=1;j<=8;j++) {
-					document.getElementById("fight-container").appendChild(createGrid(0, i, j, "Empty", 1))
+					document.getElementById("fight-container").appendChild(createGrid(0,i,j,"Empty",1))
 				}
 			}
 			homeElement=document.getElementById("home-btn")
 			homeFlowerElement=document.getElementById("flower-btn")
 			setContainElement()
-			setInterval(updateFlowerSpot, 10)
-			if(fight.active===true) {
-				document.getElementById("fight-container").style.display="grid"
-			} else {
-				document.getElementById("map-container").style.display="flex"
-			}
+			intervalFlower=setInterval(updateFlowerSpot,10)
 			createPath()
 			document.querySelectorAll("button").forEach(btn => {
 				btn.addEventListener("click",this.blur())
@@ -771,23 +873,115 @@
 					if(pressed.key === "Enter") pressed.preventDefault()
 				} )
 			} )
-			mapElement.querySelectorAll("path[d*=A2]").forEach(path => {
+			mapElement.querySelectorAll("path[d*='A2']").forEach(path => {
 				path.addEventListener("mouseenter",() => mapInfo(path))
 				path.addEventListener("mouseleave",closeInfo)
 			} )
+			if(fight.active===true) {
+				document.getElementById("fight-container").style.display="grid"
+			} else {
+				document.getElementById("map-container").style.display="unset"
+			}
+			for(let i=0;i<=10;i++) {
+				document.getElementById("end2").style.opacity=i/10
+				await delay(100)
+			}
+			document.getElementById("end2").innerText="Welcome to the Florroom!"
+			for(let i=0;i<=10;i++) {
+				document.getElementById("end2").style.opacity=i/10
+				await delay(100)
+			}
+			await delay(1000)
+			for(let i=0;i<=10;i++) {
+				document.getElementById("end2").style.opacity=1-i/10
+				await delay(100)
+			}
+			for(let i=0;i<=10;i++) {
+				document.getElementById("end").style.opacity=1-i/10
+				await delay(100)
+			}
+			document.getElementById("end").style["pointer-events"]="none"
+			player.calendar.start=Date.now()
+			intervalCalendar=setInterval(updateCalendar,10)
+		}
+		function updateCalendar() {
+			let timePassed=Date.now()-player.calendar.start
+			if(timePassed<100) return
+			player.calendar.second+=betterFloor(timePassed/100)
+			player.calendar.start+=betterFloor(timePassed/100)*100
+			let calendarFlag=true
+			while(calendarFlag) {
+				calendarFlag=false
+				if(player.calendar.second>0 && player.calendar.minute<=79) {
+					player.calendar.second--
+					player.calendar.minute++
+					calendarFlag=true
+				}
+				if(player.calendar.minute>79 && player.calendar.hour<79) {
+					player.calendar.minute=1
+					player.calendar.hour++
+					calendarFlag=true
+				}
+				if(player.calendar.day<79 && player.calendar.hour===79 && player.calendar.minute===80) {
+					player.calendar.second+=120
+					calendarFlag=true
+				}
+				if(player.calendar.second>=120 && player.calendar.hour===79 && player.calendar.minute===80) {
+					player.calendar.second-=120
+					player.calendar.minute=1
+					player.calendar.hour=1
+					player.calendar.day++
+					document.getElementById("end2").style.opacity=0
+					document.getElementById("end").style.opacity=0
+					document.getElementById("end").style["pointer-events"]="none"
+					calendarFlag=true
+				}
+			}
+			if(player.calendar.second>0) {
+				document.getElementById("end").style["pointer-events"]="unset"
+				document.getElementById("end").style.opacity=1
+				document.getElementById("end2").innerText="Sleeping..."
+				document.getElementById("end2").style.opacity=1
+			}
+			if(player.calendar.day<70) {
+				document.getElementById("calendar-day").setAttribute("class","green")
+			} else if(player.calendar.day<78) {
+				document.getElementById("calendar-day").setAttribute("class","yellow")
+			} else if(player.calendar.day<79) {
+				document.getElementById("calendar-day").setAttribute("class","red")
+			} else {
+				document.getElementById("calendar-day").setAttribute("class","grey")
+			}
+			if(player.calendar.hour<=50) {
+				document.getElementById("calendar-hour").setAttribute("class","green")
+				document.getElementById("calendar-minute").setAttribute("class","green")
+			} else if(player.calendar.hour<=70) {
+				document.getElementById("calendar-hour").setAttribute("class","yellow")
+				document.getElementById("calendar-minute").setAttribute("class","yellow")
+			} else {
+				document.getElementById("calendar-hour").setAttribute("class","red")
+				document.getElementById("calendar-minute").setAttribute("class","red")
+			}
+			document.getElementById("calendar-day").innerHTML="Day "+player.calendar.day
+			document.getElementById("calendar-hour").innerHTML=player.calendar.hour
+			if(player.calendar.hour<10) document.getElementById("calendar-hour").innerHTML="0"+player.calendar.hour
+			document.getElementById("calendar-minute").innerHTML=player.calendar.minute
+			if(player.calendar.minute<10) document.getElementById("calendar-minute").innerHTML="0"+player.calendar.minute
+			document.getElementById("calendar").style.display="flex"
+			localStorage.setItem("player",JSON.stringify(player))
 		}
 		let drag=false,dragX=0,dragY=0,mapcX=0,mapcY=0,containElement,mapElement,mapInfoElement,homeElement,homeFlowerElement,scaleSize
 		function setContainElement() {
 			containElement=document.getElementById("map-container")
 			mapElement=document.getElementById("map-trans")
 			mapInfoElement=document.getElementById("mapinfo")
-			containElement.addEventListener("mousedown", function(mouse) {
+			containElement.addEventListener("mousedown",function(mouse) {
 				if(mouse.target.id!=="blank") return
 				drag=true
 				dragX=mouse.clientX
 				dragY=mouse.clientY
 			} )
-			document.addEventListener("mousemove", function(mouse) {
+			document.addEventListener("mousemove",function(mouse) {
 				if(drag!==true) return
 				let newDragX=mouse.clientX,newDragY=mouse.clientY
 				mapcX+=(newDragX-dragX)*100/scaleSize,dragX=newDragX
@@ -795,7 +989,7 @@
 				mapElement.style.transform="translate("+mapcX+"px, "+mapcY+"px)"
 				updateHome()
 			} )
-			document.addEventListener("mouseup", function() {
+			document.addEventListener("mouseup",function() {
 				drag=false
 			} )
 		}
@@ -812,14 +1006,14 @@
 			} else {
 				homeElement.style.left=50+scaledX/scaleDistance*40+"%"
 				homeElement.style.top=50+scaledY/scaleDistance*40+"%"
-				homeElement.style.display="flex"
+				homeElement.style.display="unset"
 			}
 			if((Math.abs(scaledX2)*scaleSize<50 && Math.abs(scaledY2)*scaleSize<50) || (flowerSpotX===50 && flowerSpotY===50)) {
 				homeFlowerElement.style.display="none"
 			} else {
 				homeFlowerElement.style.left=50+scaledX2/scaleDistance2*40+"%"
 				homeFlowerElement.style.top=50+scaledY2/scaleDistance2*40+"%"
-				homeFlowerElement.style.display="flex"
+				homeFlowerElement.style.display="unset"
 			}
 		}
 		function home(target) {
@@ -845,7 +1039,7 @@
 			if(isNaN(spotCord.y)) spotCord.y=-parseInt(/(?<=M-?\d+\s-)\d+/.exec(spotD))+2
 			return spotCord
 		}
-		function distance(cord1, cord2) {
+		function distance(cord1,cord2) {
 			if(typeof(cord1)==="string") cord1=parseInt(cord1)
 			if(typeof(cord2)==="string") cord2=parseInt(cord2)
 			if(cord1===cord2) return 0
@@ -876,6 +1070,20 @@
 				newPath.setAttribute("d","M"+getSpotCord(pathStart).x+" "+getSpotCord(pathStart).y+"L"+getSpotCord(pathEnd).x+" "+getSpotCord(pathEnd).y)
 				mapElement.insertBefore(newPath,mapElement.children[i])
 			}
+			if(explore.highest<100) {
+				let highestPlace=tutorialOrder.indexOf(explore.highest)
+				mapElement.querySelectorAll("path[value]").forEach(path => {
+					let pathValue=parseInt(path.getAttribute("value"))
+					if(pathValue<100) {
+						let pathOrder=tutorialOrder.indexOf(pathValue)
+						if(pathOrder===-1 || pathOrder>highestPlace+1) path.style.display="none"
+					} else {
+						let pathOrder1=tutorialOrder.indexOf(pathValue%100)
+						let pathOrder2=tutorialOrder.indexOf(betterFloor(pathValue/100))
+						if(pathOrder1===-1 || pathOrder1>highestPlace+1 || pathOrder2===-1 || pathOrder2>highestPlace+1) path.style.display="none"
+					}
+				} )
+			}
 		}
 		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerStartSpot,flowerSpotX=0,flowerSpotY=0
 		function travel(spot) {
@@ -893,13 +1101,19 @@
 				return
 			}
 			if(flowerMove===false) return
-			let distancePassed=(Date.now()-flowerMoveStartTime)/10/distance(flowerStartSpot,explore.flowerspot)
+			let distancePassed=(Date.now()-flowerMoveStartTime)/100/distance(flowerStartSpot,explore.flowerspot)
 			if(distancePassed>=1) {
 				flowerSpotX=getSpotCord(explore.flowerspot).x
 				flowerSpotY=getSpotCord(explore.flowerspot).y
 				document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
 				updateHome()
 				flowerMove=false
+				if(explore.explored[explore.flowerspot]===true) {
+					explore.targetspot=explore.flowerspot
+					localStorage.setItem("explore",JSON.stringify(explore))
+				} else {
+					startFight()
+				}
 				return
 			}
 			flowerSpotX=(1-distancePassed)*getSpotCord(flowerStartSpot).x+distancePassed*getSpotCord(explore.flowerspot).x
@@ -914,6 +1128,10 @@
 			if(spotValue===explore.flowerspot) {
 				return
 			}
+			if(explore.explored[spotValue]===false) {
+				explore.targetspot=spotValue
+				localStorage.setItem("explore",JSON.stringify(explore))
+			}
 			travel(spotValue)
 			closeInfo()
 		}
@@ -921,7 +1139,7 @@
 			if(flowerMove) return
 			let spotValue=parseInt(spot.getAttribute("value"))
 			if(distance(explore.flowerspot,spotValue)===-1) return
-			document.getElementById("mapinfo").style.setProperty("--transform2", "translate("+(mapcX+getSpotCord(spotValue).x-50)/100*scaleSize+"px, "+((mapcY+getSpotCord(spotValue).y-50)/100*scaleSize-50)+"px)")
+			document.getElementById("mapinfo").style.setProperty("--transform2","translate("+(mapcX+getSpotCord(spotValue).x-50)/100*scaleSize+"px, "+((mapcY+getSpotCord(spotValue).y-50)/100*scaleSize-50)+"px)")
 			document.getElementById("mapinfo").innerHTML="<span>value="+spotValue+"</span>"
 			if(distance(explore.flowerspot,spotValue)>0) {
 				document.getElementById("mapinfo").innerHTML+="<span>distance="+distance(explore.flowerspot,spotValue)+"</span>"
@@ -931,12 +1149,38 @@
 		function closeInfo() {
 			document.getElementById("mapinfo").style.display="none"
 		}
+		function startFight() {
+			fight.active=true
+			localStorage.setItem("fight",JSON.stringify(fight))
+			fight.active=false
+			localStorage.setItem("fight",JSON.stringify(fight))
+			//if mob win, quit without save place
+			//after flower win
+			explore.explored[explore.flowerspot]=true
+			if(explore.highest<100) {
+				explore.highest=explore.flowerspot
+				let highestPlace=tutorialOrder.indexOf(explore.highest)
+				mapElement.querySelectorAll("path[value]").forEach(path => {
+					let pathValue=parseInt(path.getAttribute("value"))
+					if(pathValue<100) {
+						let pathOrder=tutorialOrder.indexOf(pathValue)
+						if(pathOrder!==-1 && pathOrder<=highestPlace+1) path.style.display="unset"
+					} else {
+						let pathOrder1=tutorialOrder.indexOf(pathValue%100)
+						let pathOrder2=tutorialOrder.indexOf(betterFloor(pathValue/100))
+						if(pathOrder1!==-1 && pathOrder1<=highestPlace+1 && pathOrder2!==-1 && pathOrder2<=highestPlace+1) path.style.display="unset"
+					}
+				} )
+			}
+			localStorage.setItem("explore",JSON.stringify(explore))
+		}
+	</script>
+	<script>
+		let perfectGame="The game is perfect, there are no bugs"
+		console.log(perfectGame)
 	</script>
 </head>
 <body>
-	<div class="cmargin text2-c">
-		<span id="welcome"></span>
-	</div>
 	<div class="tl">
 		<button type="button" onclick="settings()" class="circbtn" title="Settings">
 			<svg id="cog" viewBox="0 0 100 100" class="in-svg">
@@ -996,8 +1240,12 @@
 		<br>
 	</div>
 	<div id="help" class="mid llpurple-bg box highz hsize nd">
-		<h2>How to Play Florroom</h2>
+		<h2>Flower Survival Guide</h2>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
+		<br>
+		<span>欢迎来到花室，这是一个一天有"七十九的平方"分钟的世界</span>
+		<span>在这里，一天由79个小时构成，而一小时由79个分钟构成</span>
+		<span>如果你感知到了不存在的时间，不要惊慌，<span class="bold">睡一觉</span>就能安全渡过</span>
 		<br>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
@@ -1005,7 +1253,7 @@
 		<br>
 		<span>QQ: 807581283</span>
 		<br>
-		<span>Last update: 2024/9/29, 1423²</span>
+		<span>Last update: 2025/8/2, check player.version in console if you meet any bug</span>
 		<br>
 	</div>
 	<div id="inventory" class="mid lblue-bg box highz hsize nd">
@@ -1019,9 +1267,16 @@
 		<br>
 	</div>
 	<div class="cmargin text3-c">
-		<button type="button" onclick="importSave()" class="lmargin lblue-bg recbtn pointer">Import Save</button>
-		<button type="button" onclick="hardReset()" class="lmargin lred-bg recbtn forbidden">HARD RESET</button>
-		<button type="button" id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer">Export Save</button>
+		<button type="button" onclick="importSave()" class="lmargin lblue-bg recbtn pointer" title="Import Save">Retrieve Memories</button>
+		<button type="button" onclick="hardReset()" class="lmargin lred-bg recbtn forbidden" title="HARD RESET">Restart the Universe</button>
+		<button type="button" id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer" title="Export Save">Store Memories</button>
+	</div>
+	<div id="calendar" class="cmargin text2-c nd">
+		<span id="calendar-day"></span>
+		<span class="lmargin">,</span>
+		<span id="calendar-hour"></span>
+		<span class="llmargin">:</span>
+		<span id="calendar-minute"></span>
 	</div>
 	<div id="fight-container" class="mid square48 nd">
 	</div>
@@ -1036,21 +1291,21 @@
 				<path onclick="chooseMap(this)" value="15" class="flgreen-path pointer ns" d="M16 -13A2 2 0 0 0 16 -9A2 2 0 0 0 16 -13"></path>
 				<path onclick="chooseMap(this)" value="16" class="flgreen-path pointer ns" d="M-36 -22A2 2 0 0 0 -36 -18A2 2 0 0 0 -36 -22"></path>
 				<path onclick="chooseMap(this)" value="17" class="flgreen-path pointer ns" d="M0 -67A2 2 0 0 0 0 -63A2 2 0 0 0 0 -67"></path>
-				<path onclick="chooseMap(this)" value="20" class="fyellow-path pointer ns" d="M52 104A2 2 0 0 0 52 108A2 2 0 0 0 52 104"></path>
-				<path onclick="chooseMap(this)" value="21" class="fyellow-path pointer ns" d="M10 117A2 2 0 0 0 10 121A2 2 0 0 0 10 117"></path>
-				<path onclick="chooseMap(this)" value="22" class="fyellow-path pointer ns" d="M-33 154A2 2 0 0 0 -33 158A2 2 0 0 0 -33 154"></path>
-				<path onclick="chooseMap(this)" value="23" class="fyellow-path pointer ns" d="M0 149A2 2 0 0 0 0 153A2 2 0 0 0 0 149"></path>
-				<path onclick="chooseMap(this)" value="24" class="fyellow-path pointer ns" d="M-32 128A2 2 0 0 0 -32 132A2 2 0 0 0 -32 128"></path>
-				<path onclick="chooseMap(this)" value="25" class="fyellow-path pointer ns" d="M-26 96A2 2 0 0 0 -26 100A2 2 0 0 0 -26 96"></path>
-				<path onclick="chooseMap(this)" value="30" class="fblue-path pointer ns" d="M100 4A2 2 0 0 0 100 8A2 2 0 0 0 100 4"></path>
-				<path onclick="chooseMap(this)" value="31" class="fblue-path pointer ns" d="M115 -28A2 2 0 0 0 115 -24A2 2 0 0 0 115 -28"></path>
-				<path onclick="chooseMap(this)" value="32" class="fblue-path pointer ns" d="M135 12A2 2 0 0 0 135 16A2 2 0 0 0 135 12"></path>
-				<path onclick="chooseMap(this)" value="33" class="fblue-path pointer ns" d="M182 9A2 2 0 0 0 182 13A2 2 0 0 0 182 9"></path>
-				<path onclick="chooseMap(this)" value="34" class="fblue-path pointer ns" d="M138 44A2 2 0 0 0 138 48A2 2 0 0 0 138 44"></path>
-				<path onclick="chooseMap(this)" value="35" class="fblue-path pointer ns" d="M160 -34A2 2 0 0 0 160 -30A2 2 0 0 0 160 -34"></path>
-				<path onclick="chooseMap(this)" value="36" class="fblue-path pointer ns" d="M151 71A2 2 0 0 0 151 75A2 2 0 0 0 151 71"></path>
-				<path onclick="chooseMap(this)" value="37" class="fblue-path pointer ns" d="M178 42A2 2 0 0 0 178 46A2 2 0 0 0 178 42"></path>
-				<path onclick="chooseMap(this)" value="38" class="fblue-path pointer ns" d="M108 -74A2 2 0 0 0 108 -70A2 2 0 0 0 108 -74"></path>
+				<path onclick="chooseMap(this)" value="21" class="fyellow-path pointer ns" d="M52 104A2 2 0 0 0 52 108A2 2 0 0 0 52 104"></path>
+				<path onclick="chooseMap(this)" value="22" class="fyellow-path pointer ns" d="M10 117A2 2 0 0 0 10 121A2 2 0 0 0 10 117"></path>
+				<path onclick="chooseMap(this)" value="23" class="fyellow-path pointer ns" d="M-33 154A2 2 0 0 0 -33 158A2 2 0 0 0 -33 154"></path>
+				<path onclick="chooseMap(this)" value="24" class="fyellow-path pointer ns" d="M0 149A2 2 0 0 0 0 153A2 2 0 0 0 0 149"></path>
+				<path onclick="chooseMap(this)" value="25" class="fyellow-path pointer ns" d="M-32 128A2 2 0 0 0 -32 132A2 2 0 0 0 -32 128"></path>
+				<path onclick="chooseMap(this)" value="26" class="fyellow-path pointer ns" d="M-26 96A2 2 0 0 0 -26 100A2 2 0 0 0 -26 96"></path>
+				<path onclick="chooseMap(this)" value="31" class="fblue-path pointer ns" d="M100 4A2 2 0 0 0 100 8A2 2 0 0 0 100 4"></path>
+				<path onclick="chooseMap(this)" value="32" class="fblue-path pointer ns" d="M115 -28A2 2 0 0 0 115 -24A2 2 0 0 0 115 -28"></path>
+				<path onclick="chooseMap(this)" value="33" class="fblue-path pointer ns" d="M135 12A2 2 0 0 0 135 16A2 2 0 0 0 135 12"></path>
+				<path onclick="chooseMap(this)" value="34" class="fblue-path pointer ns" d="M182 9A2 2 0 0 0 182 13A2 2 0 0 0 182 9"></path>
+				<path onclick="chooseMap(this)" value="35" class="fblue-path pointer ns" d="M138 44A2 2 0 0 0 138 48A2 2 0 0 0 138 44"></path>
+				<path onclick="chooseMap(this)" value="36" class="fblue-path pointer ns" d="M160 -34A2 2 0 0 0 160 -30A2 2 0 0 0 160 -34"></path>
+				<path onclick="chooseMap(this)" value="37" class="fblue-path pointer ns" d="M151 71A2 2 0 0 0 151 75A2 2 0 0 0 151 71"></path>
+				<path onclick="chooseMap(this)" value="38" class="fblue-path pointer ns" d="M178 42A2 2 0 0 0 178 46A2 2 0 0 0 178 42"></path>
+				<path onclick="chooseMap(this)" value="39" class="fblue-path pointer ns" d="M108 -74A2 2 0 0 0 108 -70A2 2 0 0 0 108 -74"></path>
 				<path onclick="chooseMap(this)" value="41" class="fdbrown-path pointer ns" d="M31 5A2 2 0 0 0 31 9A2 2 0 0 0 31 5"></path>
 				<path onclick="chooseMap(this)" value="42" class="fdbrown-path pointer ns" d="M40 -17A2 2 0 0 0 40 -13A2 2 0 0 0 40 -17"></path>
 				<path onclick="chooseMap(this)" value="43" class="fdbrown-path pointer ns" d="M82 -18A2 2 0 0 0 82 -14A2 2 0 0 0 82 -18"></path>
@@ -1061,13 +1316,13 @@
 				<path onclick="chooseMap(this)" value="54" class="fdbrown-path pointer ns" d="M-19 184A2 2 0 0 0 -19 188A2 2 0 0 0 -19 184"></path>
 				<path onclick="chooseMap(this)" value="55" class="fdbrown-path pointer ns" d="M90 156A2 2 0 0 0 90 160A2 2 0 0 0 90 156"></path>
 				<path onclick="chooseMap(this)" value="56" class="fdbrown-path pointer ns" d="M144 141A2 2 0 0 0 144 145A2 2 0 0 0 144 141"></path>
-				<path onclick="chooseMap(this)" value="60" class="fdgreen-path pointer ns" d="M103 91A2 2 0 0 0 103 95A2 2 0 0 0 103 91"></path>
-				<path onclick="chooseMap(this)" value="61" class="fdgreen-path pointer ns" d="M106 128A2 2 0 0 0 106 132A2 2 0 0 0 106 128"></path>
-				<path onclick="chooseMap(this)" value="62" class="fdgreen-path pointer ns" d="M141 121A2 2 0 0 0 141 125A2 2 0 0 0 141 121"></path>
-				<path onclick="chooseMap(this)" value="63" class="fdgreen-path pointer ns" d="M166 122A2 2 0 0 0 166 126A2 2 0 0 0 166 122"></path>
-				<path onclick="chooseMap(this)" value="64" class="fdgreen-path pointer ns" d="M121 154A2 2 0 0 0 121 158A2 2 0 0 0 121 154"></path>
-				<path onclick="chooseMap(this)" value="65" class="fdgreen-path pointer ns" d="M157 156A2 2 0 0 0 157 160A2 2 0 0 0 157 156"></path>
-				<path onclick="chooseMap(this)" value="66" class="fdgreen-path pointer ns" d="M159 179A2 2 0 0 0 159 183A2 2 0 0 0 159 179"></path>
+				<path onclick="chooseMap(this)" value="61" class="fdgreen-path pointer ns" d="M103 91A2 2 0 0 0 103 95A2 2 0 0 0 103 91"></path>
+				<path onclick="chooseMap(this)" value="62" class="fdgreen-path pointer ns" d="M106 128A2 2 0 0 0 106 132A2 2 0 0 0 106 128"></path>
+				<path onclick="chooseMap(this)" value="63" class="fdgreen-path pointer ns" d="M141 121A2 2 0 0 0 141 125A2 2 0 0 0 141 121"></path>
+				<path onclick="chooseMap(this)" value="64" class="fdgreen-path pointer ns" d="M166 122A2 2 0 0 0 166 126A2 2 0 0 0 166 122"></path>
+				<path onclick="chooseMap(this)" value="65" class="fdgreen-path pointer ns" d="M121 154A2 2 0 0 0 121 158A2 2 0 0 0 121 154"></path>
+				<path onclick="chooseMap(this)" value="66" class="fdgreen-path pointer ns" d="M157 156A2 2 0 0 0 157 160A2 2 0 0 0 157 156"></path>
+				<path onclick="chooseMap(this)" value="67" class="fdgreen-path pointer ns" d="M159 179A2 2 0 0 0 159 183A2 2 0 0 0 159 179"></path>
 				<path id="flowerspot" class="fyellow-path pointer narrowp npe" d="M50 48.5A1.5 1.5 0 0 0 50 51.5A1.5 1.5 0 0 0 50 48.5M49.2 50.4A1 1 0 0 0 50.8 50.4M49.5 49.2L49.5 50M50.5 49.2L50.5 50"></path>
 			</g>
 		</svg>
@@ -1094,5 +1349,7 @@
 	</div>
 	<div id="flower-state" class="bottom text3-c">
 	</div>
+	<div id="end"></div>
+	<div id="end2"></div>
 </body>
 </html>
