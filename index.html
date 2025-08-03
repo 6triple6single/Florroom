@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--getGrid(0,2,3).replaceWith(createGrid(0,2,3,16,1))-->
 	<title>Play Florroom!</title>
 	<style>
 		body {
@@ -16,7 +17,47 @@
 		g,path {
 			transform-origin: center;
 		}
-		#end {
+		#version1 {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: #bf7fbf;
+			height: 100%;
+			width: 100%;
+			pointer-events: none;
+			z-index: 7000;
+		}
+		#version2 {
+			display: flex;
+			flex-direction: column;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			background-color: #7fbf7f;
+			width: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid;
+			padding-bottom: 50px;
+			overflow-x: hidden;
+			overflow-y: auto;
+			align-items: center;
+			z-index: 7744;
+		}
+		#version3 {
+			border: 1.5px solid;
+			outline: none;
+			background-color: #7f9fbf;
+			height: 30px;
+			width: 200px;
+		}
+		#version4 {
+			border: 1.5px solid;
+			outline: none;
+			background-color: #bf9f7f;
+			height: 30px;
+			width: 200px;
+		}
+		#end1 {
 			position: absolute;
 			top: 0px;
 			left: 0px;
@@ -60,14 +101,14 @@
 		}
 		.mid {
 			position: absolute;
-			left: 50%;
 			top: 50%;
+			left: 50%;
 			transform: translate(-50%,-50%) var(--transform2,translate(0px,0px));
 		}
 		.bottom {
 			position: absolute;
-			left: 50%;
-			top: 100%;
+			top: 50%;
+			left: 100%;
 			transform: translate(-50%,-50px);
 		}
 		.lcmargin {
@@ -483,6 +524,12 @@
 		.highz {
 			z-index: 6361;
 		}
+		.higherz {
+			z-index: 6666;
+		}
+		.highestz {
+			z-index: 6859;
+		}
 		.wide {
 			stroke-width: 3px;
 		}
@@ -543,17 +590,20 @@
 		}
 	</script>
 	<script>
+		const version=20250803
 		const svgNS="http://www.w3.org/2000/svg"
 		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
 		const pathArray=[1011,1013,1112,1121,1131,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1724,1739,2122,2224,2225,2226,2324,2325,2353,2461,2526,3132,3133,3233,3236,3239,3334,3335,3436,3438,3537,3538,3639,3738,3761,3943,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5664,6162,6263,6265,6364,6365,6466,6566,6667]
 		const tutorialOrder=[10,11,12,14,21,22,24,31,41,42,43,51,52,53,23,61,62,63,64,65,66,67]
+		let userVersion=JSON.parse(localStorage.getItem("userVersion"))
+		if(!userVersion) userVersion=version
+		localStorage.setItem("userVersion",JSON.stringify(userVersion))
 		let player=JSON.parse(localStorage.getItem("player"))
 		let explore=JSON.parse(localStorage.getItem("explore"))
 		let fight=JSON.parse(localStorage.getItem("fight"))
 		if(!player) player=new Object()
 		if(!explore) explore=new Object()
 		if(!fight) fight=new Object()
-		if(!player.version) player.version=20250802
 		if(!player.calendar) player.calendar=new Object()
 		if(!player.calendar.day) player.calendar.day=60
 		if(!player.calendar.hour) player.calendar.hour=1
@@ -688,14 +738,18 @@
 		function ladybugMove() {
 			if(document.getElementById("gallery").style.display==="flex") {
 				if(ladybugMovement===0) {
-					ladybugTurn=roll(5,12)/10
+					ladybugTurn=roll(0,10)
+					if(ladybugTurn>=1 && ladybugTurn<=9) ladybugTurn=roll(0,10)
+					if(ladybugTurn>=1 && ladybugTurn<=5) ladybugTurn=roll(0,10)
+					if(ladybugTurn>=1 && ladybugTurn<=3) ladybugTurn=roll(0,10)
+					if(ladybugTurn>=1 && ladybugTurn<=2) ladybugTurn=roll(0,10)
 					if(dice()<4) ladybugTurn*=-1
 				}
-				if(ladybugMovement<180 && roll(1,90)>Math.abs(90-ladybugMovement)) {
-					ladybugDegree=(ladybugDegree+ladybugTurn+360)%360
+				if(ladybugMovement<180 && roll(1,90)*Math.abs(ladybugTurn)>Math.abs(90-ladybugMovement)*10) {
+					ladybugDegree=(ladybugDegree+Math.sign(ladybugTurn)+360)%360
 					document.getElementById("ladybug").style.transform="rotate("+ladybugDegree+"deg)"
 				}
-				if(ladybugMovement>=180 && roll(1,90)>Math.abs(270-ladybugMovement)) {
+				if(ladybugMovement>=180 && roll(1,90)*Math.abs(ladybugTurn)>Math.abs(270-ladybugMovement)*10) {
 					ladybugX=(ladybugX+Math.sin(ladybugDegree/180*Math.PI)+100)%100
 					ladybugY=(ladybugY-Math.cos(ladybugDegree/180*Math.PI)+100)%100
 					document.getElementById("ladybug-bg").style.transform="translate(-"+ladybugX+"px, -"+ladybugY+"px)"
@@ -773,9 +827,9 @@
 			let getSave=prompt("Retrieve your memories...")
 			if(getSave===null) return
 			clearAllInterval()
-			document.getElementById("end").style["pointer-events"]="unset"
+			document.getElementById("end1").style["pointer-events"]="unset"
 			for(let i=0;i<=10;i++) {
-				document.getElementById("end").style.opacity=i/10
+				document.getElementById("end1").style.opacity=i/10
 				await delay(100)
 			}
 			location.reload()
@@ -790,13 +844,15 @@
 			if(getResetSentence!=="The game is perfect, there are no bugs") return
 			clearAllInterval()
 			for(let i=0;i<=50;i++) {
-				document.getElementById("end").style.opacity=i/50
+				document.getElementById("end1").style.opacity=i/50
 				await delay(100)
 			}
-			document.getElementById("end").style["pointer-events"]="unset"
+			document.getElementById("end1").style["pointer-events"]="unset"
 			localStorage.removeItem("player")
 			localStorage.removeItem("explore")
 			localStorage.removeItem("fight")
+			userVersion=version
+			localStorage.setItem("userVersion",JSON.stringify(userVersion))
 			document.getElementById("end2").innerText="The story of the Florroom continues..."
 			for(let i=0;i<=20;i++) {
 				document.getElementById("end2").style.opacity=i/20
@@ -820,6 +876,16 @@
 			await delay(3000)
 			location.reload()
 		}
+		function updateVersion(reset) {
+			if(reset===false) {
+				userVersion=version
+				localStorage.setItem("userVersion",JSON.stringify(userVersion))
+				location.reload()
+			}
+			if(reset===true) {
+				hardReset()
+			}
+		}
 		function updateGame() {
 			console.log("updateGame")
 		}
@@ -842,7 +908,17 @@
 			clearInterval(intervalCalendar)
 		}
 		window.onload=async function() {
-			document.getElementById("end").style["pointer-events"]="unset"
+			document.getElementById("end1").style["pointer-events"]="unset"
+			if(userVersion!==version) {
+				for(let i=0;i<=10;i++) {
+					document.getElementById("end1").style.opacity=1-i/10
+					await delay(100)
+				}
+				document.getElementById("end1").style["pointer-events"]="none"
+				return
+			}
+			document.getElementById("version1").style.display="none"
+			document.getElementById("version2").style.display="none"
 			setInterval(cogRotate,10)
 			setInterval(flowerRotate,10)
 			document.getElementById("ladybug").style.scale=1.2
@@ -879,12 +955,10 @@
 			} )
 			if(fight.active===true) {
 				document.getElementById("fight-container").style.display="grid"
+				document.getElementById("fight-btn").style.top=parseFloat(window.getComputedStyle(document.getElementById("fight-container")).top)-300+"px"
+				document.getElementById("fight-btn").style.display="flex"
 			} else {
 				document.getElementById("map-container").style.display="unset"
-			}
-			for(let i=0;i<=10;i++) {
-				document.getElementById("end2").style.opacity=i/10
-				await delay(100)
 			}
 			document.getElementById("end2").innerText="Welcome to the Florroom!"
 			for(let i=0;i<=10;i++) {
@@ -897,10 +971,10 @@
 				await delay(100)
 			}
 			for(let i=0;i<=10;i++) {
-				document.getElementById("end").style.opacity=1-i/10
+				document.getElementById("end1").style.opacity=1-i/10
 				await delay(100)
 			}
-			document.getElementById("end").style["pointer-events"]="none"
+			document.getElementById("end1").style["pointer-events"]="none"
 			player.calendar.start=Date.now()
 			intervalCalendar=setInterval(updateCalendar,10)
 		}
@@ -932,14 +1006,14 @@
 					player.calendar.hour=1
 					player.calendar.day++
 					document.getElementById("end2").style.opacity=0
-					document.getElementById("end").style.opacity=0
-					document.getElementById("end").style["pointer-events"]="none"
+					document.getElementById("end1").style.opacity=0
+					document.getElementById("end1").style["pointer-events"]="none"
 					calendarFlag=true
 				}
 			}
 			if(player.calendar.second>0) {
-				document.getElementById("end").style["pointer-events"]="unset"
-				document.getElementById("end").style.opacity=1
+				document.getElementById("end1").style["pointer-events"]="unset"
+				document.getElementById("end1").style.opacity=1
 				document.getElementById("end2").innerText="Sleeping..."
 				document.getElementById("end2").style.opacity=1
 			}
@@ -967,7 +1041,6 @@
 			if(player.calendar.hour<10) document.getElementById("calendar-hour").innerHTML="0"+player.calendar.hour
 			document.getElementById("calendar-minute").innerHTML=player.calendar.minute
 			if(player.calendar.minute<10) document.getElementById("calendar-minute").innerHTML="0"+player.calendar.minute
-			document.getElementById("calendar").style.display="flex"
 			localStorage.setItem("player",JSON.stringify(player))
 		}
 		let drag=false,dragX=0,dragY=0,mapcX=0,mapcY=0,containElement,mapElement,mapInfoElement,homeElement,homeFlowerElement,scaleSize
@@ -1152,10 +1225,14 @@
 		function startFight() {
 			fight.active=true
 			localStorage.setItem("fight",JSON.stringify(fight))
+			document.getElementById("map-container").style.display="none"
+			document.getElementById("fight-container").style.display="grid"
+			document.getElementById("fight-btn").style.top=parseFloat(window.getComputedStyle(document.getElementById("fight-container")).top)-300+"px"
+			document.getElementById("fight-btn").style.display="flex"
+		}
+		function endFight() {
 			fight.active=false
 			localStorage.setItem("fight",JSON.stringify(fight))
-			//if mob win, quit without save place
-			//after flower win
 			explore.explored[explore.flowerspot]=true
 			if(explore.highest<100) {
 				explore.highest=explore.flowerspot
@@ -1173,6 +1250,9 @@
 				} )
 			}
 			localStorage.setItem("explore",JSON.stringify(explore))
+			document.getElementById("fight-btn").style.display="none"
+			document.getElementById("fight-container").style.display="none"
+			document.getElementById("map-container").style.display="unset"
 		}
 	</script>
 	<script>
@@ -1253,8 +1333,6 @@
 		<br>
 		<span>QQ: 807581283</span>
 		<br>
-		<span>Last update: 2025/8/2, check player.version in console if you meet any bug</span>
-		<br>
 	</div>
 	<div id="inventory" class="mid lblue-bg box highz hsize nd">
 		<h2>Inventory</h2>
@@ -1271,12 +1349,19 @@
 		<button type="button" onclick="hardReset()" class="lmargin lred-bg recbtn forbidden" title="HARD RESET">Restart the Universe</button>
 		<button type="button" id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer" title="Export Save">Store Memories</button>
 	</div>
-	<div id="calendar" class="cmargin text2-c nd">
-		<span id="calendar-day"></span>
+	<div id="calendar" class="cmargin text2-c">
+		<span id="calendar-day">Day ##</span>
 		<span class="lmargin">,</span>
-		<span id="calendar-hour"></span>
+		<span id="calendar-hour">()</span>
 		<span class="llmargin">:</span>
-		<span id="calendar-minute"></span>
+		<span id="calendar-minute">()</span>
+	</div>
+	<div id="fight-btn" class="mid text3-c nd">
+		<button type="button" id="move" onclick="fightMove()" class="lmargin dbrown-bg recbtn pointer nd">[M] Move</button>
+		<button type="button" id="attack" onclick="fightAttack()" class="lmargin dblue-bg recbtn pointer nd">[Enter] Attack</button>
+		<button type="button" id="defend" onclick="fightDefend()" class="lmargin dgreen-bg recbtn pointer nd">[Enter] Defend</button>
+		<button type="button" id="skill" onclick="fightSkill()" class="lmargin purple-bg recbtn pointer nd">[X] Special Skill</button>
+		<button type="button" id="endturn" onclick="endTurn()" class="lmargin grey-bg recbtn pointer">[P] End Turn</button>
 	</div>
 	<div id="fight-container" class="mid square48 nd">
 	</div>
@@ -1349,7 +1434,19 @@
 	</div>
 	<div id="flower-state" class="bottom text3-c">
 	</div>
-	<div id="end"></div>
+	<div id="version1"></div>
+	<div id="version2">
+		<h2>Announcement</h2>
+		<span>This game was updated again when you left!</span>
+		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
+		<br>
+		<span>The last update was on 2025/8/3, which updated this content.</span>
+		<br>
+		<button type="button" id="version3" onclick="updateVersion(false)">No, just update the version.</button>
+		<br>
+		<button type="button" id="version4" onclick="updateVersion(true)">Yes, hard reset before starting.</button>
+	</div>
+	<div id="end1"></div>
 	<div id="end2"></div>
 </body>
 </html>
