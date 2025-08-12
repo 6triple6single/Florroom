@@ -4,6 +4,12 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Play Florroom!</title>
+	<link rel="icon" href="data:image/svg+xml,
+		<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+			<path d='M0 0L100 0L100 100L0 100Z' style='stroke: none; fill: %23ffff7f'>
+			<path d='M18 66A40 40 0 0 0 82 66M30 18L30 50M70 18L70 50' style='stroke: %23000000; stroke-width: 5px; fill: none'></path>
+		</svg>
+	">
 	<style>
 		body {
 			touch-action: manipulation;
@@ -805,9 +811,9 @@
 		PetalSVGArray.Domino="<path class='fwhite-path ns' d='M32 32L44 20L68 44L56 56Z'></path><path class='black-path mwidth' d='M38 30L42 26L50 34M58 42L54 46L50 42L54 38L62 46L58 50M46 42L54 34'></path>"
 		PetalSVGArray.Triangle="<path class='fwhite-path ns' d='M47 32.8L56 38L47 43.2Z'></path>"
 		for(let i in PetalNameList) if(i!=="66") {
-			PetalSVGArray[PetalNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'>"+PetalSVGArray[PetalNameList[i]].replaceAll(/<path class='(f\w+-path (ns |wider?|mwidth)|\w+-path)'.+?><\/path>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+PetalSVGArray[PetalNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+PetalNameList[i].replace("Blood Stinger","B. Stinger")+"</span>"
+			PetalSVGArray[PetalNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 0L100 0L100 100L92 92L92 8L8 8ZM0 0L0 100L100 100L92 92L8 92L8 8Z'></path>"+PetalSVGArray[PetalNameList[i]].replaceAll(/<path class='(f\w+-path (ns |wider?|mwidth)|\w+-path)'.+?><\/path>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+PetalSVGArray[PetalNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+PetalNameList[i].replace("Blood Stinger","B. Stinger")+"</span>"
 		}
-		PetalSVGArray.Compass="<svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g style='transform: rotate(45deg)'><path class='fblue-path ns' d='M50 18A20 20 0 0 0 50 58A20 20 0 0 0 50 18'></path><path class='fred-path ns' d='M46 38L50 20L54 38Z'></path><path class='fwhite-path ns' d='M46 38L50 56L54 38Z'></path></g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>Compass</span>"
+		PetalSVGArray.Compass="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 0L100 0L100 100L92 92L92 8L8 8ZM0 0L0 100L100 100L92 92L8 92L8 8Z'></path></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g style='transform: rotate(45deg)'><path class='fblue-path ns' d='M50 18A20 20 0 0 0 50 58A20 20 0 0 0 50 18'></path><path class='fred-path ns' d='M46 38L50 20L54 38Z'></path><path class='fwhite-path ns' d='M46 38L50 56L54 38Z'></path></g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>Compass</span>"
 		function Petal(id=0,rarity=1,level=0) {
 			this.id=id,this.rarity=rarity,this.level=level
 			this.name="Basic"
@@ -1693,3 +1699,4 @@
 	<div id="end2"></div>
 </body>
 </html>
+
