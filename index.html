@@ -3,7 +3,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<!--getGrid(0,2,3).replaceWith(createGrid(0,2,3,16,1))-->
 	<title>Play Florroom!</title>
 	<style>
 		body {
@@ -233,6 +232,7 @@
 			background: none;
 			position: relative;
 			border: none;
+			border-radius: 10%;
 			outline: none;
 			height: 80px;
 			width: 80px;
@@ -257,9 +257,37 @@
 			width: 100%;
 			fill: none;
 		}
-		.f-path {
+		.black {
+			color: #000000;
+		}
+		.black-bg {
+			background-color: #000000;
+		}
+		.fblack-path {
 			stroke-width: 1px;
 			fill: #000000;
+		}
+		.black-path {
+			stroke: #000000;
+		}
+		.dgrey {
+			color: #3f3f3f;
+		}
+		.dgrey-bg {
+			background-color: #3f3f3f;
+		}
+		.fdgrey-path {
+			stroke-width: 1px;
+			fill: #3f3f3f;
+		}
+		.dgrey-path {
+			stroke: #3f3f3f;
+		}
+		.grey {
+			color: #7f7f7f;
+		}
+		.grey-bg {
+			background-color: #7f7f7f;
 		}
 		.fgrey-path {
 			stroke-width: 1px;
@@ -268,12 +296,50 @@
 		.grey-path {
 			stroke: #7f7f7f;
 		}
+		.lgrey {
+			color: #bfbfbf;
+		}
+		.lgrey-bg {
+			background-color: #bfbfbf;
+		}
+		.flgrey-path {
+			stroke-width: 1px;
+			fill: #bfbfbf;
+		}
+		.lgrey-path {
+			stroke: #bfbfbf;
+		}
+		.white {
+			color: #ffffff;
+		}
+		.white-bg {
+			background-color: #ffffff;
+		}
+		.fwhite-path {
+			stroke-width: 1px;
+			fill: #ffffff;
+		}
+		.white-path {
+			stroke: #ffffff;
+		}
+		.red {
+			color: #ff7f7f;
+		}
+		.red-bg {
+			background-color: #ff7f7f;
+		}
 		.fred-path {
 			stroke-width: 1px;
 			fill: #ff7f7f;
 		}
 		.red-path {
 			stroke: #ff7f7f;
+		}
+		.lred {
+			color: #ffbfbf;
+		}
+		.lred-bg {
+			background-color: #ffbfbf;
 		}
 		.flred-path {
 			stroke-width: 1px;
@@ -282,12 +348,24 @@
 		.lred-path {
 			stroke: #ffbfbf;
 		}
+		.green {
+			color: #7fff7f;
+		}
+		.green-bg {
+			background-color: #7fff7f;
+		}
 		.fgreen-path {
 			stroke-width: 1px;
 			fill: #7fff7f;
 		}
 		.green-path {
 			stroke: #7fff7f;
+		}
+		.lgreen {
+			color: #bfffbf;
+		}
+		.lgreen-bg {
+			background-color: #bfffbf;
 		}
 		.flgreen-path {
 			stroke-width: 1px;
@@ -296,12 +374,24 @@
 		.lgreen-path {
 			stroke: #bfffbf;
 		}
+		.blue {
+			color: #7f7fff;
+		}
+		.blue-bg {
+			background-color: #7f7fff;
+		}
 		.fblue-path {
 			stroke-width: 1px;
 			fill: #7f7fff;
 		}
 		.blue-path {
 			stroke: #7f7fff;
+		}
+		.lblue {
+			color: #bfbfff;
+		}
+		.lblue-bg {
+			background-color: #bfbfff;
 		}
 		.flblue-path {
 			stroke-width: 1px;
@@ -310,12 +400,36 @@
 		.lblue-path {
 			stroke: #bfbfff;
 		}
+		.cyan {
+			color: #7fffff;
+		}
+		.cyan-bg {
+			background-color: #7fffff;
+		}
 		.fcyan-path {
 			stroke-width: 1px;
 			fill: #7fffff;
 		}
 		.cyan-path {
 			stroke: #7fffff;
+		}
+		.lcyan {
+			color: #bfffff;
+		}
+		.lcyan-bg {
+			background-color: #bfffff;
+		}
+		.llcyan {
+			color: #dfffff;
+		}
+		.llcyan-bg {
+			background-color: #dfffff;
+		}
+		.purple {
+			color: #ff7fff;
+		}
+		.purple-bg {
+			background-color: #ff7fff;
 		}
 		.fpurple-path {
 			stroke-width: 1px;
@@ -324,12 +438,62 @@
 		.purple-path {
 			stroke: #ff7fff;
 		}
+		.lpurple {
+			color: #ffbfff;
+		}
+		.lpurple-bg {
+			background-color: #ffbfff;
+		}
+		.llpurple {
+			color: #ffdfff;
+		}
+		.llpurple-bg {
+			background-color: #ffdfff;
+		}
+		.yellow {
+			color: #ffff7f;
+		}
+		.yellow-bg {
+			background-color: #ffff7f;
+		}
 		.fyellow-path {
 			stroke-width: 1px;
 			fill: #ffff7f;
 		}
 		.yellow-path {
 			stroke: #ffff7f;
+		}
+		.lyellow {
+			color: #ffffbf;
+		}
+		.lyellow-bg {
+			background-color: #ffffbf;
+		}
+		.flyellow-path {
+			stroke-width: 1px;
+			fill: #ffffbf;
+		}
+		.lyellow-path {
+			stroke: #ffffbf;
+		}
+		.llyellow {
+			color: #ffffdf;
+		}
+		.llyellow-bg {
+			background-color: #ffffdf;
+		}
+		.fllyellow-path {
+			stroke-width: 1px;
+			fill: #ffffdf;
+		}
+		.llyellow-path {
+			stroke: #ffffdf;
+		}
+		.dbrown {
+			color: #bf3f3f;
+		}
+		.dbrown-bg {
+			background-color: #bf3f3f;
 		}
 		.fdbrown-path {
 			stroke-width: 1px;
@@ -338,12 +502,24 @@
 		.dbrown-path {
 			stroke: #bf3f3f;
 		}
+		.dgreen {
+			color: #3fbf3f;
+		}
+		.dgreen-bg {
+			background-color: #3fbf3f;
+		}
 		.fdgreen-path {
 			stroke-width: 1px;
 			fill: #3fbf3f;
 		}
 		.dgreen-path {
 			stroke: #3fbf3f;
+		}
+		.dblue {
+			color: #3f3fbf;
+		}
+		.dblue-bg {
+			background-color: #3f3fbf;
 		}
 		.fdblue-path {
 			stroke-width: 1px;
@@ -352,7 +528,98 @@
 		.dblue-path {
 			stroke: #3f3fbf;
 		}
-		.sel-f-path {
+		.cpurple {
+			color: #bf3fff;
+		}
+		.cpurple-bg {
+			background-color: #bf3fff;
+		}
+		.fcpurple-path {
+			stroke-width: 1px;
+			fill: #bf3fff;
+		}
+		.cpurple-path {
+			stroke: #bf3fff;
+		}
+		.cpink {
+			color: #ff7fbf;
+		}
+		.cpink-bg {
+			background-color: #ff7fbf;
+		}
+		.fcpink-path {
+			stroke-width: 1px;
+			fill: #ff7fbf;
+		}
+		.cpink-path {
+			stroke: #ff7fbf;
+		}
+		.cred {
+			color: #ff3f3f;
+		}
+		.cred-bg {
+			background-color: #ff3f3f;
+		}
+		.fcred-path {
+			stroke-width: 1px;
+			fill: #ff3f3f;
+		}
+		.cred-path {
+			stroke: #ff3f3f;
+		}
+		.cdred {
+			color: #bf0000;
+		}
+		.cdred-bg {
+			background-color: #bf0000;
+		}
+		.fcdred-path {
+			stroke-width: 1px;
+			fill: #bf0000;
+		}
+		.cdred-path {
+			stroke: #bf0000;
+		}
+		.cyellow {
+			color: #ffdf7f;
+		}
+		.cyellow-bg {
+			background-color: #ffdf7f;
+		}
+		.fcyellow-path {
+			stroke-width: 1px;
+			fill: #ffdf7f;
+		}
+		.cyellow-path {
+			stroke: #ffdf7f;
+		}
+		.corange-path {
+			stroke: #ffbf3f;
+		}
+		.corange {
+			color: #ffbf3f;
+		}
+		.corange-bg {
+			background-color: #ffbf3f;
+		}
+		.fcorange-path {
+			stroke-width: 1px;
+			fill: #ffbf3f;
+		}
+		.cbrown {
+			color: #bf7f3f;
+		}
+		.cbrown-bg {
+			background-color: #bf7f3f;
+		}
+		.fcbrown-path {
+			stroke-width: 1px;
+			fill: #bf7f3f;
+		}
+		.cbrown-path {
+			stroke: #bf7f3f;
+		}
+		.sel-path {
 			stroke-width: 1px;
 			stroke: #ffff7f;
 			fill: #ffff7f;
@@ -395,132 +662,6 @@
 			padding-top: 5px;
 			text-align: center;
 		}
-		.grey {
-			color: #7f7f7f;
-		}
-		.grey-bg {
-			background-color: #7f7f7f;
-		}
-		.lgrey {
-			color: #bfbfbf;
-		}
-		.lgrey-bg {
-			background-color: #bfbfbf;
-		}
-		.white {
-			color: #ffffff;
-		}
-		.white-bg {
-			background-color: #ffffff;
-		}
-		.red {
-			color: #ff7f7f;
-		}
-		.red-bg {
-			background-color: #ff7f7f;
-		}
-		.green {
-			color: #7fff7f;
-		}
-		.green-bg {
-			background-color: #7fff7f;
-		}
-		.blue {
-			color: #7f7fff;
-		}
-		.blue-bg {
-			background-color: #7f7fff;
-		}
-		.lred {
-			color: #ffbfbf;
-		}
-		.lred-bg {
-			background-color: #ffbfbf;
-		}
-		.lgreen {
-			color: #bfffbf;
-		}
-		.lgreen-bg {
-			background-color: #bfffbf;
-		}
-		.lblue {
-			color: #bfbfff;
-		}
-		.lblue-bg {
-			background-color: #bfbfff;
-		}
-		.cyan {
-			color: #7fffff;
-		}
-		.cyan-bg {
-			background-color: #7fffff;
-		}
-		.lcyan {
-			color: #bfffff;
-		}
-		.lcyan-bg {
-			background-color: #bfffff;
-		}
-		.llcyan {
-			color: #dfffff;
-		}
-		.llcyan-bg {
-			background-color: #dfffff;
-		}
-		.purple {
-			color: #ff7fff;
-		}
-		.purple-bg {
-			background-color: #ff7fff;
-		}
-		.lpurple {
-			color: #ffbfff;
-		}
-		.lpurple-bg {
-			background-color: #ffbfff;
-		}
-		.llpurple {
-			color: #ffdfff;
-		}
-		.llpurple-bg {
-			background-color: #ffdfff;
-		}
-		.yellow {
-			color: #ffff7f;
-		}
-		.yellow-bg {
-			background-color: #ffff7f;
-		}
-		.lyellow {
-			color: #ffffbf;
-		}
-		.lyellow-bg {
-			background-color: #ffffbf;
-		}
-		.llyellow {
-			color: #ffffdf;
-		}
-		.llyellow-bg {
-			background-color: #ffffdf;
-		}
-		.dbrown {
-			color: #bf3f3f;
-		}
-		.dbrown-bg {
-			background-color: #bf3f3f;
-		}
-		.dgreen {
-			color: #3fbf3f;
-		}
-		.dgreen-bg {
-			background-color: #3fbf3f;
-		}
-		.dblue {
-			color: #3f3fbf;
-		}
-		.dblue-bg {
-			background-color: #3f3fbf;
-		}
 		.highz {
 			z-index: 6361;
 		}
@@ -530,8 +671,14 @@
 		.highestz {
 			z-index: 6859;
 		}
+		.wider {
+			stroke-width: 8px;
+		}
 		.wide {
 			stroke-width: 3px;
+		}
+		.mwidth {
+			stroke-width: 1.5px;
 		}
 		.narrow {
 			stroke-width: 0.5px;
@@ -568,7 +715,99 @@
 		}
 	</style>
 	<script>
-		const PetalNameList=["Basic"]
+		console.log("Try to use 'test()'/'test(0)'/'test(1)'")
+		function test(asdfgh=0) {
+			for(let i=0;i<48;i++) {
+				getGrid(0,i%8+1,betterFloor(i/8)+1).replaceWith(createGrid(0,i%8+1,betterFloor(i/8)+1,"Petal_"+PetalNameList[i+48*asdfgh],1,roll(1,9)))
+			}
+		}
+		const PetalNameList=["Basic","Light","Rock","Rose","Stinger","Iris","Wing","Missile","Grapes","Cactus","Faster","Bubble","Pollen","Dandelion","Beetle Egg","Antennae","Heavy","Yin Yang","Web","Honey","Leaf","Salt","Rice","Corn","Sand","Pincer","Yucca","Magnet","Yggdrasil","Starfish","Pearl","Lightning","Jelly","Claw","Shell","Dahlia","Sponge","Soil","Fangs","Third Eye","Peas","Stick","Clover","Powder","Air","Basil","Orange","Ant Egg","Poo","Relic","Lotus","Bulb","Cotton","Carrot","Bone","Plank","Tomato","Mark","Rubber","Blood Stinger","Bur","Root","Dice","Talisman","Battery","Amulet","Compass","Disc","Shovel","Coin","Chip","Card","Moon Rock","Privet","Glass","Corruption","Coral","Wax","Golden Leaf","Monstera","Domino","Triangle"]
+		const PetalSVGArray=new Object()
+		PetalSVGArray.Basic="<path class='fwhite-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'></path>"
+		PetalSVGArray.Light="<path class='fwhite-path ns' d='M50 19.4A7 7 0 0 0 50 33.4A7 7 0 0 0 50 19.4M39 27.4A7 7 0 0 0 39 41.4A7 7 0 0 0 39 27.4M61 27.4A7 7 0 0 0 61 41.4A7 7 0 0 0 61 27.4M43.2 40.4A7 7 0 0 0 43.2 54.4A7 7 0 0 0 43.2 40.4M56.8 40.4A7 7 0 0 0 56.8 54.4A7 7 0 0 0 56.8 40.4'></path>"
+		PetalSVGArray.Rock="<path class='fgrey-path ns' d='M34 32L50 20L66 36L62 50L42 52Z'></path>"
+		PetalSVGArray.Rose="<path class='fcpink-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'></path>"
+		PetalSVGArray.Stinger="<path class='fdgrey-path ns' d='M47 32.8L56 38L47 43.2Z'></path>"
+		PetalSVGArray.Iris="<path class='fcpurple-path ns' d='M50 31A7 7 0 0 0 50 45A7 7 0 0 0 50 31'></path>"
+		PetalSVGArray.Wing="<path class='fwhite-path ns' d='M36 48A40 40 0 0 0 65 26A20 20 0 0 1 36 48'></path>"
+		PetalSVGArray.Missile="<path class='fblack-path ns' d='M38 33L50 24L60.5 50.5Z'></path>"
+		PetalSVGArray.Grapes="<path class='fcpurple-path ns' d='M54 22A7 7 0 0 0 54 36A7 7 0 0 0 54 22M59 35A7 7 0 0 0 59 49A7 7 0 0 0 59 35M46 40A7 7 0 0 0 46 54A7 7 0 0 0 46 40M41 27A7 7 0 0 0 41 41A7 7 0 0 0 41 27'></path>"
+		PetalSVGArray.Cactus="<path class='fgreen-path ns' d='M50 24A12 12 0 0 0 59.9 28.1A12 12 0 0 0 64 38A12 12 0 0 0 59.9 47.9A12 12 0 0 0 50 52A12 12 0 0 0 40.1 47.9A12 12 0 0 0 36 38A12 12 0 0 0 40.1 28.1A12 12 0 0 0 50 24'></path><path class='flgreen-path ns ' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30'></path>"
+		PetalSVGArray.Faster="<path class='flyellow-path ns' d='M50 31A7 7 0 0 0 50 45A7 7 0 0 0 50 31'></path>"
+		PetalSVGArray.Bubble="<path class='white-path wide' d='M50 24A14 14 0 0 0 50 52A14 14 0 0 0 50 24'></path><path class='fwhite-path ns ' fill-opacity='0.3' d='M50 24A14 14 0 0 0 50 52A14 14 0 0 0 50 24'></path><path class='fwhite-path ns ' fill-opacity='0.6' d='M55 30A5 5 0 0 0 55 40A5 5 0 0 0 55 30'></path>"
+		PetalSVGArray.Pollen="<path class='fyellow-path ns' d='M44.4 19.3A9 9 0 0 0 44.4 37.3A9 9 0 0 0 44.4 19.3M61.2 29A9 9 0 0 0 61.2 47A9 9 0 0 0 61.2 29M44.4 38.7A9 9 0 0 0 44.4 56.7A9 9 0 0 0 44.4 38.7'></path>"
+		PetalSVGArray.Dandelion="<path class='fblack-path ns' d='M37.6 30.2L29.6 22.2A2.2 2.2 0 0 1 32.7 19.1L40.7 27.1A15.5 15.5 0 0 0 37.6 30.2'></path><path class='fwhite-path ns' d='M50 28A11.5 11.5 0 0 0 50 51A11.5 11.5 0 0 0 50 28'></path>"
+		PetalSVGArray["Beetle Egg"]="<path class='flyellow-path ns' d='M50 18A20 15 90 0 0 50 58A20 15 90 0 0 50 18'></path>"
+		PetalSVGArray.Antennae="<path class='fblack-path wide ns' d='M26 22A40 40 0 0 1 42 54ZM74 22A40 40 0 0 0 58 54Z'></path>"
+		PetalSVGArray.Heavy="<path class='fdgrey-path ns' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'></path><path class='flgrey-path ns ' d='M57 26A7 7 0 0 0 58 40A7 7 0 0 0 57 26'></path>"
+		PetalSVGArray["Yin Yang"]="<path class='fgrey-path ns ' d='M50 22A16 16 0 0 0 50 54A16 16 0 0 0 50 22'></path><path class='fwhite-path ns ' d='M50 24A7 7 0 0 1 50 38A7 7 0 0 0 50 52A14 14 0 0 1 50 24'></path><path class='fblack-path ns ' d='M50 24A7 7 0 0 1 50 38A7 7 0 0 0 50 52A14 14 0 0 0 50 24'></path><path class='fwhite-path ns ' fill-opacity='0.9' d='M50 41.5A3.5 3.5 0 0 0 50 48.5A3.5 3.5 0 0 0 50 41.5'></path><path class='fblack-path ns ' fill-opacity='0.9' d='M50 27.5A3.5 3.5 0 0 0 50 34.5A3.5 3.5 0 0 0 50 27.5'></path>"
+		PetalSVGArray.Web="<path class='fwhite-path ns' d='M39 34.4A15 15 0 0 0 50 26.4A15 15 0 0 0 61 34.4A15 15 0 0 0 56.8 47.4A15 15 0 0 0 43.2 47.4A15 15 0 0 0 39 34.4'></path>"
+		PetalSVGArray.Honey="<path class='fcyellow-path ns' d='M44.4 28.3L55.6 28.3L61.2 38L55.6 47.7L44.4 47.7L38.8 38Z'></path>"
+		PetalSVGArray.Leaf="<path class='fdgreen-path ns' d='M40 56.1A21 10 115 0 0 60.9 19.9A21 10 125 0 0 40 56.1'></path><path class='dgreen-path wide' d='M34.4 65.8L40 56.1M42.6 51.6L55.3 29' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Salt="<path class='fwhite-path ns' d='M45 25L55 26L62 34L60 45L48 50L40 43L38 34Z'></path>"
+		PetalSVGArray.Rice="<path class='fwhite-path wide ns' d='M41 28A2 2 0 0 1 43.4 24.8L51.4 30.8A2 2 0 0 1 49 34ZM51 38A2 2 0 0 1 54.6 36.5L59.6 48.5A2 2 0 0 1 56 50Z'></path>"
+		PetalSVGArray.Corn="<path class='fyellow-path ns' d='M32 44L40 20A25 25 0 0 1 68 48L44 56A10 10 0 0 0 32 44'></path>"
+		PetalSVGArray.Sand="<path class='fcyellow-path ns' d='M50 21.1A7 7 0 0 0 50 35.1A7 7 0 0 0 50 21.1M59.9 31A7 7 0 0 0 59.9 45A7 7 0 0 0 59.9 31M50 40.9A7 7 0 0 0 50 54.9A7 7 0 0 0 50 40.9M40.1 31A7 7 0 0 0 40.1 45A7 7 0 0 0 40.1 31'></path>"
+		PetalSVGArray.Pincer="<path class='fblack-path wide ns' d='M38 34A12 12 0 0 1 54 50A30 13 135 0 0 38 34'></path>"
+		PetalSVGArray.Yucca="<path class='fgreen-path ns' d='M40 56.1A22 10 115 0 0 60.9 19.9A22 10 125 0 0 40 56.1'></path><path class='green-path wide' d='M40 56.1L60.9 19.9' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Magnet="<path class='fred-path ns ' fill-opacity='0.8' d='M49.9 14.7L34.4 30.4A16.4 16.4 0 0 0 34.4 53.6L46.4 41.6A2.4 2.4 0 0 1 46.4 38.2L59.8 24.8Z'></path><path class='fblue-path ns ' fill-opacity='0.8' d='M73.3 38.1L57.6 53.6A16.4 16.4 0 0 1 34.4 53.6L46.4 41.6A2.4 2.4 0 0 0 49.8 41.6L63.2 28.2Z'></path><path class='fred-path ns ' d='M49.9 19.5L36.8 32.8A13 13 0 0 0 36.8 51.2L44 44A5.8 5.8 0 0 1 44 35.8L55 24.8Z'></path><path class='fblue-path ns ' d='M68.5 38.1L55.2 51.2A13 13 0 0 1 36.8 51.2L44 44A5.8 5.8 0 0 0 52.2 44L63.2 33Z'></path>"
+		PetalSVGArray.Yggdrasil="<path class='fcbrown-path ns' d='M40 56.1A21 10 115 0 0 60.9 19.9A21 10 125 0 0 40 56.1'></path><path class='cbrown-path wide' d='M34.4 65.8L40 56.1M42.6 51.6L55.3 29' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Starfish="<path class='fred-path ns' d='M37 44L49 53L65.2 21.4A1.6 1.6 0 0 0 62.8 19.6Z'></path><path class='flred-path ns ' d='M47.5 38.5A4 4 0 0 0 47.5 46.5A4 4 0 0 0 47.5 38.5M53.5 32A2.5 2.5 0 0 0 53.5 37A2.5 2.5 0 0 0 53.5 32'></path>"
+		PetalSVGArray.Pearl="<path class='flyellow-path ns' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'></path><path class='fwhite-path ns ' d='M57 26A7 7 0 0 0 58 40A7 7 0 0 0 57 26'></path>"
+		PetalSVGArray.Lightning="<path class='fcyan-path wide ns' d='M54 24L42 40L48 40L46 52L58 36L52 36Z'></path>"
+		PetalSVGArray.Jelly="<path class='purple-path wide' d='M50 23A15 15 0 0 0 50 53A15 15 0 0 0 50 23'></path><path class='fpurple-path ns ' fill-opacity='0.3' d='M50 23A15 15 0 0 0 50 53A15 15 0 0 0 50 23'></path><path class='fpurple-path ns ' fill-opacity='0.3' d='M47 28A3 3 0 0 0 47 34A3 3 0 0 0 47 28M52 35A3 3 0 0 0 52 41A3 3 0 0 0 52 35M46 43A3 3 0 0 0 46 49A3 3 0 0 0 46 43M57 40A3 3 0 0 0 57 46A3 3 0 0 0 57 40'></path>"
+		PetalSVGArray.Claw="<path class='fdbrown-path wide ns' d='M46 50L38 30L60 28A8 4 0 0 0 60 36L44 34Z'></path>"
+		PetalSVGArray.Shell="<path class='fcyellow-path ns' d='M38 38L58 22A20 20 0 0 1 58 54Z'></path><path class='cyellow-path wide' d='M42 37L60 29M42 38L63 38M42 39L60 47' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Dahlia="<path class='fcpink-path ns' d='M45.9 23.9A7 7 0 0 0 45.9 37.9A7 7 0 0 0 45.9 23.9M58.2 31A7 7 0 0 0 58.2 45A7 7 0 0 0 58.2 31M45.9 38.1A7 7 0 0 0 45.9 52.1A7 7 0 0 0 45.9 38.1'></path>"
+		PetalSVGArray.Sponge="<path class='flyellow-path ns ' d='M50 23A12 12 0 0 0 35 23A12 12 0 0 0 35 38A12 12 0 0 0 35 53A12 12 0 0 0 50 53L41 50A3 3 0 0 1 41 44L41 41A3 3 0 0 1 41 35L41 32A3 3 0 0 1 41 26ZM50 23A12 12 0 0 1 65 23A12 12 0 0 1 65 38A12 12 0 0 1 65 53A12 12 0 0 1 50 53L59 50A3 3 0 0 0 59 44L59 41A3 3 0 0 0 59 35L59 32A3 3 0 0 0 59 26ZM50 23L50 26A3 3 0 0 0 50 32L50 35A3 3 0 0 0 50 41L50 44A3 3 0 0 0 50 50L50 53L41 50A3 3 0 0 0 41 44L41 41A3 3 0 0 0 41 35L41 32A3 3 0 0 0 41 26ZM50 23L59 26A3 3 0 0 0 59 32L59 35A3 3 0 0 0 59 41L59 44A3 3 0 0 0 59 50L50 53L50 50A3 3 0 0 0 50 44L50 41A3 3 0 0 0 50 35L50 32A3 3 0 0 0 50 26Z'></path><path class='lyellow-path wide' d='M35 23A12 12 0 0 1 50 23A12 12 0 0 1 65 23A12 12 0 0 1 65 38A12 12 0 0 1 65 53A12 12 0 0 1 50 53A12 12 0 0 1 35 53A12 12 0 0 1 35 38A12 12 0 0 1 35 23' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Soil="<path class='fdbrown-path ns' d='M39 35L50 26L57 30L61 37L58 47L47 49L42 46Z'></path>"
+		PetalSVGArray.Fangs="<path class='fcdred-path wide ns' d='M45.5 24.5L54.5 36.5L54.5 51.5L45.5 39.5Z'></path>"
+		PetalSVGArray["Third Eye"]="<path class='fblack-path mwidth ns' d='M50 20A18 7 90 0 0 50 56A18 7 90 0 0 50 20M60 16L64 16M64 16L64 24M64 24L60 24M60 20L64 20'></path><path class='fwhite-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32'></path>"
+		PetalSVGArray.Peas="<path class='fgreen-path ns' d='M54 22A7 7 0 0 0 54 36A7 7 0 0 0 54 22M59 35A7 7 0 0 0 59 49A7 7 0 0 0 59 35M46 40A7 7 0 0 0 46 54A7 7 0 0 0 46 40M41 27A7 7 0 0 0 41 41A7 7 0 0 0 41 27'></path>"
+		PetalSVGArray.Stick="<path class='fdbrown-path wide' stroke-linecap='round' d='M50 38L32 48M50 38L60 24M50 38L64 38' style='filter: brightness(50%)'></path>"
+		PetalSVGArray.Clover="<path class='fgreen-path ns' d='M50 38L44 30A6 6 0 0 1 56 30ZM50 38L58 32A6 6 0 0 1 58 44ZM50 38L56 46A6 6 0 0 1 44 46ZM50 38L42 44A6 6 0 0 1 42 32Z'></path>"
+		PetalSVGArray.Powder="<path class='fwhite-path ns ' d='M50 27A12 12 0 0 0 50 51A12 12 0 0 0 50 27M41 22A6 6 0 0 0 41 34A6 6 0 0 0 41 22M59 22A6 6 0 0 0 59 34A6 6 0 0 0 59 22'></path>"
+		PetalSVGArray.Air="<path class='fwhite-path ns ' fill-opacity='0.1' d='M0 0L100 0L100 100L0 100'></path>"
+		PetalSVGArray.Basil="<path class='fdgreen-path ns' d='M41.8 23.8L49.6 28.3A5.2 5.2 0 1 1 41.8 32.8ZM66.4 38L58.6 42.5A5.2 5.2 0 1 1 58.6 33.5ZM41.8 52.2L41.8 43.2A5.2 5.2 0 1 1 49.6 47.7Z'></path>"
+		PetalSVGArray.Orange="<path class='fcyellow-path ns' d='M44.4 19.3A9 9 0 0 0 44.4 37.3A9 9 0 0 0 44.4 19.3M61.2 29A9 9 0 0 0 61.2 47A9 9 0 0 0 61.2 29M44.4 38.7A9 9 0 0 0 44.4 56.7A9 9 0 0 0 44.4 38.7'></path><path class='dgreen-path wide' d='M44.4 24.3L44.4 14.3M44.4 20.3L48.4 20.3M61.2 34L61.2 24M61.2 30L65.2 30M44.4 43.7L44.4 33.7M44.4 39.7L48.4 39.7'></path>"
+		PetalSVGArray["Ant Egg"]="<path class='flyellow-path ns' d='M50 20.1A8 8 0 0 0 50 36.1A8 8 0 0 0 50 20.1M59.9 30A8 8 0 0 0 59.9 46A8 8 0 0 0 59.9 30M50 39.9A8 8 0 0 0 50 55.9A8 8 0 0 0 50 39.9M40.1 30A8 8 0 0 0 40.1 46A8 8 0 0 0 40.1 30'></path>"
+		PetalSVGArray.Poo="<path class='fblack-path wide' d='M50 26.8L50 49.2M40.3 32.4L59.7 43.6M59.7 32.4L40.3 43.6'></path>"
+		PetalSVGArray.Relic="<path class='fcyellow-path ns' d='M50 28A12 12 0 0 0 60 38A12 12 0 0 0 50 48A12 12 0 0 0 40 38A12 12 0 0 0 50 28'></path>"
+		PetalSVGArray.Lotus="<path class='fcpurple-path ns' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30M50 24A16 8 90 0 0 50 52A16 8 90 0 0 50 24M59.9 28.1A16 8 135 0 0 40.1 47.9A16 8 135 0 0 59.9 28.1M64 38A16 8 0 0 0 36 38A16 8 0 0 0 64 38M59.9 47.9A16 8 45 0 0 40.1 28.1A16 8 45 0 0 59.9 47.9'></path><path class='fcpurple-path ns ' d='M50 34A4 4 0 0 0 50 42A4 4 0 0 0 50 34' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Bulb="<path class='fgrey-path ns ' d='M45 48L55 48L55 54L45 54Z'></path><path class='fyellow-path ns ' d='M45 48L41 40A11 11 0 1 1 59 40L55 48Z'></path><path class='flyellow-path ns ' fill-opacity='0.3' d='M50 12A25 25 0 0 0 50 62A25 25 0 0 0 50 12'></path>"
+		PetalSVGArray.Cotton="<path class='fwhite-path ns ' d='M50 23A12 12 0 0 0 35 23A12 12 0 0 0 35 38A12 12 0 0 0 35 53A12 12 0 0 0 50 53L41 49A2 2 0 0 1 41 45L41 40A2 2 0 0 1 41 36L41 31A2 2 0 0 1 41 27ZM50 23A12 12 0 0 1 65 23A12 12 0 0 1 65 38A12 12 0 0 1 65 53A12 12 0 0 1 50 53L59 49A2 2 0 0 0 59 45L59 40A2 2 0 0 0 59 36L59 31A2 2 0 0 0 59 27ZM50 23L50 27A2 2 0 0 0 50 31L50 36A2 2 0 0 0 50 40L50 45A2 2 0 0 0 50 49L50 53L41 49A2 2 0 0 0 41 45L41 40A2 2 0 0 0 41 36L41 31A2 2 0 0 0 41 27ZM50 23L59 27A2 2 0 0 0 59 31L59 36A2 2 0 0 0 59 40L59 45A2 2 0 0 0 59 49L50 53L50 49A2 2 0 0 0 50 45L50 40A2 2 0 0 0 50 36L50 31A2 2 0 0 0 50 27Z'></path><path class='white-path wide' d='M35 23A12 12 0 0 1 50 23A12 12 0 0 1 65 23A12 12 0 0 1 65 38A12 12 0 0 1 65 53A12 12 0 0 1 50 53A12 12 0 0 1 35 53A12 12 0 0 1 35 38A12 12 0 0 1 35 23' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Carrot="<path class='fcorange-path ns' d='M42 30A30 8 60 0 1 65 53A30 8 30 0 1 42 30'></path><path class='dgreen-path wide' d='M41 29L32 29M41 29L34 22M41 29L41 20'></path>"
+		PetalSVGArray.Bone="<path class='fwhite-path ns' d='M40 26L40 20L60 20L60 26L54 26L54 50L60 50L60 56L40 56L40 50L46 50L46 28Z'></path>"
+		PetalSVGArray.Plank="<path class='fdbrown-path ns' d='M30 28L40 18L70 48L60 58Z'></path><path class='dbrown-path wide' d='M40 26A2 2 0 0 0 40 30A2 2 0 0 0 40 26' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Tomato="<path class='fcred-path ns' d='M50 27A16 12 0 0 0 50 51A16 12 0 0 0 50 27'></path><path class='dgreen-path wide' d='M50 26L42 20M50 26L50 16M50 26L58 20'></path>"
+		PetalSVGArray.Mark="<path class='fcdred-path ns ' d='M46.1 50L46.1 26L60.2 45.4L37.4 38L60.2 30.6Z'></path><path class='cdred-path mwidth' d='M46.1 50L46.1 26L60.2 45.4L37.4 38L60.2 30.6Z' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Rubber="<path class='fwhite-path ns' d='M40 33L55 28L60 43L45 48Z'></path>"
+		PetalSVGArray["Blood Stinger"]="<path class='fcdred-path ns' d='M47 32.8L56 38L47 43.2Z'></path>"
+		PetalSVGArray.Bur="<path class='fcdred-path wide ns' d='M50 31.5L55 26L54.6 33.4L62 33L56.5 38L62 43L54.6 42.6L55 50L50 44.5L45 50L45.4 42.6L38 43L43.5 38L38 33L45.4 33.4L45 26Z'></path>"
+		PetalSVGArray.Root="<path class='fwhite-path wide ns' d='M50 29A2 2 0 0 0 50 25A2 2 0 0 0 50 29L50 35M50 35L40 41M50 35L60 41M40 41L35 47M40 41L45 47M60 41L55 47M60 41L65 47'></path>"
+		PetalSVGArray.Dice="<path class='fwhite-path ns' d='M36 24L64 24L64 52L36 52Z'></path><path class='fblue-path ns ' d='M58 27A3 3 0 0 0 58 33A3 3 0 0 0 58 27M50 35A3 3 0 0 0 50 41A3 3 0 0 0 50 35M42 43A3 3 0 0 0 42 49A3 3 0 0 0 42 43'></path>"
+		PetalSVGArray.Talisman="<path class='black-path mwidth' stroke-linecap='round' stroke-linejoin='round' d='M50 26.8L40.3 43.6L59.7 43.6L50 26.8L50 43.6A5.6 5.6 0 0 0 50 32.4A5.6 5.6 0 0 0 50 43.6'></path>"
+		PetalSVGArray.Battery="<path class='fgreen-path ns' d='M38 22L62 22L62 56L38 56Z'></path><path class='fgrey-path wide ns' d='M44 20L44 15L56 15L56 20Z'></path><path class='fcyan-path ns ' d='M54 24L42 40L48 40L46 52L58 36L52 36Z' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Amulet="<path class='fcpink-path ns' d='M44.4 28.3L55.6 28.3L61.2 38L55.6 47.7L44.4 47.7L38.8 38Z'></path><path class='fcpink-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Disc="<path class='black-path wider' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'></path>"
+		PetalSVGArray.Shovel="<path class='fdbrown-path wide ns' d='M41 51L45 53L53 37L49 35Z'></path><path class='fgrey-path wide ns' d='M45 33L48 27A7 7 0 0 1 60 33L57 39Z'></path>"
+		PetalSVGArray.Coin="<path class='fyellow-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'></path><path class='yellow-path wide' d='M50 28L50 32M53 35A3 3 0 1 0 50 38A3 3 0 1 1 47 41M50 44L50 48' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Chip="<path class='fcpurple-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'></path><path class='white-path ' d='M45.9 25.7L54.1 25.7M55.8 26.4L61.6 32.2M62.3 33.9L62.3 42.1M61.6 43.8L55.8 49.6M54.1 50.3L45.9 50.3M44.2 49.6L38.4 43.8M37.7 42.1L37.7 33.9M38.4 32.2L44.2 26.4'></path>"
+		PetalSVGArray.Card="<path class='fgrey-path ns' d='M38 20L62 20L62 56L38 56Z'></path><path class='fwhite-path ns ' d='M38 38A18 12 90 0 0 62 38A18 12 90 0 0 38 38'></path><path class='black-path mwidth' d='M41 31L48 31L48 45M59 38L52 38L52 31L59 31L59 45L52 45'></path>"
+		PetalSVGArray["Moon Rock"]="<path class='fgrey-path wide ns' d='M50 13A25 25 0 0 0 50 63A25 25 0 0 0 75 38A35 35 0 0 0 50 13'></path>"
+		PetalSVGArray.Privet="<path class='fblack-path ns' d='M50 34A4 4 0 0 0 50 42A4 4 0 0 0 50 34'></path>"
+		PetalSVGArray.Glass="<path class='fwhite-path ns ' fill-opacity='0.3' d='M35 46L50 32L65 36'></path>"
+		PetalSVGArray.Corruption="<path class='fblack-path ns ' fill-opacity='0.2' d='M36 56L36 34L42 34A3 3 0 0 0 48 34L52 34A3 3 0 0 0 58 34L64 34L64 56L57 45L50 51L43 45ZM36 34L42 34A3 3 0 0 1 48 34L52 34A3 3 0 0 1 58 34L64 34A14 14 0 0 0 36 34'></path>"
+		PetalSVGArray.Coral="<path class='cpurple-path' stroke-linecap='round' d='M50 38L40 48M50 38L46 26M50 38L60 28M50 38L62 42'></path>"
+		PetalSVGArray.Wax="<path class='fcyellow-path ns' d='M38.8 18.6L61.2 18.6L72.4 38L61.2 57.4L38.8 57.4L27.6 38Z'></path>"
+		PetalSVGArray["Golden Leaf"]="<path class='fcyellow-path ns' d='M40 56.1A21 10 115 0 0 60.9 19.9A21 10 125 0 0 40 56.1'></path><path class='cyellow-path wide' d='M34.4 65.8L40 56.1M42.6 51.6L55.3 29' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Monstera="<path class='fdgreen-path ns' d='M46 50L46 54L54 54L54 50L66 46L58 43L65 40L57 37L63 33L55 33L57 27L53 30L50 22L47 30L43 27L45 33L37 33L43 37L35 40L42 43L34 46Z'></path><path class='dgreen-path wide' d='M50 30L50 50' style='filter: brightness(80%)'></path>"
+		PetalSVGArray.Domino="<path class='fwhite-path ns' d='M32 32L44 20L68 44L56 56Z'></path><path class='black-path mwidth' d='M38 30L42 26L50 34M58 42L54 46L50 42L54 38L62 46L58 50M46 42L54 34'></path>"
+		PetalSVGArray.Triangle="<path class='fwhite-path ns' d='M47 32.8L56 38L47 43.2Z'></path>"
+		for(let i in PetalNameList) if(i!=="66") {
+			PetalSVGArray[PetalNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'>"+PetalSVGArray[PetalNameList[i]].replaceAll(/<path class='(f\w+-path (ns |wider?|mwidth)|\w+-path)'.+?><\/path>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+PetalSVGArray[PetalNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+PetalNameList[i].replace("Blood Stinger","B. Stinger")+"</span>"
+		}
+		PetalSVGArray.Compass="<svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g style='transform: rotate(45deg)'><path class='fblue-path ns' d='M50 18A20 20 0 0 0 50 58A20 20 0 0 0 50 18'></path><path class='fred-path ns' d='M46 38L50 20L54 38Z'></path><path class='fwhite-path ns' d='M46 38L50 56L54 38Z'></path></g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>Compass</span>"
 		function Petal(id=0,rarity=1,level=0) {
 			this.id=id,this.rarity=rarity,this.level=level
 			this.name="Basic"
@@ -590,8 +829,9 @@
 		}
 	</script>
 	<script>
-		const version=20250803
+		const version=20250812
 		const svgNS="http://www.w3.org/2000/svg"
+		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
 		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
 		const pathArray=[1011,1013,1112,1121,1131,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1724,1739,2122,2224,2225,2226,2324,2325,2353,2461,2526,3132,3133,3233,3236,3239,3334,3335,3436,3438,3537,3538,3639,3738,3761,3943,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5664,6162,6263,6265,6364,6365,6466,6566,6667]
 		const tutorialOrder=[10,11,12,14,21,22,24,31,41,42,43,51,52,53,23,61,62,63,64,65,66,67]
@@ -661,22 +901,22 @@
 			newDice.value=value
 			switch(point) {
 				case 1:
-				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45'></path></svg>1"
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='fblack-path' d='M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45'></path></svg>1"
 				break
 				case 2:
-				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M50 30A5 5 0 0 0 50 40A5 5 0 0 0 50 30M50 60A5 5 0 0 0 50 70A5 5 0 0 0 50 60'></path></svg>2"
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='fblack-path' d='M50 30A5 5 0 0 0 50 40A5 5 0 0 0 50 30M50 60A5 5 0 0 0 50 70A5 5 0 0 0 50 60'></path></svg>2"
 				break
 				case 3:
-				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M33 62A5 5 0 0 0 33 72A5 5 0 0 0 33 62M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45M67 28A5 5 0 0 0 67 38A5 5 0 0 0 67 28'></path></svg>3"
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='fblack-path' d='M33 62A5 5 0 0 0 33 72A5 5 0 0 0 33 62M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45M67 28A5 5 0 0 0 67 38A5 5 0 0 0 67 28'></path></svg>3"
 				break
 				case 4:
-				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M35 30A5 5 0 0 0 35 40A5 5 0 0 0 35 30M65 30A5 5 0 0 0 65 40A5 5 0 0 0 65 30M35 60A5 5 0 0 0 35 70A5 5 0 0 0 35 60M65 60A5 5 0 0 0 65 70A5 5 0 0 0 65 60'></path></svg>4"
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='fblack-path' d='M35 30A5 5 0 0 0 35 40A5 5 0 0 0 35 30M65 30A5 5 0 0 0 65 40A5 5 0 0 0 65 30M35 60A5 5 0 0 0 35 70A5 5 0 0 0 35 60M65 60A5 5 0 0 0 65 70A5 5 0 0 0 65 60'></path></svg>4"
 				break
 				case 5:
-				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M35 30A5 5 0 0 0 35 40A5 5 0 0 0 35 30M65 30A5 5 0 0 0 65 40A5 5 0 0 0 65 30M35 60A5 5 0 0 0 35 70A5 5 0 0 0 35 60M65 60A5 5 0 0 0 65 70A5 5 0 0 0 65 60M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45'></path></svg>5"
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='fblack-path' d='M35 30A5 5 0 0 0 35 40A5 5 0 0 0 35 30M65 30A5 5 0 0 0 65 40A5 5 0 0 0 65 30M35 60A5 5 0 0 0 35 70A5 5 0 0 0 35 60M65 60A5 5 0 0 0 65 70A5 5 0 0 0 65 60M50 45A5 5 0 0 0 50 55A5 5 0 0 0 50 45'></path></svg>5"
 				break
 				case 6:
-				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='f-path' d='M35 28A5 5 0 0 0 35 38A5 5 0 0 0 35 28M65 28A5 5 0 0 0 65 38A5 5 0 0 0 65 28M35 45A5 5 0 0 0 35 55A5 5 0 0 0 35 45M65 45A5 5 0 0 0 65 55A5 5 0 0 0 65 45M35 62A5 5 0 0 0 35 72A5 5 0 0 0 35 62M65 62A5 5 0 0 0 65 72A5 5 0 0 0 65 62'></path></svg>6"
+				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path><path class='fblack-path' d='M35 28A5 5 0 0 0 35 38A5 5 0 0 0 35 28M65 28A5 5 0 0 0 65 38A5 5 0 0 0 65 28M35 45A5 5 0 0 0 35 55A5 5 0 0 0 35 45M65 45A5 5 0 0 0 65 55A5 5 0 0 0 65 45M35 62A5 5 0 0 0 35 72A5 5 0 0 0 35 62M65 62A5 5 0 0 0 65 72A5 5 0 0 0 65 62'></path></svg>6"
 				break
 				default:
 				newDice.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 10L80 10A10 10 0 0 1 90 20L90 80A10 10 0 0 1 80 90L20 90A10 10 0 0 1 10 80L10 20A10 10 0 0 1 20 10'></path></svg>?"
@@ -690,11 +930,12 @@
 			let buttonValue=parseInt(button.value)
 			return
 		}
-		function createGrid(value,x,y,text,size=0) {
+		function createGrid(value,x,y,text,size=0,rarity=0) {
 			let newGrid=document.createElement("button")
 			newGrid.type="button"
 			newGrid.setAttribute("class","grid")
 			if(size===1) newGrid.setAttribute("class","bgrid")
+			if(rarity>=1 && rarity<=9) newGrid.style["background-color"]=rarityColor[rarity]
 			newGrid.setAttribute("onclick","clickGrid(this)")
 			newGrid.value=value
 			newGrid.dataset.x=x
@@ -705,6 +946,7 @@
 			if(text==="Line") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M0 50L100 50'></path></svg><span style='display: none'>Line</span>"
 			if(text==="Empty") newGrid.innerHTML="<span class='lgrey text3'>Empty</span>"
 			if(typeof(text)==="number" && text!==0) newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10L90 50L50 90L10 50Z'></path></svg><span class='mid'>"+text+"</span>"
+			if(text.startsWith("Petal")) newGrid.innerHTML=PetalSVGArray[text.slice(6)]
 			return newGrid
 		}
 		function getGrid(value,x,y) {
@@ -927,15 +1169,15 @@
 			setInterval(ladybugMove,10)
 			for(let i=1;i<=3;i++) {
 				for(let j=1;j<=8;j++) {
-					document.getElementById("fight-container").appendChild(createGrid(0,i,j,"Empty",1))
+					document.getElementById("fight-container").appendChild(createGrid(0,j,i,"Empty",1))
 				}
 			}
 			for(let i=1;i<=8;i++) {
-				document.getElementById("fight-container").appendChild(createGrid(0,0,i,"Line",1))
+				document.getElementById("fight-container").appendChild(createGrid(0,i,0,"Line",1))
 			}
 			for(let i=4;i<=6;i++) {
 				for(let j=1;j<=8;j++) {
-					document.getElementById("fight-container").appendChild(createGrid(0,i,j,"Empty",1))
+					document.getElementById("fight-container").appendChild(createGrid(0,j,i,"Empty",1))
 				}
 			}
 			homeElement=document.getElementById("home-btn")
@@ -1265,9 +1507,9 @@
 		<button type="button" onclick="settings()" class="circbtn" title="Settings">
 			<svg id="cog" viewBox="0 0 100 100" class="in-svg">
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
-				<path class="f-path" d="M50 30A20 20 0 0 0 50 70L50 60A10 10 0 0 1 50 40L50 30A20 20 0 0 1 50 70L50 60A10 10 0 0 0 50 40Z"></path>
-				<path class="f-path" d="M45 22L55 22L55 35L45 35ZM78 45L78 55L65 55L65 45ZM55 78L45 78L45 65L55 65ZM22 55L22 45L35 45L35 55Z"></path>
-				<path class="diag f-path" d="M45 22L55 22L55 35L45 35ZM78 45L78 55L65 55L65 45ZM55 78L45 78L45 65L55 65ZM22 55L22 45L35 45L35 55Z"></path>
+				<path class="fblack-path" d="M50 30A20 20 0 0 0 50 70L50 60A10 10 0 0 1 50 40L50 30A20 20 0 0 1 50 70L50 60A10 10 0 0 0 50 40Z"></path>
+				<path class="fblack-path" d="M45 22L55 22L55 35L45 35ZM78 45L78 55L65 55L65 45ZM55 78L45 78L45 65L55 65ZM22 55L22 45L35 45L35 55Z"></path>
+				<path class="diag fblack-path" d="M45 22L55 22L55 35L45 35ZM78 45L78 55L65 55L65 45ZM55 78L45 78L45 65L55 65ZM22 55L22 45L35 45L35 55Z"></path>
 			</svg>
 		</button>
 	</div>
@@ -1275,7 +1517,7 @@
 		<button type="button" onclick="howToPlay()" class="circbtn" title="How to play">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path id="helpsvg" d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M35 35A15 15 0 1 1 59 47A22.5 22.5 0 0 0 50 65"></path>
-				<path class="f-path" d="M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75"></path>
+				<path class="fblack-path" d="M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75"></path>
 			</svg>
 		</button>
 	</div>
@@ -1306,10 +1548,10 @@
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"></path>
 				<g id="ladybug">
 					<path class="fred-path wide" d="M62 34A20 20 0 1 1 38 34A12 5 0 0 0 62 34"></path>
-					<path class="f-path" d="M38 34A12 5 0 0 1 62 34A12 5 0 0 1 38 34"></path>
-					<path class="f-path" d="M45 47A3 3 0 0 0 45 53A3 3 0 0 0 45 47"></path>
-					<path class="f-path" d="M48 62A3 3 0 0 0 48 68A3 3 0 0 0 48 62"></path>
-					<path class="f-path" d="M62 51A3 3 0 0 0 62 57A3 3 0 0 0 62 51"></path>
+					<path class="fblack-path" d="M38 34A12 5 0 0 1 62 34A12 5 0 0 1 38 34"></path>
+					<path class="fblack-path" d="M45 47A3 3 0 0 0 45 53A3 3 0 0 0 45 47"></path>
+					<path class="fblack-path" d="M48 62A3 3 0 0 0 48 68A3 3 0 0 0 48 62"></path>
+					<path class="fblack-path" d="M62 51A3 3 0 0 0 62 57A3 3 0 0 0 62 51"></path>
 				</g>
 			</svg>
 		</button>
@@ -1440,7 +1682,8 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/8/3, which updated this content.</span>
+		<span>The last update was on 2025/8/12,</span>
+		<span>which updated petal image (check console for information).</span>
 		<br>
 		<button type="button" id="version3" onclick="updateVersion(false)">No, just update the version.</button>
 		<br>
