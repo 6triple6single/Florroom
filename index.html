@@ -238,7 +238,7 @@
 			background: none;
 			position: relative;
 			border: none;
-			border-radius: 10%;
+			border-radius: 8%;
 			outline: none;
 			height: 80px;
 			width: 80px;
@@ -650,6 +650,14 @@
 			width: 640px;
 			align-items: center;
 		}
+		.col5 {
+			display: grid;
+			grid-template-columns: repeat(auto-fill,minmax(90px,1fr));
+			width: 80%;
+			margin: 0 auto;
+			row-gap: 10px;
+			justify-items: center;
+		}
 		.box {
 			display: flex;
 			flex-direction: column;
@@ -721,13 +729,39 @@
 		}
 	</style>
 	<script>
-		console.log("Try to use 'test()'/'test(0)'/'test(1)'")
 		function test(asdfgh=0) {
 			for(let i=0;i<48;i++) {
 				getGrid(0,i%8+1,betterFloor(i/8)+1).replaceWith(createGrid(0,i%8+1,betterFloor(i/8)+1,"Petal_"+PetalNameList[i+48*asdfgh],1,roll(1,9)))
 			}
 		}
+		function tset(asdfgh=0) {
+			for(let i=0;i<48;i++) {
+				getGrid(0,i%8+1,betterFloor(i/8)+1).replaceWith(createGrid(0,i%8+1,betterFloor(i/8)+1,"Mob_"+MobNameList[i+48*asdfgh],1,roll(1,9)))
+			}
+		}
+		let testspin=0,testspingo=0
+		function testspinidk() {
+			testspin=(testspin+testspingo)%360
+			if(testspin===0 && testspingo===0) return
+			if(testspin!==0 && testspingo===0) testspin=0
+		//	if(testspin**2===100) testspingo=-testspin/10
+			for(let i=1;i<=8;i++) {
+				for(let j=1;j<=6;j++) {
+					if(getGrid(0,i,j).children[1]!==undefined) {
+						getGrid(0,i,j).children[1].children[0].style.transform="rotate("+testspin+"deg)"
+						getGrid(0,i,j).children[2].style.setProperty("--transform2","translate(0px,15px)")
+					} else if(getGrid(0,i,j).children[0]!==undefined) {
+						getGrid(0,i,j).children[0].style.setProperty("--transform2","translate(0px,-4px)")
+					}
+				}
+			}
+		}
+		setInterval(testspinidk,5)
+		function tests() {
+			testspingo=1-testspingo**2
+		}
 		const PetalNameList=["Basic","Light","Rock","Rose","Stinger","Iris","Wing","Missile","Grapes","Cactus","Faster","Bubble","Pollen","Dandelion","Beetle Egg","Antennae","Heavy","Yin Yang","Web","Honey","Leaf","Salt","Rice","Corn","Sand","Pincer","Yucca","Magnet","Yggdrasil","Starfish","Pearl","Lightning","Jelly","Claw","Shell","Dahlia","Sponge","Soil","Fangs","Third Eye","Peas","Stick","Clover","Powder","Air","Basil","Orange","Ant Egg","Poo","Relic","Lotus","Bulb","Cotton","Carrot","Bone","Plank","Tomato","Mark","Rubber","Blood Stinger","Bur","Root","Dice","Talisman","Battery","Amulet","Compass","Disc","Shovel","Coin","Chip","Card","Moon Rock","Privet","Glass","Corruption","Coral","Wax","Golden Leaf","Monstera","Domino","Triangle"]
+		PetalNameList[222]="2 Turn Kill"
 		const PetalSVGArray=new Object()
 		PetalSVGArray.Basic="<path class='fwhite-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'/>"
 		PetalSVGArray.Light="<path class='fwhite-path ns' d='M50 19.4A7 7 0 0 0 50 33.4A7 7 0 0 0 50 19.4M39 27.4A7 7 0 0 0 39 41.4A7 7 0 0 0 39 27.4M61 27.4A7 7 0 0 0 61 41.4A7 7 0 0 0 61 27.4M43.2 40.4A7 7 0 0 0 43.2 54.4A7 7 0 0 0 43.2 40.4M56.8 40.4A7 7 0 0 0 56.8 54.4A7 7 0 0 0 56.8 40.4'/>"
@@ -742,7 +776,7 @@
 		PetalSVGArray.Faster="<path class='flyellow-path ns' d='M50 31A7 7 0 0 0 50 45A7 7 0 0 0 50 31'/>"
 		PetalSVGArray.Bubble="<path class='white-path wide' d='M50 24A14 14 0 0 0 50 52A14 14 0 0 0 50 24'/><path class='fwhite-path ns ' fill-opacity='0.3' d='M50 24A14 14 0 0 0 50 52A14 14 0 0 0 50 24'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M55 30A5 5 0 0 0 55 40A5 5 0 0 0 55 30'/>"
 		PetalSVGArray.Pollen="<path class='fyellow-path ns' d='M44.4 19.3A9 9 0 0 0 44.4 37.3A9 9 0 0 0 44.4 19.3M61.2 29A9 9 0 0 0 61.2 47A9 9 0 0 0 61.2 29M44.4 38.7A9 9 0 0 0 44.4 56.7A9 9 0 0 0 44.4 38.7'/>"
-		PetalSVGArray.Dandelion="<path class='fblack-path ns' d='M37.6 30.2L29.6 22.2A2.2 2.2 0 0 1 32.7 19.1L40.7 27.1A15.5 15.5 0 0 0 37.6 30.2'/><path class='fwhite-path ns' d='M50 28A11.5 11.5 0 0 0 50 51A11.5 11.5 0 0 0 50 28'/>"
+		PetalSVGArray.Dandelion="<path class='fblack-path ns' d='M39.6 32.2L31.6 24.2A2.2 2.2 0 0 1 34.7 21.1L42.7 29.1A15.5 15.5 0 0 0 39.6 32.2'/><path class='fwhite-path ns' d='M52 30A11.5 11.5 0 0 0 52 53A11.5 11.5 0 0 0 52 30'/>"
 		PetalSVGArray["Beetle Egg"]="<path class='flyellow-path ns' d='M50 18A20 15 90 0 0 50 58A20 15 90 0 0 50 18'/>"
 		PetalSVGArray.Antennae="<path class='fblack-path wide ns' d='M26 22A40 40 0 0 1 42 54ZM74 22A40 40 0 0 0 58 54Z'/>"
 		PetalSVGArray.Heavy="<path class='fdgrey-path ns' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'/><path class='flgrey-path ns ' d='M57 26A7 7 0 0 0 58 40A7 7 0 0 0 57 26'/>"
@@ -775,7 +809,7 @@
 		PetalSVGArray.Powder="<path class='fwhite-path ns ' d='M50 27A12 12 0 0 0 50 51A12 12 0 0 0 50 27M41 22A6 6 0 0 0 41 34A6 6 0 0 0 41 22M59 22A6 6 0 0 0 59 34A6 6 0 0 0 59 22'/>"
 		PetalSVGArray.Air="<path class='fwhite-path ns ' fill-opacity='0.1' d='M0 0L100 0L100 100L0 100'/>"
 		PetalSVGArray.Basil="<path class='fdgreen-path ns' d='M41.8 23.8L49.6 28.3A5.2 5.2 0 1 1 41.8 32.8ZM66.4 38L58.6 42.5A5.2 5.2 0 1 1 58.6 33.5ZM41.8 52.2L41.8 43.2A5.2 5.2 0 1 1 49.6 47.7Z'/>"
-		PetalSVGArray.Orange="<path class='fcyellow-path ns' d='M44.4 19.3A9 9 0 0 0 44.4 37.3A9 9 0 0 0 44.4 19.3M61.2 29A9 9 0 0 0 61.2 47A9 9 0 0 0 61.2 29M44.4 38.7A9 9 0 0 0 44.4 56.7A9 9 0 0 0 44.4 38.7'/><path class='dgreen-path wide' d='M44.4 24.3L44.4 14.3M44.4 20.3L48.4 20.3M61.2 34L61.2 24M61.2 30L65.2 30M44.4 43.7L44.4 33.7M44.4 39.7L48.4 39.7'/>"
+		PetalSVGArray.Orange="<path class='fcorange-path ns' d='M44.4 19.3A9 9 0 0 0 44.4 37.3A9 9 0 0 0 44.4 19.3M61.2 29A9 9 0 0 0 61.2 47A9 9 0 0 0 61.2 29M44.4 38.7A9 9 0 0 0 44.4 56.7A9 9 0 0 0 44.4 38.7'/><path class='dgreen-path wide' d='M44.4 24.3L44.4 14.3M44.4 20.3L48.4 20.3M61.2 34L61.2 24M61.2 30L65.2 30M44.4 43.7L44.4 33.7M44.4 39.7L48.4 39.7'/>"
 		PetalSVGArray["Ant Egg"]="<path class='flyellow-path ns' d='M50 20.1A8 8 0 0 0 50 36.1A8 8 0 0 0 50 20.1M59.9 30A8 8 0 0 0 59.9 46A8 8 0 0 0 59.9 30M50 39.9A8 8 0 0 0 50 55.9A8 8 0 0 0 50 39.9M40.1 30A8 8 0 0 0 40.1 46A8 8 0 0 0 40.1 30'/>"
 		PetalSVGArray.Poo="<path class='fblack-path wide' d='M50 26.8L50 49.2M40.3 32.4L59.7 43.6M59.7 32.4L40.3 43.6'/>"
 		PetalSVGArray.Relic="<path class='fcyellow-path ns' d='M50 28A12 12 0 0 0 60 38A12 12 0 0 0 50 48A12 12 0 0 0 40 38A12 12 0 0 0 50 28'/>"
@@ -795,9 +829,10 @@
 		PetalSVGArray.Talisman="<path class='black-path mwidth' stroke-linecap='round' stroke-linejoin='round' d='M50 26.8L40.3 43.6L59.7 43.6L50 26.8L50 43.6A5.6 5.6 0 0 0 50 32.4A5.6 5.6 0 0 0 50 43.6'/>"
 		PetalSVGArray.Battery="<path class='fgreen-path ns' d='M38 22L62 22L62 56L38 56Z'/><path class='fgrey-path wide ns' d='M44 20L44 15L56 15L56 20Z'/><path class='fcyan-path ns ' d='M54 24L42 40L48 40L46 52L58 36L52 36Z' style='filter: brightness(80%)'/>"
 		PetalSVGArray.Amulet="<path class='fcpink-path ns' d='M44.4 28.3L55.6 28.3L61.2 38L55.6 47.7L44.4 47.7L38.8 38Z'/><path class='fcpink-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32' style='filter: brightness(80%)'/>"
+		PetalSVGArray.Compass="<path class='fblue-path ns ' d='M50 18A20 20 0 0 0 50 58A20 20 0 0 0 50 18'/><path class='fred-path ns ' d='M46 38L50 20L54 38Z'/><path class='fwhite-path ns ' d='M46 38L50 56L54 38Z'/>"
 		PetalSVGArray.Disc="<path class='black-path wider' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'/>"
 		PetalSVGArray.Shovel="<path class='fdbrown-path wide ns' d='M41 51L45 53L53 37L49 35Z'/><path class='fgrey-path wide ns' d='M45 33L48 27A7 7 0 0 1 60 33L57 39Z'/>"
-		PetalSVGArray.Coin="<path class='fyellow-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'/><path class='yellow-path wide' d='M50 28L50 32M53 35A3 3 0 1 0 50 38A3 3 0 1 1 47 41M50 44L50 48' style='filter: brightness(80%)'/>"
+		PetalSVGArray.Coin="<path class='fcyellow-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'/><path class='cyellow-path wide' d='M50 28L50 32M53 35A3 3 0 1 0 50 38A3 3 0 1 1 47 41M50 44L50 48' style='filter: brightness(80%)'/>"
 		PetalSVGArray.Chip="<path class='fcpurple-path ns' d='M50 25A13 13 0 0 0 50 51A13 13 0 0 0 50 25'/><path class='white-path ' d='M45.9 25.7L54.1 25.7M55.8 26.4L61.6 32.2M62.3 33.9L62.3 42.1M61.6 43.8L55.8 49.6M54.1 50.3L45.9 50.3M44.2 49.6L38.4 43.8M37.7 42.1L37.7 33.9M38.4 32.2L44.2 26.4'/>"
 		PetalSVGArray.Card="<path class='fgrey-path ns' d='M38 20L62 20L62 56L38 56Z'/><path class='fwhite-path ns ' d='M38 38A18 12 90 0 0 62 38A18 12 90 0 0 38 38'/><path class='black-path mwidth' d='M41 31L48 31L48 45M59 38L52 38L52 31L59 31L59 45L52 45'/>"
 		PetalSVGArray["Moon Rock"]="<path class='fgrey-path wide ns' d='M50 13A25 25 0 0 0 50 63A25 25 0 0 0 75 38A35 35 0 0 0 50 13'/>"
@@ -810,10 +845,69 @@
 		PetalSVGArray.Monstera="<path class='fdgreen-path ns' d='M46 50L46 54L54 54L54 50L66 46L58 43L65 40L57 37L63 33L55 33L57 27L53 30L50 22L47 30L43 27L45 33L37 33L43 37L35 40L42 43L34 46Z'/><path class='dgreen-path wide' d='M50 30L50 50' style='filter: brightness(80%)'/>"
 		PetalSVGArray.Domino="<path class='fwhite-path ns' d='M32 32L44 20L68 44L56 56Z'/><path class='black-path mwidth' d='M38 30L42 26L50 34M58 42L54 46L50 42L54 38L62 46L58 50M46 42L54 34'/>"
 		PetalSVGArray.Triangle="<path class='fwhite-path ns' d='M47 32.8L56 38L47 43.2Z'/>"
-		for(let i in PetalNameList) if(i!=="66") {
-			PetalSVGArray[PetalNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 0L100 0L100 100L92 92L92 8L8 8ZM0 0L0 100L100 100L92 92L8 92L8 8Z'/>"+PetalSVGArray[PetalNameList[i]].replaceAll(/<path class='(f\w+-path (ns |wider?|mwidth)|\w+-path)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+PetalSVGArray[PetalNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+PetalNameList[i].replace("Blood Stinger","B. Stinger")+"</span>"
+		PetalSVGArray["2 Turn Kill"]="<path class='black-path mwidth' d='M39 17L32 21L39 25M42 19L48 19M42 23L48 23M52 19L58 19M52 23L58 23M61 17L68 21L61 25'/><path class='red-path mwidth' d='M33 32L39 32L39 37L33 37L33 42L39 42M47 32L53 32L53 37L47 37L47 42L53 42M47 49L53 49L53 54L47 54L47 59L53 59'/><path class='blue-path mwidth' d='M67 32L61 32L61 42L67 42L67 37L61 37M39 49L33 49L33 59L39 59L39 54L33 54M67 49L61 49L61 59L67 59L67 54L61 54'/>"
+		for(let i in PetalNameList) {
+			PetalSVGArray[PetalNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92L92 92L92 8ZM100 92A8 8 0 0 1 92 100L8 100A8 8 0 0 1 0 92L0 8L8 8L8 92Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+PetalSVGArray[PetalNameList[i]].replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+PetalSVGArray[PetalNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+PetalNameList[i].replace("Blood Stinger","B. Stinger").replace("Moon Rock","Moon R.").replace("Golden Leaf","G. Leaf")+"</span>"
 		}
-		PetalSVGArray.Compass="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 0L100 0L100 100L92 92L92 8L8 8ZM0 0L0 100L100 100L92 92L8 92L8 8Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g style='transform: rotate(45deg)'><path class='fblue-path ns' d='M50 18A20 20 0 0 0 50 58A20 20 0 0 0 50 18'/><path class='fred-path ns' d='M46 38L50 20L54 38Z'/><path class='fwhite-path ns' d='M46 38L50 56L54 38Z'/></g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>Compass</span>"
+		PetalSVGArray.Compass=PetalSVGArray.Compass.replace("<g>","<g style='transform: rotate(45deg)'>")
+		const MobNameList=["","Rock","Cactus","Ladybug (Garden)","Bee","Baby Ant","Worker Ant","Soldier Ant","Queen Ant","Ant Hole","Beetle","Hornet","Centipede (Garden)","Centipede (Jungle)","Centipede (Desert)","Ladybug (Jungle)","Ladybug (Desert)","Spider","Scorpion","Soldier Fire Ant","Fire Ant Burrow","Sandstorm","Bubble","Bumble Bee","Shell","Starfish","Crab","Jellyfish","Sponge","Leech","Dandelion","Baby Fire Ant","Worker Fire Ant","Queen Fire Ant","Fly","Leafbug","Mantis","Baby Termite","Worker Termite","Soldier Termite","Termite Overmind","Termite Mound","Termite Egg","Bush","Roach","Moth","Firefly","Beetle (Hell)","Wasp","Spider (Hell)","Centipede (Hell)","Wasp (Hell)"]
+		MobNameList[66]="Gambler"
+		const MobSVGArray=new Object()
+		MobSVGArray.Rock="<path class='fgrey-path ns' d='M38 30L50 26L60 28L63 44L55 52L45 50L36 40Z'/>"
+		MobSVGArray.Cactus="<path class='fgreen-path ns' d='M50 22.3A8 8 0 0 0 61.1 26.9A8 8 0 0 0 65.7 38A8 8 0 0 0 61.1 49.1A8 8 0 0 0 50 53.7A8 8 0 0 0 38.9 49.1A8 8 0 0 0 34.3 38A8 8 0 0 0 38.9 26.9A8 8 0 0 0 50 22.3'/><path class='flgreen-path ns ' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30'/>"
+		MobSVGArray["Ladybug (Garden)"]="<path class='fred-path ns' d='M59.6 25.2A16 16 0 1 1 40.4 25.2Z'/><path class='fblack-path ns ' d='M40 23A10 5 0 0 1 60 23A10 5 0 0 1 40 23M45 34A3 3 0 0 0 45 40A3 3 0 0 0 45 34M48 47A3 3 0 0 0 48 53A3 3 0 0 0 48 47M60 39A3 3 0 0 0 60 45A3 3 0 0 0 60 39'/>"
+		MobSVGArray.Bee="<path class='fblack-path wide' stroke-linejoin='round' d='M47 53L50 58L53 53ZM42 16A2 2 0 0 0 42 20A2 2 0 0 0 42 16M58 16A2 2 0 0 0 58 20A2 2 0 0 0 58 16'/><linearGradient id='graBee' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffff7f'/><stop offset='20%' stop-color='#ffff7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffff7f'/><stop offset='50%' stop-color='#ffff7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffff7f'/><stop offset='80%' stop-color='#ffff7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='yellow-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graBee)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A10 10 0 0 0 42 18M53 26A10 10 0 0 1 58 18'/>"
+		MobSVGArray["Baby Ant"]="<path class='black-path' stroke-linecap='round' d='M43 32L46 25M57 32L54 25'/><path class='dgrey-path wider' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31'/>"
+		MobSVGArray["Worker Ant"]="<path class='fdgrey-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='dgrey-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
+		MobSVGArray["Soldier Ant"]="<path class='fdgrey-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M46 38A8.7 5 105 0 0 41.5 54.8A8.7 5 105 0 0 46 38M54 38A8.7 5 75 0 0 58.5 54.8A8.7 5 75 0 0 54 38'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='dgrey-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
+		MobSVGArray["Queen Ant"]="<path class='fdgrey-path ns' d='M50 35A10 10 0 0 0 50 55A10 10 0 0 0 50 35'/><path class='dgrey-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fdgrey-path ns' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M46 34A8.7 5 105 0 0 41.5 50.8A8.7 5 105 0 0 46 34M54 34A8.7 5 75 0 0 58.5 50.8A8.7 5 75 0 0 54 34'/><path class='black-path' stroke-linecap='round' d='M44 24L46 17M56 24L54 17'/><path class='dgrey-path wider' d='M50 23A6 6 0 0 0 50 35A6 6 0 0 0 50 23' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 23A6 6 0 0 0 50 35A6 6 0 0 0 50 23'/>"
+		MobSVGArray["Ant Hole"]="<path class='fcyellow-path ns ' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20' style='filter: brightness(60%)'/><path class='fcyellow-path ns ' d='M50 26A12 12 0 0 0 50 50A12 12 0 0 0 50 26' style='filter: brightness(40%)'/><path class='fcyellow-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32' style='filter: brightness(20%)'/>"
+		MobSVGArray.Beetle="<path class='black-path' stroke-linecap='round' d='M43 27A9 9 0 0 1 45 20M57 27A9 9 0 0 0 55 20'/><path class='cpurple-path wider' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34' style='filter: brightness(80%)'/><path class='fcpurple-path ns ' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34'/><path class='cpurple-path' stroke-linecap='round' d='M50 34L50 46' style='filter: brightness(80%)'/><path class='fcpurple-path ns ' d='M45 32.8A1.8 1.8 0 0 0 45 36.4A1.8 1.8 0 0 0 45 32.8M45 38.2A1.8 1.8 0 0 0 45 41.8A1.8 1.8 0 0 0 45 38.2M45 43.6A1.8 1.8 0 0 0 45 47.2A1.8 1.8 0 0 0 45 43.6M55 32.8A1.8 1.8 0 0 0 55 36.4A1.8 1.8 0 0 0 55 32.8M55 38.2A1.8 1.8 0 0 0 55 41.8A1.8 1.8 0 0 0 55 38.2M55 43.6A1.8 1.8 0 0 0 55 47.2A1.8 1.8 0 0 0 55 43.6' style='filter: brightness(80%)'/>"
+		MobSVGArray.Hornet="<path class='fblack-path wide' stroke-linejoin='round' d='M47 53L50 62L53 53Z'/><linearGradient id='graHor' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cyellow-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graHor)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
+		MobSVGArray["Centipede (Garden)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fgreen-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
+		MobSVGArray["Centipede (Jungle)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fcpurple-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
+		MobSVGArray["Centipede (Desert)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fyellow-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
+		MobSVGArray["Ladybug (Jungle)"]="<path class='fdbrown-path ns' d='M59.6 25.2A16 16 0 1 1 40.4 25.2Z'/><path class='fblack-path ns ' d='M40 23A10 5 0 0 1 60 23A10 5 0 0 1 40 23'/><path class='fwhite-path ns ' fill-opacity='0.2' d='M45 34A3 3 0 0 0 45 40A3 3 0 0 0 45 34M48 47A3 3 0 0 0 48 53A3 3 0 0 0 48 47M60 39A3 3 0 0 0 60 45A3 3 0 0 0 60 39'/>"
+		MobSVGArray["Ladybug (Desert)"]="<path class='fyellow-path ns' d='M59.6 25.2A16 16 0 1 1 40.4 25.2Z'/><path class='fblack-path ns ' d='M40 23A10 5 0 0 1 60 23A10 5 0 0 1 40 23M45 34A3 3 0 0 0 45 40A3 3 0 0 0 45 34M48 47A3 3 0 0 0 48 53A3 3 0 0 0 48 47M60 39A3 3 0 0 0 60 45A3 3 0 0 0 60 39'/>"
+		MobSVGArray.Spider="<path class='black-path wide' stroke-linecap='round' d='M42.5 28A18 18 0 0 0 33 21M38 34.5A25 25 0 0 0 28 31M38 41.5A25 25 0 0 1 28 45M42.5 48A15 15 0 0 1 33 53M57.5 28A18 18 0 0 1 67 21M62 34.5A25 25 0 0 1 72 31M62 41.5A25 25 0 0 0 72 45M57.5 48A15 15 0 0 0 67 53'/><path class='fdgrey-path ns' d='M50 29.5A8.5 8.5 0 0 0 50 46.5A8.5 8.5 0 0 0 50 29.5'/>"
+		MobSVGArray.Scorpion="<path class='fcyellow-path wide ns' d='M50 25A13 5 90 0 0 50 51A13 5 90 0 0 50 25M47 31L40 29M40 29L42 21M47 37L38 36M47 41L38 42M47 48L42 47M42 47L40 50M53 31L60 29M60 29L58 21M53 37L62 36M53 41L62 42M53 48L58 47M58 47L60 50M50 51L50 57'/>"
+		MobSVGArray["Soldier Fire Ant"]="<path class='fcred-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M46 38A8.7 5 105 0 0 41.5 54.8A8.7 5 105 0 0 46 38M54 38A8.7 5 75 0 0 58.5 54.8A8.7 5 75 0 0 54 38'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='cred-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fcred-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
+		MobSVGArray["Fire Ant Burrow"]="<path class='fcred-path ns ' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20' style='filter: brightness(80%)'/><path class='fcred-path ns ' d='M50 26A12 12 0 0 0 50 50A12 12 0 0 0 50 26' style='filter: brightness(60%)'/><path class='fcred-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32' style='filter: brightness(40%)'/>"
+		MobSVGArray.Sandstorm="<path class='fyellow-path ns ' d='M50 16.4L68.7 27.2L68.7 48.8L50 59.6L31.3 48.8L31.3 27.2Z'/><path class='fyellow-path ns ' d='M50 23.8L62.3 30.9L62.3 45.1L50 52.2L37.7 45.1L37.7 30.9Z' style='filter: brightness(80%)'/><path class='fyellow-path ns ' d='M50 31.2L55.9 34.6L55.9 41.4L50 44.8L44.1 41.4L44.1 34.6Z' style='filter: brightness(60%)'/>"
+		MobSVGArray.Bubble="<path class='white-path mwidth' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'/><path class='fwhite-path ns ' fill-opacity='0.3' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M58 30A5 5 0 0 0 58 40A5 5 0 0 0 58 30'/>"
+		MobSVGArray["Bumble Bee"]="<path class='fblack-path wide' stroke-linejoin='round' d='M42 16A2 2 0 0 0 42 20A2 2 0 0 0 42 16M58 16A2 2 0 0 0 58 20A2 2 0 0 0 58 16'/><linearGradient id='graBum' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cyellow-path' d='M50 24A15 12 90 0 0 50 54A15 12 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graBum)' d='M50 24A15 12 90 0 0 50 54A15 12 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A10 10 0 0 0 42 18M53 26A10 10 0 0 1 58 18'/>"
+		MobSVGArray.Shell="<path class='fcyellow-path ns' d='M50 50L34 30A20 20 0 0 1 66 30Z'/><path class='cyellow-path wide' d='M49 46L41 28M50 46L50 25M51 46L59 28M43 54A25 25 0 0 1 57 54' style='filter: brightness(80%)'/>"
+		MobSVGArray.Starfish="<path class='fred-path ns' d='M44 38L48 22A6 3 90 0 1 52 22L56 38Z'/><path class='fred-path rot72 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fred-path rot144 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fred-path rot216 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fred-path rot288 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fwhite-path ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot72 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot144 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot216 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot288 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/>"
+		MobSVGArray.Crab="<path class='dbrown-path wide' stroke-linecap='round' stroke-linejoin='round' d='M39 29L33 23L42 20M35 33L25 30M32 37L22 36M32 41L22 42M35 45L25 48M61 29L67 23L58 20M65 33L75 30M68 37L78 36M68 41L78 42M65 45L75 48' style='filter: brightness(50%)'/><path class='dbrown-path wider' d='M50 29A14 10 0 0 0 50 49A14 10 0 0 0 50 29' style='filter: brightness(80%)'/><path class='fdbrown-path ns ' d='M50 29A14 10 0 0 0 50 49A14 10 0 0 0 50 29'/>"
+		MobSVGArray.Jellyfish="<path class='fwhite-path ns ' fill-opacity='0.3' d='M50 23.5A14.5 14.5 0 0 0 50 52.5A14.5 14.5 0 0 0 50 23.5'/><path class='white-path wide' stroke-linecap='round' d='M50 23.5A14.5 14.5 0 0 0 50 52.5A14.5 14.5 0 0 0 50 23.5M45.5 27.2L42 17M39.2 33.5L30 28M39.2 42.5L29 45M45.5 48.8L41 58M54.5 27.2L58 17M60.8 33.5L70 28M60.8 42.5L71 45M54.5 48.8L59 58'/>"
+		MobSVGArray.Sponge="<path class='fyellow-path ns' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'/><path class='fyellow-path ns ' d='M50 22A3.5 3.5 0 0 0 50 29A3.5 3.5 0 0 0 50 22M50 30A2.5 2.5 0 0 0 50 35A2.5 2.5 0 0 0 50 30' style='filter: brightness(80%)'/><path class='fyellow-path rot72 ns ' d='M50 22A3.5 3.5 0 0 0 50 29A3.5 3.5 0 0 0 50 22M50 30A2.5 2.5 0 0 0 50 35A2.5 2.5 0 0 0 50 30' style='filter: brightness(80%)'/><path class='fyellow-path rot144 ns ' d='M50 22A3.5 3.5 0 0 0 50 29A3.5 3.5 0 0 0 50 22M50 30A2.5 2.5 0 0 0 50 35A2.5 2.5 0 0 0 50 30' style='filter: brightness(80%)'/><path class='fyellow-path rot216 ns ' d='M50 22A3.5 3.5 0 0 0 50 29A3.5 3.5 0 0 0 50 22M50 30A2.5 2.5 0 0 0 50 35A2.5 2.5 0 0 0 50 30' style='filter: brightness(80%)'/><path class='fyellow-path rot288 ns ' d='M50 22A3.5 3.5 0 0 0 50 29A3.5 3.5 0 0 0 50 22M50 30A2.5 2.5 0 0 0 50 35A2.5 2.5 0 0 0 50 30' style='filter: brightness(80%)'/>"
+		MobSVGArray.Leech="<path class='fblack-path wide ns' d='M46 27A5 5 0 0 1 54 27L54 51A5 5 0 0 1 46 51ZM46 25L47 20M54 25L53 20'/>"
+		MobSVGArray.Dandelion="<path class='fwhite-path wide ns' d='M50 28A10 10 0 0 0 50 48A10 10 0 0 0 50 28M50 28L50 23A3.5 3.5 0 0 0 50 16A3.5 3.5 0 0 0 50 23M60 38L65 38A3.5 3.5 0 0 0 72 38A3.5 3.5 0 0 0 65 38M50 48L50 53A3.5 3.5 0 0 0 50 60A3.5 3.5 0 0 0 50 53M40 38L35 38A3.5 3.5 0 0 0 28 38A3.5 3.5 0 0 0 35 38'/><path class='fwhite-path diag wide ns' d='M50 28L50 23A3.5 3.5 0 0 0 50 16A3.5 3.5 0 0 0 50 23M60 38L65 38A3.5 3.5 0 0 0 72 38A3.5 3.5 0 0 0 65 38M50 48L50 53A3.5 3.5 0 0 0 50 60A3.5 3.5 0 0 0 50 53M40 38L35 38A3.5 3.5 0 0 0 28 38A3.5 3.5 0 0 0 35 38'/>"
+		MobSVGArray["Baby Fire Ant"]="<path class='black-path' stroke-linecap='round' d='M43 32L46 25M57 32L54 25'/><path class='cred-path wider' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31' style='filter: brightness(80%)'/><path class='fcred-path ns ' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31'/>"
+		MobSVGArray["Worker Fire Ant"]="<path class='fcred-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='cred-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fcred-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
+		MobSVGArray["Queen Fire Ant"]="<path class='fcred-path ns' d='M50 35A10 10 0 0 0 50 55A10 10 0 0 0 50 35'/><path class='cred-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fcred-path ns' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M46 34A8.7 5 105 0 0 41.5 50.8A8.7 5 105 0 0 46 34M54 34A8.7 5 75 0 0 58.5 50.8A8.7 5 75 0 0 54 34'/><path class='black-path' stroke-linecap='round' d='M44 24L46 17M56 24L54 17'/><path class='cred-path wider' d='M50 23A6 6 0 0 0 50 35A6 6 0 0 0 50 23' style='filter: brightness(80%)'/><path class='fcred-path ns ' d='M50 23A6 6 0 0 0 50 35A6 6 0 0 0 50 23'/>"
+		MobSVGArray.Fly="<path class='fdgrey-path ns' d='M50 29A8 8 0 0 0 50 45A8 8 0 0 0 50 29'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M47 34A8.7 5 105 0 0 42.5 50.8A8.7 5 105 0 0 47 34M53 34A8.7 5 75 0 0 57.5 50.8A8.7 5 75 0 0 53 34'/>"
+		MobSVGArray.Leafbug="<path class='black-path wide' stroke-linecap='round' d='M44 23L47 15M56 23L53 15M41 27L36 29M40 34L35 36M40 41L35 43M41 48L36 50M59 27L64 29M60 34L65 36M60 41L65 43M59 48L64 50'/><path class='dgreen-path wider' stroke-linecap='round' stroke-linejoin='round' d='M50 21A20 10 80 0 0 50 57A20 10 100 0 0 50 21' style='filter: brightness(80%)'/><path class='fdgreen-path ns ' d='M50 21A20 10 80 0 0 50 57A20 10 100 0 0 50 21'/><path class='dgreen-path wide' d='M50 25L50 50' style='filter: brightness(80%)'/>"
+		MobSVGArray.Mantis="<path class='black-path wide' stroke-linecap='round' d='M40 29L35 31M39 35L34 37M39 41L34 43M40 47L35 49M60 29L65 31M61 35L66 37M61 41L66 43M60 47L65 49'/><path class='green-path wider' stroke-linecap='round' stroke-linejoin='round' d='M50 23A16 8 90 0 0 50 55A16 8 90 0 0 50 23' style='filter: brightness(80%)'/><path class='fgreen-path ns ' d='M50 23A16 8 90 0 0 50 55A16 8 90 0 0 50 23'/><path class='black-path wide' stroke-linecap='round' d='M47 25A20 20 0 0 0 43 15M53 25A20 20 0 0 1 57 15'/>"
+		MobSVGArray["Baby Termite"]="<path class='black-path' stroke-linecap='round' d='M43 32L46 25M57 32L54 25'/><path class='lyellow-path wider' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31' style='filter: brightness(80%)'/><path class='flyellow-path ns ' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31'/>"
+		MobSVGArray["Worker Termite"]="<path class='flyellow-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='lyellow-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='flyellow-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
+		MobSVGArray["Soldier Termite"]="<path class='flyellow-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M46 38A8.7 5 105 0 0 41.5 54.8A8.7 5 105 0 0 46 38M54 38A8.7 5 75 0 0 58.5 54.8A8.7 5 75 0 0 54 38'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='lyellow-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='flyellow-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
+		MobSVGArray["Termite Overmind"]="<path class='black-path' stroke-linecap='round' d='M40 21L45 15M60 21L55 15'/><path class='lyellow-path wider' d='M50 21A18 18 0 0 0 50 57A18 18 0 0 0 50 21' style='filter: brightness(80%)'/><path class='flyellow-path ns ' d='M50 21A18 18 0 0 0 50 57A18 18 0 0 0 50 21'/>"
+		MobSVGArray["Termite Mound"]="<path class='flyellow-path ns ' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20' style='filter: brightness(80%)'/><path class='flyellow-path ns ' d='M50 26A12 12 0 0 0 50 50A12 12 0 0 0 50 26' style='filter: brightness(60%)'/><path class='flyellow-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32' style='filter: brightness(40%)'/>"
+		MobSVGArray["Termite Egg"]="<path class='flyellow-path ns' d='M50 26A12 12 0 0 0 50 50A12 12 0 0 0 50 26'/>"
+		MobSVGArray.Bush="<path class='fdgreen-path ns' d='M50 21.2A10 10 0 0 1 56.1 29.6A10 10 0 0 1 66 32.8A10 10 0 0 1 59.9 41.2A10 10 0 0 1 59.9 51.6A10 10 0 0 1 50 48.4A10 10 0 0 1 40.1 51.6A10 10 0 0 1 40.1 41.2A10 10 0 0 1 34 32.8A10 10 0 0 1 44.9 29.6A10 10 0 0 1 50 21.2'/><path class='dgreen-path wide' d='M50 38L50 25.4M50 38L62 34.1M50 38L57.4 47.7M50 38L42.6 47.7M50 38L38 34.1' style='filter: brightness(80%)'/>"
+		MobSVGArray.Roach="<path class='fdbrown-path ns' d='M50 23A16 8 90 0 0 50 55A16 8 90 0 0 50 23'/><path class='black-path wide' stroke-linecap='round' d='M47 25A20 20 0 0 0 43 15M53 25A20 20 0 0 1 57 15'/>"
+		MobSVGArray.Moth="<path class='fblack-path wide' stroke-linejoin='round' d='M42 21A2 2 0 0 0 42 25A2 2 0 0 0 42 21M58 21A2 2 0 0 0 58 25A2 2 0 0 0 58 21'/><path class='fdgrey-path ns' d='M50 29A8 8 0 0 0 50 45A8 8 0 0 0 50 29'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M47 34A8.7 6.5 105 0 0 42.5 50.8A8.7 6.5 105 0 0 47 34M53 34A8.7 6.5 75 0 0 57.5 50.8A8.7 6.5 75 0 0 53 34'/><path class='black-path wide' stroke-linecap='round' d='M47 29A8 8 0 0 0 42 23M53 29A8 8 0 0 1 58 23'/>"
+		MobSVGArray.Firefly="<path class='fyellow-path ns' d='M50 27A12 6 90 0 0 50 51A12 6 90 0 0 50 27'/><path class='fblack-path ns ' stroke-linecap='round' d='M50 20A6 6 0 0 0 50 32A6 6 0 0 0 50 20'/><path class='flyellow-path ns ' fill-opacity='0.3' d='M50 14A25 25 0 0 0 50 64A25 25 0 0 0 50 14'/>"
+		MobSVGArray["Beetle (Hell)"]="<path class='black-path' stroke-linecap='round' d='M43 27A9 9 0 0 1 45 20M57 27A9 9 0 0 0 55 20'/><path class='cdred-path wider' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34' style='filter: brightness(80%)'/><path class='fcdred-path ns ' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34'/><path class='cdred-path' stroke-linecap='round' d='M50 34L50 46' style='filter: brightness(80%)'/><path class='fcdred-path ns ' d='M45 32.8A1.8 1.8 0 0 0 45 36.4A1.8 1.8 0 0 0 45 32.8M45 38.2A1.8 1.8 0 0 0 45 41.8A1.8 1.8 0 0 0 45 38.2M45 43.6A1.8 1.8 0 0 0 45 47.2A1.8 1.8 0 0 0 45 43.6M55 32.8A1.8 1.8 0 0 0 55 36.4A1.8 1.8 0 0 0 55 32.8M55 38.2A1.8 1.8 0 0 0 55 41.8A1.8 1.8 0 0 0 55 38.2M55 43.6A1.8 1.8 0 0 0 55 47.2A1.8 1.8 0 0 0 55 43.6' style='filter: brightness(80%)'/>"
+		MobSVGArray.Wasp="<path class='fblack-path wide' stroke-linejoin='round' d='M46 53L50 65L54 53Z'/><linearGradient id='graWas' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffbf3f'/><stop offset='20%' stop-color='#ffbf3f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffbf3f'/><stop offset='50%' stop-color='#ffbf3f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffbf3f'/><stop offset='80%' stop-color='#ffbf3f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='corange-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graWas)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
+		MobSVGArray["Spider (Hell)"]="<path class='black-path wide' stroke-linecap='round' d='M42.5 28A18 18 0 0 0 33 21M38 34.5A25 25 0 0 0 28 31M38 41.5A25 25 0 0 1 28 45M42.5 48A15 15 0 0 1 33 53M57.5 28A18 18 0 0 1 67 21M62 34.5A25 25 0 0 1 72 31M62 41.5A25 25 0 0 0 72 45M57.5 48A15 15 0 0 0 67 53'/><path class='fcdred-path ns' d='M50 29.5A8.5 8.5 0 0 0 50 46.5A8.5 8.5 0 0 0 50 29.5'/>"
+		MobSVGArray["Centipede (Hell)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fcdred-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
+		MobSVGArray["Wasp (Hell)"]="<path class='fblack-path wide' stroke-linejoin='round' d='M46 53L50 65L54 53Z'/><linearGradient id='graHwa' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#bf0000'/><stop offset='20%' stop-color='#bf0000'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#bf0000'/><stop offset='50%' stop-color='#bf0000'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#bf0000'/><stop offset='80%' stop-color='#bf0000'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cdred-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graHwa)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
+		MobSVGArray.Gambler="<path class='fcdred-path ns' d='M50 23A15 15 0 0 0 50 53A15 15 0 0 0 50 23'/><path class='black-path wide' d='M42 42A10 10 0 0 0 58 42M45 30L45 38M55 30L55 38'/>"
+		for(let i in MobNameList) if(i!=="0") {
+			MobSVGArray[MobNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92L92 92L92 8ZM100 92A8 8 0 0 1 92 100L8 100A8 8 0 0 1 0 92L0 8L8 8L8 92Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+MobSVGArray[MobNameList[i]].replaceAll(/<linear.+Gradient>/g,"").replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path|ns)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+MobSVGArray[MobNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+MobNameList[i].replace(/\s\(.+\)/,"").replace("Ant","A.").replace("Fire ","F. ").replace("Termite","T.").replace("Bumble","B.").replace("Soldier F","S. F").replace("Burrow","B.").replace("Worker F","W. F").replace("Queen F","Q. F").replace("Overmind","Over.")+"</span>"
+		}
 		function Petal(id=0,rarity=1,level=0) {
 			this.id=id,this.rarity=rarity,this.level=level
 			this.name="Basic"
@@ -835,7 +929,7 @@
 		}
 	</script>
 	<script>
-		const version=20250812
+		const version=20250911
 		const svgNS="http://www.w3.org/2000/svg"
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
 		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
@@ -861,8 +955,8 @@
 		if(!player.inventory) player.inventory=new Object()
 		if(!player.gallery) player.gallery=new Object()
 		if(!explore.floor) explore.floor=0
-		if(!explore.targetspot) explore.targetspot=10
-		explore.flowerspot=explore.targetspot
+		if(!explore.floweroldspot) explore.floweroldspot=10
+		if(!explore.flowerspot) explore.flowerspot=10
 		if(!explore.highest) explore.highest=100*explore.floor+explore.flowerspot
 		if(!explore.explored) explore.explored=new Object()
 		for(let i in mapArray) if(!explore.explored[mapArray[i]]) explore.explored[mapArray[i]]=false
@@ -950,9 +1044,12 @@
 			if(text==="Diamond") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10'/><path class='fgreen-path' d='M26 46L50 75L74 46L66 32L34 32ZL42 46L50 75L58 46L74 46M50 32L42 46L58 46Z''/></svg><span style='display: none'>Diamond</span>"
 			if(text==="Cross") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 20L80 80M80 20L20 80'/></svg><span style='display: none'>Cross</span>"
 			if(text==="Line") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M0 50L100 50'/></svg><span style='display: none'>Line</span>"
-			if(text==="Empty") newGrid.innerHTML="<span class='lgrey text3'>Empty</span>"
+			if(text==="Empty") newGrid.innerHTML="<span class='mid lgrey text3'>Empty</span>"
 			if(typeof(text)==="number" && text!==0) newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10L90 50L50 90L10 50Z'/></svg><span class='mid'>"+text+"</span>"
 			if(text.startsWith("Petal")) newGrid.innerHTML=PetalSVGArray[text.slice(6)]
+			if(text.startsWith("Mob")) newGrid.innerHTML=MobSVGArray[text.slice(4)]
+			newGrid.addEventListener("mouseenter",() => gridInfo(newGrid))
+			newGrid.addEventListener("mouseleave",closeGridInfo)
 			return newGrid
 		}
 		function getGrid(value,x,y) {
@@ -1138,6 +1235,15 @@
 			console.log("updateGame")
 		}
 		function endTurn() {
+document.getElementById("inv-petal").appendChild(createGrid(1,1,0,"Petal_Basic",1,1))
+document.getElementById("inv-petal").appendChild(createGrid(1,2,0,"Petal_Basic",1,2))
+document.getElementById("inv-petal").appendChild(createGrid(1,3,0,"Petal_Basic",1,3))
+document.getElementById("inv-petal").appendChild(createGrid(1,4,0,"Petal_Leaf",1,4))
+document.getElementById("inv-petal").appendChild(createGrid(1,5,0,"Petal_Basic",1,5))
+document.getElementById("inv-petal").appendChild(createGrid(1,6,0,"Petal_Light",1,6))
+document.getElementById("inv-petal").appendChild(createGrid(1,7,0,"Petal_Basic",1,7))
+document.getElementById("inv-petal").appendChild(createGrid(1,8,0,"Petal_Basic",1,8))
+document.getElementById("inv-petal").appendChild(createGrid(1,9,0,"Petal_Basic",1,9))
 			console.log("endTurn")
 		}
 		function tryInput(num) {
@@ -1199,14 +1305,12 @@
 			} )
 			mapElement.querySelectorAll("path[d*='A2']").forEach(path => {
 				path.addEventListener("mouseenter",() => mapInfo(path))
-				path.addEventListener("mouseleave",closeInfo)
+				path.addEventListener("mouseleave",closeMapInfo)
 			} )
 			if(fight.active===true) {
-				document.getElementById("fight-container").style.display="grid"
-				document.getElementById("fight-btn").style.top=parseFloat(window.getComputedStyle(document.getElementById("fight-container")).top)-300+"px"
-				document.getElementById("fight-btn").style.display="flex"
+				displayFight()
 			} else {
-				document.getElementById("map-container").style.display="unset"
+				displayMap()
 			}
 			document.getElementById("end2").innerText="Welcome to the Florroom!"
 			for(let i=0;i<=10;i++) {
@@ -1291,11 +1395,10 @@
 			if(player.calendar.minute<10) document.getElementById("calendar-minute").innerHTML="0"+player.calendar.minute
 			localStorage.setItem("player",JSON.stringify(player))
 		}
-		let drag=false,dragX=0,dragY=0,mapcX=0,mapcY=0,containElement,mapElement,mapInfoElement,homeElement,homeFlowerElement,scaleSize
+		let drag=false,dragX=0,dragY=0,mapcX=0,mapcY=0,containElement,mapElement,homeElement,homeFlowerElement,scaleSize
 		function setContainElement() {
 			containElement=document.getElementById("map-container")
 			mapElement=document.getElementById("map-trans")
-			mapInfoElement=document.getElementById("mapinfo")
 			containElement.addEventListener("mousedown",function(mouse) {
 				if(mouse.target.id!=="blank") return
 				drag=true
@@ -1406,15 +1509,15 @@
 				} )
 			}
 		}
-		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerStartSpot,flowerSpotX=0,flowerSpotY=0
+		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerSpotX=0,flowerSpotY=0
 		function travel(spot) {
-			flowerStartSpot=explore.flowerspot
+			explore.floweroldspot=explore.flowerspot
 			explore.flowerspot=spot
 			flowerMoveStartTime=Date.now()
 			flowerMove=true
 		}
-		function updateFlowerSpot() {
-			if(document.getElementById("flowerspot").style.transform==="") {
+		function updateFlowerSpot(force=false) {
+			if(document.getElementById("flowerspot").style.transform==="" || force===true) {
 				flowerSpotX=getSpotCord(explore.flowerspot).x
 				flowerSpotY=getSpotCord(explore.flowerspot).y
 				document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
@@ -1422,23 +1525,21 @@
 				return
 			}
 			if(flowerMove===false) return
-			let distancePassed=(Date.now()-flowerMoveStartTime)/100/distance(flowerStartSpot,explore.flowerspot)
+			let distancePassed=(Date.now()-flowerMoveStartTime)/30/distance(explore.floweroldspot,explore.flowerspot)
 			if(distancePassed>=1) {
 				flowerSpotX=getSpotCord(explore.flowerspot).x
 				flowerSpotY=getSpotCord(explore.flowerspot).y
 				document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
 				updateHome()
 				flowerMove=false
-				if(explore.explored[explore.flowerspot]===true) {
-					explore.targetspot=explore.flowerspot
-					localStorage.setItem("explore",JSON.stringify(explore))
-				} else {
+				if(explore.explored[explore.flowerspot]===false) {
 					startFight()
 				}
+				localStorage.setItem("explore",JSON.stringify(explore))
 				return
 			}
-			flowerSpotX=(1-distancePassed)*getSpotCord(flowerStartSpot).x+distancePassed*getSpotCord(explore.flowerspot).x
-			flowerSpotY=(1-distancePassed)*getSpotCord(flowerStartSpot).y+distancePassed*getSpotCord(explore.flowerspot).y
+			flowerSpotX=(1-distancePassed)*getSpotCord(explore.floweroldspot).x+distancePassed*getSpotCord(explore.flowerspot).x
+			flowerSpotY=(1-distancePassed)*getSpotCord(explore.floweroldspot).y+distancePassed*getSpotCord(explore.flowerspot).y
 			document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
 			updateHome()
 		}
@@ -1449,38 +1550,65 @@
 			if(spotValue===explore.flowerspot) {
 				return
 			}
-			if(explore.explored[spotValue]===false) {
-				explore.targetspot=spotValue
-				localStorage.setItem("explore",JSON.stringify(explore))
-			}
 			travel(spotValue)
-			closeInfo()
+			closeMapInfo()
 		}
 		function mapInfo(spot) {
 			if(flowerMove) return
 			let spotValue=parseInt(spot.getAttribute("value"))
 			if(distance(explore.flowerspot,spotValue)===-1) return
-			document.getElementById("mapinfo").style.setProperty("--transform2","translate("+(mapcX+getSpotCord(spotValue).x-50)/100*scaleSize+"px, "+((mapcY+getSpotCord(spotValue).y-50)/100*scaleSize-50)+"px)")
+			document.getElementById("mapinfo").style.setProperty("--transform2","translate(0%,-50%)")
+			document.getElementById("mapinfo").style.top=spot.getBoundingClientRect().top-15+"px"
+			document.getElementById("mapinfo").style.left=spot.getBoundingClientRect().left+spot.getBoundingClientRect().width/2+"px"
 			document.getElementById("mapinfo").innerHTML="<span>value="+spotValue+"</span>"
 			if(distance(explore.flowerspot,spotValue)>0) {
 				document.getElementById("mapinfo").innerHTML+="<span>distance="+distance(explore.flowerspot,spotValue)+"</span>"
 			}
 			document.getElementById("mapinfo").style.display="flex"
 		}
-		function closeInfo() {
+		function closeMapInfo() {
 			document.getElementById("mapinfo").style.display="none"
 		}
-		function startFight() {
-			fight.active=true
-			localStorage.setItem("fight",JSON.stringify(fight))
+		function gridInfo(grid) {
+			let gridValue=parseInt(grid.getAttribute("value")),gridX=parseInt(grid.dataset.x),gridY=parseInt(grid.dataset.y)
+			document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
+			document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-20+"px"
+			document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
+			document.getElementById("gridinfo").innerHTML="<span>value="+gridValue+" x="+gridX+" y="+gridY+"</span>"
+			document.getElementById("gridinfo").style.display="flex"
+		}
+		function closeGridInfo() {
+			document.getElementById("gridinfo").style.display="none"
+		}
+		function displayMap()
+		{
+			document.getElementById("fight-btn").style.display="none"
+			document.getElementById("fight-container").style.display="none"
+			document.getElementById("map-container").style.display="unset"
+		}
+		function displayFight()
+		{
+			document.getElementById("mapinfo").style.display="none"
 			document.getElementById("map-container").style.display="none"
 			document.getElementById("fight-container").style.display="grid"
 			document.getElementById("fight-btn").style.top=parseFloat(window.getComputedStyle(document.getElementById("fight-container")).top)-300+"px"
 			document.getElementById("fight-btn").style.display="flex"
 		}
-		function endFight() {
+		function startFight() {
+			fight.active=true
+			localStorage.setItem("fight",JSON.stringify(fight))
+			displayFight()
+		}
+		function endFight(win) {
 			fight.active=false
 			localStorage.setItem("fight",JSON.stringify(fight))
+			if(win===false) {
+				explore.flowerspot=explore.floweroldspot
+				localStorage.setItem("explore",JSON.stringify(explore))
+				updateFlowerSpot(true)
+				displayMap()
+				return
+			}
 			explore.explored[explore.flowerspot]=true
 			if(explore.highest<100) {
 				explore.highest=explore.flowerspot
@@ -1498,9 +1626,7 @@
 				} )
 			}
 			localStorage.setItem("explore",JSON.stringify(explore))
-			document.getElementById("fight-btn").style.display="none"
-			document.getElementById("fight-container").style.display="none"
-			document.getElementById("map-container").style.display="unset"
+			displayMap()
 		}
 	</script>
 	<script>
@@ -1553,7 +1679,7 @@
 				</g>
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"/>
 				<g id="ladybug">
-					<path class="fred-path wide" d="M62 34A20 20 0 1 1 38 34A12 5 0 0 0 62 34"/>
+					<path class="fred-path wide" d="M62 34A20 20 0 1 1 38 34Z"/>
 					<path class="fblack-path" d="M38 34A12 5 0 0 1 62 34A12 5 0 0 1 38 34"/>
 					<path class="fblack-path" d="M45 47A3 3 0 0 0 45 53A3 3 0 0 0 45 47"/>
 					<path class="fblack-path" d="M48 62A3 3 0 0 0 48 68A3 3 0 0 0 48 62"/>
@@ -1586,6 +1712,7 @@
 		<h2>Inventory</h2>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
+		<div id="inv-petal" class="col5"></div>
 	</div>
 	<div id="gallery" class="mid lyellow-bg box highz hsize nd">
 		<h2>Gallery</h2>
@@ -1673,12 +1800,18 @@
 				<path class="fyellow-path" d="M50 20A30 30 0 0 0 50 80A30 30 0 0 0 50 20M34 58A20 20 0 0 0 66 58M40 34L40 50M60 34L60 50"/>
 			</svg>
 		</button>
-		<div id="mapinfo" class="llcyan-bg mid infobox nd">
-			<span class="text2 bold">Centralia (C0)</span>
-			<span class="bold">The beginning of the journey.</span>
-			<br>
-			<span>Mob: Ladybug 6361%, Baby Ant 79%</span>
-		</div>
+	</div>
+	<div id="mapinfo" class="llcyan-bg mid infobox nd">
+		<span class="text2 bold">Centralia (C0)</span>
+		<span class="bold">The beginning of the journey.</span>
+		<br>
+		<span>Mob: Ladybug 6361%, Baby Ant 79%</span>
+	</div>
+	<div id="gridinfo" class="llpurple-bg mid infobox highestz nd">
+		<span class="text2 bold">Centralia (C0)</span>
+		<span class="bold">The beginning of the journey.</span>
+		<br>
+		<span>Mob: Ladybug 6361%, Baby Ant 79%</span>
 	</div>
 	<div id="flower-state" class="bottom text3-c">
 	</div>
@@ -1688,8 +1821,8 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/8/12,</span>
-		<span>which updated petal image (check console for information).</span>
+		<span>The last update was on 2025/9/11,</span>
+		<span>which updated mob images and fixed bug in explore.</span>
 		<br>
 		<button type="button" id="version3" onclick="updateVersion(false)">No, just update the version.</button>
 		<br>
