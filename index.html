@@ -767,7 +767,6 @@
 			outline: none;
 			height: 100%;
 			width: 100%;
-			margin-left: 5px;
 			padding: 0px;
 		}
 		.highz {
@@ -988,6 +987,18 @@
 		PetalSVGArray.Compass=PetalSVGArray.Compass.replace("<g>","<g style='transform: rotate(45deg)'>")
 		const MobNameList=["","Rock","Cactus","Ladybug (Garden)","Bee","Baby Ant","Worker Ant","Soldier Ant","Queen Ant","Ant Hole","Beetle","Hornet","Centipede (Garden)","Centipede (Jungle)","Centipede (Desert)","Ladybug (Jungle)","Ladybug (Desert)","Spider","Scorpion","Soldier Fire Ant","Fire Ant Burrow","Sandstorm","Bubble","Bumble Bee","Shell","Starfish","Crab","Jellyfish","Sponge","Leech","Dandelion","Baby Fire Ant","Worker Fire Ant","Queen Fire Ant","Fly","Leafbug","Mantis","Baby Termite","Worker Termite","Soldier Termite","Termite Overmind","Termite Mound","Termite Egg","Bush","Roach","Moth","Firefly","Beetle (Hell)","Wasp","Spider (Hell)","Centipede (Hell)","Wasp (Hell)"]
 		MobNameList[66]="Gambler"
+		const MobBehaviorList=["","Passive","Hostile","Neutral","Neutral","Passive","Neutral","Hostile","Hostile","Passive","Hostile","Hostile","Neutral","Hostile","Neutral","Neutral","Neutral","Hostile","Hostile","Hostile","Passive","Passive","Passive","Passive","Neutral","Hostile","Hostile","Hostile","Passive","Hostile","Passive","Passive","Neutral","Hostile","Hostile","Neutral","Hostile","Passive","Neutral","Hostile","Neutral","Passive","Passive","Passive","Neutral","Neutral","Neutral","Hostile","Hostile","Hostile","Hostile","Hostile"]
+		MobBehaviorList[66]="Gamble"
+		const MobHealthList=["",30,20,25,15,10,25,40,100,30,40,25,10,10,10,35,35,25,40,40,"*",50,1,10,20,20,30,30,40,40,10,10,25,100,2,20,40,10,25,40,200,"*",60,15,25,7,16,60,25,60,20,25]
+		MobHealthList[66]="/"
+		const MobDamageList=["",2,7,2,10,2,2,2,2,3,6,10,2,2,2,2,2,3,3,4,"*",8,1,4,2,4,5,5,2,2,3,4,4,4,2,6,4,2,2,2,2,"*","*",2,4,2,1,6,10,3,6,10]
+		MobDamageList[66]="/"
+		const MobDodgeList=["",0,0,30,60,20,40,40,10,0,20,40,10,10,10,30,30,50,30,40,0,60,0,70,10,40,60,10,0,0,0,20,40,10,90,30,20,20,40,40,10,0,0,0,40,0,60,20,40,50,10,40]
+		MobDodgeList[66]="/"
+		const MobSpeedList=["",10,15,20,25,15,20,20,15,15,20,25,15,20,30,20,20,30,15,20,100,25,30,30,15,20,25,15,10,40,10,15,20,15,25,20,15,15,20,20,5,25,15,15,25,25,25,25,30,35,25,25]
+		MobSpeedList[66]="/"
+		const MobLootList=[[],["Rock,2","Heavy,2","Moon Rock,1"],["Cactus,2"],["Light,3","Rose,3"],["Stinger,3","Pollen,2","Honey,2"],["Light,3","Leaf,2","Rice,3"],["Leaf,2","Corn,2"],["Clover,3","Glass,4"],["Basil,4","Ant Egg,4"],["Soil,3","Shovel,3"],["Beetle Egg,3","Privet,4"],["Missile,3","Antennae,2","Orange,3"],["Leaf,2","Peas,2"],["Iris,2","Grapes,2"],["Salt,2","Powder,2"],["Yin Yang,2","Dahlia,3"],["Rose,5","Yggdrasil,4","Dahlia,5"],["Faster,3","Web,3","Third Eye,1"],["Iris,3","Pincer,3"],["Yucca,4","Bone,2"],["Magnet,4","Disc,4"],["Sand,2","Stick,2","Glass,2"],["Bubble,3","Air,5"],["Pollen,5","Honey,3","Wax,5"],["Magnet,1","Pearl,3","Shell,2"],["Salt,2","Sand,2","Starfish,3"],["Sand,2","Claw,3"],["Lightning,2","Jelly,3"],["Sponge,3","Coral,2"],["Faster,3","Fangs,3"],["Dandelion,4"],["Light,3","Yucca,2"],["Corn,2","Yucca,2"],["Basil,4","Ant Egg,4"],["Wing,3","Poo,3","Talisman,2"],["Leaf,3","Root,3"],["Peas,3","Bur,3"],["Relic,2","Carrot,3"],["Relic,2","Plank,2"],["Relic,2","Triangle,3"],["Relic,4","Tomato,2","Compass,5"],["Soil,3","Relic,2","Rubber,3"],["Ant Egg,3","Amulet,2"],["Cotton,4","Golden Leaf,1","Monstera,3"],["Antennae,3","Lotus,2"],["Wing,3","Bulb,3"],["Wing,3","Bulb,3","Battery,2"],["Beetle Egg,1","Mark,1","Dice,2"],["Missile,4","Antennae,3","Blood Stinger,2"],["Third Eye,1","Mark,1","Card,2"],["Mark,1","Domino,1"],["Missile,5","Mark,1","Chip,2"]]
+		MobLootList[66]=["Dice,3","Chip,3","Card,3","Corruption,5","Domino,3"]
 		const MobSVGArray=new Object()
 		MobSVGArray.Rock="<path class='fgrey-path ns' d='M38 30L50 26L60 28L63 44L55 52L45 50L36 40Z'/>"
 		MobSVGArray.Cactus="<path class='fgreen-path ns' d='M50 22.3A8 8 0 0 0 61.1 26.9A8 8 0 0 0 65.7 38A8 8 0 0 0 61.1 49.1A8 8 0 0 0 50 53.7A8 8 0 0 0 38.9 49.1A8 8 0 0 0 34.3 38A8 8 0 0 0 38.9 26.9A8 8 0 0 0 50 22.3'/><path class='flgreen-path ns ' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30'/>"
@@ -1057,7 +1068,7 @@
 			let answer=FlowerMaxHealthBase(player.level)
 			return answer
 		}
-		function PetalExp(rarity,level) {
+		function PetalAbsorbExp(rarity,level) {
 			let base=[0,8,12,20,40,100,300]
 			let answer=base[rarity]
 			answer*=2**level
@@ -1131,7 +1142,11 @@
 			if(level>=3) return 100
 			let base=[0,2,10]
 			let answer=50*level-30
-			answer-=(Rarity-1)*base[level]
+			answer-=(rarity-1)*base[level]
+			return answer
+		}
+		function PetalRarityUpChance(rarity,level) {
+			let answer=RarityUpBase(rarity,level)
 			return answer
 		}
 		function LevelUpBase(rarity,level) {
@@ -1140,6 +1155,11 @@
 			if(answer<1/4) answer=1/4
 			answer*=base[rarity]
 			return approx(answer)
+		}
+		function PetalLevelUpChance(rarity,level,num) {
+			let answer=LevelUpBase(rarity,level)
+			answer*=(num-1)
+			return answer
 		}
 		function ShinyMobStatMultiplier() {
 			let seed=roll(1,100),answer=new object()
@@ -1337,12 +1357,14 @@
 				document.getElementById("command-call").style.display="none"
 				document.getElementById("cleaner").style.display="none"
 				document.getElementById("command").style.width="unset"
+				document.getElementById("expander").children[1].style.display="unset"
 			} else {
 				logDisplay=true
 				document.getElementById("log").style.display=""
 				document.getElementById("command-call").style.display=""
 				document.getElementById("cleaner").style.display=""
 				document.getElementById("command").style.width=""
+				document.getElementById("expander").children[1].style.display=""
 			}
 		}
 		function command(key) {
@@ -1439,6 +1461,7 @@
 		const version=20251019
 		const svgNS="http://www.w3.org/2000/svg"
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
+		const rarityName=["None","Common","Unusual","Rare","Epic","Legendary","Mythic","Ultra","Super","Unique"]
 		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
 		const pathArray=[1011,1013,1112,1121,1131,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1724,1739,2122,2224,2225,2226,2324,2325,2353,2461,2526,3132,3133,3233,3236,3239,3334,3335,3436,3438,3537,3538,3639,3738,3761,3943,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5664,6162,6263,6265,6364,6365,6466,6566,6667]
 		const tutorialOrder=[10,11,12,14,21,22,24,31,41,42,43,51,52,53,23,61,62,63,64,65,66,67]
@@ -1451,7 +1474,7 @@
 		if(!player) player=new Object()
 		if(!explore) explore=new Object()
 		if(!fight) fight=new Object()
-		if(!player.access) player.access=""
+		if(!player.access) player.access=new Object()
 		if(!player.calendar) player.calendar=new Object()
 		if(!player.calendar.day) player.calendar.day=60
 		if(!player.calendar.hour) player.calendar.hour=1
@@ -1483,6 +1506,20 @@
 			player.inventory[24]=new Petal(20,3,0)
 			player.inventory[25]=new Petal(20,3,0)
 			player.inventory[26]=new Petal(20,3,0)
+			player.inventory[27]=new Petal(71,3,1)
+			player.inventory[28]=new Petal(71,3,1)
+			player.inventory[29]=new Petal(71,3,1)
+			player.inventory[30]=new Petal(71,3,1)
+			player.inventory[31]=new Petal(71,3,1)
+			player.inventory[32]=new Petal(71,3,1)
+			player.inventory[33]=new Petal(71,3,1)
+			player.inventory[34]=new Petal(71,3,1)
+			player.inventory[35]=new Petal(71,3,1)
+			player.inventory[36]=new Petal(70,5,2)
+			player.inventory[37]=new Petal(70,5,2)
+			player.inventory[38]=new Petal(70,5,2)
+			player.inventory[39]=new Petal(70,5,2)
+			player.inventory[40]=new Petal(70,5,2)
 		}
 		if(!player.gallery) player.gallery=new Object()
 		if(!explore.floor) explore.floor=0
@@ -1562,6 +1599,7 @@
 			return document.querySelector("[value='"+value+"']")
 		}
 		function clickDice(button) {
+			if(animation) return
 			let buttonValue=parseInt(button.value)
 			return
 		}
@@ -1593,6 +1631,15 @@
 		function clickGrid(button) {
 			if(animation) return
 			let buttonValue=parseInt(button.value),buttonX=parseInt(button.getAttribute("data-x")),buttonY=parseInt(button.getAttribute("data-y"))
+			if(lupoper.active===true) {
+				let targetPetal=player.inventory[lupoper.selectedArray[0]]
+				if(player.inventory[buttonX].id===targetPetal.id && player.inventory[buttonX].rarity===targetPetal.rarity && player.inventory[buttonX].level===targetPetal.level) {
+					lupoper.selectedArray=lupoper.selectedArray.concat(buttonX)
+					collapseGrid(button)
+					document.getElementById("lup-confirm").innerHTML="Level Up"
+				}
+				return
+			}
 			if(fight.active===false && buttonValue===1) {
 				if(selectedGrid.select===true && selectedGrid.value===buttonValue && selectedGrid.x===buttonX && selectedGrid.y===buttonY) {
 					selectedGrid.select=false
@@ -1664,6 +1711,9 @@
 		}
 		function dice() {
 			return roll(1,6)
+		}
+		function determine(chance) {
+			return (chance>=100*Math.random())
 		}
 		let cogDegree=0
 		function cogRotate() {
@@ -1777,6 +1827,7 @@
 			document.getElementById("ladybug-bg").style.display="flex"
 		}
 		async function importSave() {
+			if(animation) return
 			let getSave=prompt("Retrieve your memories...")
 			if(getSave===null) return
 			clearAllInterval()
@@ -1788,11 +1839,13 @@
 			location.reload()
 		}
 		async function exportSave() {
+			if(animation) return
 			document.getElementById("export-btn").innerHTML="Memories Stored!"
 			await delay(1000)
 			document.getElementById("export-btn").innerHTML="Store Memories"
 		}
 		async function hardReset() {
+			if(animation) return
 			let getResetSentence=prompt("Are you sure to reset the game and lost all process?\nType 'The game is perfect, there are no bugs' to confirm.")
 			if(getResetSentence!=="The game is perfect, there are no bugs") return
 			clearAllInterval()
@@ -1843,9 +1896,11 @@
 			console.log("updateGame")
 		}
 		function endTurn() {
+			if(animation) return
 			console.log("endTurn")
 		}
 		function tryInput(num) {
+			if(animation) return
 			console.log("tryInput")
 		}
 		document.addEventListener("keydown",function(pressed) {
@@ -2116,6 +2171,7 @@
 		}
 		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerSpotX=0,flowerSpotY=0
 		function travel(spot) {
+			if(animation) return
 			explore.floweroldspot=explore.flowerspot
 			explore.flowerspot=spot
 			flowerMoveStartTime=Date.now()
@@ -2177,6 +2233,7 @@
 		}
 		function gridInfo(grid) {
 			if(selectedGrid.select===true) return
+			if(grid.style.scale>0 && grid.style.scale<1) return
 			let gridValue=parseInt(grid.getAttribute("value")),gridX=parseInt(grid.dataset.x),gridY=parseInt(grid.dataset.y)
 			if(document.getElementById("inventory").style.display==="flex" && gridValue===0) return
 			if(gridValue===0) {
@@ -2305,6 +2362,7 @@
 			updateFlowerState()
 		}
 		async function collapseGrid(grid) {
+			closeGridInfo(true)
 			animation=true
 			let gridValue=parseInt(grid.getAttribute("value")),gridX=parseInt(grid.dataset.x),gridY=parseInt(grid.dataset.y)
 			for(let i=0;i<=20;i++) {
@@ -2325,20 +2383,34 @@
 				grid.remove()
 			}
 			animation=false
-			closeGridInfo(true)
 		}
+		function printSinglePetal(order) {
+			let place=0
+			while(place<document.getElementById("inv-petal").children.length && player.inventory[order].star<=document.getElementById("inv-petal").children[place].dataset.y && (player.inventory[order].star<document.getElementById("inv-petal").children[place].dataset.y || order>parseInt(document.getElementById("inv-petal").children[place].dataset.x))) place++
+			if(place===document.getElementById("inv-petal").children.length) {
+				document.getElementById("inv-petal").appendChild(createGrid(1,order,player.inventory[order].star,"Petal_"+player.inventory[order].name,1,player.inventory[order].rarity))
+			} else {
+				document.getElementById("inv-petal").insertBefore(createGrid(1,order,player.inventory[order].star,"Petal_"+player.inventory[order].name,1,player.inventory[order].rarity),document.getElementById("inv-petal").children[place])
+			}
+		}
+		let lupoper=new Object()
+		lupoper.active=false
+		lupoper.selectedArray=new Array()
 		function printInventory() {
 			if(animation) return
 			document.getElementById("inv-petal").innerHTML=""
-			for(let i in player.inventory) {
-				let place=0
-				while(place<document.getElementById("inv-petal").children.length && player.inventory[i].star<=document.getElementById("inv-petal").children[place].dataset.y) place++
-				if(place===document.getElementById("inv-petal").children.length) {
-					document.getElementById("inv-petal").appendChild(createGrid(1,i,player.inventory[i].star,"Petal_"+player.inventory[i].name,1,player.inventory[i].rarity))
-				} else {
-					document.getElementById("inv-petal").insertBefore(createGrid(1,i,player.inventory[i].star,"Petal_"+player.inventory[i].name,1,player.inventory[i].rarity),document.getElementById("inv-petal").children[place])
-				}
+			for(let i in player.inventory) if(lupoper.active===false || lupoper.selectedArray.indexOf(i)===-1) printSinglePetal(i)
+		}
+		function loot(id,rarity,level) {
+			let inventorySpace=11
+			while(player.inventory[inventorySpace] && inventorySpace<=500) inventorySpace++
+			if(inventorySpace>500) {
+				addLog("[Warning] Your inventory is full. A petal is discarded.","#bf7f3f")
+				return -1
 			}
+			player.inventory[inventorySpace]=new Petal(id,rarity,level)
+			addLog("[Loot] You received a "+player.inventory[inventorySpace].name+"+".repeat(player.inventory[inventorySpace].level)+"("+rarityName[player.inventory[inventorySpace].rarity]+").","#9f9fdf")
+			return inventorySpace
 		}
 		function star(modify) {
 			if(animation) return
@@ -2346,13 +2418,7 @@
 			closeGridInfo()
 			getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star).remove()
 			player.inventory[selectedGrid.x].star+=modify
-			let place=0
-			while(place<document.getElementById("inv-petal").children.length && player.inventory[selectedGrid.x].star<=document.getElementById("inv-petal").children[place].dataset.y && (player.inventory[selectedGrid.x].star<document.getElementById("inv-petal").children[place].dataset.y || selectedGrid.x>document.getElementById("inv-petal").children[place].dataset.x)) place++
-			if(place===document.getElementById("inv-petal").children.length) {
-				document.getElementById("inv-petal").appendChild(createGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star,"Petal_"+player.inventory[selectedGrid.x].name,1,player.inventory[selectedGrid.x].rarity))
-			} else {
-				document.getElementById("inv-petal").insertBefore(createGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star,"Petal_"+player.inventory[selectedGrid.x].name,1,player.inventory[selectedGrid.x].rarity),document.getElementById("inv-petal").children[place])
-			}
+			printSinglePetal(selectedGrid.x)
 			gridInfo(getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star))
 			clickGrid(getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star))
 		}
@@ -2362,24 +2428,113 @@
 			for(let i in player.inventory) if(player.inventory[i].id===petal.id && player.inventory[i].rarity===petal.rarity && player.inventory[i].level===petal.level) pairCount++
 			return (pairCount>1)
 		}
+		async function levelUp() {
+			if(lupoper.active===false) {
+				let targetPetal=player.inventory[selectedGrid.x]
+				if(document.getElementById("lup-btn").innerHTML==="Level Up") {
+					document.getElementById("lup-btn").innerHTML="Confirm? "+PetalLevelUpChance(targetPetal.rarity,targetPetal.level,2)+"%+ Success"
+					return
+				}
+				lupoper.selectedArray=new Array()
+				lupoper.selectedArray=lupoper.selectedArray.concat(selectedGrid.x)
+				await collapseGrid(getGrid(1,selectedGrid.x,selectedGrid.y))
+				lupoper.active=true
+				selectedGrid.select=false
+				document.getElementById("lup-cancel").style.display="unset"
+				document.getElementById("lup-confirm").style.display="unset"
+			}
+			if(lupoper.selectedArray.length<2) return
+			let targetPetal=player.inventory[lupoper.selectedArray[0]]
+			if(document.getElementById("lup-confirm").innerHTML==="Level Up") {
+				document.getElementById("lup-confirm").innerHTML="Confirm? "+PetalLevelUpChance(targetPetal.rarity,targetPetal.level,lupoper.selectedArray.length)+"% Success"
+				return
+			}
+			if(determine(PetalLevelUpChance(targetPetal.rarity,targetPetal.level,lupoper.selectedArray.length))) {
+				addLog("[Craft] Success!","#df9f7f")
+				targetPetal.speed=player.inventory[lupoper.selectedArray[roll(0,lupoper.selectedArray.length-1)]].speed
+				targetPetal.reload=player.inventory[lupoper.selectedArray[roll(0,lupoper.selectedArray.length-1)]].reload
+				targetPetal.atkbuff=player.inventory[lupoper.selectedArray[roll(0,lupoper.selectedArray.length-1)]].atkbuff
+				targetPetal.defbuff=player.inventory[lupoper.selectedArray[roll(0,lupoper.selectedArray.length-1)]].defbuff
+				for(let i in lupoper.selectedArray) delete player.inventory[lupoper.selectedArray[i]]
+				let inventorySpace=loot(targetPetal.id,targetPetal.rarity+1,0)
+				player.inventory[inventorySpace].speed=targetPetal.speed
+				player.inventory[inventorySpace].reload=targetPetal.reload
+				player.inventory[inventorySpace].atkbuff=targetPetal.atkbuff
+				player.inventory[inventorySpace].defbuff=targetPetal.defbuff
+				printSinglePetal(inventorySpace)
+			} else {
+				addLog("[Craft] Failed...","#df9f7f")
+				let loss=roll(1,lupoper.selectedArray.length-1)
+				for(let i=1;i<=loss;i++) {
+					let lostPetal=roll(0,lupoper.selectedArray.length-1)
+					delete player.inventory[lupoper.selectedArray[lostPetal]]
+					lupoper.selectedArray.splice(lostPetal,1)
+				}
+				addLog("[Resource] You lost "+loss+" "+targetPetal.name+"+".repeat(targetPetal.level)+"("+rarityName[targetPetal.rarity]+").","#7fff7f")
+				for(let i in lupoper.selectedArray) printSinglePetal(lupoper.selectedArray[i])
+			}
+			lupoper.active=false
+			document.getElementById("lup-cancel").style.display=""
+			document.getElementById("lup-confirm").style.display=""
+		}
+		function cancelLevelUp() {
+			for(let i in lupoper.selectedArray) printSinglePetal(lupoper.selectedArray[i])
+			lupoper.active=false
+			document.getElementById("lup-cancel").style.display=""
+			document.getElementById("lup-confirm").style.display=""
+			document.getElementById("lup-confirm").innerHTML==="Level Up"
+			addLog("[Craft] Level up canceled. All petals returned.","#df9f7f")
+		}
 		function rarityUpCheck(petal) {
 			if(PetalAttributeList[petal.id].match("Can't craft")!==null) return false
 			if(petal.rarity===6 || petal.level===0) return false
 			return true
+		}
+		async function rarityUp() {
+			if(animation) return
+			let targetPetal=player.inventory[selectedGrid.x]
+			if(document.getElementById("rup-btn").innerHTML==="Rarity Up") {
+				document.getElementById("rup-btn").innerHTML="Confirm? "+PetalRarityUpChance(targetPetal.rarity,targetPetal.level)+"% Success"
+				return
+			}
+			addLog("[Craft] Trying to rarity up "+targetPetal.name+"+".repeat(targetPetal.level)+"("+rarityName[targetPetal.rarity]+")...","#df9f7f")
+			await collapseGrid(getGrid(1,selectedGrid.x,selectedGrid.y))
+			delete player.inventory[selectedGrid.x]
+			selectedGrid.select=false
+			if(determine(PetalRarityUpChance(targetPetal.rarity,targetPetal.level))) {
+				addLog("[Craft] Success!","#df9f7f")
+				let inventorySpace=loot(targetPetal.id,targetPetal.rarity+1,0)
+				player.inventory[inventorySpace].speed=targetPetal.speed
+				player.inventory[inventorySpace].reload=targetPetal.reload
+				player.inventory[inventorySpace].atkbuff=targetPetal.atkbuff
+				player.inventory[inventorySpace].defbuff=targetPetal.defbuff
+				printSinglePetal(inventorySpace)
+			} else {
+				addLog("[Craft] Failed...","#df9f7f")
+				let inventorySpace=loot(targetPetal.id,targetPetal.rarity,0)
+				player.inventory[inventorySpace].speed=targetPetal.speed
+				player.inventory[inventorySpace].reload=targetPetal.reload
+				player.inventory[inventorySpace].atkbuff=targetPetal.atkbuff
+				player.inventory[inventorySpace].defbuff=targetPetal.defbuff
+				printSinglePetal(inventorySpace)
+			}
 		}
 		function absorbCheck(petal) {
 			if(PetalAttributeList[petal.id].match("Can't absorb")!==null) return false
 			return true
 		}
 		async function absorb() {
+			if(animation) return
 			let targetPetal=player.inventory[selectedGrid.x]
 			if(document.getElementById("abs-btn").innerHTML==="Absorb") {
-				document.getElementById("abs-btn").innerHTML="Confirm? +~"+PetalExp(targetPetal.rarity,targetPetal.level)+" Exp"
+				document.getElementById("abs-btn").innerHTML="Confirm? +~"+PetalAbsorbExp(targetPetal.rarity,targetPetal.level)+" Exp"
 				return
 			}
-			let remainExp=PetalExp(targetPetal.rarity,targetPetal.level)
-			remainExp*=0.8+0.4*Math.random()
-			remainExp=approx(remainExp)
+			addLog("[Craft] Absorbing "+targetPetal.name+"+".repeat(targetPetal.level)+"("+rarityName[targetPetal.rarity]+")...","#df9f7f")
+			let calculatedExp=PetalAbsorbExp(targetPetal.rarity,targetPetal.level)
+			calculatedExp*=0.8+0.4*Math.random()
+			calculatedExp=approx(calculatedExp)
+			let remainExp=calculatedExp
 			await collapseGrid(getGrid(1,selectedGrid.x,selectedGrid.y))
 			delete player.inventory[selectedGrid.x]
 			selectedGrid.select=false
@@ -2398,6 +2553,7 @@
 				updateFlowerState()
 				await delay(100)
 			}
+			addLog("[Craft] Your flower gained "+calculatedExp+" Experience.","#df9f7f")
 			animation=false
 		}
 		function updateFlowerState() {
@@ -2505,7 +2661,11 @@
 		<br>
 	</div>
 	<div id="inventory" class="mid lblue-bg box highz hsize nd">
-		<h2>Inventory</h2>
+		<div class="text3-c">
+			<button type="button" id="lup-cancel" onclick="cancelLevelUp()" class="lmargin lred-bg recbtn pointer nd">Cancel</button>
+			<h2>Inventory</h2>
+			<button type="button" id="lup-confirm" onclick="levelUp()" class="lmargin corange-bg recbtn pointer nd">Level Up</button>
+		</div>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
 		<div id="inv-petal" class="col5"></div>
