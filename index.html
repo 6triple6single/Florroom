@@ -13,6 +13,7 @@
 	<style>
 		body {
 			touch-action: manipulation;
+			-webkit-user-select: none;
 			user-select: none;
 			overflow: hidden;
 		}
@@ -733,6 +734,20 @@
 			padding: 10px;
 			padding-top: 5px;
 			text-align: center;
+		}
+		.itembox {
+			background-color: rgba(191,191,191,0.8);
+			display: flex;
+			height: 90px;
+			width: 400px;
+			padding: 10px;
+			gap: 20px;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			scrollbar-width: thin;
+		}
+		.itembox>* {
+			flex-shrink: 0;
 		}
 		.side-log {
 			position: absolute;
@@ -1458,7 +1473,7 @@
 		}
 	</script>
 	<script>
-		const version=20251019
+		const version=20251025
 		const svgNS="http://www.w3.org/2000/svg"
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
 		const rarityName=["None","Common","Unusual","Rare","Epic","Legendary","Mythic","Ultra","Super","Unique"]
@@ -1520,6 +1535,18 @@
 			player.inventory[38]=new Petal(70,5,2)
 			player.inventory[39]=new Petal(70,5,2)
 			player.inventory[40]=new Petal(70,5,2)
+			player.inventory[41]=new Petal(15,1,0)
+			player.inventory[42]=new Petal(15,2,0)
+			player.inventory[43]=new Petal(15,3,0)
+			player.inventory[44]=new Petal(15,4,0)
+			player.inventory[45]=new Petal(15,5,0)
+			player.inventory[46]=new Petal(17,4,0)
+			player.inventory[47]=new Petal(17,4,1)
+			player.inventory[48]=new Petal(17,5,0)
+			player.inventory[49]=new Petal(17,5,1)
+			player.inventory[50]=new Petal(39,5,0)
+			player.inventory[51]=new Petal(39,5,1)
+			player.inventory[52]=new Petal(39,6,2)
 		}
 		if(!player.gallery) player.gallery=new Object()
 		if(!explore.floor) explore.floor=0
@@ -1684,6 +1711,17 @@
 					selectedGrid.x=buttonX
 					selectedGrid.y=buttonY
 					document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
+					let option=document.createElement("div")
+					if(PetalAttributeList[player.inventory[buttonX].id].match("TYPE")===null) {
+						option.innerHTML+="<button type='button' onclick='equip()' class='llmargin white-bg srecbtn pointer'>Equip</button>"
+					} else {
+						option.innerHTML+="<button type='button' onclick='equip(1)' class='llmargin white-bg srecbtn pointer'>Equip as T1</button>"
+						option.innerHTML+="<button type='button' onclick='equip(2)' class='llmargin white-bg srecbtn pointer'>Equip as T2</button>"
+					}
+					if(option.innerHTML!=="") {
+						document.getElementById("gridinfo").appendChild(option)
+						document.getElementById("gridinfo").innerHTML+="<br>"
+					}
 				}
 			}
 			if(fight.active===true && buttonValue===0 && petalEquipped.length===slot) {
@@ -2231,6 +2269,11 @@
 		function closeMapInfo() {
 			document.getElementById("mapinfo").style.display="none"
 		}
+		function petalTextReplace(text, petal) {
+			text=text.replaceAll("&","</span>").replaceAll("TYPE","<span style='color: #000000'>Type: ").replaceAll("NAME=","<span style='color: #000000'>Name: ").replaceAll("LOOT=","<span style='color: #0000ff'>How to loot: ").replaceAll("DECORATION","<span style='color: #bfbfbf'>This petal is a decoration, which means it has no entity.").replaceAll(/COUNT=(\d+)/g,"<span style='color: #7f7f9f'>This petal has a quantity of "+petal.count+"/$1 parts").replaceAll("ATTRIBUTE=","<span style='color: #bfbf7f'>Petal attribute: ").replaceAll("EQUIP=","<span style='color: #bfbfff'>When equipped: ").replaceAll("EXIST=","<span style='color: #ffffff'>While exist: ").replaceAll("ATTACK=","<span style='color: #ff7f7f'>When attack: ").replaceAll("DEFEND=","<span style='color: #7fdf7f'>When defend: ").replaceAll("ATKDEF=","<span style='color: #df7fdf'>When attack or defend: ").replaceAll("SHOOT=","<span style='color: #7f7fff'>When shoot: ").replaceAll("SKILL=","<span style='color: #7fdfdf'>Special skill: ").replaceAll("ENDTURN=","<span style='color: #5fdfff'>At end of turn: ").replaceAll("DAMAGE=","<span style='color: #bf5f5f'>When destroyed a part: ").replaceAll("DESTROY=","<span style='color: #df3f3f'>When destroyed: ")+"</span>"
+			text=text.replaceAll("[poison]","<span style='font-weight: bold; color: #bf00bf; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>poison</span>").replaceAll("[lightning]","<span style='font-weight: bold; color: #7fffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>lightning</span>").replaceAll("Dice","🎲").replaceAll("[","<span style='font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>").replaceAll("]","</span>").replaceAll(/(?<!\.\s)(?<!^)Damage/g,"<span style='color: #ff7f7f'>"+petal.damage+"</span>").replaceAll(/(?<!\.\s)(?<!^)Health/g,"<span style='color: #7fdf7f'>"+petal.health+"</span>").replaceAll(/(?<!\.\s)(?<!^)Rarity/g,"<span style='color: #00dfff'>"+petal.rarity+"</span>").replaceAll(/(?<!\.\s)(?<!^)Level/g,"<span style='color: #9f5fff'>"+petal.level+"</span>").replaceAll("X","<span style='color: #9f5f9f'>"+(petal.calculate>0?petal.calculate:"X")+"</span>")
+			return text
+		}
 		function gridInfo(grid) {
 			if(selectedGrid.select===true) return
 			if(grid.style.scale>0 && grid.style.scale<1) return
@@ -2250,27 +2293,24 @@
 					document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
 					let editingGridPetalHTML="<h3 style='color: "+rarityColor[petalEquipped[i].rarity]+"'>"+petalEquipped[i].name+"<span class='black'>+</span>".repeat(petalEquipped[i].level)+"</h3>"
 					editingGridPetalHTML+="<span>"+PetalDescriptionList[petalEquipped[i].id]+"</span><br>"
-					if(PetalAttributeList[petalEquipped[i].id].match("DECORATION")===null) {
-						editingGridPetalHTML+="<span style='color: #ff7f7f'>Damage: "+petalEquipped[i].damage+"</span>"
-						if(petalEquipped[i].state==="Existing") {
-							editingGridPetalHTML+="<span style='color: #7fdf7f'>Health: "+petalEquipped[i].currenthealth+"/"+petalEquipped[i].health+"</span>"
-						} else {
-							editingGridPetalHTML+="<span style='color: #bf9f7f'>Reloading</span>"
-						}
-						editingGridPetalHTML+="<span style='color: #dfdf5f'>Size: "+petalEquipped[i].size+"</span>"
-						editingGridPetalHTML+="<span style='color: #ff7f7f'>ATK: "+petalEquipped[i].atk1+"%->"+petalEquipped[i].atk2+"% (buff: "+petalEquipped[i].atkbuff+")</span>"
-						editingGridPetalHTML+="<span style='color: #7fdf7f'>DEF: "+petalEquipped[i].def1+"%->"+petalEquipped[i].def2+"% (buff: "+petalEquipped[i].defbuff+")</span>"
-						if(petalEquipped[i].state==="Existing") {
-							editingGridPetalHTML+="<span style='color: #bf7fff'>Action: "+petalEquipped[i].actionbar+"/"+250+" (+"+petalEquipped[i].speed+")</span><br>"
-						} else {
-							editingGridPetalHTML+="<span style='color: #ff7fbf'>Action: "+petalEquipped[i].actionbar+"/"+petalEquipped[i].reload+" (+"+petalEquipped[i].speed+")</span><br>"
-						}
+					editingGridPetalHTML+="<span style='color: #ff7f7f'>Damage: "+petalEquipped[i].damage+"</span>"
+					if(petalEquipped[i].state==="Existing") {
+						editingGridPetalHTML+="<span style='color: #7fdf7f'>Health: "+petalEquipped[i].currenthealth+"/"+petalEquipped[i].health+"</span>"
+					} else {
+						editingGridPetalHTML+="<span style='color: #bf9f7f'>Reloading</span>"
+					}
+					editingGridPetalHTML+="<span style='color: #dfdf5f'>Size: "+petalEquipped[i].size+"</span>"
+					editingGridPetalHTML+="<span style='color: #ff7f7f'>ATK: "+petalEquipped[i].atk1+"%->"+petalEquipped[i].atk2+"% (buff: "+petalEquipped[i].atkbuff+")</span>"
+					editingGridPetalHTML+="<span style='color: #7fdf7f'>DEF: "+petalEquipped[i].def1+"%->"+petalEquipped[i].def2+"% (buff: "+petalEquipped[i].defbuff+")</span>"
+					if(petalEquipped[i].state==="Existing") {
+						editingGridPetalHTML+="<span style='color: #bf7fff'>Action: "+petalEquipped[i].actionbar+"/"+250+" (+"+petalEquipped[i].speed+")</span><br>"
+					} else {
+						editingGridPetalHTML+="<span style='color: #ff7fbf'>Action: "+petalEquipped[i].actionbar+"/"+petalEquipped[i].reload+" (+"+petalEquipped[i].speed+")</span><br>"
 					}
 					if(PetalAttributeList[petalEquipped[i].id].length>0) {
 						let pendingText=PetalAttributeList[petalEquipped[i].id]
 						if(PetalAttributeList[petalEquipped[i].name]!==undefined) pendingText=PetalAttributeList[petalEquipped[i].name]
-						pendingText=pendingText.replaceAll("&","</span>").replaceAll("LOOT=","<span style='color: #0000ff'>How to loot: ").replaceAll("DECORATION","<span style='color: #bfbfbf'>This petal is a decoration, which means it has no entity.").replaceAll(/COUNT=(\d+)/g,"<span style='color: #7f7f9f'>This petal has a quantity of "+petalEquipped[i].count+"/$1 parts").replaceAll("ATTRIBUTE=","<span style='color: #bfbf7f'>Petal attribute: ").replaceAll("EQUIP=","<span style='color: #bfbfff'>When equipped: ").replaceAll("EXIST=","<span style='color: #ffffff'>While exist: ").replaceAll("ATTACK=","<span style='color: #ff7f7f'>When attack: ").replaceAll("DEFEND=","<span style='color: #7fdf7f'>When defend: ").replaceAll("ATKDEF=","<span style='color: #df7fdf'>When attack or defend: ").replaceAll("SHOOT=","<span style='color: #7f7fff'>When shoot: ").replaceAll("SKILL=","<span style='color: #7fdfdf'>Special skill: ").replaceAll("ENDTURN=","<span style='color: #5fdfff'>At end of turn: ").replaceAll("DAMAGE=","<span style='color: #bf5f5f'>When destroyed a part: ").replaceAll("DESTROY=","<span style='color: #df3f3f'>When destroyed: ")+"</span>"
-						pendingText=pendingText.replaceAll("[poison]","<span style='font-weight: bold; color: #bf00bf; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>poison</span>").replaceAll("[lightning]","<span style='font-weight: bold; color: #7fffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>lightning</span>").replaceAll("Dice","🎲").replaceAll("[","<span style='font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>").replaceAll("]","</span>").replaceAll(/(?<!\.\s)(?<!^)Damage/g,"<span style='color: #ff7f7f'>"+petalEquipped[i].damage+"</span>").replaceAll(/(?<!\.\s)(?<!^)Health/g,"<span style='color: #7fdf7f'>"+petalEquipped[i].health+"</span>").replaceAll(/(?<!\.\s)(?<!^)Rarity/g,"<span style='color: #00dfff'>"+petalEquipped[i].rarity+"</span>").replaceAll(/(?<!\.\s)(?<!^)Level/g,"<span style='color: #9f5fff'>"+petalEquipped[i].level+"</span>").replaceAll("X","<span style='color: #9f5f9f'>"+(petalEquipped[i].calculate>0?petalEquipped[i].calculate:"X")+"</span>")
+						pendingText=petalTextReplace(pendingText,petalEquipped[i])
 						editingGridPetalHTML+=pendingText+"<br>"
 					}
 					document.getElementById("gridinfo").innerHTML=editingGridPetalHTML
@@ -2278,7 +2318,7 @@
 					return
 				}
 			}
-			if(gridValue===1 && player.inventory[gridX].state!=="Equiped") {
+			if(gridValue===1) {
 				document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
 				document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
 				document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
@@ -2296,13 +2336,31 @@
 				if(PetalAttributeList[player.inventory[gridX].id].length>0) {
 					let pendingText=PetalAttributeList[player.inventory[gridX].id]
 					if(PetalAttributeList[player.inventory[gridX].name]!==undefined) pendingText=PetalAttributeList[player.inventory[gridX].name]
-					pendingText=pendingText.replaceAll("&","</span>").replaceAll("LOOT=","<span style='color: #0000ff'>How to loot: ").replaceAll("DECORATION","<span style='color: #bfbfbf'>This petal is a decoration, which means it has no entity.").replaceAll(/COUNT=(\d+)/g,"<span style='color: #7f7f9f'>This petal has a quantity of $1 parts").replaceAll("ATTRIBUTE=","<span style='color: #bfbf7f'>Petal attribute: ").replaceAll("EQUIP=","<span style='color: #bfbfff'>When equipped: ").replaceAll("EXIST=","<span style='color: #ffffff'>While exist: ").replaceAll("ATTACK=","<span style='color: #ff7f7f'>When attack: ").replaceAll("DEFEND=","<span style='color: #7fdf7f'>When defend: ").replaceAll("ATKDEF=","<span style='color: #df7fdf'>When attack or defend: ").replaceAll("SHOOT=","<span style='color: #7f7fff'>When shoot: ").replaceAll("SKILL=","<span style='color: #7fdfdf'>Special skill: ").replaceAll("ENDTURN=","<span style='color: #5fdfff'>At end of turn: ").replaceAll("DAMAGE=","<span style='color: #bf5f5f'>When destroyed a part: ").replaceAll("DESTROY=","<span style='color: #df3f3f'>When destroyed: ")+"</span>"
-					pendingText=pendingText.replaceAll("[poison]","<span style='font-weight: bold; color: #bf00bf; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>poison</span>").replaceAll("[lightning]","<span style='font-weight: bold; color: #7fffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>lightning</span>").replaceAll("Dice","🎲").replaceAll("[","<span style='font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>").replaceAll("]","</span>").replaceAll(/(?<!\.\s)(?<!^)Damage/g,"<span style='color: #ff7f7f'>"+player.inventory[gridX].damage+"</span>").replaceAll(/(?<!\.\s)(?<!^)Health/g,"<span style='color: #7fdf7f'>"+player.inventory[gridX].health+"</span>").replaceAll(/(?<!\.\s)(?<!^)Rarity/g,"<span style='color: #00dfff'>"+player.inventory[gridX].rarity+"</span>").replaceAll(/(?<!\.\s)(?<!^)Level/g,"<span style='color: #9f5fff'>"+player.inventory[gridX].level+"</span>").replaceAll("X","<span style='color: #9f5f9f'>X</span>")
+					pendingText=petalTextReplace(pendingText,player.inventory[gridX])
 					editingGridPetalHTML+=pendingText+"<br>"
 				}
 				document.getElementById("gridinfo").innerHTML=editingGridPetalHTML
 				document.getElementById("gridinfo").style.display="flex"
 				return
+			}
+			if(gridValue===2) {
+				if(petalEquipped.length!==slot) return
+				for(let i=0;i<slot;i++) if(petalEquipped[i].x===10 && petalEquipped[i].y===gridY && petalEquipped[i].state!=="Retired") {
+					document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
+					document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
+					document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
+					let editingGridPetalHTML="<h3 style='color: "+rarityColor[petalEquipped[i].rarity]+"'>"+petalEquipped[i].name+"<span class='black'>+</span>".repeat(petalEquipped[i].level)+"</h3>"
+					editingGridPetalHTML+="<span>"+PetalDescriptionList[petalEquipped[i].id]+"</span><br>"
+					if(PetalAttributeList[petalEquipped[i].id].length>0) {
+						let pendingText=PetalAttributeList[petalEquipped[i].id]
+						if(PetalAttributeList[petalEquipped[i].name]!==undefined) pendingText=PetalAttributeList[petalEquipped[i].name]
+						pendingText=petalTextReplace(pendingText,petalEquipped[i])
+						editingGridPetalHTML+=pendingText+"<br>"
+					}
+					document.getElementById("gridinfo").innerHTML=editingGridPetalHTML
+					document.getElementById("gridinfo").style.display="flex"
+					return
+				}
 			}
 		}
 		function closeGridInfo(forced=false) {
@@ -2313,6 +2371,7 @@
 		{
 			document.getElementById("fight-btn").style.display="none"
 			document.getElementById("fight-container").style.display="none"
+			document.getElementById("fight-item").style.display="none"
 			document.getElementById("map-container").style.display="unset"
 		}
 		function displayFight()
@@ -2322,9 +2381,11 @@
 			document.getElementById("fight-container").style.display="grid"
 			document.getElementById("fight-btn").style.top=parseFloat(window.getComputedStyle(document.getElementById("fight-container")).top)-300+"px"
 			document.getElementById("fight-btn").style.display="flex"
+			document.getElementById("fight-item").style.top=parseFloat(window.getComputedStyle(document.getElementById("fight-container")).top)+300+"px"
+			document.getElementById("fight-item").style.display="flex"
 		}
 		function startFight() {
-			if(animation) return
+			if(lupoper.active===true) cancelLevelUp()
 			fight.active=true
 			localStorage.setItem("fight",JSON.stringify(fight))
 			displayFight()
@@ -2399,7 +2460,7 @@
 		function printInventory() {
 			if(animation) return
 			document.getElementById("inv-petal").innerHTML=""
-			for(let i in player.inventory) if(lupoper.active===false || lupoper.selectedArray.indexOf(i)===-1) printSinglePetal(i)
+			for(let i in player.inventory) if(lupoper.active===false || lupoper.selectedArray.indexOf(parseInt(i))===-1) printSinglePetal(i)
 		}
 		function loot(id,rarity,level) {
 			let inventorySpace=11
@@ -2440,6 +2501,7 @@
 				await collapseGrid(getGrid(1,selectedGrid.x,selectedGrid.y))
 				lupoper.active=true
 				selectedGrid.select=false
+				document.getElementById("lup-confirm").innerHTML="Level Up"
 				document.getElementById("lup-cancel").style.display="unset"
 				document.getElementById("lup-confirm").style.display="unset"
 			}
@@ -2697,6 +2759,8 @@
 	</div>
 	<div id="fight-container" class="mid square48 nd">
 	</div>
+	<div id="fight-item" class="mid itembox nd">
+	</div>
 	<div id="map-container" class="mid lhsize border nd">
 		<svg id="blank" viewBox="0 0 100 100" class="in-svg drag">
 			<g id="map-trans">
@@ -2804,8 +2868,8 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/10/19,</span>
-		<span>which updated log and command.</span>
+		<span>The last update was on 2025/10/25,</span>
+		<span>which updated craft operations.</span>
 		<br>
 		<button type="button" id="version3" onclick="updateVersion(false)">No, just update the version.</button>
 		<br>
