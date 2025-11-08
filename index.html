@@ -725,6 +725,7 @@
 			display: flex;
 			flex-direction: column;
 			border: 2px solid;
+			padding-inline: 20px;
 			overflow-x: hidden;
 			overflow-y: auto;
 			text-align: center;
@@ -752,6 +753,14 @@
 		}
 		.itembox>* {
 			flex-shrink: 0;
+		}
+		.inner-input {
+			background: #5fbf5f;
+			border: none;
+			outline: none;
+			width: 90%;
+			justify-items: center;
+			align-self: center;
 		}
 		.side-log {
 			position: absolute;
@@ -831,6 +840,7 @@
 			display: none;
 		}
 		.cflex {
+			display: flex;
 			flex-direction: column;
 		}
 		.border {
@@ -841,6 +851,9 @@
 		}
 		.ns {
 			stroke: none;
+		}
+		.rcap {
+			stroke-linecap: round;
 		}
 		.bold {
 			font-weight: bold;
@@ -1171,6 +1184,25 @@
 			let patkr=patk/100,mdefr=mdef/100,answer=patkr**(mdefr/(1-mdefr**patkr))*100
 			return approx(answer)
 		}
+		function AttackSuccessChance(petal,mob,direction="Front",row="Front") {
+			let patk=petal.atk2,mdef=mob.dodge
+			if(row!=="Front") patk=petal.atk1
+			patk+=petal.atkbuff
+			if(direction!=="Front") patk-=(18-petal.size)*(17-petal.size)/2
+			if(patk<10) return 0
+			if(patk>100) patk=100
+			let calculatedChance=AttackSuccessBase(patk,mdef)
+			if(calculatedChance===0) return 0
+			if(direction!=="Front" && petal.atkbuff<5) {
+				if(petal.atkbuff>=-5) {
+					calculatedChance-=(5-petal.atkbuff)
+				} else {
+					calculatedChance-=(-2*petal.atkbuff)
+				}
+			}
+			if(calculatedChance<=0) return 0
+			return calculatedChance
+		}
 		function DefendSuccessBase(pdef,matk) {
 			if(pdef===0) return 0
 			if(matk===0) return 100
@@ -1179,6 +1211,19 @@
 			if(matk===100) return 0
 			let pdefr=pdef/100,matkr=matk/100,answer=pdefr**(matkr/(1-matkr))*100
 			return approx(answer)
+		}
+		function DefendSuccessChance(petal,mob,direction="Front",row="Back") {
+			let pdef=petal.def2,matk=mob.dodge
+			if(row!=="back") pdef=petal.def1
+			pdef+=petal.defbuff
+			if(direction!=="Front") pdef-=(18-petal.size)*(17-petal.size)/2
+			if(pdef<10) return 0
+			if(pdef>100) pdef=100
+			let calculatedChance=DefendSuccessBase(pdef,matk)
+			if(calculatedChance===0) return 0
+			if(direction!=="Front" && petal.defbuff<5) calculatedChance-=(5-petal.defbuff)
+			if(calculatedChance<=0) return 0
+			return calculatedChance
 		}
 		function RarityUpBase(rarity,level) {
 			if(level===0 || rarity===6) return 0
@@ -1506,6 +1551,14 @@
 		}
 	</script>
 	<script>
+		const bookHTML=new Object()
+		bookHTML["Flower Combat Guide"]="<h2>Flower Combat Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>The process of a round in battle is divided into the following parts: At the beginning, your petals gain action based on speed. You can move petals, use them for attack or perform special skills. Then mobs gain action. Mob with action exceeding the threshold will attack and you use petal to defend. If you skip defend or the defend fails, you take the damage. By default value, moving a petal costs 100 action, while using a petal to attack costs 200 action. The threshold for mob is 200 action.</span><br><span>Your petals can attack or defend mobs from <span class='bold'>the front or the side column</span>. The success rate of attack is based on petal ATK and mob Dodge. The success rate of defend is based on petal DEF and mob Dodge. These two formula have significant difference. When the mob is from side column, the formula also uses petal Size. Petal Size is capped at 20, but the best value for side-defending is <span class='bold'>17 to 18 Size</span>.</span><br><span>For shootable petal, before any bounces, the Accuracy (the petal ATK in success rate formula for shootable petals) is always 100% inside range. For each distance exceeds range, the Accuracy is decreased by Accuracy Decline. If it hits the target, it can bounce between enemies. The Accuracy is decreased by Repeated Accuracy Decline each time it hits a enemy that already hit. The Accuracy is decreased by Bounce Accuracy Decline each bounce exceeds Bounce. Any bounce hits can only hit enemy within Bounce Range.</span><br><span>Since you are facing mobs from all directions and not only from the front, <span class='bold'>the first and last columns are connected</span>, which means that both your petals and mobs can move from the first column to the last column or inverted, and the first and last columns are side columns to each other. The distance between two grids is calculated by horizontal distance plus vertical distance <span class='bold'>without using the Pythagorean theorem</span>. The word 'Retire' means a petal disappears and can't be used again in the same fight.</span><br><span>You can calculate chance in the following box. For example, Aa-48S12 calculates the success rate of attacking 80% Dodge mob in side column with 12 Size, 100% ATK and -4 ATKbuff petal, A4+a6F calculates the success rate of attacking 60% Dodge mob in the front column with 40% ATK and +10 ATKbuff petal, D3+05F calculates the success rate of defending 50% Dodge mob in the front column with 30% DEF and +0 DEFbuff petal.</span><input type='text' id='combat-calc' onkeydown='combatcalc(event.key)' class='inner-input' autocomplete='off' title='Calculator'>"
+		bookHTML["Flower Survival Guide"]="<h2>Flower Survival Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Welcome to the Florroom! This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7. Here, you make powerful petals, travel between different regions and maps, defeat various mobs and continuously upgrade to gain stronger power!</span><br><span>This is your first book. As the story continues, you will learn more knowledge, which appears in the form of books in this section. If you don't have experience fighting in Florroom, it doesn't matter. You will receive the unique <span class='bold'>Flower Combat Guide</span> I wrote. Enter the name of this book below to get it!</span><br><span>If you remembered something, try writing in the following box to retrieve the corresponding item:</span><input type='text' id='item-code' onkeydown='itemcode(event.key)' class='inner-input' autocomplete='off' title='Code'><span>(NOt CASe SenSItiVE &amp; ign o r i ngspace s)</span>"
+		function book(modify) {
+			if(modify===-1 && player.bookreading>0) player.bookreading--
+			if(modify===1 && player.bookreading<player.book.length-1) player.bookreading++
+			document.getElementById("book-content").innerHTML=bookHTML[player.book[player.bookreading]]
+		}
 		let logDisplay=true,cleanerDegree=0
 		function cleanerRotate(force=false) {
 			if(cleanerDegree===0 && force===false) return
@@ -1631,6 +1684,82 @@
 				addLog("[Chat] Guest: "+commandInput.replaceAll("<","&lt;"))
 			}
 		}
+		function itemcode(key) {
+			if(key!=="Enter") return
+			let itemcodeInput=document.getElementById("item-code").value
+			document.getElementById("item-code").value=""
+			itemcodeInput=itemcodeInput.toLowerCase().replace(/\s/g,"")
+			if(!/^[a-z]+$/.test(itemcodeInput)) {
+				addLog("[Code] Invalid code. The code should only consist of letters and contains at least 1 letter.","#bf7f3f")
+				return
+			}
+			if(itemcodeInput==="flowercombatguide") {
+				if(player.book.indexOf("Flower Combat Guide")===-1) {
+					player.book.push("Flower Combat Guide")
+					addLog("[Code] You received Flower Combat Guide from item code.","#5fbf5f")
+				} else {
+					addLog("[Code] The code is already used.","#bf7f3f")
+				}
+				return
+			}
+			if(itemcodeInput==="pflf") {
+				addLog("[bot#7976] Play PFLF here!","#7f7fff")
+				return
+			}
+			if(itemcodeInput.match("perfect")!==null || itemcodeInput.match("bug")!==null) {
+				addLog("[79<sup>2</sup>] The game is perfect, there are no bugs","#ffdfff")
+				return
+			}
+			addLog("[Code] Empty code...","#bfbf7f")
+		}
+		function combatcalc(key) {
+			if(key!=="Enter") return
+			let combatcalcInput=document.getElementById("combat-calc").value
+			document.getElementById("combat-calc").value=""
+			if(!/^[AD][0-9a][-+][0-9a][0-9a](F|S\d+)$/.test(combatcalcInput)) {
+				addLog("[Calculator] Invalid input. The input should strictly follow the format /^[AD][0-9a][-+][0-9a][0-9a](F|S\d+)$/.","#bf7f3f")
+				return
+			}
+			if(/-0/.test(combatcalcInput)) {
+				addLog("[Calculator] What is '-0'? This is pointless.","#bf7f3f")
+				return
+			}
+			let calcPetal=new Petal(),calcMob=new Mob()
+			if(combatcalcInput[1]==="a") {
+				calcPetal.atk1=100
+			} else {
+				calcPetal.atk1=parseInt(combatcalcInput[1])*10
+			}
+			if(combatcalcInput[3]==="a") {
+				calcPetal.atkbuff=10
+			} else {
+				calcPetal.atkbuff=parseInt(combatcalcInput[3])
+			}
+			if(combatcalcInput[2]==="-") calcPetal.atkbuff*=-1
+			if(combatcalcInput[4]==="a") {
+				calcMob.dodge=100
+			} else {
+				calcMob.dodge=parseInt(combatcalcInput[4])*10
+			}
+			if(combatcalcInput[0]==="A") {
+				if(combatcalcInput[5]==="F") {
+					addLog("[Calculator] The success rate of attacking "+calcMob.dodge+"% Dodge mob in the front column with "+calcPetal.atk1+"% ATK and "+combatcalcInput[2]+Math.abs(calcPetal.atkbuff)+" ATKbuff petal is "+AttackSuccessChance(calcPetal,calcMob,"Front","Middle")+"%","#5fbf5f")
+				} else {
+					calcPetal.size=parseInt(combatcalcInput.slice(6))
+					addLog("[Calculator] The success rate of attacking "+calcMob.dodge+"% Dodge mob in side column with "+calcPetal.size+" Size, "+calcPetal.atk1+"% ATK and "+combatcalcInput[2]+Math.abs(calcPetal.atkbuff)+" ATKbuff petal is "+AttackSuccessChance(calcPetal,calcMob,"Side","Middle")+"%","#5fbf5f")
+				}
+			}
+			if(combatcalcInput[0]==="D") {
+				calcPetal.def1=calcPetal.atk1
+				calcPetal.defbuff=calcPetal.atkbuff
+				if(combatcalcInput[5]==="F") {
+					addLog("[Calculator] The success rate of defending "+calcMob.dodge+"% Dodge mob in the front column with "+calcPetal.def1+"% DEF and "+combatcalcInput[2]+Math.abs(calcPetal.defbuff)+" DEFbuff petal is "+DefendSuccessChance(calcPetal,calcMob,"Front","Middle")+"%","#5fbf5f")
+				} else {
+					calcPetal.size=parseInt(combatcalcInput.slice(6))
+					addLog("[Calculator] The success rate of defending "+calcMob.dodge+"% Dodge mob in side column with "+calcPetal.size+" Size, "+calcPetal.def1+"% DEF and "+combatcalcInput[2]+Math.abs(calcPetal.defbuff)+" DEFbuff petal is "+DefendSuccessChance(calcPetal,calcMob,"Side","Middle")+"%","#5fbf5f")
+				}
+			}
+		}
 	</script>
 	<script>
 		let mouseX,mouseY
@@ -1638,7 +1767,7 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20251102
+		const version=20251108
 		const svgNS="http://www.w3.org/2000/svg"
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
 		const rarityName=["None","Common","Unusual","Rare","Epic","Legendary","Mythic","Ultra","Super","Unique"]
@@ -1654,7 +1783,11 @@
 		if(!player) player=new Object()
 		if(!explore) explore=new Object()
 		if(!fight) fight=new Object()
-		if(!player.access) player.access=new Object()
+		if(!player.book) {
+			player.book=new Array()
+			player.book[0]="Flower Survival Guide"
+		}
+		if(!player.bookreading) player.bookreading=0
 		if(!player.calendar) player.calendar=new Object()
 		if(!player.calendar.day) player.calendar.day=60
 		if(!player.calendar.hour) player.calendar.hour=1
@@ -2219,12 +2352,7 @@
 			setContainElement()
 			intervalFlower=setInterval(updateFlowerSpot,10)
 			createPath()
-			document.querySelectorAll("button").forEach(btn => {
-				btn.addEventListener("click",this.blur())
-				btn.addEventListener("keydown",pressed => {
-					if(pressed.key === "Enter") pressed.preventDefault()
-				} )
-			} )
+			book()
 			mapElement.querySelectorAll("path[d*='A2']").forEach(path => {
 				path.addEventListener("mouseenter",() => mapInfo(path))
 				path.addEventListener("mouseleave",closeMapInfo)
@@ -2702,6 +2830,8 @@
 		function endFight(win) {
 			if(animation) return
 			fight.active=false
+			fight.ready=false
+			fight.manipulate=false
 			localStorage.setItem("fight",JSON.stringify(fight))
 			if(win!==true) {
 				explore.flowerspot=explore.floweroldspot
@@ -3167,7 +3297,7 @@
 		}
 	</script>
 	<script>
-		let perfectGame="The game is perfect, there are no bugs"
+		const perfectGame="The game is perfect, there are no bugs"
 		console.log(perfectGame)
 	</script>
 </head>
@@ -3231,12 +3361,17 @@
 		<br>
 	</div>
 	<div id="help" class="mid llpurple-bg box highz hsize nd">
-		<h2>Flower Survival Guide</h2>
-		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
-		<br>
-		<span>欢迎来到花室，这是一个一天有"七十九的平方"分钟的世界</span>
-		<span>在这里，一天由79个小时构成，而一小时由79个分钟构成</span>
-		<span>如果你感知到了不存在的时间，不要惊慌，<span class="bold">睡一觉</span>就能安全度过</span>
+		<button type="button" onclick="book(-1)" class="circbtn tl" title="Previous book">
+			<svg viewBox="0 0 100 100" class="in-svg">
+				<path class="rcap" d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M20 50L40 30M20 50L40 70M20 50L80 50"/>
+			</svg>
+		</button>
+		<button type="button" onclick="book(1)" class="circbtn tr" title="Next book">
+			<svg viewBox="0 0 100 100" class="in-svg">
+				<path class="rcap" d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M80 50L60 30M80 50L60 70M80 50L20 50"/>
+			</svg>
+		</button>
+		<div id="book-content" class="cflex"></div>
 		<br>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
@@ -3382,8 +3517,8 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/11/2,</span>
-		<span>which updated basic fight operations.</span>
+		<span>The last update was on 2025/11/8,</span>
+		<span>which updated guides.</span>
 		<br>
 		<button type="button" id="version3" onclick="updateVersion(false)">No, just update the version.</button>
 		<br>
