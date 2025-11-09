@@ -114,12 +114,12 @@
 		.cmid {
 			position: absolute;
 			top: 50%;
-			transform: translate(-50%,0px) var(--transform2,translate(0px,0px));
+			transform: translate(0px,-50%) var(--transform2,translate(0px,0px));
 		}
 		.rmid {
 			position: absolute;
 			left: 50%;
-			transform: translate(0px,-50%) var(--transform2,translate(0px,0px));
+			transform: translate(-50%,0px) var(--transform2,translate(0px,0px));
 		}
 		.smid {
 			position: absolute;
@@ -1017,7 +1017,7 @@
 		PetalSVGArray.Triangle="<path class='fwhite-path ns' d='M47 32.8L56 38L47 43.2Z'/>"
 		PetalSVGArray["2 Turn Kill"]="<path class='black-path mwidth' d='M39 17L32 21L39 25M42 19L48 19M42 23L48 23M52 19L58 19M52 23L58 23M61 17L68 21L61 25'/><path class='red-path mwidth' d='M33 32L39 32L39 37L33 37L33 42L39 42M47 32L53 32L53 37L47 37L47 42L53 42M47 49L53 49L53 54L47 54L47 59L53 59'/><path class='blue-path mwidth' d='M67 32L61 32L61 42L67 42L67 37L61 37M39 49L33 49L33 59L39 59L39 54L33 54M67 49L61 49L61 59L67 59L67 54L61 54'/>"
 		for(let i in PetalNameList) {
-			PetalSVGArray[PetalNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92L92 92L92 8ZM100 92A8 8 0 0 1 92 100L8 100A8 8 0 0 1 0 92L0 8L8 8L8 92Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+PetalSVGArray[PetalNameList[i]].replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+PetalSVGArray[PetalNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+PetalNameList[i].replace("Blood Stinger","B. Stinger").replace("Moon Rock","Moon R.").replace("Golden Leaf","G. Leaf")+"</span>"
+			PetalSVGArray[PetalNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+PetalSVGArray[PetalNameList[i]].replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+PetalSVGArray[PetalNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+PetalNameList[i].replace("Blood Stinger","B. Stinger").replace("Moon Rock","Moon R.").replace("Golden Leaf","G. Leaf")+"</span>"
 		}
 		PetalSVGArray.Compass=PetalSVGArray.Compass.replace("<g>","<g style='transform: rotate(45deg)'>")
 		const MobNameList=["","Rock","Cactus","Ladybug (Garden)","Bee","Baby Ant","Worker Ant","Soldier Ant","Queen Ant","Ant Hole","Beetle","Hornet","Centipede (Garden)","Centipede (Jungle)","Centipede (Desert)","Ladybug (Jungle)","Ladybug (Desert)","Spider","Scorpion","Soldier Fire Ant","Fire Ant Burrow","Sandstorm","Bubble","Bumble Bee","Shell","Starfish","Crab","Jellyfish","Sponge","Leech","Dandelion","Baby Fire Ant","Worker Fire Ant","Queen Fire Ant","Fly","Leafbug","Mantis","Baby Termite","Worker Termite","Soldier Termite","Termite Overmind","Termite Mound","Termite Egg","Bush","Roach","Moth","Firefly","Beetle (Hell)","Wasp","Spider (Hell)","Centipede (Hell)","Wasp (Hell)"]
@@ -1051,14 +1051,14 @@
 		MobSVGArray.Rock="<path class='fgrey-path ns' d='M38 30L50 26L60 28L63 44L55 52L45 50L36 40Z'/>"
 		MobSVGArray.Cactus="<path class='fgreen-path ns' d='M50 22.3A8 8 0 0 0 61.1 26.9A8 8 0 0 0 65.7 38A8 8 0 0 0 61.1 49.1A8 8 0 0 0 50 53.7A8 8 0 0 0 38.9 49.1A8 8 0 0 0 34.3 38A8 8 0 0 0 38.9 26.9A8 8 0 0 0 50 22.3'/><path class='flgreen-path ns ' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30'/>"
 		MobSVGArray["Ladybug (Garden)"]="<path class='fred-path ns' d='M59.6 25.2A16 16 0 1 1 40.4 25.2Z'/><path class='fblack-path ns ' d='M40 23A10 5 0 0 1 60 23A10 5 0 0 1 40 23M45 34A3 3 0 0 0 45 40A3 3 0 0 0 45 34M48 47A3 3 0 0 0 48 53A3 3 0 0 0 48 47M60 39A3 3 0 0 0 60 45A3 3 0 0 0 60 39'/>"
-		MobSVGArray.Bee="<path class='fblack-path wide' stroke-linejoin='round' d='M47 53L50 58L53 53ZM42 16A2 2 0 0 0 42 20A2 2 0 0 0 42 16M58 16A2 2 0 0 0 58 20A2 2 0 0 0 58 16'/><linearGradient id='graBee' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffff7f'/><stop offset='20%' stop-color='#ffff7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffff7f'/><stop offset='50%' stop-color='#ffff7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffff7f'/><stop offset='80%' stop-color='#ffff7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='yellow-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graBee)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A10 10 0 0 0 42 18M53 26A10 10 0 0 1 58 18'/>"
+		MobSVGArray.Bee="<path class='fblack-path wide' stroke-linejoin='round' d='M47 53L50 58L53 53ZM42 16A2 2 0 0 0 42 20A2 2 0 0 0 42 16M58 16A2 2 0 0 0 58 20A2 2 0 0 0 58 16'/><path class='yellow-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><linearGradient id='svgGradient' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffff7f'/><stop offset='20%' stop-color='#ffff7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffff7f'/><stop offset='50%' stop-color='#ffff7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffff7f'/><stop offset='80%' stop-color='#ffff7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='ns' fill='url(#svgGradient)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A10 10 0 0 0 42 18M53 26A10 10 0 0 1 58 18'/>"
 		MobSVGArray["Baby Ant"]="<path class='black-path' stroke-linecap='round' d='M43 32L46 25M57 32L54 25'/><path class='dgrey-path wider' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 31A8 8 0 0 0 50 47A8 8 0 0 0 50 31'/>"
 		MobSVGArray["Worker Ant"]="<path class='fdgrey-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='dgrey-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
 		MobSVGArray["Soldier Ant"]="<path class='fdgrey-path ns' d='M50 42A5 5 0 0 0 50 52A5 5 0 0 0 50 42'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M46 38A8.7 5 105 0 0 41.5 54.8A8.7 5 105 0 0 46 38M54 38A8.7 5 75 0 0 58.5 54.8A8.7 5 75 0 0 54 38'/><path class='black-path' stroke-linecap='round' d='M43 29L46 22M57 29L54 22'/><path class='dgrey-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/>"
 		MobSVGArray["Queen Ant"]="<path class='fdgrey-path ns' d='M50 35A10 10 0 0 0 50 55A10 10 0 0 0 50 35'/><path class='dgrey-path wider' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28' style='filter: brightness(80%)'/><path class='fdgrey-path ns' d='M50 28A8 8 0 0 0 50 44A8 8 0 0 0 50 28'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M46 34A8.7 5 105 0 0 41.5 50.8A8.7 5 105 0 0 46 34M54 34A8.7 5 75 0 0 58.5 50.8A8.7 5 75 0 0 54 34'/><path class='black-path' stroke-linecap='round' d='M44 24L46 17M56 24L54 17'/><path class='dgrey-path wider' d='M50 23A6 6 0 0 0 50 35A6 6 0 0 0 50 23' style='filter: brightness(80%)'/><path class='fdgrey-path ns ' d='M50 23A6 6 0 0 0 50 35A6 6 0 0 0 50 23'/>"
 		MobSVGArray["Ant Hole"]="<path class='fcyellow-path ns ' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20' style='filter: brightness(60%)'/><path class='fcyellow-path ns ' d='M50 26A12 12 0 0 0 50 50A12 12 0 0 0 50 26' style='filter: brightness(40%)'/><path class='fcyellow-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32' style='filter: brightness(20%)'/>"
 		MobSVGArray.Beetle="<path class='black-path' stroke-linecap='round' d='M43 27A9 9 0 0 1 45 20M57 27A9 9 0 0 0 55 20'/><path class='cpurple-path wider' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34' style='filter: brightness(80%)'/><path class='fcpurple-path ns ' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34'/><path class='cpurple-path' stroke-linecap='round' d='M50 34L50 46' style='filter: brightness(80%)'/><path class='fcpurple-path ns ' d='M45 32.8A1.8 1.8 0 0 0 45 36.4A1.8 1.8 0 0 0 45 32.8M45 38.2A1.8 1.8 0 0 0 45 41.8A1.8 1.8 0 0 0 45 38.2M45 43.6A1.8 1.8 0 0 0 45 47.2A1.8 1.8 0 0 0 45 43.6M55 32.8A1.8 1.8 0 0 0 55 36.4A1.8 1.8 0 0 0 55 32.8M55 38.2A1.8 1.8 0 0 0 55 41.8A1.8 1.8 0 0 0 55 38.2M55 43.6A1.8 1.8 0 0 0 55 47.2A1.8 1.8 0 0 0 55 43.6' style='filter: brightness(80%)'/>"
-		MobSVGArray.Hornet="<path class='fblack-path wide' stroke-linejoin='round' d='M47 53L50 62L53 53Z'/><linearGradient id='graHor' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cyellow-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graHor)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
+		MobSVGArray.Hornet="<path class='fblack-path wide' stroke-linejoin='round' d='M47 53L50 62L53 53Z'/><linearGradient id='svgGradient' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cyellow-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#svgGradient)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
 		MobSVGArray["Centipede (Garden)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fgreen-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
 		MobSVGArray["Centipede (Jungle)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fcpurple-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
 		MobSVGArray["Centipede (Desert)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fyellow-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
@@ -1070,7 +1070,7 @@
 		MobSVGArray["Fire Ant Burrow"]="<path class='fcred-path ns ' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20' style='filter: brightness(80%)'/><path class='fcred-path ns ' d='M50 26A12 12 0 0 0 50 50A12 12 0 0 0 50 26' style='filter: brightness(60%)'/><path class='fcred-path ns ' d='M50 32A6 6 0 0 0 50 44A6 6 0 0 0 50 32' style='filter: brightness(40%)'/>"
 		MobSVGArray.Sandstorm="<path class='fyellow-path ns ' d='M50 16.4L68.7 27.2L68.7 48.8L50 59.6L31.3 48.8L31.3 27.2Z'/><path class='fyellow-path ns ' d='M50 23.8L62.3 30.9L62.3 45.1L50 52.2L37.7 45.1L37.7 30.9Z' style='filter: brightness(80%)'/><path class='fyellow-path ns ' d='M50 31.2L55.9 34.6L55.9 41.4L50 44.8L44.1 41.4L44.1 34.6Z' style='filter: brightness(60%)'/>"
 		MobSVGArray.Bubble="<path class='white-path mwidth' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'/><path class='fwhite-path ns ' fill-opacity='0.3' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M58 30A5 5 0 0 0 58 40A5 5 0 0 0 58 30'/>"
-		MobSVGArray["Bumble Bee"]="<path class='fblack-path wide' stroke-linejoin='round' d='M42 16A2 2 0 0 0 42 20A2 2 0 0 0 42 16M58 16A2 2 0 0 0 58 20A2 2 0 0 0 58 16'/><linearGradient id='graBum' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cyellow-path' d='M50 24A15 12 90 0 0 50 54A15 12 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graBum)' d='M50 24A15 12 90 0 0 50 54A15 12 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A10 10 0 0 0 42 18M53 26A10 10 0 0 1 58 18'/>"
+		MobSVGArray["Bumble Bee"]="<path class='fblack-path wide' stroke-linejoin='round' d='M42 16A2 2 0 0 0 42 20A2 2 0 0 0 42 16M58 16A2 2 0 0 0 58 20A2 2 0 0 0 58 16'/><linearGradient id='svgGradient' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#ffdf7f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#ffdf7f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#ffdf7f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cyellow-path' d='M50 24A15 12 90 0 0 50 54A15 12 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#svgGradient)' d='M50 24A15 12 90 0 0 50 54A15 12 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A10 10 0 0 0 42 18M53 26A10 10 0 0 1 58 18'/>"
 		MobSVGArray.Shell="<path class='fcyellow-path ns' d='M50 50L34 30A20 20 0 0 1 66 30Z'/><path class='cyellow-path wide' d='M49 46L41 28M50 46L50 25M51 46L59 28M43 54A25 25 0 0 1 57 54' style='filter: brightness(80%)'/>"
 		MobSVGArray.Starfish="<path class='fred-path ns' d='M44 38L48 22A6 3 90 0 1 52 22L56 38Z'/><path class='fred-path rot72 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fred-path rot144 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fred-path rot216 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fred-path rot288 ns' d='M45 38L48 22A6 3 90 0 1 52 22L55 38Z'/><path class='fwhite-path ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot72 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot144 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot216 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/><path class='fwhite-path rot288 ns ' fill-opacity='0.2' d='M50 24A2 2 0 0 0 50 28A2 2 0 0 0 50 24M50 29A2.5 2.5 0 0 0 50 34A2.5 2.5 0 0 0 50 29'/>"
 		MobSVGArray.Crab="<path class='dbrown-path wide' stroke-linecap='round' stroke-linejoin='round' d='M39 29L33 23L42 20M35 33L25 30M32 37L22 36M32 41L22 42M35 45L25 48M61 29L67 23L58 20M65 33L75 30M68 37L78 36M68 41L78 42M65 45L75 48' style='filter: brightness(50%)'/><path class='dbrown-path wider' d='M50 29A14 10 0 0 0 50 49A14 10 0 0 0 50 29' style='filter: brightness(80%)'/><path class='fdbrown-path ns ' d='M50 29A14 10 0 0 0 50 49A14 10 0 0 0 50 29'/>"
@@ -1095,13 +1095,13 @@
 		MobSVGArray.Moth="<path class='fblack-path wide' stroke-linejoin='round' d='M42 21A2 2 0 0 0 42 25A2 2 0 0 0 42 21M58 21A2 2 0 0 0 58 25A2 2 0 0 0 58 21'/><path class='fdgrey-path ns' d='M50 29A8 8 0 0 0 50 45A8 8 0 0 0 50 29'/><path class='fwhite-path ns ' fill-opacity='0.6' d='M47 34A8.7 6.5 105 0 0 42.5 50.8A8.7 6.5 105 0 0 47 34M53 34A8.7 6.5 75 0 0 57.5 50.8A8.7 6.5 75 0 0 53 34'/><path class='black-path wide' stroke-linecap='round' d='M47 29A8 8 0 0 0 42 23M53 29A8 8 0 0 1 58 23'/>"
 		MobSVGArray.Firefly="<path class='fyellow-path ns' d='M50 27A12 6 90 0 0 50 51A12 6 90 0 0 50 27'/><path class='fblack-path ns ' stroke-linecap='round' d='M50 20A6 6 0 0 0 50 32A6 6 0 0 0 50 20'/><path class='flyellow-path ns ' fill-opacity='0.3' d='M50 14A25 25 0 0 0 50 64A25 25 0 0 0 50 14'/>"
 		MobSVGArray["Beetle (Hell)"]="<path class='black-path' stroke-linecap='round' d='M43 27A9 9 0 0 1 45 20M57 27A9 9 0 0 0 55 20'/><path class='cdred-path wider' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34' style='filter: brightness(80%)'/><path class='fcdred-path ns ' d='M42 34A7 7 0 0 1 47 29A12 12 0 0 1 53 29A7 7 0 0 1 58 34A24 24 0 0 1 58 46A7 7 0 0 1 53 51A12 12 0 0 1 47 51A7 7 0 0 1 42 46A24 24 0 0 1 42 34'/><path class='cdred-path' stroke-linecap='round' d='M50 34L50 46' style='filter: brightness(80%)'/><path class='fcdred-path ns ' d='M45 32.8A1.8 1.8 0 0 0 45 36.4A1.8 1.8 0 0 0 45 32.8M45 38.2A1.8 1.8 0 0 0 45 41.8A1.8 1.8 0 0 0 45 38.2M45 43.6A1.8 1.8 0 0 0 45 47.2A1.8 1.8 0 0 0 45 43.6M55 32.8A1.8 1.8 0 0 0 55 36.4A1.8 1.8 0 0 0 55 32.8M55 38.2A1.8 1.8 0 0 0 55 41.8A1.8 1.8 0 0 0 55 38.2M55 43.6A1.8 1.8 0 0 0 55 47.2A1.8 1.8 0 0 0 55 43.6' style='filter: brightness(80%)'/>"
-		MobSVGArray.Wasp="<path class='fblack-path wide' stroke-linejoin='round' d='M46 53L50 65L54 53Z'/><linearGradient id='graWas' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffbf3f'/><stop offset='20%' stop-color='#ffbf3f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffbf3f'/><stop offset='50%' stop-color='#ffbf3f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffbf3f'/><stop offset='80%' stop-color='#ffbf3f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='corange-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graWas)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
+		MobSVGArray.Wasp="<path class='fblack-path wide' stroke-linejoin='round' d='M46 53L50 65L54 53Z'/><linearGradient id='svgGradient' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#ffbf3f'/><stop offset='20%' stop-color='#ffbf3f'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#ffbf3f'/><stop offset='50%' stop-color='#ffbf3f'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#ffbf3f'/><stop offset='80%' stop-color='#ffbf3f'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='corange-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#svgGradient)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
 		MobSVGArray["Spider (Hell)"]="<path class='black-path wide' stroke-linecap='round' d='M42.5 28A18 18 0 0 0 33 21M38 34.5A25 25 0 0 0 28 31M38 41.5A25 25 0 0 1 28 45M42.5 48A15 15 0 0 1 33 53M57.5 28A18 18 0 0 1 67 21M62 34.5A25 25 0 0 1 72 31M62 41.5A25 25 0 0 0 72 45M57.5 48A15 15 0 0 0 67 53'/><path class='fcdred-path ns' d='M50 29.5A8.5 8.5 0 0 0 50 46.5A8.5 8.5 0 0 0 50 29.5'/>"
 		MobSVGArray["Centipede (Hell)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fcdred-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
-		MobSVGArray["Wasp (Hell)"]="<path class='fblack-path wide' stroke-linejoin='round' d='M46 53L50 65L54 53Z'/><linearGradient id='graHwa' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#bf0000'/><stop offset='20%' stop-color='#bf0000'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#bf0000'/><stop offset='50%' stop-color='#bf0000'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#bf0000'/><stop offset='80%' stop-color='#bf0000'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cdred-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#graHwa)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
+		MobSVGArray["Wasp (Hell)"]="<path class='fblack-path wide' stroke-linejoin='round' d='M46 53L50 65L54 53Z'/><linearGradient id='svgGradient' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#bf0000'/><stop offset='20%' stop-color='#bf0000'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#bf0000'/><stop offset='50%' stop-color='#bf0000'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#bf0000'/><stop offset='80%' stop-color='#bf0000'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cdred-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#svgGradient)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
 		MobSVGArray.Gambler="<path class='fcdred-path ns' d='M50 23A15 15 0 0 0 50 53A15 15 0 0 0 50 23'/><path class='black-path wide' d='M42 42A10 10 0 0 0 58 42M45 30L45 38M55 30L55 38'/>"
 		for(let i in MobNameList) if(i!=="0" && MobNameList.indexOf(MobNameList[i]).toString()===i) {
-			MobSVGArray[MobNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92L92 92L92 8ZM100 92A8 8 0 0 1 92 100L8 100A8 8 0 0 1 0 92L0 8L8 8L8 92Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+MobSVGArray[MobNameList[i]].replaceAll(/<linear.+Gradient>/g,"").replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path|ns)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+MobSVGArray[MobNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+MobNameList[i].replace(/\s\(.+\)/,"").replace("Ant","A.").replace("Fire ","F. ").replace("Termite","T.").replace("Bumble","B.").replace("Soldier F","S. F").replace("Burrow","B.").replace("Worker F","W. F").replace("Queen F","Q. F").replace("Overmind","Over.")+"</span>"
+			MobSVGArray[MobNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+MobSVGArray[MobNameList[i]].replaceAll(/<linear.+Gradient>/g,"").replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path|ns)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+MobSVGArray[MobNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+MobNameList[i].replace(/\s\(.+\)/,"").replace("Ant","A.").replace("Fire ","F. ").replace("Termite","T.").replace("Bumble","B.").replace("Soldier F","S. F").replace("Burrow","B.").replace("Worker F","W. F").replace("Queen F","Q. F").replace("Overmind","Over.")+"</span>"
 		}
 		const MapNameList=["","","","","","","","","","","Centralia Center","Centralia Field 1","Centralia Field 2","Centralia Field 3","Centralia Field 4","Centralia Field 5","Centralia Field 6","Centralia Field 7","","","","South Desert 1","South Desert 2","South Desert 3","South Desert 4","South Desert 5","South Desert 6","","","","","East Water 1","East Water 2","East Water 3","East Water 4","East Water 5","East Water 6","East Water 7","East Water 8","East Water 9","","Sewer 1","Sewer 2","Sewer 3","Sewer 4","","","","","","","Ant Hell 1","Ant Hell 2","Ant Hell 3","Ant Hell 4","Ant Hell 5","Ant Hell 6","","","","","Jungle 1","Jungle 2","Jungle 3","Jungle 4","Jungle 5","Jungle 6","Jungle Gate"]
 		const MapSpawnList=["","","","","","","","","","","","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=20%&Worker Ant=12%&Soldier Ant=5%&Ant Hole=2%&Hornet=8%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=15%&Worker Ant=12%&Soldier Ant=8%&Ant Hole=2%&Hornet=10%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=10%&Worker Ant=10%&Soldier Ant=10%&Ant Hole=2%&Hornet=12%&Centipede (Garden)=6%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=5%&Worker Ant=8%&Soldier Ant=10%&Ant Hole=1%&Hornet=20%&Centipede (Garden)=6%","Hornet=20%&Dandelion=80%","Rock=12%&Ladybug (Garden)=15%&Bee=15%&Ant Hole=2%&Hornet=25%&Centipede (Garden)=6%&Spider=15%&Dandelion=10%","Rock=15%&Ladybug (Garden)=12%&Bee=12%&Ant Hole=1%&Hornet=40%&Centipede (Garden)=3%&Spider=12%&Dandelion=5%","","","","Beetle=90%&Ladybug (Desert)=10%","Cactus=25%&Beetle=20%&Centipede (Desert)=10%&Ladybug (Desert)=5%&Scorpion=15%&Fire Ant Burrow=5%&Sandstorm=20%","Cactus=20%&Beetle=20%&Centipede (Desert)=8%&Ladybug (Desert)=4%&Scorpion=20%&Fire Ant Burrow=8%&Sandstorm=20%","Cactus=25%&Beetle=20%&Ladybug (Desert)=2%&Scorpion=25%&Fire Ant Burrow=3%&Sandstorm=25%","Cactus=30%&Beetle=20%&Centipede (Desert)=2%&Ladybug (Desert)=6%&Scorpion=20%&Fire Ant Burrow=12%&Sandstorm=20%","Cactus=20%&Beetle=40%&Ladybug (Desert)=2%&Scorpion=20%&Fire Ant Burrow=3%&Sandstorm=15%","","","","","Bubble=20%&Shell=20%&Starfish=15%&Crab=30%&Sponge=15%","Bubble=20%&Shell=20%&Starfish=20%&Crab=20%&Sponge=20%","Bubble=15%&Shell=10%&Starfish=15%&Crab=15%&Jellyfish=15%&Sponge=30%","Crab=30%&Jellyfish=60%&Sponge=10%","Bubble=10%&Shell=50%&Starfish=15%&Crab=15%&Jellyfish=10%","Bubble=25%&Shell=20%&Crab=15%&Jellyfish=40%","Bubble=10%&Shell=10%&Starfish=10%&Crab=10%&Leech=60%","Bubble=30%&Starfish=50%&Jellyfish=20%","Bubble=30%&Shell=10%&Crab=60%","","Spider=20%&Fly=20%&Roach=20%&Moth=40%","Spider=20%&Fly=25%&Roach=30%&Moth=25%","Spider=20%&Fly=30%&Roach=25%&Moth=25%","Spider=40%&Fly=20%&Roach=25%&Moth=15%","","","","","","","Baby Ant=30%&Worker Ant=30%&Soldier Ant=40%","Baby Ant=15%&Worker Ant=24%&Soldier Ant=60%&Queen Ant=1%","Soldier Fire Ant=45%&Baby Fire Ant=25%&Worker Fire Ant=30%","Soldier Fire Ant=63%&Baby Fire Ant=12%&Worker Fire Ant=25%","Baby Termite=25%&Worker Termite=30%&Soldier Termite=45%","Baby Termite=12%&Worker Termite=25%&Soldier Termite=63%","","","","","Termite Mound=10%&Bush=90%","Centipede (Jungle)=5%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=10%&Termite Mound=5%&Bush=40%&Firefly=5%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=10%&Termite Mound=4%&Bush=40%&Firefly=8%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=12%&Termite Mound=3%&Bush=35%&Firefly=10%&Wasp=12%","Centipede (Jungle)=3%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=15%&Termite Mound=2%&Bush=30%&Firefly=10%&Wasp=15%","Centipede (Jungle)=3%&Ladybug (Jungle)=8%&Leafbug=20%&Mantis=20%&Termite Mound=1%&Bush=20%&Firefly=8%&Wasp=20%",""]
@@ -1185,6 +1185,20 @@
 			return approx(answer)
 		}
 		function AttackSuccessChance(petal,mob,direction="Front",row="Front") {
+			if(direction==="Auto") {
+				if(petal.x===mob.x) {
+					direction="Front"
+				} else {
+					direction="Side"
+				}
+			}
+			if(row==="Auto") {
+				if(petal.y===4) {
+					row="Front"
+				} else {
+					row="Middle"
+				}
+			}
 			let patk=petal.atk2,mdef=mob.dodge
 			if(row!=="Front") patk=petal.atk1
 			patk+=petal.atkbuff
@@ -1213,8 +1227,22 @@
 			return approx(answer)
 		}
 		function DefendSuccessChance(petal,mob,direction="Front",row="Back") {
+			if(direction==="Auto") {
+				if(petal.x===mob.x) {
+					direction="Front"
+				} else {
+					direction="Side"
+				}
+			}
+			if(row==="Auto") {
+				if(petal.y===6) {
+					row="Back"
+				} else {
+					row="Middle"
+				}
+			}
 			let pdef=petal.def2,matk=mob.dodge
-			if(row!=="back") pdef=petal.def1
+			if(row!=="Back") pdef=petal.def1
 			pdef+=petal.defbuff
 			if(direction!=="Front") pdef-=(18-petal.size)*(17-petal.size)/2
 			if(pdef<10) return 0
@@ -1433,8 +1461,8 @@
 				this.atk1="/"
 				this.atk2="/"
 			} else {
-				this.atk1=parseInt(PetalATKList[0].match(/^\d+/))
-				this.atk2=parseInt(PetalATKList[0].match(/(?<=-)\d+/))
+				this.atk1=parseInt(PetalATKList[this.id].match(/^\d+/))
+				this.atk2=parseInt(PetalATKList[this.id].match(/(?<=-)\d+/))
 			}
 			this.atkbuff=roll(-10,10)
 			if(this.atkbuff*this.atkbuff>10) this.atkbuff=roll(-10,10)
@@ -1444,8 +1472,8 @@
 				this.def1="/"
 				this.def2="/"
 			} else {
-				this.def1=parseInt(PetalDEFList[0].match(/^\d+/))
-				this.def2=parseInt(PetalDEFList[0].match(/(?<=-)\d+/))
+				this.def1=parseInt(PetalDEFList[this.id].match(/^\d+/))
+				this.def2=parseInt(PetalDEFList[this.id].match(/(?<=-)\d+/))
 			}
 			this.defbuff=roll(-10,10)
 			if(this.defbuff*this.defbuff>10) this.defbuff=roll(-10,10)
@@ -1458,19 +1486,110 @@
 		Petal.prototype.clone=function() {
 			return Object.assign(new Petal(),structuredClone(this))
 		}
+		Petal.prototype.print=function() {
+			if(this.state!=="Existing" && this.state!=="Reloading") return
+			if(this.y===0) {
+				return
+			}
+			getGrid(0,this.x,this.y).replaceWith(createGrid(0,this.x,this.y,"Petal_"+PetalNameList[this.id],1,this.rarity))
+			let editingPath=getGrid(0,this.x,this.y).children[0].children[0]
+			if(this.state==="Reloading") {
+				let reloadProgress=this.actionbar/this.reload
+				if(reloadProgress<0) reloadProgress=0
+				if(reloadProgress>1) reloadProgress=1
+				editingPath.setAttribute("d","M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100L8 97L"+(8+84*reloadProgress)+" 97L"+(8+84*reloadProgress)+" 95L8 95ZM8 8L92 8L92 92L8 92Z")
+				return
+			}
+			let node1=100,node2=200,maxAction=250,healthP=this.currenthealth/this.health
+			if(healthP<0) healthP=0
+			if(this.speed===1) node1=1
+			if(this.name==="Beetle") {
+				node1=4
+				node2=12
+			}
+			if(this.name==="Sandstorm") {
+				node1=8
+				node2=16
+			}
+			if(this.name==="Soldier Ant") {
+				node1=5
+				node2=15
+			}
+			if(this.actionbar<node1) {
+				let nodeProgress=this.actionbar/node1
+				if(nodeProgress<0) nodeProgress=0
+				editingPath.setAttribute("d","M0 36L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 36L92 36L92 8L8 8L8 36ZM5 36L8 36L8 92L92 92L92 36L95 36L95 92A3 3 0 0 1 92 95L8 95A3 3 0 0 1 5 92ZM0 36L3 36L3 92A5 5 0 0 0 8 97L92 97A5 5 0 0 0 97 92L97 36L100 36L100 92A8 8 0 0 1 92 100L8 100A8 8 0 0 1 0 92ZM8 8L92 8L92 "+(92-84*healthP)+"L8 "+(92-84*healthP)+"ZM5 "+(36+56*nodeProgress)+"L5 92A3 3 0 0 0 8 95L92 95A3 3 0 0 0 95 92L95 36L97 36L97 92A5 5 0 0 1 92 97L8 97A5 5 0 0 1 3 92L3 "+(36+56*nodeProgress)+"Z")
+			} else if(this.actionbar<node2) {
+				let nodeProgress=(this.actionbar-node1)/(node2-node1)
+				editingPath.setAttribute("d","M0 36L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 36L92 36L92 8L8 8L8 36ZM5 36L8 36L8 92L92 92L92 36L95 36L95 92A3 3 0 0 1 92 95L8 95A3 3 0 0 1 5 92ZM0 36L3 36L3 92A5 5 0 0 0 8 97L92 97A5 5 0 0 0 97 92L97 36L100 36L100 92A8 8 0 0 1 92 100L8 100A8 8 0 0 1 0 92ZM8 8L92 8L92 "+(92-84*healthP)+"L8 "+(92-84*healthP)+"ZM"+(8+84*nodeProgress)+" 95L92 95A3 3 0 0 0 95 92L95 36L97 36L97 92A5 5 0 0 1 92 97L"+(8+84*nodeProgress)+" 97Z")
+			} else {
+				let nodeProgress=(this.actionbar-node2)/(maxAction-node2)
+				editingPath.setAttribute("d","M0 36L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 36L92 36L92 8L8 8L8 36ZM5 36L8 36L8 92L92 92L92 36L95 36L95 92A3 3 0 0 1 92 95L8 95A3 3 0 0 1 5 92ZM0 36L3 36L3 92A5 5 0 0 0 8 97L92 97A5 5 0 0 0 97 92L97 36L100 36L100 92A8 8 0 0 1 92 100L8 100A8 8 0 0 1 0 92ZM8 8L92 8L92 "+(92-84*healthP)+"L8 "+(92-84*healthP)+"ZM95 "+(92-56*nodeProgress)+"L95 36L97 36L97 "+(92-56*nodeProgress)+"Z")
+			}
+		}
 		Petal.prototype.load=function() {
 			this.actionbar-=this.reload
 			this.currenthealth=this.health
 			this.state="Existing"
+		}
+		Petal.prototype.destroy=function() {
+			if(this.count>1) {
+				addLog("[Petal] A part of "+this.name+" is destroyed.","#df9fdf")
+				this.count--
+				this.currenthealth=this.health
+				return
+			}
+			addLog("[Petal] "+this.name+" is destroyed.","#ff9fdf")
+			this.state="Reloading"
+		}
+		Petal.prototype.injure=function(damage,mobName) {
+			let resultingDamage=damage
+			addLog("[Petal] "+this.name+" received "+resultingDamage+" damage from "+mobName+".","#9f9fdf")
+			this.currenthealth-=resultingDamage
+			if(this.currenthealth<=0) this.destroy()
 		}
 		Petal.prototype.progress=function(value) {
 			let pendingAction=this.speed,maxAction=250
 			this.actionbar+=this.speed
 			if(this.state==="Reloading" && this.actionbar>=this.reload) this.load()
 			if(this.state!=="Reloading" && this.actionbar>=maxAction) this.actionbar=maxAction
+			this.print()
 		}
-		Petal.prototype.move=function(dir) {
-			addLog("[Petal] Action of "+this.name+"...","#9f9fdf")
+		Petal.prototype.move=function(targetX,targetY) {
+			if(targetX!==undefined) {
+				addLog("[Petal] Movement of "+this.name+": from ("+this.x+","+this.y+") to ("+targetX+","+targetY+").","#9f9fdf")
+				getGrid(0,this.x,this.y).replaceWith(createGrid(0,this.x,this.y,"Empty",1,0))
+				this.x=targetX
+				this.y=targetY
+				this.print()
+				fight.manipulate=false
+				localStorage.setItem("fight",JSON.stringify(fight))
+				return
+			}
+			fight.manipulate=true
+			operPrepare(this,"Move")
+		}
+		Petal.prototype.attack=function(targetX,targetY) {
+			if(targetX!==undefined) {
+				let targetMob
+				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===targetX && fight.mob[i].y===targetY) targetMob=fight.mob[i]
+				addLog("[Petal] Attack of "+this.name+": to "+targetMob.name+" at ("+targetMob.x+","+targetMob.y+")...","#9f9fdf")
+				if(determine(AttackSuccessChance(this,targetMob,"Auto","Auto"),true)) {
+					let damageDealt=this.damage*2,damageReceived=targetMob.damage,knockbackDealt=50
+					this.injure(damageReceived,targetMob.name)
+					targetMob.injure(damageDealt,this.name)
+					targetMob.knockback(knockbackDealt)
+					targetMob.print()
+					removeMob()
+				} else {
+				}
+				this.print()
+				fight.manipulate=false
+				localStorage.setItem("fight",JSON.stringify(fight))
+				return
+			}
+			fight.manipulate=true
+			operPrepare(this,"Attack")
 		}
 		function Mob(id=1,rarity=1,shiny) {
 			this.id=id,this.rarity=rarity
@@ -1538,21 +1657,42 @@
 		Mob.prototype.clone=function() {
 			return Object.assign(new Mob(),structuredClone(this))
 		}
+		Mob.prototype.print=function() {
+			getGrid(0,this.x,this.y).replaceWith(createGrid(0,this.x,this.y,"Mob_"+this.name,1,this.rarity))
+			let editingPath=getGrid(0,this.x,this.y).children[0].children[0]
+			let actionProgress=this.actionbar/200,healthP=this.currenthealth/this.health
+			if(healthP<0) healthP=0
+			if(actionProgress>1) actionProgress=1
+			editingPath.setAttribute("d","M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100L8 97L"+(8+84*actionProgress)+" 97L"+(8+84*actionProgress)+" 95L8 95ZM8 8L92 8L92 "+(92-84*healthP)+"L8 "+(92-84*healthP)+"Z")
+		}
+		Mob.prototype.injure=function(damage,petalName) {
+			let resultingDamage=damage
+			addLog("[Mob] "+this.name+" received "+resultingDamage+" damage from "+petalName+".","#bfbf00")
+			this.currenthealth-=resultingDamage
+		}
+		Mob.prototype.knockback=function(knockback) {
+			let resultingKnockback=knockback
+			if(knockback>this.actionbar+50) knockback=this.actionbar+50
+			addLog("[Mob] "+this.name+" received "+resultingKnockback+" knockback.","#bfbf00")
+			this.actionbar-=knockback
+		}
 		Mob.prototype.progress=function() {
 			let pendingAction=this.speed,maxAction=250
 			this.actionbar+=this.speed
 			if(this.actionbar>=maxAction) this.actionbar=maxAction
+			this.print()
 		}
 		Mob.prototype.action=function() {
 			addLog("[Mob] Action of "+this.name+"...","#bfbf00")
 			this.actionbar-=200
+			this.print()
 		}
 		Mob.prototype.move=function() {
 		}
 	</script>
 	<script>
 		const bookHTML=new Object()
-		bookHTML["Flower Combat Guide"]="<h2>Flower Combat Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>The process of a round in battle is divided into the following parts: At the beginning, your petals gain action based on speed. You can move petals, use them for attack or perform special skills. Then mobs gain action. Mob with action exceeding the threshold will attack and you use petal to defend. If you skip defend or the defend fails, you take the damage. By default value, moving a petal costs 100 action, while using a petal to attack costs 200 action. The threshold for mob is 200 action.</span><br><span>Your petals can attack or defend mobs from <span class='bold'>the front or the side column</span>. The success rate of attack is based on petal ATK and mob Dodge. The success rate of defend is based on petal DEF and mob Dodge. These two formula have significant difference. When the mob is from side column, the formula also uses petal Size. Petal Size is capped at 20, but the best value for side-defending is <span class='bold'>17 to 18 Size</span>.</span><br><span>For shootable petal, before any bounces, the Accuracy (the petal ATK in success rate formula for shootable petals) is always 100% inside range. For each distance exceeds range, the Accuracy is decreased by Accuracy Decline. If it hits the target, it can bounce between enemies. The Accuracy is decreased by Repeated Accuracy Decline each time it hits a enemy that already hit. The Accuracy is decreased by Bounce Accuracy Decline each bounce exceeds Bounce. Any bounce hits can only hit enemy within Bounce Range.</span><br><span>Since you are facing mobs from all directions and not only from the front, <span class='bold'>the first and last columns are connected</span>, which means that both your petals and mobs can move from the first column to the last column or inverted, and the first and last columns are side columns to each other. The distance between two grids is calculated by horizontal distance plus vertical distance <span class='bold'>without using the Pythagorean theorem</span>. The word 'Retire' means a petal disappears and can't be used again in the same fight.</span><br><span>You can calculate chance in the following box. For example, Aa-48S12 calculates the success rate of attacking 80% Dodge mob in side column with 12 Size, 100% ATK and -4 ATKbuff petal, A4+a6F calculates the success rate of attacking 60% Dodge mob in the front column with 40% ATK and +10 ATKbuff petal, D3+05F calculates the success rate of defending 50% Dodge mob in the front column with 30% DEF and +0 DEFbuff petal.</span><input type='text' id='combat-calc' onkeydown='combatcalc(event.key)' class='inner-input' autocomplete='off' title='Calculator'>"
+		bookHTML["Flower Combat Guide"]="<h2>Flower Combat Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>When you enter a map for the first time, mobs will be spawned and fight against you. There is a threshold depends on Floor that prevents too many mobs existing at the same time. Therefore, when you defeat a mob, a new mob may spawn.</span><br><span>The process of a round in battle is divided into the following parts: At the beginning, your petals gain action based on speed. You can move petals, use them for attack or perform special skills. Then mobs gain action. Mob with action exceeding the threshold will attack and you use petal to defend. If you skip defend or the defend fails, you take the damage. By default value, moving a petal costs 100 action, while using a petal to attack costs 200 action. The threshold for mob is 200 action.</span><br><span>Your petals can attack or defend mobs from <span class='bold'>the front or the side column</span>. The success rate of attack is based on petal ATK and mob Dodge. The success rate of defend is based on petal DEF and mob Dodge. These two formula have significant difference. When the mob is from side column, the formula also uses petal Size. Petal Size is capped at 20, but the best value for side-defending is <span class='bold'>17 to 18 Size</span>.</span><br><span>For shootable petal, before any bounces, the Accuracy (the petal ATK in success rate formula for shootable petals) is always 100% inside range. For each distance exceeds range, the Accuracy is decreased by Accuracy Decline. If it hits the target, it can bounce between enemies. The Accuracy is decreased by Repeated Accuracy Decline each time it hits a enemy that already hit. The Accuracy is decreased by Bounce Accuracy Decline each bounce exceeds Bounce. Any bounce hits can only hit enemy within Bounce Range.</span><br><span>Since you are facing mobs from all directions and not only from the front, <span class='bold'>the first and last columns are connected</span>, which means that both your petals and mobs can move from the first column to the last column or inverted, and the first and last columns are side columns to each other. The distance between two grids is calculated by horizontal distance plus vertical distance <span class='bold'>without using the Pythagorean theorem</span>. The word 'Retire' means a petal disappears and can't be used again in the same fight.</span><br><span>You can calculate chance in the following box. For example, Aa-48S12 calculates the success rate of attacking 80% Dodge mob in side column with 12 Size, 100% ATK and -4 ATKbuff petal, A4+a6F calculates the success rate of attacking 60% Dodge mob in the front column with 40% ATK and +10 ATKbuff petal, D3+05F calculates the success rate of defending 50% Dodge mob in the front column with 30% DEF and +0 DEFbuff petal.</span><input type='text' id='combat-calc' onkeydown='combatcalc(event.key)' class='inner-input' autocomplete='off' title='Calculator'>"
 		bookHTML["Flower Survival Guide"]="<h2>Flower Survival Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Welcome to the Florroom! This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7. Here, you make powerful petals, travel between different regions and maps, defeat various mobs and continuously upgrade to gain stronger power!</span><br><span>This is your first book. As the story continues, you will learn more knowledge, which appears in the form of books in this section. If you don't have experience fighting in Florroom, it doesn't matter. You will receive the unique <span class='bold'>Flower Combat Guide</span> I wrote. Enter the name of this book below to get it!</span><br><span>If you remembered something, try writing in the following box to retrieve the corresponding item:</span><input type='text' id='item-code' onkeydown='itemcode(event.key)' class='inner-input' autocomplete='off' title='Code'><span>(NOt CASe SenSItiVE &amp; ign o r i ngspace s)</span>"
 		function book(modify) {
 			if(modify===-1 && player.bookreading>0) player.bookreading--
@@ -1596,8 +1736,8 @@
 			}
 		}
 		function command(key) {
-			if(logDisplay===false) return
 			if(key!=="Enter") return
+			if(logDisplay===false) return
 			let commandInput=document.getElementById("command-call").value
 			document.getElementById("command-call").value=""
 			if(commandInput.startsWith(".")) {
@@ -1717,7 +1857,7 @@
 			let combatcalcInput=document.getElementById("combat-calc").value
 			document.getElementById("combat-calc").value=""
 			if(!/^[AD][0-9a][-+][0-9a][0-9a](F|S\d+)$/.test(combatcalcInput)) {
-				addLog("[Calculator] Invalid input. The input should strictly follow the format /^[AD][0-9a][-+][0-9a][0-9a](F|S\d+)$/.","#bf7f3f")
+				addLog("[Calculator] Invalid input. The input should strictly follow the format /^[AD][0-9a][-+][0-9a][0-9a](F|S\\d+)$/.","#bf7f3f")
 				return
 			}
 			if(/-0/.test(combatcalcInput)) {
@@ -1730,6 +1870,7 @@
 			} else {
 				calcPetal.atk1=parseInt(combatcalcInput[1])*10
 			}
+			calcPetal.atk2=calcPetal.atk1
 			if(combatcalcInput[3]==="a") {
 				calcPetal.atkbuff=10
 			} else {
@@ -1751,6 +1892,7 @@
 			}
 			if(combatcalcInput[0]==="D") {
 				calcPetal.def1=calcPetal.atk1
+				calcPetal.def2=calcPetal.atk2
 				calcPetal.defbuff=calcPetal.atkbuff
 				if(combatcalcInput[5]==="F") {
 					addLog("[Calculator] The success rate of defending "+calcMob.dodge+"% Dodge mob in the front column with "+calcPetal.def1+"% DEF and "+combatcalcInput[2]+Math.abs(calcPetal.defbuff)+" DEFbuff petal is "+DefendSuccessChance(calcPetal,calcMob,"Front","Middle")+"%","#5fbf5f")
@@ -1871,6 +2013,9 @@
 		function delay(time) {
 			return new Promise(resolve => setTimeout(resolve,time))
 		}
+		function waitAnimation(time) {
+			return new Promise(resolve => {const checkAnimation=() => animation? setTimeout(checkAnimation,20):resolve(); checkAnimation()})
+		}
 		async function copyToClipboard(text) {
 			await navigator.clipboard.writeText(text)
 		}
@@ -1937,6 +2082,7 @@
 			let buttonValue=parseInt(button.value)
 			return
 		}
+		let svgGradientCount=0
 		function createGrid(value,x,y,text,size=0,rarity=0) {
 			let newGrid=document.createElement("button")
 			newGrid.type="button"
@@ -1956,6 +2102,10 @@
 			if(typeof(text)==="number" && text!==0) newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10L90 50L50 90L10 50Z'/></svg><span class='mid'>"+text+"</span>"
 			if(text.startsWith("Petal")) newGrid.innerHTML=PetalSVGArray[text.slice(6)]
 			if(text.startsWith("Mob")) newGrid.innerHTML=MobSVGArray[text.slice(4)]
+			if(newGrid.innerHTML.match("svgGradient")) {
+				svgGradientCount++
+				newGrid.innerHTML=newGrid.innerHTML.replaceAll("svgGradient","uniqueGradient"+svgGradientCount)
+			}
 			newGrid.addEventListener("mouseenter",() => gridInfo(newGrid))
 			newGrid.addEventListener("mouseleave",() => closeGridInfo())
 			return newGrid
@@ -2037,7 +2187,8 @@
 			if(fight.active===true && fight.ready===false && buttonValue===0) {
 				if(selectedGrid.select===true && selectedGrid.value===buttonValue && selectedGrid.x===buttonX && selectedGrid.y===buttonY) {
 					selectedGrid.select=false
-					document.getElementById("gridinfo").children[0].innerHTML=document.getElementById("gridinfo").children[0].innerHTML.slice(11)
+					closeGridInfo()
+					gridInfo(button)
 				} else {
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
@@ -2062,7 +2213,8 @@
 			if(fight.active===true && fight.ready===false && buttonValue===2) {
 				if(selectedGrid.select===true && selectedGrid.value===buttonValue && selectedGrid.x===buttonX && selectedGrid.y===buttonY) {
 					selectedGrid.select=false
-					document.getElementById("gridinfo").children[0].innerHTML=document.getElementById("gridinfo").children[0].innerHTML.slice(11)
+					closeGridInfo()
+					gridInfo(button)
 				} else {
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
@@ -2084,10 +2236,11 @@
 					}
 				}
 			}
-			if(fight.active===true && buttonValue===0 && fight.ready===true) {
+			if(fight.active===true && fight.ready===true && buttonValue===0) {
 				if(selectedGrid.select===true && selectedGrid.value===buttonValue && selectedGrid.x===buttonX && selectedGrid.y===buttonY) {
 					selectedGrid.select=false
-					document.getElementById("gridinfo").children[0].innerHTML=document.getElementById("gridinfo").children[0].innerHTML.slice(11)
+					closeGridInfo()
+					gridInfo(button)
 				} else {
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
@@ -2100,6 +2253,15 @@
 						selectedGrid.x=buttonX
 						selectedGrid.y=buttonY
 						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
+						let option=document.createElement("div")
+						if(moveCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].move()' class='llmargin lblue-bg srecbtn pointer'>[M] Move</button>"
+						if(attackCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].attack()' class='llmargin lyellow-bg srecbtn pointer'>[R] Attack</button>"
+						if(shootCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].shoot()' class='llmargin lyellow-bg srecbtn pointer'>[R] Shoot</button>"
+						if(skillCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].skill()' class='llmargin lpurple-bg srecbtn pointer'>[X] Special Skill</button>"
+						if(option.innerHTML!=="") {
+							document.getElementById("gridinfo").appendChild(option)
+							document.getElementById("gridinfo").innerHTML+="<br>"
+						}
 					}
 				}
 			}
@@ -2113,8 +2275,24 @@
 		function dice() {
 			return roll(1,6)
 		}
-		function determine(chance) {
-			return (chance>=100*Math.random())
+		function determine(chance,log,logText="") {
+			let result=false
+			if(100*Math.random()<=chance) result=true
+			if(log) {
+				if(result) {
+					addLog("[Determine] True ("+chance+"%)"+logText,"#3f3f3f")
+				} else {
+					addLog("[Determine] False ("+(100-chance)+"%)"+logText,"#3f3f3f")
+				}
+			}
+			return result
+		}
+		function discalc(cord1,cord2,modulo=0) {
+			let differ=Math.abs(cord1-cord2)
+			if(modulo===0) return differ
+			differ%=modulo
+			if(modulo-differ<differ) differ=modulo-differ
+			return differ
 		}
 		let cogDegree=0
 		function cogRotate() {
@@ -2363,6 +2541,7 @@
 			} else {
 				displayMap()
 			}
+			if(fight.manipulate===true) endFight()
 			document.getElementById("end2").innerText="Welcome to the Florroom!"
 			for(let i=0;i<=10;i++) {
 				document.getElementById("end2").style.opacity=i/10
@@ -2793,8 +2972,14 @@
 			for(let i=1;i<=8;i++) {
 				for(let j=1;j<=6;j++) getGrid(0,i,j).replaceWith(createGrid(0,i,j,"Empty",1,0))
 			}
-			for(let i=0;i<fight.petal.length;i++) getGrid(0,fight.petal[i].x,fight.petal[i].y).replaceWith(createGrid(0,fight.petal[i].x,fight.petal[i].y,"Petal_"+PetalNameList[fight.petal[i].id],1,fight.petal[i].rarity))
-			for(let i=0;i<fight.mob.length;i++) getGrid(0,fight.mob[i].x,fight.mob[i].y).replaceWith(createGrid(0,fight.mob[i].x,fight.mob[i].y,"Mob_"+fight.mob[i].name,1,fight.mob[i].rarity))
+			for(let i=0;i<fight.petal.length;i++) {
+				if(fight.petal[i].y!==0) {
+					fight.petal[i].print()
+				} else {
+					document.getElementById("fight-item").appendChild(createGrid(2,fight.petal[i].x,0,"Petal_"+PetalNameList[fight.petal[i].id],1,fight.petal[i].rarity))
+				}
+			}
+			for(let i=0;i<fight.mob.length;i++) fight.mob[i].print()
 		}
 		function startFight() {
 			if(lupoper.active===true) cancelLevelUp()
@@ -3093,6 +3278,14 @@
 		}
 		function updateT() {
 			if(fight.active===false) return
+			if(operingX!==0 && operingType==="Attack") {
+				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===operingX && fight.mob[i].y===operingY) {
+					document.getElementById("fight-t-btn").innerHTML=AttackSuccessChance(fight.petal[operingPetal],fight.mob[i],"Auto","Auto")+"% Success"
+					document.getElementById("fight-t-btn").setAttribute("onclick","")
+					document.getElementById("fight-t-btn").style.cursor="default"
+				}
+				return
+			}
 			if(fight.ready===false) {
 				document.getElementById("fight-t-btn").innerHTML="[T] Ready to Fight. Requires "+fight.petal.length+"/"+FlowerSlot()+" equipped petals."
 				if(fight.petal.length===FlowerSlot()) {
@@ -3156,6 +3349,85 @@
 			trackingX=0
 			trackingY=0
 		}
+		let operingGrid,operingPetal=0,operingX=0,operingY=0,operingType="Inactive"
+		function operCheck(newX,newY) {
+			if(operingType==="Move") {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].x===newX && fight.petal[i].y===newY) return false
+				if(discalc(fight.petal[operingPetal].x,newX,8)+discalc(fight.petal[operingPetal].y,newY)!==1) return false
+				if(fight.petal[operingPetal].name!=="Pearl" && newY<=3) return false
+				return true
+			}
+			if(operingType==="Attack") {
+				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===newX && fight.mob[i].y===newY) {
+					if(discalc(fight.petal[operingPetal].x,newX,8)>1) return false
+					if(AttackSuccessChance(fight.petal[operingPetal],fight.mob[i],"Auto","Auto")>0) {
+						updateT()
+						return true
+					}
+					return false
+				}
+				return false
+			}
+		}
+		function operGrid() {
+			for(let i=1;i<=8;i++) {
+				for(let j=1;j<=6;j++) {
+					if(Math.abs(mouseY-getGrid(0,i,j).getBoundingClientRect().top-40)<=25 && Math.abs(mouseX-getGrid(0,i,j).getBoundingClientRect().left-40)<=25) {
+						if(!operCheck(i,j)) continue
+						operingGrid.style.top=getGrid(0,i,j).getBoundingClientRect().top+40+"px"
+						operingGrid.style.left=getGrid(0,i,j).getBoundingClientRect().left+40+"px"
+						operingX=i
+						operingY=j
+						return
+					}
+				}
+			}
+			operingGrid.style.top=mouseY+"px"
+			operingGrid.style.left=mouseX+"px"
+			operingY=0
+			if(operingX!==0) {
+				operingX=0
+				updateT()
+			}
+		}
+		function operPrepare(petal,type) {
+			operingGrid=createGrid(6361,0,0,"Petal_"+PetalNameList[petal.id],1,petal.rarity)
+			operingGrid.setAttribute("class","smid bgrid apos")
+			operingGrid.setAttribute("onclick","operResult()")
+			operingGrid.style.opacity=0.6
+			for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].x===petal.x && fight.petal[i].y===petal.y) operingPetal=i
+			operingX=0
+			operingY=0
+			operingType=type
+			operGrid()
+			getGrid(0,selectedGrid.x,selectedGrid.y).style.opacity=0.4
+			selectedGrid.select=false
+			closeGridInfo()
+			document.body.appendChild(operingGrid)
+			document.addEventListener("mousemove",operGrid)
+		}
+		function operResult() {
+			if(operingX!==0) {
+				if(operingType==="Move") {
+					let moveRequirement=100
+					fight.petal[operingPetal].actionbar-=moveRequirement
+					fight.petal[operingPetal].move(operingX,operingY)
+				}
+				if(operingType==="Attack") {
+					let attackRequirement=200
+					fight.petal[operingPetal].actionbar-=attackRequirement
+					fight.petal[operingPetal].attack(operingX,operingY)
+				}
+			} else {
+				getGrid(0,selectedGrid.x,selectedGrid.y).style.opacity=1
+				fight.manipulate=false
+			}
+			document.removeEventListener("mousemove",operGrid)
+			document.body.removeChild(operingGrid)
+			operingType="Inactive"
+			updateT()
+			return
+		}
 		function equipCheck(petal) {
 			if(fight.petal.length>=FlowerSlot()) return false
 			if(PetalAttributeList[petal.id].match("Can't equip")!==null) return false
@@ -3184,8 +3456,8 @@
 					if(trackingType===1) fight.petal[fight.petal.length-1].name="Concentrated Eye"
 					if(trackingType===2) fight.petal[fight.petal.length-1].name="Specialized Eye"
 				}
-				document.body.removeChild(trackingGrid)
 				document.removeEventListener("mousemove",trackGrid)
+				document.body.removeChild(trackingGrid)
 				if(PetalAttributeList[player.inventory[selectedGrid.x].id].match("DECORATION")!==null && trackingY===0) {
 					getGrid(2,0,0).remove()
 				}
@@ -3227,6 +3499,7 @@
 					fight.mob[fight.mob.length-1].x=roll(1,8)
 					fight.mob[fight.mob.length-1].y=roll(1,3)
 				}
+				fight.mob[fight.mob.length-1].print()
 			}
 			return
 		}
@@ -3242,7 +3515,21 @@
 				fight.spawnmob[i]=new Mob(MobID(explore.flowerspot),MobRarity(MapWave(explore.floor,MapRarityList[explore.flowerspot])))
 			}
 			fillMob()
-			displayFightField()
+		}
+		async function removeMob() {
+			for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].currenthealth<=0) {
+				if(fight.mob[i].count>1) {
+					addLog("[Mob] A part of "+fight.mob[i].name+" is destroyed.","#ffbf00")
+					fight.mob[i].count--
+					fight.mob[i].currenthealth=fight.mob[i].health
+					continue
+				}
+				addLog("[Mob] "+fight.mob[i].name+" is destroyed.","#ff9f0f")
+				collapseGrid(getGrid(0,fight.mob[i].x,fight.mob[i].y))
+				fight.mob.splice(i,1)
+			}
+			await waitAnimation()
+			fillMob()
 		}
 		function endTurn() {
 			if(animation) return
@@ -3262,6 +3549,7 @@
 					addLog("[Turn] Mob turn ended. Flower turn starts.","#df9f9f")
 				}
 				fight.turn="Flower"
+				fight.manipulate=false
 				for(let i=0;i<fight.petal.length;i++) fight.petal[i].progress()
 				updateT()
 				localStorage.setItem("fight",JSON.stringify(fight))
@@ -3281,6 +3569,39 @@
 		}
 		function bonusTurnCheck() {
 			return false
+		}
+		function moveCheck(petal) {
+			if(petal.state!=="Existing") return false
+			if(PetalAttributeList[petal.id].match("Can't move")!==null) return false
+			let moveRequirement=100
+			if(petal.actionbar<moveRequirement) return false
+			return true
+		}
+		function attackCheck(petal) {
+			if(petal.state!=="Existing") return false
+			if(petal.y===6) return false
+			if(petal.y===5 && petal.atk1===0) return false
+			if(petal.y===4 && petal.atk2===0) return false
+			let attackRequirement=200
+			if(petal.actionbar<attackRequirement) return false
+			return true
+		}
+		function shootCheck(petal) {
+			if(petal.state!=="Existing") return false
+			if(PetalAttributeList[petal.id].match("SHOOT")===null) return false
+			let shootRequirement=200
+			if(petal.actionbar<shootRequirement) return false
+			return true
+		}
+		function skillCheck(petal) {
+			if(petal.state!=="Existing") return false
+			if(PetalAttributeList[petal.id].match("SKILL")===null) return false
+			let skillRequirement=0
+			if(PetalAttributeList[petal.id].match(/(?<=SKILL=Costs )\d+(?= action)/)!==null) {
+				skillRequirement=parseInt(PetalAttributeList[petal.id].match(/(?<=SKILL=Costs )\d+(?= action)/))
+			}
+			if(petal.actionbar<skillRequirement) return false
+			return true
 		}
 		function mobActionCheck() {
 			let actionMobArray=new Array()
