@@ -870,6 +870,7 @@
 				fight.petal.push(new Petal(i+48*asdfgh,roll(1,6),i%3))
 				fight.petal[fight.petal.length-1].x=i%8+1
 				fight.petal[fight.petal.length-1].y=betterFloor(i/8)+1
+				fight.petal[fight.petal.length-1].state="Existing"
 				if(fight.petal[fight.petal.length-1].name==="Yin Yang") fight.petal[fight.petal.length-1].name="Yin"
 				if(fight.petal[fight.petal.length-1].name==="Third Eye") fight.petal[fight.petal.length-1].name="Concentrated Eye"
 				if(fight.petal[fight.petal.length-1].name==="Tomato") fight.petal[fight.petal.length-1].calculate=79
@@ -1022,7 +1023,7 @@
 		PetalSVGArray.Compass=PetalSVGArray.Compass.replace("<g>","<g style='transform: rotate(45deg)'>")
 		const MobNameList=["","Rock","Cactus","Ladybug (Garden)","Bee","Baby Ant","Worker Ant","Soldier Ant","Queen Ant","Ant Hole","Beetle","Hornet","Centipede (Garden)","Centipede (Jungle)","Centipede (Desert)","Ladybug (Jungle)","Ladybug (Desert)","Spider","Scorpion","Soldier Fire Ant","Fire Ant Burrow","Sandstorm","Bubble","Bumble Bee","Shell","Starfish","Crab","Jellyfish","Sponge","Leech","Dandelion","Baby Fire Ant","Worker Fire Ant","Queen Fire Ant","Fly","Leafbug","Mantis","Baby Termite","Worker Termite","Soldier Termite","Termite Overmind","Termite Mound","Termite Egg","Bush","Roach","Moth","Firefly","Beetle (Hell)","Wasp","Spider (Hell)","Centipede (Hell)","Wasp (Hell)"]
 		MobNameList[66]="Gambler"
-		Object.assign(MobNameList,{101:"Hornet",102:"Spider",103:"Dandelion",104:"Beetle",105:"Scorpion",106:"Sandstorm",107:"Shell",108:"Crab",109:"Leech",110:"Fly",111:"Roach",112:"Queen Ant",113:"Leafbug",114:"Mantis",115:"Wasp"})
+		Object.assign(MobNameList,{101:"!Hornet!",102:"!Spider!",103:"!Dandelion!",104:"!Beetle!",105:"!Scorpion!",106:"!Sandstorm!",107:"!Shell!",108:"!Crab!",109:"!Leech!",110:"!Fly!",111:"!Roach!",112:"!Queen Ant!",113:"!Leafbug!",114:"!Mantis!",115:"!Wasp!"})
 		const MobBehaviorList=["","Passive","Hostile","Neutral","Neutral","Passive","Neutral","Hostile","Hostile","Passive","Hostile","Hostile","Neutral","Hostile","Neutral","Neutral","Neutral","Hostile","Hostile","Hostile","Passive","Passive","Passive","Passive","Neutral","Hostile","Hostile","Hostile","Passive","Hostile","Passive","Passive","Neutral","Hostile","Hostile","Neutral","Hostile","Passive","Neutral","Hostile","Neutral","Passive","Passive","Passive","Neutral","Neutral","Neutral","Hostile","Hostile","Hostile","Hostile","Hostile"]
 		MobBehaviorList[66]="Gamble"
 		Object.assign(MobBehaviorList,{101:"Hostile",102:"Hostile",103:"Hostile",104:"Hostile",105:"Hostile",106:"Hostile",107:"Hostile",108:"Hostile",109:"Hostile",110:"Hostile",111:"Hostile",112:"Hostile",113:"Hostile",114:"Hostile",115:"Hostile"})
@@ -1044,9 +1045,9 @@
 		const MobDescriptionList=["","Just a rock. Maybe does something.","Avoid its thorns, that hurts.","Cute and harmless.","Stings. Don't touch it.","Weak and defenseless like you.","Still a weak one.","Got wings and ready to use them.","Really fat.","Ants hiding inside.","Hungry and flowers are its favorite meal.","Not as nice as the little bees.","Just there doing its thing.","Loves flowers.","Gotta go fast.","Cute and harmless too.","Shiny. Cute and harmless.","Spooky.","Stings!","Ant on fire.","Is this ant hole on fire?","Weather experts advise flowers not to go out.","Pop.","Gotta run.","Help. My petal is attacking me.","Retreats for heal.","Agile and hurts.","Makes the most delicious jam.","Absorbs damage taken by nearby mobs.","Slurp slurp.","Flower with many dandelions equipped.","Ant on fire.","Ant on fire.","Queen ant on fire.","Flies.","Leaf-shaped bug.","You better pray you don't become dinner.","Weak and defenseless but appears to be connected.","Still weak but appears to be connected.","Got wings and appears to be connected.","Fat and appears to be connected.","Why is this one not connected?","Not connected too.","Animals hiding inside.","Gotta go fast until gets tired.","Easily scared.","Shiny lightbulb.","Exotic creature.","They are angry.","Exotic creature.","Exotic creature.","Exotic creature."]
 		MobDescriptionList[66]="This could happen to you."
 		Object.assign(MobDescriptionList,{101:"Well, this one is evil and hungry.",102:"Got webs and good at using them.",103:"Why is the sky becoming white?",104:"A flower a day keeps summoner away~",105:"Be careful, it is quite poisonous.",106:"If you really want to go out in such a natural disaster...",107:"Harder shell. An unfriendly one is inside.",108:"Dr. Crab has won tons of battles. You are going to be a new defeated challenger.",109:"How to get rid of this?",110:"Flies around in unpredictable ways.",111:"Gotta go faster! Never feels tired.",112:"Hands up! You are surrounded!",113:"Why is this leaf so difficult to defeat? Must be a bug.",114:"Machine gun pea shooter enhanced.",115:"Mutated wasp. That's really frightening."})
-		const MobAttributeList=["","ACTION=Destroys without loot. Spawns (Worker Ant/Soldier Ant).","ATTRIBUTE=Doesn't move.&ATTACK=Can't be defended.","HOSTILE=30%","HOSTILE=10%","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Ant with rarity reduced by at most 2 and no loot, then attacks.","COUNT=10&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Baby Ant*2, Worker Ant*3, Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Queen Ant.","","ATTACK=Shoots a missile with [20%*Damage] and 20% accuracy instead.","COUNT=6&HOSTILE=10%&DAMAGE=Drops loot.","COUNT=6&DAMAGE=Drops loot.","COUNT=6&HOSTILE=30%&DAMAGE=Drops loot. Immunes all damage for 5 turns.","HOSTILE=30%","ATTRIBUTE=Guaranteed to be shiny.&HOSTILE=30%","ATTACK=Deals [1/3*Damage] [poison] for 8 turns.","ATTACK=Shoots a missile with [1/3*Damage] and 30% accuracy instead. Applies [1/3*Damage] [poison] for 8 turns when hits.","","COUNT=5&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Soldier Ant*2.","ACTION=Additionally attacks if moving down outside first row.","ACTION=Destroys without loot. Deals 100 knockback to all petals.","ACTION=Has 30% probability to additionally attack.&ATTACK=Deals [50%*Damage] only.","ATTRIBUTE=Doesn't move.&HOSTILE=10%&ATTACK=When being defended, deals 100 knockback and shoots a missile for [100%*Damage] and 10% accuracy.","ACTION=When health is not above [50%*Health], heals for [20%*Health] and cancels action.","ACTION=Has 50% probability to attempt moving in row before attack.","ATTACK=Deals [40%*Damage] [lightning] instead. Can't be defended.","ATTRIBUTE=Doesn't move. Absorbs 50% of damage taken by nearby enemies down to 1 health.&ACTION=Destroys without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Deals [50%*Damage] direct damage instead. Heals equal to damage dealt.","ACTION=Destroys without loot.&DESTROY=Shoots 2 missiles with [100%*Damage] and 10% accuracy. Applies disable passive heal for 10 turns when hits.","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Fire Ant with rarity reduced by at most 2 and no loot, then attacks.","","ATTRIBUTE=Has [50%*Damage] armor.&HOSTILE=20%","ATTACK=Shoots 3 missiles with 1 damage and 10% accuracy. Applies [25%*Damage] armor debuff for 10 turns when hits.","ATTRIBUTE=Connected.&ACTION=Additionally attacks if moving down outside first two rows.","ATTRIBUTE=Connected.&HOSTILE=50%","ATTRIBUTE=Connected.","ATTRIBUTE=Doesn't move. Connected.&HOSTILE=0%&ACTION=If hostile, destroys all termite mound without loot, then moves and attacks. Becomes hostile otherwise.","COUNT=2&ATTRIBUTE=Doesn't move. Destroys itself if remaining count is 1 and no termites are alive.&EXIST=Immunes all damage and prevents non-Termite mobs from spawning if remaining count is 1.&ACTION=Destroys a part if remaining count is 2. Does nothing otherwise.&DAMAGE=All other mobs retires (but will be back later) and clears all effects. Spawns Baby Termite*2, Worker Termite*3, Soldier Termite*4, (Termite Overmind/Termite Egg).","ACTION=Destroys without loot. Spawns Baby Termite without loot.","ATTRIBUTE=Doesn't move.&ACTION=Summons (Leafbug/Mantis/Firefly/Wasp) with rarity reduced by at most 1 and no loot.","HOSTILE=30%&STATURN=Speed becomes (Health%+100%)/2 original value.","ATTRIBUTE=Gains 60% dodge while hostile.&HOSTILE=10%&ACTION=Retires if hostile.","HOSTILE=30%&ATTACK=Additionally deals [300%*Damage] [lightning] to flower whether defended or not.","ACTION=Has 30% chance to charge up and cancel action if not charged.&ATTACK=Directly damages if charged up (and releases charging state).","ATTACK=Shoots (1~2) missiles with [20%*Damage] and 20% accuracy instead.","ATTACK=Deals [2/3*Damage] [poison] for 8 turns.","COUNT=6&DAMAGE=Drops loot.","ATTACK=Shoots 5 missiles with [10%*Damage] and 10% accuracy instead."]
+		const MobAttributeList=["","ACTION=Destroys without loot. Spawns (Worker Ant/Soldier Ant).","ATTRIBUTE=Doesn't move.&ATTACK=Can't be defended.","HOSTILE=30%","HOSTILE=10%","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Ant with rarity reduced by at most 2 and no loot, then attacks.","COUNT=10&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Baby Ant*2, Worker Ant*3, Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Queen Ant.","","ATTACK=Shoots a missile with [20%*Damage] and 20% accuracy instead.","COUNT=6&HOSTILE=10%&DAMAGE=Drops loot.","COUNT=6&DAMAGE=Drops loot.","COUNT=6&HOSTILE=30%&DAMAGE=Drops loot. Immunes all damage for 5 turns.","HOSTILE=30%","ATTRIBUTE=Guaranteed to be shiny.&HOSTILE=30%","CHARAC=Deals [1/3*Damage] [poison] for 8 turns when attack.","ATTACK=Shoots a missile with [1/3*Damage] and 30% accuracy instead. Applies [1/3*Damage] [poison] for 8 turns when hits.","","COUNT=5&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Soldier Ant*2.","ACTION=Additionally attacks if moving down outside first row.","ACTION=Destroys without loot. Deals 100 knockback to all petals.","ACTION=Has 30% probability to additionally attack.&CHARAC=Deals [50%*Damage] only when attack.","ATTRIBUTE=Doesn't move.&HOSTILE=10%&CHARAC=When attack being defended, deals 100 knockback and shoots a missile for [100%*Damage] and 10% accuracy.","ACTION=When health is not above [50%*Health], heals for [20%*Health] and cancels action.","ACTION=Has 50% probability to attempt moving in row before attack.","ATTACK=Deals [40%*Damage] [lightning] instead. Can't be defended.","ATTRIBUTE=Doesn't move. Absorbs 50% of damage taken by nearby enemies down to 1 health.&ACTION=Destroys without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Deals [50%*Damage] direct damage instead. Heals equal to damage dealt.","ACTION=Destroys without loot.&DESTROY=Shoots 2 missiles with [100%*Damage] and 10% accuracy. Applies disable passive heal for 10 turns when hits.","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Fire Ant with rarity reduced by at most 2 and no loot, then attacks.","","ATTRIBUTE=Has [50%*Damage] armor.&HOSTILE=20%","ATTACK=Shoots 3 missiles with 1 damage and 10% accuracy. Applies [25%*Damage] armor debuff for 10 turns when hits.","ATTRIBUTE=Connected.&ACTION=Additionally attacks if moving down outside first two rows.","ATTRIBUTE=Connected.&HOSTILE=50%","ATTRIBUTE=Connected.","ATTRIBUTE=Doesn't move. Connected.&HOSTILE=0%&ACTION=If hostile, destroys all termite mound without loot, then moves and attacks. Becomes hostile otherwise.","COUNT=2&ATTRIBUTE=Doesn't move. Destroys itself if remaining count is 1 and no termites are alive.&EXIST=Immunes all damage and prevents non-Termite mobs from spawning if remaining count is 1.&ACTION=Destroys a part if remaining count is 2. Does nothing otherwise.&DAMAGE=All other mobs retires (but will be back later) and clears all effects. Spawns Baby Termite*2, Worker Termite*3, Soldier Termite*4, (Termite Overmind/Termite Egg).","ACTION=Destroys without loot. Spawns Baby Termite without loot.","ATTRIBUTE=Doesn't move.&ACTION=Summons (Leafbug/Mantis/Firefly/Wasp) with rarity reduced by at most 1 and no loot.","HOSTILE=30%&STATURN=Speed becomes (health%+100%)/2 original value.","ATTRIBUTE=Gains 60% dodge while hostile.&HOSTILE=10%&ACTION=Retires if hostile.","HOSTILE=30%&CHARAC=Additionally deals [300%*Damage] [lightning] to flower whether attack is defended or not.","ACTION=Has 30% chance to charge up and cancel action if not charged.&ATTACK=Directly damages if charged up (and releases charging state).","ATTACK=Shoots (1~2) missiles with [20%*Damage] and 20% accuracy instead.","CHARAC=Deals [2/3*Damage] [poison] for 8 turns when attack.","COUNT=6&DAMAGE=Drops loot.","ATTACK=Shoots 5 missiles with [10%*Damage] and 10% accuracy instead."]
 		MobAttributeList[66]="ACTION=Plays 62-point."
-		Object.assign(MobAttributeList,{101:"BOSS&ATTRIBUTE=Moves up to 2 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 3, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 40% accuracy instead.",102:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Each petal has 30% probability to be restricted and gains no action for 5 turns.&ATTACK=Deals [20%*Damage] [poison] for 20 turns.",103:"BOSS&COUNT=2&ATTRIBUTE=Doesn't move.&ATTACK=Shoots 8 missiles with [20%*Damage] and (50%,50%,40%,40%,30%,30%,20%,20%) accuracy instead. Applies 20% heal debuff and disable passive heal for 6 turns when hits. Both effectiveness and duration stacks.&DAMAGE=Performs an action. Then increases all accuracy by 10%&DESTROY=Performs an action.",104:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Each petal in the column or nearby column has [200-2*DEF1]% chance to take [50%*Damage] before attack.",105:"BOSS&ATTACK=Shoots a missile with [20%*Damage] and 80% accuracy instead. Applies [40%*Damage] [poison] for 6 turns when hits.",106:"BOSS&ATTRIBUTE=Moves up to 3 grids&ACTION=Each petal has [120-10*Size]% probability to move up 1 grid or receive [Damage] before attack.",107:"BOSS&ATTACK=Shoots all pearls with [Damage] and 40% accuracy instead if has at least 5 pearls. Otherwise gains (1~2) pearls if defended.",108:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Moves in row for at most 1 grid to find a gap before attack.",109:"BOSS&ATTACK=Directly damages and heals equal to damage dealt. Increases attack by 20% original value, effectiveness is decreased by 2% down to 0% by effective dandelion count.",110:"BOSS&ATTRIBUTE=Moves up to 3 grids. Can't be shot. All petal with negative buff has tripled effective buff when targeted. All petal has at most 90% effective accuracy when targeted.",111:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ATTACK=Increases resulting damage by 20% for every 6 speed above 54 up to 100%.",112:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Tries to summon Soldier Ant with no loot up to 2 instead. Otherwise tries to summon 2 Soldier Ant with rarity reduced by at most 1 and no loot up to 4 instead. Otherwise attacks.",113:"BOSS&ATTRIBUTE=Moves up to 2 grids. Has [30%*Damage] armor, increased to [60%*Damage] if speed reaches 30, increased to [150%*Damage] if speed reaches 40. Decreases all damage taken by 50% if speed reaches 50. Immunes all damage if speed reaches 60.&ACTION=Doesn't attack if speed is over 60.&ATTACK=Deals 10% less damage for every 5 speed above 40.",114:"BOSS&ATTACK=Shoots 5 missiles with [20%*Damage] and 20% accuracy instead. Applies stackable [40%*Damage] armor debuff for 20 turns when hits.",115:"BOSS&ATTRIBUTE=Moves up to 3 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 2, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 20% accuracy instead."})
+		Object.assign(MobAttributeList,{101:"BOSS&ATTRIBUTE=Moves up to 2 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 3, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 40% accuracy instead.",102:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Each petal has 30% probability to be restricted and gains no action for 5 turns.&CHARAC=Deals [20%*Damage] [poison] for 20 turns when attack.",103:"BOSS&COUNT=2&ATTRIBUTE=Doesn't move.&ATTACK=Shoots 8 missiles with [20%*Damage] and (50%,50%,40%,40%,30%,30%,20%,20%) accuracy instead. Applies 20% heal debuff and disable passive heal for 6 turns when hits. Both effectiveness and duration stacks.&DAMAGE=Performs an action. Then increases all accuracy by 10%&DESTROY=Performs an action.",104:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Each petal in the column or nearby column has [200-2*DEF1]% chance to take [50%*Damage] before attack.",105:"BOSS&ATTACK=Shoots a missile with [20%*Damage] and 80% accuracy instead. Applies [40%*Damage] [poison] for 6 turns when hits.",106:"BOSS&ATTRIBUTE=Moves up to 3 grids&ACTION=Each petal has [120-10*Size]% probability to move up 1 grid or receive [Damage] before attack.",107:"BOSS&ATTACK=Shoots all pearls with [Damage] and 40% accuracy instead if has at least 5 pearls. Otherwise gains (1~2) pearls if defended.",108:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Moves in row for at most 1 grid to find a gap before attack.",109:"BOSS&ATTACK=Directly damages and heals equal to damage dealt. Increases damage by 20% original value, effectiveness is decreased by 2% down to 0% by effective dandelion count.",110:"BOSS&ATTRIBUTE=Moves up to 3 grids. Can't be shot. All petal with negative buff has tripled effective buff when targeted. All petal has at most 90% effective accuracy when targeted.",111:"BOSS&ATTRIBUTE=Moves up to 2 grids.&CHARAC=Increases resulting damage by 20% for every 6 speed above 54 up to 100%.",112:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Tries to summon Soldier Ant with no loot up to 2 instead. Otherwise tries to summon 2 Soldier Ant with rarity reduced by at most 1 and no loot up to 4 instead. Otherwise attacks.",113:"BOSS&ATTRIBUTE=Moves up to 2 grids. Has [30%*Damage] armor, increased to [60%*Damage] if speed reaches 30, increased to [150%*Damage] if speed reaches 40. Decreases all damage taken by 50% if speed reaches 50. Immunes all damage if speed reaches 60.&ACTION=Doesn't attack if speed is over 60.&CHARAC=Deals 10% less damage for every 5 speed above 40.",114:"BOSS&ATTACK=Shoots 5 missiles with [20%*Damage] and 20% accuracy instead. Applies stackable [40%*Damage] armor debuff for 20 turns when hits.",115:"BOSS&ATTRIBUTE=Moves up to 3 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 2, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 20% accuracy instead."})
 		const MobSVGArray=new Object()
 		MobSVGArray.Rock="<path class='fgrey-path ns' d='M38 30L50 26L60 28L63 44L55 52L45 50L36 40Z'/>"
 		MobSVGArray.Cactus="<path class='fgreen-path ns' d='M50 22.3A8 8 0 0 0 61.1 26.9A8 8 0 0 0 65.7 38A8 8 0 0 0 61.1 49.1A8 8 0 0 0 50 53.7A8 8 0 0 0 38.9 49.1A8 8 0 0 0 34.3 38A8 8 0 0 0 38.9 26.9A8 8 0 0 0 50 22.3'/><path class='flgreen-path ns ' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30'/>"
@@ -1100,11 +1101,11 @@
 		MobSVGArray["Centipede (Hell)"]="<path class='black-path wide' stroke-linecap='round' d='M46 30A15 15 0 0 0 40 18M40 17A1 1 0 0 0 40 19A1 1 0 0 0 40 17M54 30A15 15 0 0 1 60 18M60 17A1 1 0 0 0 60 19A1 1 0 0 0 60 17'/><path class='fblack-path' stroke-linecap='round' stroke-linejoin='round' d='M35.6 34A7 7 0 0 0 35.6 46A15.6 15.6 0 0 1 35.6 34M64.4 34A7 7 0 0 1 64.4 46A15.6 15.6 0 0 0 64.4 34'/><path class='fcdred-path ns' d='M50 28.4A11.6 11.6 0 0 0 50 51.6A11.6 11.6 0 0 0 50 28.4'/>"
 		MobSVGArray["Wasp (Hell)"]="<path class='fblack-path wide' stroke-linejoin='round' d='M46 53L50 65L54 53Z'/><linearGradient id='svgGradient' x1='50%' y1='0%' x2='50%' y2='100%'><stop offset='0%' stop-color='#bf0000'/><stop offset='20%' stop-color='#bf0000'/><stop offset='20%' stop-color='#000000'/><stop offset='35%' stop-color='#000000'/><stop offset='35%' stop-color='#bf0000'/><stop offset='50%' stop-color='#bf0000'/><stop offset='50%' stop-color='#000000'/><stop offset='65%' stop-color='#000000'/><stop offset='65%' stop-color='#bf0000'/><stop offset='80%' stop-color='#bf0000'/><stop offset='80%' stop-color='#000000'/><stop offset='100%' stop-color='#000000'/></linearGradient><path class='cdred-path' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24' style='filter: brightness(80%)'/><path class='ns' fill='url(#svgGradient)' d='M50 24A15 9 90 0 0 50 54A15 9 90 0 0 50 24'/><path class='black-path wide' stroke-linecap='round' d='M47 26A20 20 0 0 0 43 16M53 26A20 20 0 0 1 57 16'/>"
 		MobSVGArray.Gambler="<path class='fcdred-path ns' d='M50 23A15 15 0 0 0 50 53A15 15 0 0 0 50 23'/><path class='black-path wide' d='M42 42A10 10 0 0 0 58 42M45 30L45 38M55 30L55 38'/>"
-		for(let i in MobNameList) if(i!=="0" && MobNameList.indexOf(MobNameList[i]).toString()===i) {
+		for(let i in MobNameList) if(i!=="0" && MobNameList[i].match("!")===null) {
 			MobSVGArray[MobNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+MobSVGArray[MobNameList[i]].replaceAll(/<linear.+Gradient>/g,"").replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path|ns)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+MobSVGArray[MobNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+MobNameList[i].replace(/\s\(.+\)/,"").replace("Ant","A.").replace("Fire ","F. ").replace("Termite","T.").replace("Bumble","B.").replace("Soldier F","S. F").replace("Burrow","B.").replace("Worker F","W. F").replace("Queen F","Q. F").replace("Overmind","Over.")+"</span>"
 		}
 		const MapNameList=["","","","","","","","","","","Centralia Center","Centralia Field 1","Centralia Field 2","Centralia Field 3","Centralia Field 4","Centralia Field 5","Centralia Field 6","Centralia Field 7","","","","South Desert 1","South Desert 2","South Desert 3","South Desert 4","South Desert 5","South Desert 6","","","","","East Water 1","East Water 2","East Water 3","East Water 4","East Water 5","East Water 6","East Water 7","East Water 8","East Water 9","","Sewer 1","Sewer 2","Sewer 3","Sewer 4","","","","","","","Ant Hell 1","Ant Hell 2","Ant Hell 3","Ant Hell 4","Ant Hell 5","Ant Hell 6","","","","","Jungle 1","Jungle 2","Jungle 3","Jungle 4","Jungle 5","Jungle 6","Jungle Gate"]
-		const MapSpawnList=["","","","","","","","","","","","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=20%&Worker Ant=12%&Soldier Ant=5%&Ant Hole=2%&Hornet=8%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=15%&Worker Ant=12%&Soldier Ant=8%&Ant Hole=2%&Hornet=10%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=10%&Worker Ant=10%&Soldier Ant=10%&Ant Hole=2%&Hornet=12%&Centipede (Garden)=6%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=5%&Worker Ant=8%&Soldier Ant=10%&Ant Hole=1%&Hornet=20%&Centipede (Garden)=6%","Hornet=20%&Dandelion=80%","Rock=12%&Ladybug (Garden)=15%&Bee=15%&Ant Hole=2%&Hornet=25%&Centipede (Garden)=6%&Spider=15%&Dandelion=10%","Rock=15%&Ladybug (Garden)=12%&Bee=12%&Ant Hole=1%&Hornet=40%&Centipede (Garden)=3%&Spider=12%&Dandelion=5%","","","","Beetle=90%&Ladybug (Desert)=10%","Cactus=25%&Beetle=20%&Centipede (Desert)=10%&Ladybug (Desert)=5%&Scorpion=15%&Fire Ant Burrow=5%&Sandstorm=20%","Cactus=20%&Beetle=20%&Centipede (Desert)=8%&Ladybug (Desert)=4%&Scorpion=20%&Fire Ant Burrow=8%&Sandstorm=20%","Cactus=25%&Beetle=20%&Ladybug (Desert)=2%&Scorpion=25%&Fire Ant Burrow=3%&Sandstorm=25%","Cactus=30%&Beetle=20%&Centipede (Desert)=2%&Ladybug (Desert)=6%&Scorpion=20%&Fire Ant Burrow=12%&Sandstorm=20%","Cactus=20%&Beetle=40%&Ladybug (Desert)=2%&Scorpion=20%&Fire Ant Burrow=3%&Sandstorm=15%","","","","","Bubble=20%&Shell=20%&Starfish=15%&Crab=30%&Sponge=15%","Bubble=20%&Shell=20%&Starfish=20%&Crab=20%&Sponge=20%","Bubble=15%&Shell=10%&Starfish=15%&Crab=15%&Jellyfish=15%&Sponge=30%","Crab=30%&Jellyfish=60%&Sponge=10%","Bubble=10%&Shell=50%&Starfish=15%&Crab=15%&Jellyfish=10%","Bubble=25%&Shell=20%&Crab=15%&Jellyfish=40%","Bubble=10%&Shell=10%&Starfish=10%&Crab=10%&Leech=60%","Bubble=30%&Starfish=50%&Jellyfish=20%","Bubble=30%&Shell=10%&Crab=60%","","Spider=20%&Fly=20%&Roach=20%&Moth=40%","Spider=20%&Fly=25%&Roach=30%&Moth=25%","Spider=20%&Fly=30%&Roach=25%&Moth=25%","Spider=40%&Fly=20%&Roach=25%&Moth=15%","","","","","","","Baby Ant=30%&Worker Ant=30%&Soldier Ant=40%","Baby Ant=15%&Worker Ant=24%&Soldier Ant=60%&Queen Ant=1%","Soldier Fire Ant=45%&Baby Fire Ant=25%&Worker Fire Ant=30%","Soldier Fire Ant=63%&Baby Fire Ant=12%&Worker Fire Ant=25%","Baby Termite=25%&Worker Termite=30%&Soldier Termite=45%","Baby Termite=12%&Worker Termite=25%&Soldier Termite=63%","","","","","Termite Mound=10%&Bush=90%","Centipede (Jungle)=5%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=10%&Termite Mound=5%&Bush=40%&Firefly=5%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=10%&Termite Mound=4%&Bush=40%&Firefly=8%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=12%&Termite Mound=3%&Bush=35%&Firefly=10%&Wasp=12%","Centipede (Jungle)=3%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=15%&Termite Mound=2%&Bush=30%&Firefly=10%&Wasp=15%","Centipede (Jungle)=3%&Ladybug (Jungle)=8%&Leafbug=20%&Mantis=20%&Termite Mound=1%&Bush=20%&Firefly=8%&Wasp=20%",""]
+		const MapSpawnList=["","","","","","","","","","","","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=20%&Worker Ant=12%&Soldier Ant=5%&Ant Hole=2%&Hornet=8%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=15%&Worker Ant=12%&Soldier Ant=8%&Ant Hole=2%&Hornet=10%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=10%&Worker Ant=10%&Soldier Ant=10%&Ant Hole=2%&Hornet=12%&Centipede (Garden)=6%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=5%&Worker Ant=8%&Soldier Ant=10%&Ant Hole=1%&Hornet=20%&Centipede (Garden)=6%","Hornet=20%&Dandelion=80%","Rock=12%&Ladybug (Garden)=15%&Bee=15%&Ant Hole=2%&Hornet=25%&Centipede (Garden)=6%&Spider=15%&Dandelion=10%","Rock=15%&Ladybug (Garden)=12%&Bee=12%&Ant Hole=1%&Hornet=40%&Centipede (Garden)=3%&Spider=12%&Dandelion=5%","","","","Beetle=90%&Ladybug (Desert)=10%","Cactus=25%&Beetle=20%&Centipede (Desert)=10%&Ladybug (Desert)=5%&Scorpion=15%&Fire Ant Burrow=5%&Sandstorm=20%","Cactus=20%&Beetle=20%&Centipede (Desert)=8%&Ladybug (Desert)=4%&Scorpion=20%&Fire Ant Burrow=8%&Sandstorm=20%","Cactus=25%&Beetle=20%&Ladybug (Desert)=2%&Scorpion=25%&Fire Ant Burrow=3%&Sandstorm=25%","Cactus=30%&Beetle=20%&Centipede (Desert)=2%&Ladybug (Desert)=6%&Scorpion=20%&Fire Ant Burrow=12%&Sandstorm=20%","Cactus=20%&Beetle=40%&Ladybug (Desert)=2%&Scorpion=20%&Fire Ant Burrow=3%&Sandstorm=15%","","","","","Bubble=20%&Shell=20%&Starfish=15%&Crab=30%&Sponge=15%","Bubble=20%&Shell=20%&Starfish=20%&Crab=20%&Sponge=20%","Bubble=15%&Shell=10%&Starfish=15%&Crab=15%&Jellyfish=15%&Sponge=30%","Crab=30%&Jellyfish=60%&Sponge=10%","Bubble=10%&Shell=50%&Starfish=15%&Crab=15%&Jellyfish=10%","Bubble=25%&Shell=20%&Crab=15%&Jellyfish=40%","Bubble=10%&Shell=10%&Starfish=10%&Crab=10%&Leech=60%","Bubble=30%&Starfish=50%&Jellyfish=20%","Bubble=30%&Shell=10%&Crab=60%","","Spider=20%&Fly=20%&Roach=20%&Moth=40%","Spider=20%&Fly=25%&Roach=30%&Moth=25%","Spider=20%&Fly=30%&Roach=25%&Moth=25%","Spider=40%&Fly=20%&Roach=25%&Moth=15%","","","","","","","Baby Ant=25%&Worker Ant=30%&Soldier Ant=45%","Baby Ant=12%&Worker Ant=25%&Soldier Ant=60%&Queen Ant=3%","Soldier Fire Ant=45%&Baby Fire Ant=25%&Worker Fire Ant=30%","Soldier Fire Ant=60%&Baby Fire Ant=12%&Worker Fire Ant=25%&Queen Fire Ant=3%","Baby Termite=25%&Worker Termite=30%&Soldier Termite=45%","Baby Termite=12%&Worker Termite=25%&Soldier Termite=63%","","","","","Termite Mound=10%&Bush=90%","Centipede (Jungle)=5%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=10%&Termite Mound=5%&Bush=40%&Firefly=5%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=10%&Termite Mound=4%&Bush=40%&Firefly=8%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=12%&Termite Mound=3%&Bush=35%&Firefly=10%&Wasp=12%","Centipede (Jungle)=3%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=15%&Termite Mound=2%&Bush=30%&Firefly=10%&Wasp=15%","Centipede (Jungle)=3%&Ladybug (Jungle)=8%&Leafbug=20%&Mantis=20%&Termite Mound=1%&Bush=20%&Firefly=8%&Wasp=20%",""]
 		const MapRarityList=["/","/","/","/","/","/","/","/","/","/","/",0,1,1,2,3,4,5,"/","/","/",0,1,2,2,3,5,"/","/","/","/",1,1,1,2,3,4,4,5,5,"/",1,2,3,5,"/","/","/","/","/","/",2,4,3,4,3,4,"/","/","/","/",0,1,2,3,4,4,"/"]
 		const MapDensityList=["/","/","/","/","/","/","/","/","/","/","/","5-8","5-8","8-12","10-15","6-9","8-12","12-18","/","/","/","3-5","10-15","6-9","8-12","8-12","10-15","/","/","/","/","5-8","6-9","8-12","12-18","8-12","10-15","10-15","6-9","8-12","/","5-8","6-9","6-9","8-12","/","/","/","/","/","/","5-8","6-9","5-8","6-9","5-8","6-9","/","/","/","/","2-3","3-5","5-8","8-12","10-15","12-18","/"]
 		function LevelExp(level) {
@@ -1482,6 +1483,10 @@
 			this.star=0
 			this.x=0,this.y=0
 			this.actionbar=0,this.count=0,this.calculate=0,this.state="Unequipped"
+			this.effect=new Object()
+		}
+		function isPetal(potentialPetal) {
+			return Petal.prototype.isPrototypeOf(potentialPetal)
 		}
 		Petal.prototype.clone=function() {
 			return Object.assign(new Petal(),structuredClone(this))
@@ -1501,6 +1506,7 @@
 				return
 			}
 			let node1=100,node2=200,maxAction=250,healthP=this.currenthealth/this.health
+			if(isNaN(healthP)) healthP=1
 			if(healthP<0) healthP=0
 			if(this.speed===1) node1=1
 			if(this.name==="Beetle") {
@@ -1531,22 +1537,30 @@
 			this.actionbar-=this.reload
 			this.currenthealth=this.health
 			this.state="Existing"
+			if(PetalAttributeList[this.id].match(/(?<=COUNT=)\d+/)) this.count=parseInt(PetalAttributeList[this.id].match(/(?<=COUNT=)\d+/))
 		}
-		Petal.prototype.destroy=function() {
+		Petal.prototype.destroy=function(mob) {
 			if(this.count>1) {
 				addLog("[Petal] A part of "+this.name+" is destroyed.","#df9fdf")
 				this.count--
 				this.currenthealth=this.health
+				this.print()
 				return
 			}
 			addLog("[Petal] "+this.name+" is destroyed.","#ff9fdf")
 			this.state="Reloading"
 		}
-		Petal.prototype.injure=function(damage,mobName) {
+		Petal.prototype.injure=function(damage,mob) {
+			let mobName=mob
+			if(isMob(mob)) mobName=mob.name
 			let resultingDamage=damage
 			addLog("[Petal] "+this.name+" received "+resultingDamage+" damage from "+mobName+".","#9f9fdf")
 			this.currenthealth-=resultingDamage
-			if(this.currenthealth<=0) this.destroy()
+			if(this.currenthealth<=0) {
+				this.destroy(mob)
+			} else {
+				this.print()
+			}
 		}
 		Petal.prototype.progress=function(value) {
 			let pendingAction=this.speed,maxAction=250
@@ -1574,10 +1588,10 @@
 				let targetMob
 				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===targetX && fight.mob[i].y===targetY) targetMob=fight.mob[i]
 				addLog("[Petal] Attack of "+this.name+": to "+targetMob.name+" at ("+targetMob.x+","+targetMob.y+")...","#9f9fdf")
-				if(determine(AttackSuccessChance(this,targetMob,"Auto","Auto"),true)) {
+				if(determine(AttackSuccessChance(this,targetMob,"Auto","Auto"),true," for attack")) {
 					let damageDealt=this.damage*2,damageReceived=targetMob.damage,knockbackDealt=50
-					this.injure(damageReceived,targetMob.name)
-					targetMob.injure(damageDealt,this.name)
+					this.injure(damageReceived,targetMob)
+					targetMob.injure(damageDealt,this)
 					targetMob.knockback(knockbackDealt)
 					targetMob.print()
 					removeMob()
@@ -1593,14 +1607,15 @@
 		}
 		function Mob(id=1,rarity=1,shiny) {
 			this.id=id,this.rarity=rarity
-			this.name=MobNameList[id]
+			if(typeof(this.id)==="string") this.id=MobNameList.indexOf(this.id)
+			this.name=MobNameList[this.id]
 			let statMult=new Object()
 			statMult.health=1
 			statMult.damage=1
 			if(shiny!==undefined) {
 				this.shiny=shiny
 				if(this.shiny>0) statMult=ShinyMobStatMultiplier(this.shiny)
-			} else if(roll(1,100)<=1) {
+			} else if(roll(1,100)<=1 || this.name==="Ladybug (Desert)") {
 				statMult=ShinyMobStatMultiplier()
 				this.shiny=statMult.shiny
 			} else {
@@ -1653,24 +1668,36 @@
 			this.behavior=MobBehaviorList[this.id]
 			this.x=0,this.y=0
 			this.actionbar=0,this.count=0,this.calculate=0
+			if(MobAttributeList[this.id].match(/(?<=COUNT=)\d+/)) this.count=parseInt(MobAttributeList[this.id].match(/(?<=COUNT=)\d+/))
+			this.effect=new Object()
+		}
+		function isMob(potentialMob) {
+			return Mob.prototype.isPrototypeOf(potentialMob)
 		}
 		Mob.prototype.clone=function() {
 			return Object.assign(new Mob(),structuredClone(this))
 		}
 		Mob.prototype.print=function() {
+			if(this.name.match("(Missile)")!==null) return
 			getGrid(0,this.x,this.y).replaceWith(createGrid(0,this.x,this.y,"Mob_"+this.name,1,this.rarity))
 			let editingPath=getGrid(0,this.x,this.y).children[0].children[0]
 			let actionProgress=this.actionbar/200,healthP=this.currenthealth/this.health
+			if(isNaN(healthP)) healthP=1
 			if(healthP<0) healthP=0
 			if(actionProgress>1) actionProgress=1
 			editingPath.setAttribute("d","M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100L8 97L"+(8+84*actionProgress)+" 97L"+(8+84*actionProgress)+" 95L8 95ZM8 8L92 8L92 "+(92-84*healthP)+"L8 "+(92-84*healthP)+"Z")
 		}
-		Mob.prototype.injure=function(damage,petalName) {
+		Mob.prototype.injure=function(damage,petal) {
+			if(this.name.match("(Missile)")!==null) return
+			let petalName=petal
+			if(isPetal(petal)) petalName=petal.name
 			let resultingDamage=damage
 			addLog("[Mob] "+this.name+" received "+resultingDamage+" damage from "+petalName+".","#bfbf00")
 			this.currenthealth-=resultingDamage
+			this.print()
 		}
 		Mob.prototype.knockback=function(knockback) {
+			if(this.name.match("(Missile)")!==null) return
 			let resultingKnockback=knockback
 			if(knockback>this.actionbar+50) knockback=this.actionbar+50
 			addLog("[Mob] "+this.name+" received "+resultingKnockback+" knockback.","#bfbf00")
@@ -1682,12 +1709,414 @@
 			if(this.actionbar>=maxAction) this.actionbar=maxAction
 			this.print()
 		}
-		Mob.prototype.action=function() {
+		Mob.prototype.action=async function() {
 			addLog("[Mob] Action of "+this.name+"...","#bfbf00")
 			this.actionbar-=200
+			animation=true
+			this.print()
+			for(let i=0;i<=40;i++) {
+				getGrid(0,this.x,this.y).style.scale=1.3-0.015*Math.abs(i-20)
+				await delay(30)
+			}
+			animation=false
+			getGrid(0,this.x,this.y)
+			if(MobAttributeList[this.id].match("Destroys without loot")!==null) {
+				this.effect.noloot=true
+				this.currenthealth=0
+				this.print()
+				removeMob()
+				updateT()
+				return
+			}
+			if(MobAttributeList[this.id].match("Destroys a part")!==null) {
+				if(this.name==="Termite Mound" && this.count!==2) {
+					updateT()
+					return
+				}
+				this.currenthealth=0
+				this.print()
+				removeMob()
+				updateT()
+				return
+			}
+			if(this.behavior==="Neutral") {
+				if(determine(parseInt(MobAttributeList[this.id].match(/(?<=HOSTILE=)\d+/)),true," for hostile behavior")) {
+					addLog("[Mob] "+this.name+" is becoming hostile!","#bfbf00")
+					this.behavior="Neutral+"
+				}
+			}
+			if(this.name==="Moth") {
+				this.effect.noloot=true
+				this.currenthealth=0
+				removeMob()
+				updateT()
+				return
+			}
+			if(MobAttributeList[this.id].match("ACTION")!==null) {
+				if(this.name==="Queen Ant") {
+					addLog("[Mob] Queen Ant summons 1 Soldier Ant.","#bfbf00")
+					let pendingRarity=this.rarity-2
+					if(pendingRarity<1) pendingRarity=1
+					spawnNear(new Mob("Soldier Ant",pendingRarity,this.shiny),this.x,this.y,true)
+					this.attack()
+				}
+				if(this.name==="Bumble Bee") {
+					if(determine(30,true," for attack")) this.attack()
+				}
+				if(this.name==="Starfish") {
+					if(this.currenthealth<=this.health/2) {
+						let pendingHeal=this.health/5
+						pendingHeal=approx(pendingHeal)
+						addLog("[Mob] Starfish heals for "+pendingHeal+".","#bfbf00")
+						this.currenthealth+=pendingHeal
+					} else {
+						this.attack()
+					}
+				}
+				if((this.name==="Crab" && determine(50,true," for move")) || this.name==="!Crab!") {
+					let factorLeft=100,factorMiddle=101,factorRight=100
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].y>0 && (fight.petal[i].y>4 || fight.petal[i].name==="Pearl") && fight.petal[i].y>this.y) {
+						if(discalc(fight.petal[i].x,toCord(this.x-1))<=1) {
+							let imaginePos=this.clone()
+							imaginePos.x=toCord(imaginePos.x-1)
+							if(DefendSuccessChance(fight.petal[i],imaginePos,"Auto","Auto")>100-factorLeft) factorLeft=100-DefendSuccessChance(fight.petal[i],imaginePos,"Auto","Auto")
+						}
+						if(discalc(fight.petal[i].x,this.x)<=1 && DefendSuccessChance(fight.petal[i],this,"Auto","Auto")>101-factorMiddle) factorMiddle=101-DefendSuccessChance(fight.petal[i],this,"Auto","Auto")
+						if(discalc(fight.petal[i].x,toCord(this.x+1))<=1) {
+							let imaginePos=this.clone()
+							imaginePos.x=toCord(imaginePos.x+1)
+							if(DefendSuccessChance(fight.petal[i],imaginePos,"Auto","Auto")>100-factorRight) factorRight=100-DefendSuccessChance(fight.petal[i],imaginePos,"Auto","Auto")
+						}
+					}
+					if(this.name==="!Crab!") {
+						factorLeft=factorLeft**3
+						factorMiddle=factorMiddle**3
+						factorRight=factorRight**3
+					}
+					if(getFilledGrid(toCord(this.x-1),this.y)) factorLeft=0
+					if(getFilledGrid(toCord(this.x+1),this.y)) factorRight=0
+					let factorSeed=roll(1,factorLeft+factorMiddle+factorRight)
+					addLog("Left="+factorLeft+",Middle="+factorMiddle+",Right="+factorRight+",Seed="+factorSeed)
+					if(factorSeed<=factorLeft) this.move(3)
+					if(factorSeed>factorLeft+factorMiddle) this.move(1)
+					this.attack()
+				}
+				if(this.name==="Queen Fire Ant") {
+					addLog("[Mob] Queen Fire Ant summons 1 Soldier Fire Ant.","#bfbf00")
+					let pendingRarity=this.rarity-2
+					if(pendingRarity<1) pendingRarity=1
+					spawnNear(new Mob("Soldier Fire Ant",pendingRarity,this.shiny),this.x,this.y,true)
+					this.attack()
+				}
+				if(this.name==="Termite Overmind") {
+					if(this.behavior==="Neutral") {
+						addLog("[Mob] Termite Overmind is becoming hostile!","#bfbf00")
+						this.behavior="Neutral+"
+					} else {
+						for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].name==="Termite Mound") {
+							fight.mob[i].effect.noloot=true
+							fight.mob[i].currenthealth=0
+						}
+						removeMob()
+						this.attack()
+					}
+				}
+				if(this.name==="Bush") {
+					let summonType=["Leafbug","Mantis","Firefly","Wasp"]
+					let summonSeed=summonType[roll(0,3)]
+					addLog("[Mob] Bush summons 1 "+summonSeed+".","#bfbf00")
+					let pendingRarity=this.rarity-1
+					if(pendingRarity<1) pendingRarity=1
+					spawnNear(new Mob(summonSeed,pendingRarity,this.shiny),this.x,this.y,true)
+				}
+				if(this.name==="Beetle (Hell)") {
+					if(!this.effect.charge && determine(30,true," for charge")) {
+						addLog("[Mob] Beetle (Hell) has charged up.","#bfbf00")
+						this.effect.charge=true
+						updateT()
+						return
+					} else {
+						this.attack()
+					}
+				}
+				if(this.name==="!Hornet!") {
+					this.calculate++
+					this.attack()
+				}
+				if(this.name==="!Spider!") {
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].y>0 && determine(30,true,"for restriction")) {
+						addLog("[Petal] "+fight.petal[i].name+" is restricted.","#df9fdf")
+						fight.petal[i].effect.restrict=5
+					}
+					this.attack()
+				}
+				if(this.name==="!Beetle!") {
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].y>0 && discalc(fight.petal[i].x,this.x)<=1 && determine(200-2*fight.petal[i].def1,true,"for strike")) {
+						fight.petal[i].injure(approx(this.damage/2),"Strike")
+					}
+					this.attack()
+				}
+				if(this.name==="!Sandstorm!") {
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].y===4 && determine(120-10*fight.petal[i].size,true,"for drag")) {
+						fight.petal[i].injure(this.damage,"Drag")
+					}
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].y===5 && determine(120-10*fight.petal[i].size,true,"for drag")) {
+						if(getFilledGrid(fight.petal[i].x,fight.petal[i].y-1)) {
+							fight.petal[i].injure(this.damage,"Drag")
+						} else {
+							addLog("[Petal] "+fight.petal[i].name+" is dragged.","#df9fdf")
+							getGrid(0,fight.petal[i].x,fight.petal[i].y).replaceWith(createGrid(0,fight.petal[i].x,fight.petal[i].y,"Empty",1,0))
+							fight.petal[i].y--
+							fight.petal[i].print()
+						}
+					}
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].y===6 && determine(120-10*fight.petal[i].size,true,"for drag")) {
+						if(getFilledGrid(fight.petal[i].x,fight.petal[i].y-1)) {
+							fight.petal[i].injure(this.damage,"Drag")
+						} else {
+							addLog("[Petal] "+fight.petal[i].name+" is dragged.","#df9fdf")
+							getGrid(0,fight.petal[i].x,fight.petal[i].y).replaceWith(createGrid(0,fight.petal[i].x,fight.petal[i].y,"Empty",1,0))
+							fight.petal[i].y--
+							fight.petal[i].print()
+						}
+					}
+					this.attack()
+				}
+				if(this.name==="!Queen Ant!") {
+					this.calculate++
+					if(this.calculate<=2) {
+						addLog("[Mob] Queen Ant summons 1 Soldier Ant.","#bfbf00")
+						let pendingRarity=this.rarity-1
+						spawnNear(new Mob("Soldier Ant",pendingRarity,0),this.x,this.y,true)
+					} else if(this.calculate<=4) {
+						addLog("[Mob] Queen Ant summons 2 Soldier Ant.","#bfbf00")
+						let pendingRarity=this.rarity-2
+						spawnNear(new Mob("Soldier Ant",pendingRarity,0),this.x,this.y,true)
+					} else {
+						this.attack()
+					}
+				}
+				if(this.name==="!Leafbug!" && this.speed<=60) {
+					this.attack()
+				}
+				if(this.name==="!Wasp!") {
+					this.calculate++
+					this.attack()
+				}
+			} else if(this.behavior==="Neutral+" || this.behavior==="Hostile") {
+				this.attack()
+			}
+			await waitConfirmation()
+			if(this.currenthealth<=0) return
+			if(MobAttributeList[this.id].match("Doesn't move")===null) {
+				this.move()
+			}
+			updateT()
+		}
+		Mob.prototype.move=function(dir) {
+			if(dir!==undefined) {
+				if(this.y+dy[dir]>=1 && this.y+dy[dir]<=3 && !getFilledGrid(toCord(this.x+dx[dir]),this.y+dy[dir])) {
+					getGrid(0,this.x,this.y).replaceWith(createGrid(0,this.x,this.y,"Empty",1,0))
+					this.x=toCord(this.x+dx[dir])
+					this.y=toCord(this.y+dy[dir])
+					this.print()
+				}
+				return
+			}
+			let pendingCord=new Array(),distanceLimit=1
+			pendingCord.push({x:this.x,y:this.y})
+			if(MobAttributeList[this.id].match(/(?<=Moves up to )\d/)!==null) distanceLimit=parseInt(MobAttributeList[this.id].match(/(?<=Moves up to )\d/))
+			for(let i=1;i<=8;i++) for(let j=1;j<=3;j++) if(discalc(i,this.x)+discalc(j,this.y,0)<=distanceLimit && !getFilledGrid(i,j)) pendingCord.push({x:i,y:j})
+			let resultingCord=pendingCord[roll(0,pendingCord.length-1)]
+			if(this.x===resultingCord.x && this.y===resultingCord.y) return
+			getGrid(0,this.x,this.y).replaceWith(createGrid(0,this.x,this.y,"Empty",1,0))
+			this.x=resultingCord.x
+			this.y=resultingCord.y
 			this.print()
 		}
-		Mob.prototype.move=function() {
+		Mob.prototype.attack=async function() {
+			if(this.name.match("(Missile)")===null) {
+				addLog("[Mob] Attack of "+this.name+"...","#bfbf00")
+				fight.mobattack=true
+				confirmation=true
+			} else {
+				addLog("[Mob] "+this.origin.name+" shoots a missile.","#bfbf00")
+			}
+			let attackFlag=true
+			if(this.name.match("(Missile)")===null && MobAttributeList[this.id].match("ATTACK")!==null) {
+				attackFlag=false
+				if(this.name==="Cactus") {
+					flowerInjure(this.damage,this)
+				}
+				if(this.name==="Hornet") {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(shootingMissile.damage/5)
+					shootingMissile.dodge=20
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="Scorpion") {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(shootingMissile.damage/3)
+					shootingMissile.dodge=30
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="Jellyfish") {
+					flowerInjure(approx(0.4*this.damage),"Lightning")
+				}
+				if(this.name==="Leech") {
+					flowerInjure(approx(0.5*this.damage),this)
+				}
+				if(this.name==="Mantis") for(let i=1;i<=3;i++) if(this.currenthealth>0) {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=1
+					shootingMissile.dodge=10
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="Beetle (Hell)") {
+					if(this.effect.charge) {
+						addLog("[Mob] Beetle (Hell) uses charged attack.","#bfbf00")
+						delete this.effect.charge
+						flowerInjure(this.damage,this)
+					} else {
+						attackFlag=true
+					}
+				}
+				if(this.name==="Wasp") {
+					let shootingRepeat=roll(1,2)
+					for(let i=1;i<=shootingRepeat;i++) if(this.currenthealth>0) {
+						let shootingMissile=this.clone()
+						shootingMissile.origin=this
+						shootingMissile.name+=" (Missile)"
+						shootingMissile.damage=approx(shootingMissile.damage/5)
+						shootingMissile.dodge=20
+						shootingMissile.attack()
+						confirmation2=true
+						await waitConfirmation2()
+					}
+				}
+				if(this.name==="Wasp (Hell)") for(let i=1;i<=5;i++) if(this.currenthealth>0) {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(shootingMissile.damage/10)
+					shootingMissile.dodge=10
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="!Hornet!") for(let i=1;i<=3;i++) if(this.currenthealth>0) {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(0.4*shootingMissile.damage)
+					shootingMissile.dodge=40
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="!Dandelion!") for(let i=1;i<=8;i++) if(this.currenthealth>0) {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(0.2*shootingMissile.damage)
+					shootingMissile.dodge=70-10*this.count-10*betterFloor((i-1)/2)
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="!Scorpion!") {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(shootingMissile.damage/5)
+					shootingMissile.dodge=80
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="!Shell!") {
+					if(this.effect.pearl>=5) {
+						for(let i=1;i<=this.effect.pearl;i++) if(this.currenthealth>0) {
+							let shootingMissile=this.clone()
+							shootingMissile.origin=this
+							shootingMissile.name+=" (Missile)"
+							shootingMissile.dodge=40
+							shootingMissile.attack()
+							confirmation2=true
+							await waitConfirmation2()
+						}
+						delete this.effect.pearl
+					} else {
+						attackFlag=true
+					}
+				}
+				if(this.name==="!Leech!") {
+					flowerInjure(this.damage,this)
+					if(!this.effect.origindamage) this.effect.origindamage=this.damage
+					let buffEffectiveness=20
+					this.damage+=approx(this.effect.origindamage*buffEffectiveness/100)
+				}
+				if(this.name==="!Mantis!") for(let i=1;i<=5;i++) if(this.currenthealth>0) {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(shootingMissile.damage/5)
+					shootingMissile.dodge=20
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+				if(this.name==="!Wasp!") for(let i=1;i<=3;i++) if(this.currenthealth>0) {
+					let shootingMissile=this.clone()
+					shootingMissile.origin=this
+					shootingMissile.name+=" (Missile)"
+					shootingMissile.damage=approx(0.4*shootingMissile.damage)
+					shootingMissile.dodge=20
+					shootingMissile.attack()
+					confirmation2=true
+					await waitConfirmation2()
+				}
+			}
+			if(attackFlag) {
+				confirmation2=true
+				operPrepare(this,"Defend")
+				updateT()
+				if(this.name.match("(Missile)")!==null) return
+				await waitConfirmation2()
+			}
+			fight.mobattack=false
+			confirmation=false
+			updateT()
+		}
+		function spawnNear(mob,targetX,targetY,noloot) {
+			let pendingPlace=new Array()
+			if(targetY>1 && !getFilledGrid(targetX,targetY-1)) pendingPlace.push(0)
+			if(!getFilledGrid(toCord(targetX+1),targetY)) pendingPlace.push(1)
+			if(targetY<3 && !getFilledGrid(targetX,targetY+1)) pendingPlace.push(2)
+			if(!getFilledGrid(toCord(targetX-1),targetY)) pendingPlace.push(3)
+			if(pendingPlace.length>0) {
+				let resultingPlace=pendingPlace[roll(0,pendingPlace.length-1)]
+				fight.mob.push(mob)
+				fight.mob[fight.mob.length-1].x=toCord(targetX+dx[resultingPlace])
+				fight.mob[fight.mob.length-1].y=targetY+dy[resultingPlace]
+				if(noloot) fight.mob[fight.mob.length-1].effect.noloot=true
+				fight.mob[fight.mob.length-1].print()
+			} else {
+				fight.spawnmob.unshift(mob)
+				if(noloot) fight.spawnmob[0].effect.noloot=true
+			}
 		}
 	</script>
 	<script>
@@ -1743,8 +2172,22 @@
 			if(commandInput.startsWith(".")) {
 				commandInput=commandInput.slice(1)
 				let validCommand=false
+				if(commandInput.startsWith("rep ")) {
+					validCommand=true
+					for(let i=0;i<fight.mob.length;i++) {
+						fight.mob[i]=Object.assign(new Mob(commandInput.slice(4),fight.mob[i].rarity),{x:fight.mob[i].x,y:fight.mob[i].y});
+						fight.mob[i].print()
+					}
+					addLog("[Command] Mob replaced.","#5f5f5f")
+				}
+				if(commandInput==="heal") {
+					validCommand=true
+					flowerInjure(fight.flower.currenthealth-FlowerMaxHealth())
+				}
 				if(commandInput==="help") {
 					validCommand=true
+					addLog("[Help] Replace: Replace all mobs with new type. (Format: .rep [mob's name], Example: .rep Ladybug (Garden))","#bf7fbf")
+					addLog("[Help] Heal: Heals your flower to max. (Format: .heal)","#bf7fbf")
 					addLog("[Help] Help: Print list of all available commands. (Format: .help)","#bf7fbf")
 					addLog("[Help] PFLFstart: Play PFLF with bot#7976. (Format: .PFLFstart)","#bf7fbf")
 					addLog("[Help] PFLFend: End PFLF game. (Format: .PFLFend)","#bf7fbf")
@@ -1909,8 +2352,9 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20251109
+		const version=20251116
 		const svgNS="http://www.w3.org/2000/svg"
+		const dx=[0,1,0,-1],dy=[-1,0,1,0],dx5=[1,2,2,1,-1,-2,-2,-1],dy5=[-2,-1,1,2,2,1,-1,-2]
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
 		const rarityName=["None","Common","Unusual","Rare","Epic","Legendary","Mythic","Ultra","Super","Unique"]
 		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
@@ -2000,6 +2444,8 @@
 		if(!fight.active) fight.active=false
 		if(!fight.manipulate) fight.manipulate=false
 		if(!fight.ready) fight.ready=false
+		if(!fight.flower) fight.flower=new Object()
+		if(!fight.flower.effect) fight.flower.effect=new Object()
 		if(!fight.petal) fight.petal=new Array()
 		for(let i in fight.petal) fight.petal[i]=Object.assign(new Petal(),fight.petal[i])
 		if(!fight.mob) fight.mob=new Array()
@@ -2009,12 +2455,18 @@
 		localStorage.setItem("player",JSON.stringify(player))
 		localStorage.setItem("explore",JSON.stringify(explore))
 		localStorage.setItem("fight",JSON.stringify(fight))
-		let animation=false
+		let animation=false,confirmation=false,confirmation2=false
 		function delay(time) {
 			return new Promise(resolve => setTimeout(resolve,time))
 		}
 		function waitAnimation(time) {
 			return new Promise(resolve => {const checkAnimation=() => animation? setTimeout(checkAnimation,20):resolve(); checkAnimation()})
+		}
+		function waitConfirmation(time) {
+			return new Promise(resolve => {const checkConfirmation=() => confirmation? setTimeout(checkConfirmation,20):resolve(); checkConfirmation()})
+		}
+		function waitConfirmation2(time) {
+			return new Promise(resolve => {const checkConfirmation2=() => confirmation2? setTimeout(checkConfirmation2,20):resolve(); checkConfirmation2()})
 		}
 		async function copyToClipboard(text) {
 			await navigator.clipboard.writeText(text)
@@ -2094,14 +2546,15 @@
 			newGrid.dataset.x=x
 			newGrid.dataset.y=y
 			newGrid.innerHTML="·"
-			if(text==="Diamond") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10'/><path class='fgreen-path' d='M26 46L50 75L74 46L66 32L34 32ZL42 46L50 75L58 46L74 46M50 32L42 46L58 46Z''/></svg><span style='display: none'>Diamond</span>"
+			if(text==="Diamond") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10'/><path class='fgreen-path' d='M26 46L50 75L74 46L66 32L34 32ZL42 46L50 75L58 46L74 46M50 32L42 46L58 46Z'/></svg><span style='display: none'>Diamond</span>"
 			if(text==="Cross") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M20 20L80 80M80 20L20 80'/></svg><span style='display: none'>Cross</span>"
 			if(text==="Line") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M0 50L100 50'/></svg><span style='display: none'>Line</span>"
+			if(text==="Shield") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10A40 40 0 0 0 50 90A40 40 0 0 0 50 10'/><path class='fdbrown-path wide' d='M30 35L50 25L70 35A50 50 0 0 1 50 75A50 50 0 0 1 30 35Z'/></svg><span style='display: none'>Defend</span>"
 			if(text==="Empty") newGrid.innerHTML="<span class='mid lgrey text3'>Empty</span>"
 			if(text==="Space") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M0 20L0 0L20 0M80 0L100 0L100 20M100 80L100 100L80 100M20 100L0 100L0 80'/></svg><span class='mid lgrey text3'>Space</span>"
 			if(typeof(text)==="number" && text!==0) newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10L90 50L50 90L10 50Z'/></svg><span class='mid'>"+text+"</span>"
 			if(text.startsWith("Petal")) newGrid.innerHTML=PetalSVGArray[text.slice(6)]
-			if(text.startsWith("Mob")) newGrid.innerHTML=MobSVGArray[text.slice(4)]
+			if(text.startsWith("Mob")) newGrid.innerHTML=MobSVGArray[text.slice(4).replaceAll("!","")]
 			if(newGrid.innerHTML.match("svgGradient")) {
 				svgGradientCount++
 				newGrid.innerHTML=newGrid.innerHTML.replaceAll("svgGradient","uniqueGradient"+svgGradientCount)
@@ -2115,6 +2568,7 @@
 		}
 		function clickGrid(button) {
 			if(animation) return
+			if(fight.ready && fight.turn==="Mob") return
 			let buttonValue=parseInt(button.value),buttonX=parseInt(button.getAttribute("data-x")),buttonY=parseInt(button.getAttribute("data-y"))
 			if(lupoper.active===true) {
 				let targetPetal=player.inventory[lupoper.selectedArray[0]].clone()
@@ -2276,6 +2730,8 @@
 			return roll(1,6)
 		}
 		function determine(chance,log,logText="") {
+			if(chance<0) chance=0
+			if(chance>100) chance=100
 			let result=false
 			if(100*Math.random()<=chance) result=true
 			if(log) {
@@ -2287,7 +2743,10 @@
 			}
 			return result
 		}
-		function discalc(cord1,cord2,modulo=0) {
+		function toCord(originCord,modulo=8) {
+			return (originCord%modulo+7)%modulo+1
+		}
+		function discalc(cord1,cord2,modulo=8) {
 			let differ=Math.abs(cord1-cord2)
 			if(modulo===0) return differ
 			differ%=modulo
@@ -2421,6 +2880,7 @@
 		}
 		async function exportSave() {
 			if(animation) return
+			copyToClipboard("The game is perfect, there are no bugs")
 			document.getElementById("export-btn").innerHTML="Memories Stored!"
 			await delay(1000)
 			document.getElementById("export-btn").innerHTML="Store Memories"
@@ -2535,13 +2995,13 @@
 				path.addEventListener("mouseenter",() => mapInfo(path))
 				path.addEventListener("mouseleave",closeMapInfo)
 			} )
+			if(fight.manipulate===true) endFight()
 			if(fight.active===true) {
 				displayFightField()
 				displayFight()
 			} else {
 				displayMap()
 			}
-			if(fight.manipulate===true) endFight()
 			document.getElementById("end2").innerText="Welcome to the Florroom!"
 			for(let i=0;i<=10;i++) {
 				document.getElementById("end2").style.opacity=i/10
@@ -2702,9 +3162,9 @@
 			if(typeof(cord2)==="string") cord2=parseInt(cord2)
 			if(cord1===cord2) return 0
 			if(pathArray.indexOf(cord1*100+cord2)===-1 && pathArray.indexOf(cord2*100+cord1)===-1) return -1
-			let dx=getSpotCord(cord2).x-getSpotCord(cord1).x,dy=getSpotCord(cord2).y-getSpotCord(cord1).y,dv=(dx*dx+dy*dy)**0.5+20
-			if(cord1-cord1%10!==cord2-cord2%10) dv=dv*1.5+50
-			return betterFloor(dv)
+			let disx=getSpotCord(cord2).x-getSpotCord(cord1).x,disy=getSpotCord(cord2).y-getSpotCord(cord1).y,disv=(disx*disx+disy*disy)**0.5+20
+			if(cord1-cord1%10!==cord2-cord2%10) disv=disv*1.5+50
+			return betterFloor(disv)
 		}
 		function createPath() {
 			for(let i in pathArray) {
@@ -2811,11 +3271,12 @@
 			return text
 		}
 		function mobTextReplace(text,mob) {
-			text=text.replaceAll("&","</span>").replaceAll("BOSS","<span style='font-weight: bold; color: #bfbfbf'>This mob is a boss.").replaceAll(/COUNT=(\d+)/g,"<span style='color: #7f7f9f'>This mob has "+mob.count+" remaining lives.").replaceAll("ATTRIBUTE=","<span style='color: #bfbf7f'>Mob attribute: ").replaceAll("STATURN=","<span style='color: #5fdfff'>At start of turn: ").replaceAll("EXIST=","<span style='color: #ffffff'>While exist: ").replaceAll("HOSTILE=","<span style='color: #7fbfbf'>Chance becoming hostile: ").replaceAll("ACTION=","<span style='color: #bfbf3f'>Mob action: ").replaceAll("ATTACK=","<span style='color: #ff7f7f'>When attack: ").replaceAll("DAMAGE=","<span style='color: #bf5f5f'>When destroyed a part: ").replaceAll("DESTROY=","<span style='color: #df3f3f'>When destroyed: ")+"</span>"
+			text=text.replaceAll("&","</span>").replaceAll("BOSS","<span style='font-weight: bold; color: #bfbfbf'>This mob is a boss.").replaceAll(/COUNT=(\d+)/g,"<span style='color: #7f7f9f'>This mob has "+mob.count+" remaining lives.").replaceAll("ATTRIBUTE=","<span style='color: #bfbf7f'>Mob attribute: ").replaceAll("STATURN=","<span style='color: #5fdfff'>At start of turn: ").replaceAll("EXIST=","<span style='color: #ffffff'>While exist: ").replaceAll("HOSTILE=","<span style='color: #7fbfbf'>Chance becoming hostile: ").replaceAll("ACTION=","<span style='color: #bfbf3f'>Mob action: ").replaceAll("ATTACK=","<span style='color: #ff7f7f'>When attack: ").replaceAll("CHARAC=","<span style='color: #df7fdf'>Characteristic: ").replaceAll("DAMAGE=","<span style='color: #bf5f5f'>When destroyed a part: ").replaceAll("DESTROY=","<span style='color: #df3f3f'>When destroyed: ")+"</span>"
 			text=text.replaceAll("[poison]","<span style='font-weight: bold; color: #bf00bf; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>poison</span>").replaceAll("[lightning]","<span style='font-weight: bold; color: #7fffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>lightning</span>").replaceAll("[","<span style='font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>").replaceAll("]","</span>").replaceAll(/(?<!\.\s)(?<!^)Damage/g,"<span style='color: #ff7f7f'>"+mob.damage+"</span>").replaceAll(/(?<!\.\s)(?<!^)Health/g,"<span style='color: #7fdf7f'>"+mob.health+"</span>").replaceAll("X","<span style='color: #9f5f9f'>"+mob.calculate+"</span>")
 			return text
 		}
 		function gridInfo(grid) {
+			if(animation) return
 			if(selectedGrid.select===true) return
 			if(grid.style.scale>0 && grid.style.scale<1) return
 			let gridValue=parseInt(grid.getAttribute("value")),gridX=parseInt(grid.dataset.x),gridY=parseInt(grid.dataset.y)
@@ -2969,6 +3430,7 @@
 			document.getElementById("fight-item").style.display="flex"
 		}
 		function displayFightField() {
+			document.getElementById("fight-item").innerHTML=""
 			for(let i=1;i<=8;i++) {
 				for(let j=1;j<=6;j++) getGrid(0,i,j).replaceWith(createGrid(0,i,j,"Empty",1,0))
 			}
@@ -2985,6 +3447,8 @@
 			if(lupoper.active===true) cancelLevelUp()
 			fight.active=true
 			fight.ready=false
+			fight.flower.health=FlowerMaxHealth()
+			fight.flower.currenthealth=fight.flower.health
 			fight.petal=new Array()
 			fight.mob=new Array()
 			fight.spawnmob=new Array()
@@ -2992,6 +3456,7 @@
 			displayFightField()
 			displayFight()
 			updateFlowerState()
+			updateT()
 		}
 		function readyFight() {
 			if(fight.petal.length!==FlowerSlot()) return
@@ -3090,7 +3555,7 @@
 				if(lupoper.active===true && lupoper.selectedArray.indexOf(parseInt(i))===-1) continue
 				if(fight.active===true) {
 					let equippedflag=false
-					for(let j in fight.petal) if(fight.petal[j].origin===parseInt(i)) equippedflag=true
+					for(let j in fight.petal) if(fight.petal[j].origin===player.inventory[i]) equippedflag=true
 					if(equippedflag) continue
 				}
 				printSinglePetal(i)
@@ -3257,8 +3722,8 @@
 				document.getElementById("flower-maxhealth").style.display="none"
 				document.getElementById("flower-level").innerHTML="&nbsp;"
 				document.getElementById("bar-exp-c").style.display="none"
-				document.getElementById("bar-health").style.width="100%"
-				document.getElementById("flower-health").innerHTML="Health: 200/200"
+				document.getElementById("bar-health").style.width=fight.flower.currenthealth/fight.flower.health*100+"%"
+				document.getElementById("flower-health").innerHTML="Health: "+fight.flower.currenthealth+"/"+fight.flower.health
 				document.getElementById("bar-health-c").style.display="unset"
 			} else {
 				document.getElementById("bar-health-c").style.display="none"
@@ -3280,7 +3745,15 @@
 			if(fight.active===false) return
 			if(operingX!==0 && operingType==="Attack") {
 				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===operingX && fight.mob[i].y===operingY) {
-					document.getElementById("fight-t-btn").innerHTML=AttackSuccessChance(fight.petal[operingPetal],fight.mob[i],"Auto","Auto")+"% Success"
+					document.getElementById("fight-t-btn").innerHTML=AttackSuccessChance(operingThing,fight.mob[i],"Auto","Auto")+"% Success"
+					document.getElementById("fight-t-btn").setAttribute("onclick","")
+					document.getElementById("fight-t-btn").style.cursor="default"
+				}
+				return
+			}
+			if(operingX!==0 && operingType==="Defend") {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].x===operingX && fight.petal[i].y===operingY) {
+					document.getElementById("fight-t-btn").innerHTML=DefendSuccessChance(fight.petal[i],operingThing,"Auto","Auto")+"% Success"
 					document.getElementById("fight-t-btn").setAttribute("onclick","")
 					document.getElementById("fight-t-btn").style.cursor="default"
 				}
@@ -3310,7 +3783,7 @@
 			if(fight.turn==="Mob") {
 				if(fight.mobattack===true) {
 					document.getElementById("fight-t-btn").innerHTML="[T] Skip Defend"
-					document.getElementById("fight-t-btn").setAttribute("onclick","skipDefend()")
+					document.getElementById("fight-t-btn").setAttribute("onclick","mobDefend('Skip')")
 					document.getElementById("fight-t-btn").style.cursor="pointer"
 				} else {
 					document.getElementById("fight-t-btn").innerHTML="[T] Confirm"
@@ -3333,7 +3806,7 @@
 					for(let j=4;j<=6;j++) {
 						if(Math.abs(mouseY-getGrid(0,i,j).getBoundingClientRect().top-40)<=25 && Math.abs(mouseX-getGrid(0,i,j).getBoundingClientRect().left-40)<=25) {
 							let emptyFlag=true
-							for(let k in fight.petal) if(fight.petal[k].x===i && fight.petal[k].y===j) emptyFlag=false
+							for(let k in fight.petal) if(fight.petal[k].state!=="Retired" && fight.petal[k].x===i && fight.petal[k].y===j) emptyFlag=false
 							if(!emptyFlag) continue
 							trackingGrid.style.top=getGrid(0,i,j).getBoundingClientRect().top+40+"px"
 							trackingGrid.style.left=getGrid(0,i,j).getBoundingClientRect().left+40+"px"
@@ -3349,18 +3822,31 @@
 			trackingX=0
 			trackingY=0
 		}
-		let operingGrid,operingPetal=0,operingX=0,operingY=0,operingType="Inactive"
+		let operingGrid,operingThing,operingX=0,operingY=0,operingType="Inactive"
 		function operCheck(newX,newY) {
 			if(operingType==="Move") {
 				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].x===newX && fight.petal[i].y===newY) return false
-				if(discalc(fight.petal[operingPetal].x,newX,8)+discalc(fight.petal[operingPetal].y,newY)!==1) return false
-				if(fight.petal[operingPetal].name!=="Pearl" && newY<=3) return false
+				if(discalc(operingThing.x,newX)+discalc(operingThing.y,newY,0)!==1) return false
+				if(operingThing.name!=="Pearl" && newY<=3) return false
 				return true
 			}
 			if(operingType==="Attack") {
 				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===newX && fight.mob[i].y===newY) {
-					if(discalc(fight.petal[operingPetal].x,newX,8)>1) return false
-					if(AttackSuccessChance(fight.petal[operingPetal],fight.mob[i],"Auto","Auto")>0) {
+					if(discalc(operingThing.x,newX)>1) return false
+					if(AttackSuccessChance(operingThing,fight.mob[i],"Auto","Auto")>0) {
+						updateT()
+						return true
+					}
+					return false
+				}
+				return false
+			}
+			if(operingType==="Defend") {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].x===newX && fight.petal[i].y===newY) {
+					if(discalc(operingThing.x,newX)>1) return false
+					if(newY<=4 && fight.petal[i].name!=="Pearl") return false
+					if(newY<=operingThing.y) return false
+					if(DefendSuccessChance(fight.petal[i],operingThing,"Auto","Auto")>0) {
 						updateT()
 						return true
 					}
@@ -3390,17 +3876,18 @@
 				updateT()
 			}
 		}
-		function operPrepare(petal,type) {
-			operingGrid=createGrid(6361,0,0,"Petal_"+PetalNameList[petal.id],1,petal.rarity)
+		function operPrepare(operitem,type) {
+			operingType=type
+			operingThing=operitem
+			if(isPetal(operingThing)) operingGrid=createGrid(6361,0,0,"Petal_"+PetalNameList[operingThing.id],1,operingThing.rarity)
+			if(operingType==="Defend") operingGrid=createGrid(6361,0,0,"Shield",1,explore.floor+1)
 			operingGrid.setAttribute("class","smid bgrid apos")
 			operingGrid.setAttribute("onclick","operResult()")
 			operingGrid.style.opacity=0.6
-			for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].x===petal.x && fight.petal[i].y===petal.y) operingPetal=i
 			operingX=0
 			operingY=0
-			operingType=type
 			operGrid()
-			getGrid(0,selectedGrid.x,selectedGrid.y).style.opacity=0.4
+			if(isPetal(operingThing)) getGrid(0,selectedGrid.x,selectedGrid.y).style.opacity=0.4
 			selectedGrid.select=false
 			closeGridInfo()
 			document.body.appendChild(operingGrid)
@@ -3410,17 +3897,23 @@
 			if(operingX!==0) {
 				if(operingType==="Move") {
 					let moveRequirement=100
-					fight.petal[operingPetal].actionbar-=moveRequirement
-					fight.petal[operingPetal].move(operingX,operingY)
+					operingThing.actionbar-=moveRequirement
+					operingThing.move(operingX,operingY)
 				}
 				if(operingType==="Attack") {
 					let attackRequirement=200
-					fight.petal[operingPetal].actionbar-=attackRequirement
-					fight.petal[operingPetal].attack(operingX,operingY)
+					operingThing.actionbar-=attackRequirement
+					operingThing.attack(operingX,operingY)
+				}
+				if(operingType==="Defend") {
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].x===operingX && fight.petal[i].y===operingY) mobDefend(fight.petal[i])
 				}
 			} else {
-				getGrid(0,selectedGrid.x,selectedGrid.y).style.opacity=1
-				fight.manipulate=false
+				if(operingType==="Move" || operingType==="Attack") {
+					getGrid(0,selectedGrid.x,selectedGrid.y).style.opacity=1
+					fight.manipulate=false
+				}
+				if(operingType==="Defend") mobDefend("Skip")
 			}
 			document.removeEventListener("mousemove",operGrid)
 			document.body.removeChild(operingGrid)
@@ -3442,7 +3935,7 @@
 					fight.petal.push(player.inventory[selectedGrid.x].clone())
 					fight.petal[fight.petal.length-1].x=trackingX
 					fight.petal[fight.petal.length-1].y=trackingY
-					fight.petal[fight.petal.length-1].origin=selectedGrid.x
+					fight.petal[fight.petal.length-1].origin=player.inventory[selectedGrid.x]
 					getGrid(0,trackingX,trackingY).replaceWith(createGrid(0,trackingX,trackingY,"Petal_"+fight.petal[fight.petal.length-1].name,1,fight.petal[fight.petal.length-1].rarity))
 					if(trackingType===1) fight.petal[fight.petal.length-1].name="Yin"
 					if(trackingType===2) fight.petal[fight.petal.length-1].name="Yang"
@@ -3451,7 +3944,7 @@
 					fight.petal.push(player.inventory[selectedGrid.x].clone())
 					fight.petal[fight.petal.length-1].x=selectedGrid.x
 					fight.petal[fight.petal.length-1].y=0
-					fight.petal[fight.petal.length-1].origin=selectedGrid.x
+					fight.petal[fight.petal.length-1].origin=player.inventory[selectedGrid.x]
 					getGrid(2,0,0).replaceWith(createGrid(2,selectedGrid.x,0,"Petal_"+fight.petal[fight.petal.length-1].name,1,fight.petal[fight.petal.length-1].rarity))
 					if(trackingType===1) fight.petal[fight.petal.length-1].name="Concentrated Eye"
 					if(trackingType===2) fight.petal[fight.petal.length-1].name="Specialized Eye"
@@ -3483,19 +3976,30 @@
 			selectedGrid.select=false
 			updateT()
 		}
+		function getFilledGrid(targetX,targetY) {
+			let filledGrid=new Array()
+			for(let i=0;i<fight.petal.length;i++) filledGrid.push(fight.petal[i].x*10+fight.petal[i].y)
+			for(let i=0;i<fight.mob.length;i++) filledGrid.push(fight.mob[i].x*10+fight.mob[i].y)
+			if(targetX!==undefined) {
+				if(filledGrid.indexOf(targetX*10+targetY)===-1) return false
+				return true
+			}
+			return filledGrid
+		}
+		function fullGrid() {
+			let filledGrid=getFilledGrid()
+			for(let i=1;i<=8;i++) {
+				for(let j=1;j<=3;j++) if(filledGrid.indexOf(10*i+j)===-1) return false
+			}
+			return true
+		}
 		function fillMob() {
 			while(fight.mob.length<FloorCapacity(explore.floor) && fight.spawnmob.length) {
-				let filledGrid=new Array()
-				for(let i=0;i<fight.petal.length;i++) filledGrid.push(fight.petal[i].x+fight.petal[i].y*10)
-				for(let i=0;i<fight.mob.length;i++) filledGrid.push(fight.mob[i].x+fight.mob[i].y*10)
-				let fullFlag=true
-				for(let i=1;i<=8;i++) {
-					for(let j=1;j<=3;j++) if(filledGrid.indexOf(i+10*j)===-1) fullFlag=false
-				}
-				if(fullFlag) return
+				if(fullGrid()) return
+				let filledGrid=getFilledGrid()
 				filledGrid.push(0)
 				fight.mob.push(fight.spawnmob.splice(0,1)[0])
-				while(filledGrid.indexOf(fight.mob[fight.mob.length-1].x+fight.mob[fight.mob.length-1].y*10)>=0) {
+				while(filledGrid.indexOf(fight.mob[fight.mob.length-1].x*10+fight.mob[fight.mob.length-1].y)>=0) {
 					fight.mob[fight.mob.length-1].x=roll(1,8)
 					fight.mob[fight.mob.length-1].y=roll(1,3)
 				}
@@ -3522,6 +4026,7 @@
 					addLog("[Mob] A part of "+fight.mob[i].name+" is destroyed.","#ffbf00")
 					fight.mob[i].count--
 					fight.mob[i].currenthealth=fight.mob[i].health
+					fight.mob[i].print()
 					continue
 				}
 				addLog("[Mob] "+fight.mob[i].name+" is destroyed.","#ff9f0f")
@@ -3561,7 +4066,6 @@
 				fight.manipulate=true
 				for(let i=0;i<fight.mob.length;i++) fight.mob[i].progress()
 				fillMob()
-				updateT()
 				localStorage.setItem("fight",JSON.stringify(fight))
 				mobActionCheck()
 				return
@@ -3569,6 +4073,39 @@
 		}
 		function bonusTurnCheck() {
 			return false
+		}
+		async function flowerInjure(damage,mob) {
+			let mobName=mob
+			if(isMob(mob)) mobName=mob.name
+			let resultingDamage=damage
+			addLog("[Flower] Flower received "+resultingDamage+" damage from "+mobName+".","#00bfbf")
+			fight.flower.currenthealth-=resultingDamage
+			if(mobName==="Leech" && mob.currenthealth>0) {
+				let pendingHeal=resultingDamage
+				addLog("[Mob] Leech heals for "+pendingHeal+".","#bfbf00")
+				mob.currenthealth+=pendingHeal
+				if(mob.currenthealth>mob.health) mob.currenthealth=mob.health
+				mob.print()
+			}
+			if(mobName==="!Leech!" && mob.currenthealth>0) {
+				let pendingHeal=resultingDamage
+				addLog("[Mob] !Leech! heals for "+pendingHeal+".","#bfbf00")
+				mob.currenthealth+=pendingHeal
+				if(mob.currenthealth>mob.health) mob.currenthealth=mob.health
+				mob.print()
+			}
+			if(fight.flower.currenthealth<=0) {
+				fight.flower.currenthealth=0
+				updateFlowerState()
+				clearAllInterval()
+				document.getElementById("end1").style["pointer-events"]="unset"
+				for(let i=0;i<=30;i++) {
+					document.getElementById("end1").style.opacity=i/30
+					await delay(100)
+				}
+				location.reload()
+			}
+			updateFlowerState()
 		}
 		function moveCheck(petal) {
 			if(petal.state!=="Existing") return false
@@ -3603,6 +4140,23 @@
 			if(petal.actionbar<skillRequirement) return false
 			return true
 		}
+		function mobDefend(petal) {
+			if(animation) return
+			if(petal==="Skip") addLog("[Flower] Defend Skipped","#00bfbf")
+			if(isPetal(petal) && determine(DefendSuccessChance(petal,operingThing,"Auto","Auto"),true," for defend")) {
+				let damageDealt=petal.damage,damageReceived=operingThing.damage,knockbackDealt=0
+				petal.injure(damageReceived,operingThing)
+				operingThing.injure(damageDealt,petal)
+				if(knockbackDealt) operingThing.knockback(knockbackDealt)
+				petal.print()
+				operingThing.print()
+				removeMob()
+			} else {
+				let damageReceived=operingThing.damage
+				flowerInjure(damageReceived,operingThing)
+			}
+			confirmation2=false
+		}
 		function mobActionCheck() {
 			let actionMobArray=new Array()
 			for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].actionbar>=200) actionMobArray.push(i)
@@ -3614,6 +4168,7 @@
 			fight.mob[actionMob].action()
 		}
 		function actionConfirm() {
+			if(animation) return
 			mobActionCheck()
 		}
 	</script>
@@ -3838,7 +4393,11 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/11/9,</span>
+		<span>The last update was on 2025/11/16,</span>
+		<span>which updated fight again (mobs can attack and some of them has special action).</span>
+		<span>Recommended to hard reset if you were in a fight for the commands to work correctly.</span>
+		<br>
+		<span>The last update before this was on 2025/11/9,</span>
 		<span>which updated fight (only you can attack, mobs do nothing).</span>
 		<br>
 		<button type="button" id="version3" onclick="updateVersion(false)">No, just update the version.</button>
