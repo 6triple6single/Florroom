@@ -2418,9 +2418,10 @@
 					if(getFilledGrid(toCord(this.x-1),this.y)) factorLeft=0
 					if(getFilledGrid(toCord(this.x+1),this.y)) factorRight=0
 					let factorSeed=roll(1,factorLeft+factorMiddle+factorRight)
-					addLog("Left="+factorLeft+",Middle="+factorMiddle+",Right="+factorRight+",Seed="+factorSeed)
 					if(factorSeed<=factorLeft) this.move(4)
 					if(factorSeed>factorLeft+factorMiddle) this.move(2)
+				}
+				if(this.name==="Crab" || this.name==="!Crab!") {
 					this.attack()
 				}
 				if(this.name==="Queen Fire Ant") {
@@ -4971,6 +4972,11 @@
 		}
 		function endFight(win) {
 			if(animation) return
+			if(operingType==="Shoot") {
+				document.removeEventListener("mousemove",operGrid)
+				document.body.removeChild(operingGrid)
+				operingThing.shoot(0,0)
+			}
 			fight.active=false
 			fight.ready=false
 			fight.manipulate=false
@@ -5142,6 +5148,7 @@
 		}
 		function levelUpCheck(petal) {
 			if(player.book.indexOf("Flower Artisan Guide")===-1) return false
+			if(petal.effect.hasOwnProperty("temploot")) return false
 			if(PetalAttributeList[petal.id].match("Can't craft")!==null) return false
 			let pairCount=0
 			for(let i in player.inventory) if(player.inventory[i].id===petal.id && player.inventory[i].rarity===petal.rarity && player.inventory[i].level===petal.level) pairCount++
@@ -5210,6 +5217,7 @@
 		}
 		function rarityUpCheck(petal) {
 			if(player.book.indexOf("Flower Artisan Guide")===-1) return false
+			if(petal.effect.hasOwnProperty("temploot")) return false
 			if(PetalAttributeList[petal.id].match("Can't craft")!==null) return false
 			if(petal.rarity===6 || petal.level===0) return false
 			return true
@@ -5245,6 +5253,7 @@
 		}
 		function absorbCheck(petal) {
 			if(player.book.indexOf("Flower Evolutionary Guide")===-1) return false
+			if(petal.effect.hasOwnProperty("temploot")) return false
 			if(PetalAttributeList[petal.id].match("Can't absorb")!==null) return false
 			return true
 		}
