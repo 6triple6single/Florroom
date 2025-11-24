@@ -2146,7 +2146,7 @@
 					fight.mob[i].print()
 				}
 			}
-			if(this.name==="Rock" && this.effect.noloot) {
+			if(this.name==="Rock" && this.effect.noloot===true) {
 				let summonType=["Worker Ant","Soldier Ant"]
 				let summonSeed=summonType[roll(0,1)]
 				addLog("[Mob] Rock summons 1 "+summonSeed+".","#bfbf00")
@@ -4900,7 +4900,7 @@
 				fight.mob[0]=new Mob("Rock",7,0)
 				fight.mob[0].x=1
 				fight.mob[0].y=1
-				fight.mob[0].effect.noloot=true
+				fight.mob[0].effect.noloot=1
 			}
 			if(explore.floor===0 && explore.flowerspot===11 && explore.event.evolutionaryguide===0) {
 				explore.event.evolutionaryguide=1
@@ -5771,7 +5771,7 @@
 			fight.spawnmob=new Array()
 			if(explore.floor===0 && explore.flowerspot===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
 				fight.spawnmob[0]=new Mob("Rock",7,0)
-				fight.spawnmob[0].effect.noloot=true
+				fight.spawnmob[0].effect.noloot=1
 				fillMob()
 				return
 			}
@@ -6402,4 +6402,3 @@
 	<div id="end2"></div>
 </body>
 </html>
-
