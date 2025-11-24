@@ -3757,6 +3757,7 @@
 		}
 		function clickGrid(button) {
 			if(animation) return
+			if(document.getElementById("gridinfo").style.display==="none") return
 			if(fight.ready && fight.turn==="Mob") return
 			let buttonValue=parseInt(button.value),buttonX=parseInt(button.getAttribute("data-x")),buttonY=parseInt(button.getAttribute("data-y"))
 			if(lupoper.active===true) {
@@ -4532,6 +4533,8 @@
 			} else if(explore.explored[spotValue]) {
 				editingMapHTML+="<span>You already cleared this spot.</span>"
 			} else {
+				editingMapHTML+="<span style='color: "+rarityColor[MapRarityList[spotValue]+1]+"'>Map Rarity: "+MapRarityList[spotValue]+"</span>"
+				editingMapHTML+="<span style='color: "+rarityColor[MapRarityList[spotValue]+1]+"'>Map Density: "+MapDensityList[spotValue]+"</span>"
 				let pendingMob=MapSpawnList[spotValue].split("&")
 				for(let i in pendingMob) {
 					editingMapHTML+="<span>"+pendingMob[i].match(/.+(?==)/)+": "+pendingMob[i].match(/\d+/)+"%</span>"
@@ -5128,13 +5131,13 @@
 			clickGrid(getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star))
 		}
 		function levelUpCheck(petal) {
+			if(player.book.indexOf("Flower Artisan Guide")===-1) return false
 			if(PetalAttributeList[petal.id].match("Can't craft")!==null) return false
 			let pairCount=0
 			for(let i in player.inventory) if(player.inventory[i].id===petal.id && player.inventory[i].rarity===petal.rarity && player.inventory[i].level===petal.level) pairCount++
 			return (pairCount>1)
 		}
 		async function levelUp() {
-			if(player.book.indexOf("Flower Artisan Guide")===-1) return false
 			if(animation) return
 			if(lupoper.active===false) {
 				let targetPetal=player.inventory[selectedGrid.x].clone()
@@ -5318,8 +5321,15 @@
 				document.getElementById("bar-health-c").style.display="none"
 				document.getElementById("flower-maxhealth").innerHTML="Max Health: "+FlowerMaxHealth()
 				document.getElementById("flower-level").innerHTML="Level: "+player.level
-				if(player.level>0) {
-					document.getElementById("bar-exp").style.width=player.exp/LevelExp(player.level)*100+"%"
+				if(player.book.indexOf("Flower Evolutionary Guide")>-1) {
+					let barPercentage=player.exp/LevelExp(player.level)*100
+					if(barPercentage>=12) {
+						document.getElementById("bar-exp").style.width=barPercentage+"%"
+						document.getElementById("bar-exp").style.opacity=1
+					} else {
+						document.getElementById("bar-exp").style.width="12%"
+						document.getElementById("bar-exp").style.opacity=barPercentage/12
+					}
 					document.getElementById("flower-exp").innerHTML="Exp: "+player.exp+"/"+LevelExp(player.level)
 				} else {
 					document.getElementById("bar-exp").style.width="0%"
@@ -5546,7 +5556,7 @@
 			operingY=0
 			if(operingX!==0) {
 				operingX=0
-				removeTempGrid()
+				if(operingThing.name==="Yin" || operingThing.name==="Yang") removeTempGrid()
 				updateT()
 			}
 		}
@@ -5653,7 +5663,7 @@
 			document.body.removeChild(operingGrid)
 			let operingTypeSave=operingType
 			operingType="Inactive"
-			removeTempGrid()
+			if(operingThing.name==="Yin" || operingThing.name==="Yang") removeTempGrid()
 			updateT()
 			if(operingTypeSave==="Shoot" && operingThing.shootatt.continue) {
 				delete operingThing.shootatt.continue
