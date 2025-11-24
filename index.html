@@ -4479,7 +4479,7 @@
 				return
 			}
 			if(flowerMove===false) return
-			let distancePassed=(Date.now()-flowerMoveStartTime)/100/distance(explore.floweroldspot,explore.flowerspot)*20
+			let distancePassed=(Date.now()-flowerMoveStartTime)/100/distance(explore.floweroldspot,explore.flowerspot)
 			if(distancePassed>=1) {
 				flowerSpotX=getSpotCord(explore.flowerspot).x
 				flowerSpotY=getSpotCord(explore.flowerspot).y
@@ -6402,3 +6402,4 @@
 	<div id="end2"></div>
 </body>
 </html>
+
