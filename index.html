@@ -1098,31 +1098,31 @@
 		PetalSVGArray.Compass=PetalSVGArray.Compass.replace("<g>","<g style='transform: rotate(45deg)'>")
 		const MobNameList=["","Rock","Cactus","Ladybug (Garden)","Bee","Baby Ant","Worker Ant","Soldier Ant","Queen Ant","Ant Hole","Beetle","Hornet","Centipede (Garden)","Centipede (Jungle)","Centipede (Desert)","Ladybug (Jungle)","Ladybug (Desert)","Spider","Scorpion","Soldier Fire Ant","Fire Ant Burrow","Sandstorm","Bubble","Bumble Bee","Shell","Starfish","Crab","Jellyfish","Sponge","Leech","Dandelion","Baby Fire Ant","Worker Fire Ant","Queen Fire Ant","Fly","Leafbug","Mantis","Baby Termite","Worker Termite","Soldier Termite","Termite Overmind","Termite Mound","Termite Egg","Bush","Roach","Moth","Firefly","Beetle (Hell)","Wasp","Spider (Hell)","Centipede (Hell)","Wasp (Hell)"]
 		MobNameList[66]="Gambler"
-		Object.assign(MobNameList,{101:"!Hornet!",102:"!Spider!",103:"!Dandelion!",104:"!Beetle!",105:"!Scorpion!",106:"!Sandstorm!",107:"!Shell!",108:"!Crab!",109:"!Leech!",110:"!Fly!",111:"!Roach!",112:"!Queen Ant!",113:"!Leafbug!",114:"!Mantis!",115:"!Wasp!"})
+		Object.assign(MobNameList,{101:"!Hornet!",102:"!Spider!",103:"!Dandelion!",104:"!Beetle!",105:"!Scorpion!",106:"!Sandstorm!",107:"!Shell!",108:"!Crab!",109:"!Leech!",110:"!Fly!",111:"!Roach!",112:"!Queen Ant!",113:"!Leafbug!",114:"!Mantis!",115:"!Wasp!",121:"!Summoner!"})
 		const MobBehaviorList=["","Passive","Hostile","Neutral","Neutral","Passive","Neutral","Hostile","Hostile","Passive","Hostile","Hostile","Neutral","Hostile","Neutral","Neutral","Neutral","Hostile","Hostile","Hostile","Passive","Passive","Passive","Passive","Neutral","Hostile","Hostile","Hostile","Passive","Hostile","Passive","Passive","Neutral","Hostile","Hostile","Neutral","Hostile","Passive","Neutral","Hostile","Neutral","Passive","Passive","Passive","Neutral","Neutral","Neutral","Hostile","Hostile","Hostile","Hostile","Hostile"]
 		MobBehaviorList[66]="Gamble"
-		Object.assign(MobBehaviorList,{101:"Hostile",102:"Hostile",103:"Hostile",104:"Hostile",105:"Hostile",106:"Hostile",107:"Hostile",108:"Hostile",109:"Hostile",110:"Hostile",111:"Hostile",112:"Hostile",113:"Hostile",114:"Hostile",115:"Hostile"})
+		Object.assign(MobBehaviorList,{101:"Hostile",102:"Hostile",103:"Hostile",104:"Hostile",105:"Hostile",106:"Hostile",107:"Hostile",108:"Hostile",109:"Hostile",110:"Hostile",111:"Hostile",112:"Hostile",113:"Hostile",114:"Hostile",115:"Hostile",121:"Passive"})
 		const MobHealthList=["",30,20,25,15,10,25,40,100,30,40,25,10,10,10,35,35,25,40,40,"*",50,1,10,20,20,30,30,40,40,10,10,25,100,2,20,40,10,25,40,200,"*",60,15,25,7,16,60,25,60,20,25]
 		MobHealthList[66]="/"
-		Object.assign(MobHealthList,{101:60,102:60,103:20,104:100,105:100,106:120,107:50,108:80,109:100,110:20,111:60,112:200,113:50,114:100,115:60})
+		Object.assign(MobHealthList,{101:60,102:60,103:20,104:100,105:100,106:120,107:50,108:80,109:100,110:20,111:60,112:200,113:50,114:100,115:60,121:"*"})
 		const MobDamageList=["",2,7,2,10,2,2,2,2,3,6,10,2,2,2,2,2,3,3,4,"*",8,1,4,2,4,5,5,2,2,3,4,4,4,2,6,4,2,2,2,2,"*","*",2,4,2,1,6,10,3,6,10]
 		MobDamageList[66]="/"
-		Object.assign(MobDamageList,{101:15,102:5,103:5,104:10,105:5,106:12,107:5,108:8,109:3,110:5,111:5,112:3,113:10,114:5,115:15})
+		Object.assign(MobDamageList,{101:15,102:5,103:5,104:10,105:5,106:12,107:5,108:8,109:3,110:5,111:5,112:3,113:10,114:5,115:15,121:"*"})
 		const MobSpeedList=["",10,10,20,25,15,20,20,15,15,20,25,15,20,30,20,20,30,15,20,100,25,30,30,15,20,25,15,10,40,10,15,20,15,25,20,15,15,20,20,5,25,15,15,25,25,25,25,30,35,25,25]
 		MobSpeedList[66]="/"
-		Object.assign(MobSpeedList,{101:25,102:30,103:15,104:25,105:20,106:25,107:30,108:30,109:40,110:30,111:30,112:15,113:25,114:20,115:30})
+		Object.assign(MobSpeedList,{101:25,102:30,103:15,104:25,105:20,106:25,107:30,108:30,109:40,110:30,111:30,112:15,113:25,114:20,115:30,121:1})
 		const MobDodgeList=["",0,0,30,60,20,40,40,10,0,20,40,10,10,10,30,30,50,30,40,0,60,0,70,10,40,60,10,0,0,0,20,40,10,90,30,20,20,40,40,10,0,0,0,40,0,60,20,40,50,10,40]
 		MobDodgeList[66]="/"
-		Object.assign(MobDodgeList,{101:50,102:70,103:0,104:60,105:70,106:60,107:30,108:70,109:30,110:90,111:60,112:30,113:60,114:50,115:50})
+		Object.assign(MobDodgeList,{101:50,102:70,103:0,104:60,105:70,106:60,107:30,108:70,109:30,110:90,111:60,112:30,113:60,114:50,115:50,121:0})
 		const MobLootList=[[],["Rock,2","Heavy,2","Moon Rock,1"],["Cactus,2"],["Light,3","Rose,3"],["Stinger,3","Pollen,2","Honey,2"],["Light,3","Leaf,2","Rice,3"],["Leaf,2","Corn,2"],["Clover,3","Glass,4"],["Basil,4","Ant Egg,4"],["Soil,3","Shovel,3"],["Beetle Egg,3","Privet,4"],["Missile,3","Antennae,2","Orange,3"],["Leaf,2","Peas,2"],["Iris,2","Grapes,2"],["Salt,2","Powder,2"],["Yin Yang,2","Dahlia,3"],["Rose,5","Yggdrasil,4","Dahlia,5"],["Faster,3","Web,3","Third Eye,1"],["Iris,3","Pincer,3"],["Yucca,4","Bone,2"],["Magnet,4","Disc,4"],["Sand,2","Stick,2","Glass,2"],["Bubble,3","Air,5"],["Pollen,5","Honey,3","Wax,5"],["Magnet,1","Pearl,3","Shell,2"],["Salt,2","Sand,2","Starfish,3"],["Sand,2","Claw,3"],["Lightning,2","Jelly,3"],["Sponge,3","Coral,2"],["Faster,3","Fangs,3"],["Dandelion,4"],["Light,3","Yucca,2"],["Corn,2","Yucca,2"],["Basil,4","Ant Egg,4"],["Wing,3","Poo,3","Talisman,2"],["Leaf,3","Root,3"],["Peas,3","Bur,3"],["Relic,2","Carrot,3"],["Relic,2","Plank,2"],["Relic,2","Triangle,3"],["Relic,4","Tomato,2","Compass,5"],["Soil,3","Relic,2","Rubber,3"],["Ant Egg,3","Amulet,2"],["Cotton,4","Golden Leaf,1","Monstera,3"],["Antennae,3","Lotus,2"],["Wing,3","Bulb,3"],["Wing,3","Bulb,3","Battery,2"],["Beetle Egg,1","Mark,1","Dice,2"],["Missile,4","Antennae,3","Blood Stinger,2"],["Third Eye,1","Mark,1","Card,2"],["Mark,1","Domino,1"],["Missile,5","Mark,1","Chip,2"]]
 		MobLootList[66]=["Dice,3","Chip,3","Card,3","Corruption,5","Domino,3"]
-		Object.assign(MobLootList,{101:[],102:[],103:[],104:[],105:[],106:[],107:[],108:[],109:[],110:[],111:[],112:[],113:[],114:[],115:[]})
+		Object.assign(MobLootList,{101:[],102:[],103:[],104:[],105:[],106:[],107:[],108:[],109:[],110:[],111:[],112:[],113:[],114:[],115:[],121:[]})
 		const MobDescriptionList=["","Just a rock. Maybe does something.","Avoid its thorns, that hurts.","Cute and harmless.","Stings. Don't touch it.","Weak and defenseless like you.","Still a weak one.","Got wings and ready to use them.","Really fat.","Ants hiding inside.","Hungry and flowers are its favorite meal.","Not as nice as the little bees.","Just there doing its thing.","Loves flowers.","Gotta go fast.","Cute and harmless too.","Shiny. Cute and harmless.","Spooky.","Stings!","Ant on fire.","Is this ant hole on fire?","Weather experts advise flowers not to go out.","Pop.","Gotta run.","Help. My petal is attacking me.","Retreats for heal.","Agile and hurts.","Makes the most delicious jam.","Absorbs damage taken by nearby mobs.","Slurp slurp.","Flower with many dandelions equipped.","Ant on fire.","Ant on fire.","Queen ant on fire.","Flies.","Leaf-shaped bug.","You better pray you don't become dinner.","Weak and defenseless but appears to be connected.","Still weak but appears to be connected.","Got wings and appears to be connected.","Fat and appears to be connected.","Why is this one not connected?","Not connected too.","Animals hiding inside.","Gotta go fast until gets tired.","Easily scared.","Shiny lightbulb.","Exotic creature.","They are angry.","Exotic creature.","Exotic creature.","Exotic creature."]
 		MobDescriptionList[66]="This could happen to you."
-		Object.assign(MobDescriptionList,{101:"Well, this one is evil and hungry.",102:"Got webs and good at using them.",103:"Why is the sky becoming white?",104:"A flower a day keeps summoner away~",105:"Be careful, it is quite poisonous.",106:"If you really want to go out in such a natural disaster...",107:"Harder shell. An unfriendly one is inside.",108:"Dr. Crab has won tons of battles. You are going to be a new defeated challenger.",109:"How to get rid of this?",110:"Flies around in unpredictable ways.",111:"Gotta go faster! Never feels tired.",112:"Hands up! You are surrounded!",113:"Why is this leaf so difficult to defeat? Must be a bug.",114:"Machine gun pea shooter enhanced.",115:"Mutated wasp. That's really frightening."})
+		Object.assign(MobDescriptionList,{101:"Well, this one is evil and hungry.",102:"Got webs and good at using them.",103:"Why is the sky becoming white?",104:"A flower a day keeps summoner away~",105:"Be careful, it is quite poisonous.",106:"If you really want to go out in such a natural disaster...",107:"Harder shell. An unfriendly one is inside.",108:"Dr. Crab has won tons of battles. You are going to be a new defeated challenger.",109:"How to get rid of this?",110:"Flies around in unpredictable ways.",111:"Gotta go faster! Never feels tired.",112:"Hands up! You are surrounded!",113:"Why is this leaf so difficult to defeat? Must be a bug.",114:"Machine gun pea shooter enhanced.",115:"Mutated wasp. That's really frightening.",121:"He crafts everything... Including mobs?"})
 		const MobAttributeList=["","ACTION=Destroys without loot. Spawns (Worker Ant/Soldier Ant).","ATTRIBUTE=Doesn't move.&ATTACK=Can't be defended.","HOSTILE=30%","HOSTILE=10%","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Ant with rarity reduced by at most 2 and no loot, then attacks.","COUNT=10&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Baby Ant*2, Worker Ant*3, Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Queen Ant.","","ATTACK=Shoots a missile with [20%*Damage] and 20% accuracy instead.","COUNT=6&HOSTILE=10%&DAMAGE=Drops loot.","COUNT=6&DAMAGE=Drops loot.","COUNT=6&HOSTILE=30%&DAMAGE=Drops loot. Immunes all damage for 5 turns.","HOSTILE=30%","ATTRIBUTE=Guaranteed to be shiny.&HOSTILE=30%","CHARAC=Deals [1/3*Damage] [poison] for 8 turns when attack.","ATTACK=Shoots a missile with [1/3*Damage] and 30% accuracy instead. Applies [1/3*Damage] [poison] for 8 turns when hits.","","COUNT=5&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Soldier Ant*2.","ACTION=Additionally attacks if moving down outside first row.","ACTION=Destroys without loot. Deals 100 knockback to all petals.","ACTION=Has 30% probability to additionally attack.&CHARAC=Deals [50%*Damage] only when attack being defended.","ATTRIBUTE=Doesn't move.&HOSTILE=10%&CHARAC=When attack being defended, deals 100 knockback and shoots a missile for [100%*Damage] and 10% accuracy.","ACTION=When health is not above [50%*Health], heals for [20%*Health] and cancels action.","ACTION=Has 50% probability to attempt moving in row before attack.","ATTACK=Deals [40%*Damage] [lightning] instead. Can't be defended.","ATTRIBUTE=Doesn't move. Absorbs 50% of damage taken by other nearby enemies down to 1 health.&ACTION=Destroys without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Deals [50%*Damage] direct damage instead. Heals equal to damage dealt.","ACTION=Destroys without loot.&DESTROY=Shoots 2 missiles with [100%*Damage] and 10% accuracy. Applies disable passive heal for 10 turns when hits.","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Fire Ant with rarity reduced by at most 2 and no loot, then attacks.","","ATTRIBUTE=Has [50%*Damage] armor.&HOSTILE=20%","ATTACK=Shoots 3 missiles with 1 damage and 10% accuracy. Applies [25%*Damage] armor debuff for 10 turns when hits.","ATTRIBUTE=Connected.&ACTION=Additionally attacks if moving down outside first two rows.","ATTRIBUTE=Connected.&HOSTILE=50%","ATTRIBUTE=Connected.","ATTRIBUTE=Doesn't move. Immunes knockback. Connected.&HOSTILE=0%&ACTION=If hostile, destroys all termite mound without loot, then moves and attacks. Becomes hostile otherwise.","COUNT=2&ATTRIBUTE=Doesn't move. Destroys itself if remaining count is 1 and no termites are alive.&EXIST=Immunes all damage and prevents non-Termite mobs from spawning if remaining count is 1.&ACTION=Destroys a part if remaining count is 2. Does nothing otherwise.&DAMAGE=All other mobs retires (but will be back later) and clears all effects. Spawns Baby Termite*2, Worker Termite*3, Soldier Termite*4, (Termite Overmind/Termite Egg).","ACTION=Destroys without loot. Spawns Baby Termite without loot.","ATTRIBUTE=Doesn't move.&ACTION=Summons (Leafbug/Mantis/Firefly/Wasp) with rarity reduced by at most 1 and no loot.","HOSTILE=30%&STATURN=Speed becomes (health%+100%)/2 original value.","ATTRIBUTE=Gains 60% dodge while hostile.&HOSTILE=10%&ACTION=Retires if hostile.","HOSTILE=30%&CHARAC=Additionally deals [300%*Damage] [lightning] to flower whether attack is defended or not.","ACTION=Has 30% chance to charge up and cancel action if not charged.&ATTACK=Directly damages if charged up (and releases charging state).","ATTACK=Shoots (1~2) missiles with [20%*Damage] and 20% accuracy instead.","CHARAC=Deals [2/3*Damage] [poison] for 8 turns when attack.","COUNT=6&DAMAGE=Drops loot.","ATTACK=Shoots 5 missiles with [10%*Damage] and 10% accuracy instead."]
 		MobAttributeList[66]="ACTION=Plays 62-point."
-		Object.assign(MobAttributeList,{101:"BOSS&ATTRIBUTE=Moves up to 2 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 3, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 40% accuracy instead.",102:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Each petal has 30% probability to be restrained and gains halved action for 10 times.&CHARAC=Deals [20%*Damage] [poison] for 20 turns when attack.",103:"BOSS&COUNT=2&ATTRIBUTE=Doesn't move.&ATTACK=Shoots 8 missiles with [20%*Damage] and (50%,50%,40%,40%,30%,30%,20%,20%) accuracy instead. Applies 20% heal debuff and disable passive heal for 6 turns when hits. Both effectiveness and duration stacks.&DAMAGE=Performs an action. Then increases all accuracy by 10%&DESTROY=Performs an action.",104:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Each petal in the column or nearby column has [200-2*DEF1]% chance to take [50%*Damage] before attack.",105:"BOSS&ATTACK=Shoots a missile with [20%*Damage] and 80% accuracy instead. Applies [40%*Damage] [poison] for 6 turns when hits.",106:"BOSS&ATTRIBUTE=Moves up to 3 grids&ACTION=Each petal has [120-10*Size]% probability to move up 1 grid or receive [Damage] before attack.",107:"BOSS&ATTACK=Shoots all pearls with [Damage] and 40% accuracy instead if has at least 5 pearls. Otherwise gains (1~2) pearls if defended.",108:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Moves in row for at most 1 grid to find a gap before attack.",109:"BOSS&ATTACK=Directly damages and heals equal to damage dealt. Increases damage by 20% original value, effectiveness is decreased by 2% down to 0% by effective dandelion count.",110:"BOSS&ATTRIBUTE=Moves up to 3 grids. Can't be shot. All petal with negative buff has tripled effective buff when targeted. All petal has at most 90% effective accuracy when targeted.",111:"BOSS&ATTRIBUTE=Moves up to 2 grids.&CHARAC=Increases resulting damage by 20% for every 6 speed above 54 up to 100%.",112:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Tries to summon Soldier Ant with no loot up to 2 instead. Otherwise tries to summon 2 Soldier Ant with rarity reduced by at most 1 and no loot up to 4 instead. Otherwise attacks.",113:"BOSS&ATTRIBUTE=Moves up to 2 grids. Has [30%*Damage] armor, increased to [60%*Damage] if speed reaches 30, increased to [150%*Damage] if speed reaches 40. Decreases all damage taken by 50% if speed reaches 50. Immunes all damage if speed reaches 60.&ACTION=Doesn't attack if speed is over 60.&CHARAC=Deals 10% less damage for every 5 speed above 40.",114:"BOSS&ATTACK=Shoots 5 missiles with [20%*Damage] and 20% accuracy instead. Applies stackable [40%*Damage] armor debuff for 20 turns when hits.",115:"BOSS&ATTRIBUTE=Moves up to 3 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 2, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 20% accuracy instead."})
+		Object.assign(MobAttributeList,{101:"BOSS&ATTRIBUTE=Moves up to 2 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 3, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 40% accuracy instead.",102:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Each petal has 30% probability to be restrained and gains halved action for 10 times.&CHARAC=Deals [20%*Damage] [poison] for 20 turns when attack.",103:"BOSS&COUNT=2&ATTRIBUTE=Doesn't move.&ATTACK=Shoots 8 missiles with [20%*Damage] and (50%,50%,40%,40%,30%,30%,20%,20%) accuracy instead. Applies 20% heal debuff and disable passive heal for 6 turns when hits. Both effectiveness and duration stacks.&DAMAGE=Performs an action. Then increases all accuracy by 10%&DESTROY=Performs an action.",104:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Each petal in the column or nearby column has [200-2*DEF1]% chance to take [50%*Damage] before attack.",105:"BOSS&ATTACK=Shoots a missile with [20%*Damage] and 80% accuracy instead. Applies [40%*Damage] [poison] for 6 turns when hits.",106:"BOSS&ATTRIBUTE=Moves up to 3 grids&ACTION=Each petal has [120-10*Size]% probability to move up 1 grid or receive [Damage] before attack.",107:"BOSS&ATTACK=Shoots all pearls with [Damage] and 40% accuracy instead if has at least 5 pearls. Otherwise gains (1~2) pearls if defended.",108:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Moves in row for at most 1 grid to find a gap before attack.",109:"BOSS&ATTACK=Directly damages and heals equal to damage dealt. Increases damage by 20% original value, effectiveness is decreased by 2% down to 0% by effective dandelion count.",110:"BOSS&ATTRIBUTE=Moves up to 3 grids. Can't be shot. All petal with negative buff has tripled effective buff when targeted. All petal has at most 90% effective accuracy when targeted.",111:"BOSS&ATTRIBUTE=Moves up to 2 grids.&CHARAC=Increases resulting damage by 20% for every 6 speed above 54 up to 100%.",112:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Tries to summon Soldier Ant with no loot up to 2 instead. Otherwise tries to summon 2 Soldier Ant with rarity reduced by at most 1 and no loot up to 4 instead. Otherwise attacks.",113:"BOSS&ATTRIBUTE=Moves up to 2 grids. Has [30%*Damage] armor, increased to [60%*Damage] if speed reaches 30, increased to [150%*Damage] if speed reaches 40. Decreases all damage taken by 50% if speed reaches 50. Immunes all damage if speed reaches 60.&ACTION=Doesn't attack if speed is over 60.&CHARAC=Deals 10% less damage for every 5 speed above 40.",114:"BOSS&ATTACK=Shoots 5 missiles with [20%*Damage] and 20% accuracy instead. Applies stackable [40%*Damage] armor debuff for 20 turns when hits.",115:"BOSS&ATTRIBUTE=Moves up to 3 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 2, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 20% accuracy instead.",121:"BOSS&ATTRIBUTE=Immunes all damage while any Beetle is alive.&EXIST=When a Beetle attacks, all Beetles has 20% probability to get increased level and damage. When a Beetle dies, all Beetles get increased rarity and resets level."})
 		const MobSVGArray=new Object()
 		MobSVGArray.Rock="<path class='fgrey-path ns' d='M38 30L50 26L60 28L63 44L55 52L45 50L36 40Z'/>"
 		MobSVGArray.Cactus="<path class='fgreen-path ns' d='M50 22.3A8 8 0 0 0 61.1 26.9A8 8 0 0 0 65.7 38A8 8 0 0 0 61.1 49.1A8 8 0 0 0 50 53.7A8 8 0 0 0 38.9 49.1A8 8 0 0 0 34.3 38A8 8 0 0 0 38.9 26.9A8 8 0 0 0 50 22.3'/><path class='flgreen-path ns ' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30'/>"
@@ -1179,6 +1179,7 @@
 		for(let i in MobNameList) if(i!=="0" && MobNameList[i].match("!")===null) {
 			MobSVGArray[MobNameList[i]]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><g>"+MobSVGArray[MobNameList[i]].replaceAll(/<linear.+Gradient>/g,"").replaceAll(/<path class='(\w+-path (ns |wider?|mwidth)|\w+-path|ns)'.+?\/>/g,"").replaceAll("class='f","class='").replaceAll("ns'","wider' stroke-linecap='round' stroke-linejoin='round' style='filter: brightness(80%)'")+MobSVGArray[MobNameList[i]].replaceAll("ns '","ns'").replaceAll("path '","path'")+"</g></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>"+MobNameList[i].replace(/\s\(.+\)/,"").replace("Ant","A.").replace("Fire ","F. ").replace("Termite","T.").replace("Bumble","B.").replace("Soldier F","S. F").replace("Burrow","B.").replace("Worker F","W. F").replace("Queen F","Q. F").replace("Overmind","Over.")+"</span>"
 		}
+		MobSVGArray.Summoner="<svg viewBox='0 0 100 100' class='in-svg'><path class='fblack-path ns' fill-opacity='0.2' d='M8 100A8 8 0 0 1 0 92L0 8A8 8 0 0 1 8 0L92 0A8 8 0 0 1 100 8L100 92A8 8 0 0 1 92 100L92 8L8 8ZM8 92L92 92L92 100L8 100Z'/></svg><svg viewBox='0 0 100 76' class='in-svg' style='position: absolute; height: 76%; top: 0px; left: 0px'><path class='fyellow-path' d='M50 20A18 18 0 0 0 50 56A18 18 0 0 0 50 20M40 43A12 12 0 0 0 60 43M44 28L44 38M56 28L56 38'/></svg><span class='mid nowrap bold' style='--transform2: translate(0px,20px)'>Summon</span>"
 		const MapNameList=["","","","","","","","","","","Centralia Center","Centralia Field 1","Centralia Field 2","Centralia Field 3","Centralia Field 4","Centralia Field 5","Centralia Field 6","Centralia Field 7","","","","South Desert 1","South Desert 2","South Desert 3","South Desert 4","South Desert 5","South Desert 6","","","","","East Water 1","East Water 2","East Water 3","East Water 4","East Water 5","East Water 6","East Water 7","East Water 8","East Water 9","","Sewer 1","Sewer 2","Sewer 3","Sewer 4","","","","","","","Ant Hell 1","Ant Hell 2","Ant Hell 3","Ant Hell 4","Ant Hell 5","Ant Hell 6","","","","","Jungle 1","Jungle 2","Jungle 3","Jungle 4","Jungle 5","Jungle 6","Jungle Gate"]
 		const MapSpawnList=["","","","","","","","","","","","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=20%&Worker Ant=12%&Soldier Ant=5%&Ant Hole=2%&Hornet=8%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=15%&Worker Ant=12%&Soldier Ant=8%&Ant Hole=2%&Hornet=10%&Centipede (Garden)=3%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=10%&Worker Ant=10%&Soldier Ant=10%&Ant Hole=2%&Hornet=12%&Centipede (Garden)=6%","Rock=15%&Ladybug (Garden)=20%&Bee=15%&Baby Ant=5%&Worker Ant=8%&Soldier Ant=10%&Ant Hole=1%&Hornet=20%&Centipede (Garden)=6%","Hornet=20%&Dandelion=80%","Rock=12%&Ladybug (Garden)=15%&Bee=15%&Ant Hole=2%&Hornet=25%&Centipede (Garden)=6%&Spider=15%&Dandelion=10%","Rock=15%&Ladybug (Garden)=12%&Bee=12%&Ant Hole=1%&Hornet=40%&Centipede (Garden)=3%&Spider=12%&Dandelion=5%","","","","Beetle=90%&Ladybug (Desert)=10%","Cactus=25%&Beetle=20%&Centipede (Desert)=10%&Ladybug (Desert)=5%&Scorpion=15%&Fire Ant Burrow=5%&Sandstorm=20%","Cactus=20%&Beetle=20%&Centipede (Desert)=8%&Ladybug (Desert)=4%&Scorpion=20%&Fire Ant Burrow=8%&Sandstorm=20%","Cactus=25%&Beetle=20%&Ladybug (Desert)=2%&Scorpion=25%&Fire Ant Burrow=3%&Sandstorm=25%","Cactus=30%&Beetle=20%&Centipede (Desert)=2%&Ladybug (Desert)=6%&Scorpion=20%&Fire Ant Burrow=12%&Sandstorm=20%","Cactus=20%&Beetle=40%&Ladybug (Desert)=2%&Scorpion=20%&Fire Ant Burrow=3%&Sandstorm=15%","","","","","Bubble=20%&Shell=20%&Starfish=15%&Crab=30%&Sponge=15%","Bubble=20%&Shell=20%&Starfish=20%&Crab=20%&Sponge=20%","Bubble=15%&Shell=10%&Starfish=15%&Crab=15%&Jellyfish=15%&Sponge=30%","Crab=30%&Jellyfish=60%&Sponge=10%","Bubble=10%&Shell=50%&Starfish=15%&Crab=15%&Jellyfish=10%","Bubble=25%&Shell=20%&Crab=15%&Jellyfish=40%","Bubble=10%&Shell=10%&Starfish=10%&Crab=10%&Leech=60%","Bubble=30%&Starfish=50%&Jellyfish=20%","Bubble=30%&Shell=10%&Crab=60%","","Spider=20%&Fly=20%&Roach=20%&Moth=40%","Spider=20%&Fly=25%&Roach=30%&Moth=25%","Spider=20%&Fly=30%&Roach=25%&Moth=25%","Spider=40%&Fly=20%&Roach=25%&Moth=15%","","","","","","","Baby Ant=25%&Worker Ant=30%&Soldier Ant=45%","Baby Ant=12%&Worker Ant=25%&Soldier Ant=60%&Queen Ant=3%","Soldier Fire Ant=45%&Baby Fire Ant=25%&Worker Fire Ant=30%","Soldier Fire Ant=60%&Baby Fire Ant=12%&Worker Fire Ant=25%&Queen Fire Ant=3%","Baby Termite=25%&Worker Termite=30%&Soldier Termite=45%","Baby Termite=12%&Worker Termite=25%&Soldier Termite=63%","","","","","Termite Mound=10%&Bush=90%","Centipede (Jungle)=5%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=10%&Termite Mound=5%&Bush=40%&Firefly=5%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=10%&Termite Mound=4%&Bush=40%&Firefly=8%&Wasp=10%","Centipede (Jungle)=5%&Ladybug (Jungle)=8%&Leafbug=15%&Mantis=12%&Termite Mound=3%&Bush=35%&Firefly=10%&Wasp=12%","Centipede (Jungle)=3%&Ladybug (Jungle)=10%&Leafbug=15%&Mantis=15%&Termite Mound=2%&Bush=30%&Firefly=10%&Wasp=15%","Centipede (Jungle)=3%&Ladybug (Jungle)=8%&Leafbug=20%&Mantis=20%&Termite Mound=1%&Bush=20%&Firefly=8%&Wasp=20%",""]
 		const MapRarityList=["/","/","/","/","/","/","/","/","/","/","/",0,1,1,2,3,4,5,"/","/","/",0,1,2,2,3,5,"/","/","/","/",1,1,1,2,3,4,4,5,5,"/",1,2,3,5,"/","/","/","/","/","/",2,4,3,4,3,4,"/","/","/","/",0,1,2,3,4,4,"/"]
@@ -2133,6 +2134,18 @@
 			if(!this.effect.noloot) this.loot()
 			for(let i=0;i<fight.mob.length;i++) if(fight.mob[i]===this) fight.mob.splice(i,1)
 			await collapseGrid(getGrid(0,this.x,this.y))
+			if(this.name==="Beetle" && fight.mob[0].name==="!Summoner!") {
+				for(let i=1;i<fight.mob.length;i++) {
+					addLog("[Mob] Beetle gets 1 rarity up.","#bfbf00")
+					fight.mob[i].rarity++
+					let newBeetle=new Mob("Beetle",fight.mob[i].rarity,0)
+					fight.mob[i].health=newBeetle.health
+					fight.mob[i].damage=newBeetle.damage
+					fight.mob[i].currenthealth=fight.mob[i].health
+					delete fight.mob[i].effect.levelup
+					fight.mob[i].print()
+				}
+			}
 			if(this.name==="Rock" && this.effect.noloot) {
 				let summonType=["Worker Ant","Soldier Ant"]
 				let summonSeed=summonType[roll(0,1)]
@@ -2191,6 +2204,7 @@
 		Mob.prototype.injure=function(damage,petal) {
 			if(this.name.match("(Missile)")!==null) return
 			if(this.name==="Termite Mound" && this.count===1) return
+			if(this.name==="!Summoner!" && fight.mob.length>1) return
 			let petalName=petal
 			if(isPetal(petal)) {
 				petalName=petal.name
@@ -2577,6 +2591,13 @@
 				addLog("[Mob] "+this.origin.name+" shoots a missile.","#bfbf00")
 			}
 			let attackFlag=true
+			if(this.name==="Beetle" && fight.mob[0].name==="!Summoner!") {
+				for(let i=1;i<fight.mob.length;i++) if(determine(20,true," for level up")) {
+					addLog("[Mob] Beetle gets 1 level up.","#bfbf00")
+					if(!fight.mob[i].effect.hasOwnProperty("levelup")) fight.mob[i].effect.levelup=0
+					fight.mob[i].effect.levelup++
+				}
+			}
 			if(this.name.match("(Missile)")===null && MobAttributeList[this.id].match("ATTACK")!==null) {
 				attackFlag=false
 				if(this.name==="Cactus") {
@@ -3147,7 +3168,7 @@
 					explore.event.searchlibrary=5
 					if(player.book.indexOf("Flower Survival Guide")===-1) {
 						player.book.push("Flower Survival Guide")
-						addLog("[Resource] You received Flower Survival Guide from Librarian.","#7fff7f")
+						addLog("[Resource] You received Flower Survival Guide from Library.","#7fff7f")
 					}
 					return
 				}
@@ -3188,7 +3209,7 @@
 					explore.event.searchlibrary=13
 					if(player.book.indexOf("Flower Survival Guide")===-1) {
 						player.book.push("Flower Survival Guide")
-						addLog("[Resource] You received Flower Survival Guide from Librarian.","#7fff7f")
+						addLog("[Resource] You received Flower Survival Guide from Library.","#7fff7f")
 					}
 					return
 				}
@@ -3197,7 +3218,7 @@
 					explore.event.searchlibrary=15
 					if(player.book.indexOf("Flower Survival Guide")===-1) {
 						player.book.push("Flower Survival Guide")
-						addLog("[Resource] You received Flower Survival Guide from Librarian.","#7fff7f")
+						addLog("[Resource] You received Flower Survival Guide from Library.","#7fff7f")
 					}
 					return
 				}
@@ -3206,7 +3227,7 @@
 					explore.event.searchlibrary=14
 					if(player.book.indexOf("Flower Survival Guide")===-1) {
 						player.book.push("Flower Survival Guide")
-						addLog("[Resource] You received Flower Survival Guide from Librarian.","#7fff7f")
+						addLog("[Resource] You received Flower Survival Guide from Library.","#7fff7f")
 					}
 					return
 				}
@@ -3238,6 +3259,230 @@
 				if(explore.event.searchlibrary===18) {
 					dialog("Librarian","No noise allowed in the library! (close the door)","Middle","#bfffff")
 					explore.event.searchlibrary=15
+					return
+				}
+				if(explore.event.basefloorwarehouse===0) {
+					displayCentralRoom()
+					dialog("(The Florroom)","Traveler walked into a warehouse. The goods inside are messy, like they were left behind after looting.","Middle","#dfdfdf")
+					explore.event.basefloorwarehouse=1
+					return
+				}
+				if(explore.event.basefloorwarehouse===1) {
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=2;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Walk around warehouse.</button><button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Find some drinks.</button><button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=4;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Search for suitable tools.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===2) {
+					if(maintext!==6361) addLog("[Resource] You found an unusual leaf. It seems like a good petal.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=5;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Find some drinks.</button><button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=6;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Search for suitable tools.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===3) {
+					if(maintext!==6361) addLog("[Resource] You found a large box filled with Energy Drink. You can't take away all the drinks, so you decided to take 20 of them.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=7;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Walk around warehouse.</button><button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=8;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Search for suitable tools.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===4) {
+					if(maintext!==6361) addLog("[Resource] You found a bow with 10 arrows.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=9;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Walk around warehouse.</button><button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=10;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Find some drinks.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===5) {
+					if(maintext!==6361) addLog("[Resource] You found a large box filled with Energy Drink. You can't take away all the drinks, so you decided to take 20 of them.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=11;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Search for suitable tools.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===6) {
+					if(maintext!==6361) addLog("[Resource] You found a bow with 10 arrows.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=12;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Find some drinks.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===7) {
+					if(maintext!==6361) addLog("[Resource] You found an unusual leaf. It seems like a good petal.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=11;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Search for suitable tools.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===8) {
+					if(maintext!==6361) addLog("[Resource] You found a bow with 10 arrows.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=13;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Walk around warehouse.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===9) {
+					if(maintext!==6361) addLog("[Resource] You found an unusual leaf. It seems like a good petal.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=12;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Find some drinks.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===10) {
+					if(maintext!==6361) addLog("[Resource] You found a large box filled with Energy Drink. You can't take away all the drinks, so you decided to take 20 of them.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=13;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Walk around warehouse.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===11) {
+					if(maintext!==6361) addLog("[Resource] You found a bow with 10 arrows.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=14;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>That's enough, leave warehouse.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===12) {
+					if(maintext!==6361) addLog("[Resource] You found a large box filled with Energy Drink. You can't take away all the drinks, so you decided to take 20 of them.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=14;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>That's enough, leave warehouse.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===13) {
+					if(maintext!==6361) addLog("[Resource] You found an unusual leaf. It seems like a good petal.","#7fff7f")
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorwarehouse=14;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>That's enough, leave warehouse.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorwarehouse===14) {
+					explore.event.basefloorwarehouse="Completed"
+					document.getElementById("dialog").style.display="none"
+					loot("Leaf",2,0)
+					player.item.add("Energy Drink",20)
+					player.item.add("Arrow",10)
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					displayCentralRoom()
+					return
+				}
+				if(explore.event.basefloorexitcentral===0) {
+					displayCentralRoom()
+					dialog("(The Florroom)","Are you sure to exit central room?","Instant","#dfdfdf")
+					explore.event.basefloorexitcentral=1
+					return
+				}
+				if(explore.event.basefloorexitcentral===1) {
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorexitcentral=2;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>No, I forgot something.</button><button type='button' onclick='event.stopPropagation();explore.event.basefloorexitcentral=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Yes, I'm sure.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorexitcentral===2) {
+					dialog("Traveler (You)","<button type='button' onclick='event.stopPropagation();explore.event.basefloorexitcentral=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Yes, I'm sure.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.basefloorexitcentral===3) {
+					explore.event.basefloorexitcentral="Completed"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					explore.explored[10]=true
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					displayMap()
+					return
+				}
+				if(explore.event.evolutionaryguide===1) {
+					await dialog("(The Florroom)","Traveler found a book under boulder. The title \"Flower Survival Guide\" appears on the side of the book. This book is important and it should not be difficult to push away the boulder to get the book...","Middle","#dfdfdf")
+					explore.event.evolutionaryguide=2
+					return
+				}
+				if(explore.event.evolutionaryguide===2) {
+					explore.event.evolutionaryguide="Incomplete"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					return
+				}
+				if(explore.event.evolutionaryguide===3) {
+					await dialog("(The Florroom)","Traveler got the book. On the cover of the book, there is a sentence: \"I have got all the Flower Artisan Guide from Library using my 125 alt accounts. If you want this book, come to Desert, find me and show me your true abilities.\"","Middle","#dfdfdf")
+					explore.event.evolutionaryguide=4
+					return
+				}
+				if(explore.event.evolutionaryguide===4) {
+					explore.event.evolutionaryguide="Completed"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					player.book.push("Flower Evolutionary Guide")
+					addLog("[Resource] You received Flower Evolutionary Guide.","#7fff7f")
+					return
+				}
+				if(explore.event.artisanguide===1) {
+					await dialog("Summoner","A new challenger? Well, let's get started now.","Middle","#ffffbf")
+					explore.event.artisanguide=2
+					return
+				}
+				if(explore.event.artisanguide===2) {
+					explore.event.artisanguide="Incomplete"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					return
+				}
+				if(explore.event.artisanguide===3) {
+					await dialog("Summoner","I recognize your strength, this book is for you. However, only those with exceptional talent can master the essence of crafting, and no one in this world can compare to me.","Middle","#ffffbf")
+					explore.event.artisanguide=4
+					return
+				}
+				if(explore.event.artisanguide===4) {
+					dialog("(The Florroom)","After Summoner finished speaking, he took out a book emiting bright yellow light with a striking title: Unusual Flower Artisan Guide+ ! (of course, not for you)","Middle","#dfdfdf")
+					explore.event.artisanguide=5
+					return
+				}
+				if(explore.event.artisanguide===5) {
+					explore.event.artisanguide="Completed"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					player.book.push("Flower Artisan Guide")
+					addLog("[Resource] You received Flower Artisan Guide.","#7fff7f")
+					return
+				}
+				if(explore.event.basefloorending===0) {
+					dialog("(The Florroom)","Traveler defeated all guardians. The Jungle Gate opens.","Middle","#dfdfdf")
+					explore.event.basefloorending=1
+					return
+				}
+				if(explore.event.basefloorending===1) {
+					dialog("(The Florroom)","He walked up the steps leading to Floor 1.","Middle","#dfdfdf")
+					explore.event.basefloorending=2
+					return
+				}
+				if(explore.event.basefloorending===2) {
+					dialog("(The Florroom)","He walks.","Middle","#dfdfdf")
+					explore.event.basefloorending=3
+					return
+				}
+				if(explore.event.basefloorending===3) {
+					dialog("(The Florroom)","He continue walks.","Middle","#dfdfdf")
+					explore.event.basefloorending=4
+					return
+				}
+				if(explore.event.basefloorending===4) {
+					dialog("(The Florroom)","He feels that time is freezing.","Middle","#dfdfdf")
+					explore.event.basefloorending=5
+					clearAllInterval()
+					return
+				}
+				if(explore.event.basefloorending===5) {
+					dialog("(The Florroom)","But he doesn't care.","Middle","#dfdfdf")
+					explore.event.basefloorending=6
+					clearAllInterval()
+					return
+				}
+				if(explore.event.basefloorending===6) {
+					dialog("(The Florroom)","He walks.","Middle","#dfdfdf")
+					explore.event.basefloorending=7
+					document.getElementById("calendar-day").setAttribute("class","grey")
+					document.getElementById("calendar-day").innerHTML="Day &("
+					return
+				}
+				if(explore.event.basefloorending===7) {
+					dialog("(The Florroom)","He walks.He walks.","Instant","#dfdfdf")
+					explore.event.basefloorending=8
+					document.getElementById("calendar-hour").setAttribute("class","grey")
+					document.getElementById("calendar-hour").innerHTML="&("
+					return
+				}
+				if(explore.event.basefloorending===8) {
+					dialog("(The Florroom)","He walks.He walks.HE WALKS","Instant","#dfdfdf")
+					explore.event.basefloorending="Completed"
+					document.getElementById("calendar-minute").setAttribute("class","grey")
+					document.getElementById("calendar-minute").innerHTML="&("
+					document.getElementById("end1").style["pointer-events"]="unset"
+					for(let i=0;i<=30;i++) {
+						document.getElementById("end1").style.opacity=i/30
+						if(i===15) {
+							document.getElementById("dialog").style.display="none"
+							animation=false
+						}
+						await delay(100)
+					}
+					location.reload()
 					return
 				}
 				return
@@ -3290,8 +3535,12 @@
 			}
 			return false
 		}
-		function endFloor() {
-			location.reload()
+		function endFloor(previousFloor) {
+			if(previousFloor===0) {
+				explore.event=new Object()
+				explore.event.basefloorending=0
+				dialog("Skip")
+			}
 		}
 	</script>
 	<script>
@@ -3300,7 +3549,7 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20251123
+		const version=20251124
 		const svgNS="http://www.w3.org/2000/svg"
 		const dx=[0,0,1,0,-1],dy=[0,-1,0,1,0],dx5=[0,1,2,2,1,-1,-2,-2,-1],dy5=[0,-2,-1,1,2,2,1,-1,-2]
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
@@ -3323,7 +3572,7 @@
 		}
 		if(!player.bookreading) player.bookreading=0
 		if(!player.calendar) player.calendar=new Object()
-		if(!player.calendar.day) player.calendar.day=60
+		if(!player.calendar.day) player.calendar.day=40
 		if(!player.calendar.hour) player.calendar.hour=1
 		if(!player.calendar.minute) player.calendar.minute=1
 		if(!player.calendar.second) player.calendar.second=0
@@ -3336,10 +3585,23 @@
 		if(!player.exp) player.exp=0
 		if(!player.inventory) {
 			player.inventory=new Object()
-			for(let i=1;i<=5;i++) player.inventory[i]=new Petal(0,1,0)
+			for(let i=1;i<=10;i++) player.inventory[i]=new Petal(0,1,0)
 		}
 		for(let i in player.inventory) player.inventory[i]=Object.assign(new Petal(),player.inventory[i])
 		if(!player.gallery) player.gallery=new Object()
+		if(!player.item) player.item=new Object()
+		player.item.add=function(itemname,itemamount) {
+			if(!player.item.hasOwnProperty(itemname)) player.item[itemname]=0
+			player.item[itemname]+=itemamount
+			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
+		}
+		player.item.subtract=function(itemname,itemamount) {
+			if(!player.item.hasOwnProperty(itemname) || player.item[itemname]<itemamount) return false
+			player.item[itemname]-=itemamount
+			if(player.item[itemname]===0) delete player.item[itemname]
+			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
+			return true
+		}
 		if(!explore.floor) explore.floor=0
 		if(!explore.floweroldspot) explore.floweroldspot=10
 		if(!explore.flowerspot) explore.flowerspot=10
@@ -3997,6 +4259,10 @@
 			document.getElementById("flower-effect").style.bottom="35px"
 			updateFlowerState()
 			addLog("Use .help for command information!")
+			if(explore.event.evolutionaryguide===1) dialog("Skip")
+			if(explore.event.evolutionaryguide===3) dialog("Skip")
+			if(explore.event.artisanguide===1) dialog("Skip")
+			if(explore.event.artisanguide===3) dialog("Skip")
 		}
 		let selectedGrid=new Object()
 		selectedGrid.select=false
@@ -4237,6 +4503,16 @@
 			let spotValue=parseInt(spot.getAttribute("value"))
 			if(distance(explore.flowerspot,spotValue)===-1) return
 			if(spotValue===explore.flowerspot) {
+				if(explore.floor===0 && explore.flowerspot===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
+					startFight()
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					return
+				}
+				if(explore.floor===0 && explore.flowerspot===21 && explore.event.hasOwnProperty("artisanguide") && explore.event.artisanguide!=="Completed") {
+					startFight()
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					return
+				}
 				return
 			}
 			travel(spotValue)
@@ -4264,6 +4540,12 @@
 			editingMapHTML+="<br>"
 			if(distance(explore.flowerspot,spotValue)>0) {
 				editingMapHTML+="<span>Spot Distance: "+distance(explore.flowerspot,spotValue)+"</span><br>"
+			}
+			if(explore.floor===0 && spotValue===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
+				editingMapHTML+="<span style='color: #bf7fbf; font-weight: bold'>Special Event: You noticed a book under a boulder...</span><br>"
+			}
+			if(explore.floor===0 && spotValue===21 && explore.event.hasOwnProperty("artisanguide") && explore.event.artisanguide!=="Completed") {
+				editingMapHTML+="<span style='color: #bf7fbf; font-weight: bold'>Special Event: You remembered the words on book...</span><br>"
 			}
 			document.getElementById("mapinfo").innerHTML=editingMapHTML
 			document.getElementById("mapinfo").style.display="flex"
@@ -4304,6 +4586,10 @@
 				let pendingText="<span style='color: #ffffff'>Effect--Suppression: Healing disabled for "+effectValue.turn+" turn.</span>"
 				return pendingText
 			}
+			if(effectName==="noloot") {
+				let pendingText="<span style='color: #7f7f7f'>Effect--No Loot: This mob drops no loot when killed.</span>"
+				return pendingText
+			}
 			if(effectName==="slowness") {
 				let pendingText="<span style='color: #bfbf3f'>Effect--Slowness: Action gain is decreased by "+effectValue+".</span>"
 				return pendingText
@@ -4314,6 +4600,10 @@
 			}
 			if(effectName==="pearl") {
 				let pendingText="<span style='color: #7f7fff'>Effect--Pearl amount: "+effectValue+"</span>"
+				return pendingText
+			}
+			if(effectName==="levelup") {
+				let pendingText="<span style='color: #dfbfff'>Effect--Level Up: Attacking damage is increased to "+approx(1.2**effectValue*100)+"% of original value.</span>"
 				return pendingText
 			}
 		}
@@ -4556,8 +4846,16 @@
 					return
 				}
 				if(explore.event.hasOwnProperty("searchlibrary") && explore.event.searchlibrary!=="Completed") return
+				if(explore.event.hasOwnProperty("basefloorwarehouse") && explore.event.basefloorwarehouse!=="Completed") return
+				if(explore.event.hasOwnProperty("basefloorexitcentral") && explore.event.basefloorexitcentral!=="Completed") return
 				if(!explore.event.hasOwnProperty("searchlibrary")) {
-					document.getElementById("central-room").innerHTML+="<button type='button' onclick='explore.event.searchlibrary=0;dialog(\"Skip\")' class='lblue-bg cmid bgrid apos' style='left: 40px; scale: 1.5' title='Library'><svg viewBox='0 0 100 100' class='in-svg'><path class='fred-path ns' d='M27 14L27 84L77 84L77 14ZM23 86L24.2 85.4L74.2 85.4L73 86Z'/><path class='fred-path ns' style='filter: brightness(80%)' d='M23 16L27 14L27 84L23 86Z'/><path class='fwhite-path ns' d='M24.2 85.4L27 84L77 84L74.2 85.4Z'/></svg></button>"
+					document.getElementById("central-room").innerHTML+="<button type='button' onclick='explore.event.searchlibrary=0;dialog(\"Skip\")' class='lblue-bg cmid bgrid apos' style='left: 40px; height: 120px; width: 120px' title='Library'><svg viewBox='0 0 100 100' class='in-svg'><path class='fred-path ns' d='M27 14L27 84L77 84L77 14ZM23 86L24.2 85.4L74.2 85.4L73 86Z'/><path class='fred-path ns' style='filter: brightness(80%)' d='M23 16L27 14L27 84L23 86Z'/><path class='fwhite-path ns' d='M24.2 85.4L27 84L77 84L74.2 85.4Z'/></svg></button>"
+				}
+				if(!explore.event.hasOwnProperty("basefloorwarehouse")) {
+					document.getElementById("central-room").innerHTML+="<button type='button' onclick='explore.event.basefloorwarehouse=0;dialog(\"Skip\")' class='yellow-bg bgrid apos' style='top: 40px; right: 40px; height: 120px; width: 120px' title='Warehouse'><svg viewBox='0 0 100 100' class='in-svg'><path class='fcorange-path' d='M20 45L50 20L80 45Z'/><path class='fdbrown-path' d='M30 45L30 75L70 75L70 45Z'/><path class='fdgreen-path' d='M52 75L52 55L64 55L64 75Z'/></svg></button>"
+				}
+				if(explore.event.searchlibrary==="Completed" && explore.event.basefloorwarehouse==="Completed") {
+					document.getElementById("central-room").innerHTML+="<button type='button' onclick='explore.event.basefloorexitcentral=0;dialog(\"Skip\")' class='lgrey-bg rmid bgrid apos' style='bottom: 40px; height: 120px; width: 120px' title='Exit'><svg viewBox='0 0 100 100' class='in-svg'><path class='fwhite-path ns' d='M35 20L65 20A5 5 0 0 1 70 25L70 32L65 32L65 25L35 25L35 75L65 75L65 68L70 68L70 75A5 5 0 0 1 65 80L35 80A5 5 0 0 1 30 75L30 25A5 5 0 0 1 35 20'/><path class='white-path rcap wide' d='M75 50L55 50M75 50L68 43M75 50L68 57'/></svg></button>"
 				}
 				return
 			}
@@ -4598,6 +4896,32 @@
 			fight.petal=new Array()
 			fight.mob=new Array()
 			fight.spawnmob=new Array()
+			if(explore.floor===0 && explore.flowerspot===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
+				fight.mob[0]=new Mob("Rock",7,0)
+				fight.mob[0].x=1
+				fight.mob[0].y=1
+				fight.mob[0].effect.noloot=true
+			}
+			if(explore.floor===0 && explore.flowerspot===11 && explore.event.evolutionaryguide===0) {
+				explore.event.evolutionaryguide=1
+				dialog("Skip")
+			}
+			if(explore.floor===0 && explore.flowerspot===21 && explore.event.hasOwnProperty("artisanguide") && explore.event.artisanguide!=="Completed") {
+				fight.mob[0]=new Mob("!Summoner!",1,0)
+				fight.mob[0].x=1
+				fight.mob[0].y=1
+				fight.mob[0].effect.noloot=true
+				for(let i=1;i<=5;i++) {
+					fight.mob[i]=new Mob("Beetle",1,0)
+					fight.mob[i].x=i+1
+					fight.mob[i].y=1
+					fight.mob[i].effect.noloot=true
+				}
+			}
+			if(explore.floor===0 && explore.flowerspot===21 && explore.event.artisanguide===0) {
+				explore.event.artisanguide=1
+				dialog("Skip")
+			}
 			localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 			document.getElementById("flower-effect").innerHTML=""
 			displayFightField()
@@ -4659,7 +4983,25 @@
 			for(let i in player.inventory) if(player.inventory[i].effect.temploot===explore.flowerspot) delete player.inventory[i].effect.temploot
 			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 			explore.explored[explore.flowerspot]=true
-			if(explore.highest<100) {
+			if(explore.floor===0 && explore.flowerspot===11 && explore.event.evolutionaryguide==="Incomplete") {
+				explore.highest=explore.flowerspot
+				explore.event.evolutionaryguide=3
+				localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+				dialog("Skip")
+			}
+			if(explore.floor===0 && explore.flowerspot===11 && !explore.event.hasOwnProperty("evolutionaryguide")) {
+				explore.event.evolutionaryguide=0
+			}
+			if(explore.floor===0 && explore.flowerspot===21 && explore.event.artisanguide==="Incomplete") {
+				explore.highest=explore.flowerspot
+				explore.event.artisanguide=3
+				localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+				dialog("Skip")
+			}
+			if(explore.floor===0 && explore.flowerspot===21 && !explore.event.hasOwnProperty("artisanguide")) {
+				explore.event.artisanguide=0
+			}
+			if(explore.highest<100 && explore.highest!==10 && explore.highest!==14) {
 				explore.highest=explore.flowerspot
 				let highestPlace=tutorialOrder.indexOf(explore.highest)
 				mapElement.querySelectorAll("path[value]").forEach(path => {
@@ -4792,6 +5134,7 @@
 			return (pairCount>1)
 		}
 		async function levelUp() {
+			if(player.book.indexOf("Flower Artisan Guide")===-1) return false
 			if(animation) return
 			if(lupoper.active===false) {
 				let targetPetal=player.inventory[selectedGrid.x].clone()
@@ -4853,6 +5196,7 @@
 			addLog("[Craft] Level up canceled. All petals returned.","#df9f7f")
 		}
 		function rarityUpCheck(petal) {
+			if(player.book.indexOf("Flower Artisan Guide")===-1) return false
 			if(PetalAttributeList[petal.id].match("Can't craft")!==null) return false
 			if(petal.rarity===6 || petal.level===0) return false
 			return true
@@ -4887,6 +5231,7 @@
 			}
 		}
 		function absorbCheck(petal) {
+			if(player.book.indexOf("Flower Evolutionary Guide")===-1) return false
 			if(PetalAttributeList[petal.id].match("Can't absorb")!==null) return false
 			return true
 		}
@@ -5419,8 +5764,26 @@
 			if(fight.mob.length===0) endFight(true)
 		}
 		function spawnMob() {
+			for(let i=0;i<fight.mob.length;i++) {
+				getGrid(0,fight.mob[i].x,fight.mob[i].y).replaceWith(createGrid(0,fight.mob[i].x,fight.mob[i].y,"Empty",1,0))
+			}
 			fight.mob=new Array()
 			fight.spawnmob=new Array()
+			if(explore.floor===0 && explore.flowerspot===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
+				fight.spawnmob[0]=new Mob("Rock",7,0)
+				fight.spawnmob[0].effect.noloot=true
+				fillMob()
+				return
+			}
+			if(explore.floor===0 && explore.flowerspot===21 && explore.event.hasOwnProperty("artisanguide") && explore.event.artisanguide!=="Completed") {
+				fight.spawnmob[0]=new Mob("!Summoner!",1,0)
+				for(let i=1;i<=5;i++) {
+					fight.spawnmob[i]=new Mob("Beetle",1,0)
+					fight.spawnmob[i].effect.noloot=true
+				}
+				fillMob()
+				return
+			}
 			if(explore.flowerspot===67) {
 				for(let i=0;i<3;i++) fight.spawnmob[i]=new Mob(explore.floorboss[i]+100,BossRarity(explore.floor,i+1))
 				fillMob()
@@ -5704,6 +6067,10 @@
 					operingThing.print()
 				}
 				let damageDealt=petal.damage,damageReceived=operingThing.damage,knockbackDealt=0
+				if(operingThing.effect.hasOwnProperty("levelup")) {
+					damageReceived*=1.2**operingThing.effect.levelup
+					damageReceived=approx(damageReceived)
+				}
 				if(operingThing.name==="Bumble Bee") {
 					damageReceived=approx(damageReceived/2)
 				}
@@ -5726,6 +6093,10 @@
 				operingThing.print()
 			} else {
 				let damageReceived=operingThing.damage
+				if(operingThing.effect.hasOwnProperty("levelup")) {
+					damageReceived*=1.2**operingThing.effect.levelup
+					damageReceived=approx(damageReceived)
+				}
 				flowerInjure(damageReceived,operingThing)
 				if(operingThing.name==="Scorpion (Missile)") {
 					flowerInjure({effectdamage:approx(operingThing.origin.damage/3),effectturn:8},"Poison")
@@ -5973,7 +6344,7 @@
 	</div>
 	<div id="central-room" class="mid lhsize border nd">
 	</div>
-	<div id="dialog" class="mid infobox text3-c shwidth nd" onclick="dialog('Skip')">
+	<div id="dialog" class="mid infobox text3-c shwidth nd" onclick="dialog('Skip',6361)">
 		<h3 id="dialog-title">Title</h3>
 		<span id="dialog-maintext"></span>
 		<br>
@@ -6012,7 +6383,11 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/11/23,</span>
+		<span>The last update was on 2025/11/24 (BETA update),</span>
+		<span>which updated all Base Floor content.</span>
+		<span>Petals after Yin Yang doesn't work.</span>
+		<br>
+		<span>The last update before that was on 2025/11/23,</span>
 		<span>which is updating Base Floor and its plot. (so you can't play as you will see...)</span>
 		<span>Also updated all mobs and some petals, fixed display bug with level up.</span>
 		<span>The two options are same since localStorage items gets FLORROOM prefix.</span>
