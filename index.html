@@ -1997,10 +1997,10 @@
 				return
 			}
 		}
-		function Mob(id=1,rarity=1,shiny) {
+		function Mob(id=1,rarity=1,shiny,float=true) {
 			this.id=id,this.rarity=rarity
 			if(typeof(this.id)==="string") this.id=MobNameList.indexOf(this.id)
-			if(this.id===4 && determine(10)) this.id=23
+			if(float && this.id===4 && determine(10)) this.id=23
 			this.name=MobNameList[this.id]
 			let statMult=new Object()
 			statMult.health=1
@@ -2022,7 +2022,7 @@
 			if(typeof(MobHealthList[this.id])==="number") {
 				this.health=MobHealthList[this.id]
 				this.health*=MobHealthMultiplier(this.rarity)
-				if(MobAttributeList[this.id].match("BOSS")===null) this.health*=0.8+0.4*Math.random()
+				if(float && MobAttributeList[this.id].match("BOSS")===null) this.health*=0.8+0.4*Math.random()
 				this.health*=statMult.health
 				this.health=approx(this.health)
 			} else if(MobHealthList[this.id]==="*") {
@@ -2044,7 +2044,7 @@
 			if(typeof(MobSpeedList[this.id])==="number") {
 				this.speed=MobSpeedList[this.id]
 				if(MobAttributeList[this.id].match("BOSS")===null) this.speed*=MobSpeedMultiplier(this.rarity)
-				if(MobAttributeList[this.id].match("BOSS")===null) this.speed*=0.9+0.2*Math.random()
+				if(float && MobAttributeList[this.id].match("BOSS")===null) this.speed*=0.9+0.2*Math.random()
 				this.speed=approx(this.speed)
 			} else if(MobSpeedList[this.id]==="*") {
 				this.speed=1
@@ -2925,6 +2925,21 @@
 			document.getElementById("cleaner").style.transform="rotate("+cleanerDegree+"deg)"
 		}
 		function addLog(text,color="#000000") {
+			if(text.startsWith("[Help]") && player.settings.closehelplog===true) return
+			if(text.startsWith("[Command]") && player.settings.closecommandlog===true) return
+			if(text.startsWith("[Chat]") && player.settings.closechatlog===true) return
+			if(text.startsWith("[Warning]") && player.settings.closewarninglog===true) return
+			if(text.startsWith("[Code]") && player.settings.closecodelog===true) return
+			if(text.startsWith("[Calculator]") && player.settings.closecalculatorlog===true) return
+			if(text.startsWith("[bot#7976]") && player.settings.closebotlog===true) return
+			if(text.startsWith("[Petal]") && player.settings.closepetallog===true) return
+			if(text.startsWith("[Mob]") && player.settings.closemoblog===true) return
+			if(text.startsWith("[Flower]") && player.settings.closeflowerlog===true) return
+			if(text.startsWith("[Turn]") && player.settings.closeturnlog===true) return
+			if(text.startsWith("[Determine]") && player.settings.closedeterminelog===true) return
+			if(text.startsWith("[Resource]") && player.settings.closeresourcelog===true) return
+			if(text.startsWith("[Loot]") && player.settings.closelootlog===true) return
+			if(text.startsWith("[Craft]") && player.settings.closecraftlog===true) return
 			let logElement=document.createElement("div")
 			logElement.setAttribute("class","lcmargin")
 			if(color) logElement.style.color=color
@@ -3222,47 +3237,47 @@
 					return
 				}
 				if(explore.event.startdialog===0) {
-					dialog("Traveler (You)","The 8th Floor isn't a lie! Let's continue...","Middle","#dfdfff")
+					dialog("Traveler (You)","The 8th Floor isn't a lie! Let's continue...","Unset","#dfdfff")
 					explore.event.startdialog=1
 					return
 				}
 				if(explore.event.startdialog===1) {
-					dialog("Traveler (You)","Wait, why have I become so weak? Where are my petals???","Middle","#dfdfff")
+					dialog("Traveler (You)","Wait, why have I become so weak? Where are my petals???","Unset","#dfdfff")
 					explore.event.startdialog=2
 					return
 				}
 				if(explore.event.startdialog===2) {
-					dialog("Garden Watcher","A new flower? Wow, you really look like the Traveler in book.","Middle","#dfffdf")
+					dialog("Garden Watcher","A new flower? Wow, you really look like the Traveler in book.","Unset","#dfffdf")
 					explore.event.startdialog=3
 					return
 				}
 				if(explore.event.startdialog===3) {
-					dialog("Traveler (You)","The Traveler in book?","Middle","#dfdfff")
+					dialog("Traveler (You)","The Traveler in book?","Unset","#dfdfff")
 					explore.event.startdialog=4
 					return
 				}
 				if(explore.event.startdialog===4) {
-					dialog("Garden Watcher","Don't you know that book? It seems that you are a new flower here. Well, Traveler is a powerful flower who wants to climb to the top of Florroom. A great author wrote a novel on this, and the book went viral. Within 64 days after the release, 9% of the flowers chose to leave for exploration. For this reason, the Flower Government has ordered that all flowers will not be accepted again once they are left.","Middle","#dfffdf")
+					dialog("Garden Watcher","Don't you know that book? It seems that you are a new flower here. Well, Traveler is a powerful flower who wants to climb to the top of Florroom. A great author wrote a novel on this, and the book went viral. Within 64 days after the release, 9% of the flowers chose to leave for exploration. For this reason, the Flower Government has ordered that all flowers will not be accepted again once they are left.","Unset","#dfffdf")
 					explore.event.startdialog=5
 					return
 				}
 				if(explore.event.startdialog===5) {
-					dialog("Traveler (You)","No, I'm the Traveler.","Middle","#dfdfff")
+					dialog("Traveler (You)","No, I'm the Traveler.","Unset","#dfdfff")
 					explore.event.startdialog=6
 					return
 				}
 				if(explore.event.startdialog===6) {
-					dialog("(The Florroom)","(...)","Middle","#dfdfdf")
+					dialog("(The Florroom)","(...)","Unset","#dfdfdf")
 					explore.event.startdialog=7
 					return
 				}
 				if(explore.event.startdialog===7) {
-					dialog("Traveler (You)","So this is the Base Floor? I have lost all my petals. And I feel like I've lost my abilities.","Middle","#dfdfff")
+					dialog("Traveler (You)","So this is the Base Floor? I have lost all my petals. And I feel like I've lost my abilities.","Unset","#dfdfff")
 					explore.event.startdialog=8
 					return
 				}
 				if(explore.event.startdialog===8) {
-					dialog("Garden Watcher","Yes. You are going again, right? Can you take me with you, please?","Middle","#dfffdf")
+					dialog("Garden Watcher","Yes. You are going again, right? Can you take me with you, please?","Unset","#dfffdf")
 					explore.event.startdialog=9
 					return
 				}
@@ -3271,27 +3286,27 @@
 					return
 				}
 				if(explore.event.startdialog===10) {
-					dialog("Traveler (You)","Of course, I will go again. But I'm too lazy to take you.","Middle","#dfdfff")
+					dialog("Traveler (You)","Of course, I will go again. But I'm too lazy to take you.","Unset","#dfdfff")
 					explore.event.startdialog=13
 					return
 				}
 				if(explore.event.startdialog===11) {
-					dialog("Traveler (You)","Of course, I will go again. But I need to get stronger first.","Middle","#dfdfff")
+					dialog("Traveler (You)","Of course, I will go again. But I need to get stronger first.","Unset","#dfdfff")
 					explore.event.startdialog=13
 					return
 				}
 				if(explore.event.startdialog===12) {
-					dialog("Traveler (You)","I will go again but no.","Middle","#dfdfff")
+					dialog("Traveler (You)","I will go again but no.","Unset","#dfdfff")
 					explore.event.startdialog=13
 					return
 				}
 				if(explore.event.startdialog===13) {
-					dialog("Garden Watcher","I'm sad for that... Perhaps you can still find some useful books in library!","Middle","#dfffdf")
+					dialog("Garden Watcher","I'm sad for that... Perhaps you can still find some useful books in library!","Unset","#dfffdf")
 					explore.event.startdialog=14
 					return
 				}
 				if(explore.event.startdialog===14) {
-					dialog("Traveler (You)","Thanks. Bye then.","Middle","#dfdfff")
+					dialog("Traveler (You)","Thanks. Bye then.","Unset","#dfdfff")
 					explore.event.startdialog=15
 					return
 				}
@@ -3303,9 +3318,10 @@
 					displayCentralRoom()
 					return
 				}
+				if(explore.event.searchlibrary===0 && player.settings.skipdialog===true) explore.event.searchlibrary=11
 				if(explore.event.searchlibrary===0) {
 					displayCentralRoom()
-					dialog("Librarian","Hello, may I ask what book you need to borrow?","Middle","#bfffff")
+					dialog("Librarian","Hello, may I ask what book you need to borrow?","Unset","#bfffff")
 					explore.event.searchlibrary=1
 					return
 				}
@@ -3323,12 +3339,12 @@
 					return
 				}
 				if(explore.event.searchlibrary===3) {
-					dialog("Librarian","Sorry, this book has already been borrowed out.","Middle","#bfffff")
+					dialog("Librarian","Sorry, this book has already been borrowed out.","Unset","#bfffff")
 					explore.event.searchlibrary=6
 					return
 				}
 				if(explore.event.searchlibrary===4) {
-					dialog("Librarian","Sorry, this book has already been borrowed out.","Middle","#bfffff")
+					dialog("Librarian","Sorry, this book has already been borrowed out.","Unset","#bfffff")
 					explore.event.searchlibrary=7
 					return
 				}
@@ -3345,12 +3361,12 @@
 					return
 				}
 				if(explore.event.searchlibrary===8) {
-					dialog("Librarian","Sorry, this book has already been borrowed out.","Middle","#bfffff")
+					dialog("Librarian","Sorry, this book has already been borrowed out.","Unset","#bfffff")
 					explore.event.searchlibrary=13
 					return
 				}
 				if(explore.event.searchlibrary===9) {
-					dialog("Librarian","Sorry, this book has already been borrowed out.","Middle","#bfffff")
+					dialog("Librarian","Sorry, this book has already been borrowed out.","Unset","#bfffff")
 					explore.event.searchlibrary=14
 					return
 				}
@@ -3364,7 +3380,7 @@
 					return
 				}
 				if(explore.event.searchlibrary===11) {
-					await dialog("Librarian","Sorry, this book has already been borrowed out too. The only thing I can give you is this Survival Guide. Bye.","Middle","#bfffff")
+					await dialog("Librarian","Sorry, this book has already been borrowed out too. The only thing I can give you is this Survival Guide. Bye.","Unset","#bfffff")
 					explore.event.searchlibrary=15
 					if(player.book.indexOf("Flower Survival Guide")===-1) {
 						player.book.push("Flower Survival Guide")
@@ -3398,7 +3414,7 @@
 					return
 				}
 				if(explore.event.searchlibrary===16) {
-					dialog("Librarian","Sorry, this book has already been borrowed out too.","Middle","#bfffff")
+					dialog("Librarian","Sorry, this book has already been borrowed out too.","Unset","#bfffff")
 					explore.event.searchlibrary=17
 					return
 				}
@@ -3407,13 +3423,14 @@
 					return
 				}
 				if(explore.event.searchlibrary===18) {
-					dialog("Librarian","No noise allowed in the library! (close the door)","Middle","#bfffff")
+					dialog("Librarian","No noise allowed in the library! (close the door)","Unset","#bfffff")
 					explore.event.searchlibrary=15
 					return
 				}
+				if(explore.event.basefloorwarehouse===0 && player.settings.skipdialog===true) explore.event.basefloorwarehouse=14
 				if(explore.event.basefloorwarehouse===0) {
 					displayCentralRoom()
-					dialog("(The Florroom)","Traveler walked into a warehouse. The goods inside are messy, like they were left behind after looting.","Middle","#dfdfdf")
+					dialog("(The Florroom)","Traveler walked into a warehouse. The goods inside are messy, like they were left behind after looting.","Unset","#dfdfdf")
 					explore.event.basefloorwarehouse=1
 					return
 				}
@@ -3515,8 +3532,9 @@
 					displayMap()
 					return
 				}
+				if(explore.event.evolutionaryguide===1 && player.settings.skipdialog===true) explore.event.evolutionaryguide=2
 				if(explore.event.evolutionaryguide===1) {
-					await dialog("(The Florroom)","Traveler found a book under boulder. The title \"Flower Survival Guide\" appears on the side of the book. This book is important and it should not be difficult to push away the boulder to get the book...","Middle","#dfdfdf")
+					await dialog("(The Florroom)","Traveler found a book under boulder. The title \"Flower Survival Guide\" appears on the side of the book. This book is important and it should not be difficult to push away the boulder to get the book...","Unset","#dfdfdf")
 					explore.event.evolutionaryguide=2
 					return
 				}
@@ -3527,8 +3545,9 @@
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 					return
 				}
+				if(explore.event.evolutionaryguide===3 && player.settings.skipdialog===true) explore.event.evolutionaryguide=4
 				if(explore.event.evolutionaryguide===3) {
-					await dialog("(The Florroom)","Traveler got the book. On the cover of the book, there is a sentence: \"I have got all the Flower Artisan Guide from Library using my 125 alt accounts. If you want this book, come to Desert, find me and show me your true abilities.\"","Middle","#dfdfdf")
+					await dialog("(The Florroom)","Traveler got the book. On the cover of the book, there is a sentence: \"I have got all the Flower Artisan Guide from Library using my 125 alt accounts. If you want this book, come to Desert, find me and show me your true abilities.\"","Unset","#dfdfdf")
 					explore.event.evolutionaryguide=4
 					return
 				}
@@ -3541,8 +3560,9 @@
 					addLog("[Resource] You received Flower Evolutionary Guide.","#7fff7f")
 					return
 				}
+				if(explore.event.artisanguide===1 && player.settings.skipdialog===true) explore.event.artisanguide=2
 				if(explore.event.artisanguide===1) {
-					await dialog("Summoner","A new challenger? Well, let's get started now.","Middle","#ffffbf")
+					await dialog("Summoner","A new challenger? Well, let's get started now.","Unset","#ffffbf")
 					explore.event.artisanguide=2
 					return
 				}
@@ -3553,13 +3573,14 @@
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 					return
 				}
+				if(explore.event.artisanguide===3 && player.settings.skipdialog===true) explore.event.artisanguide=5
 				if(explore.event.artisanguide===3) {
-					await dialog("Summoner","I recognize your strength, this book is for you. However, only those with exceptional talent can master the essence of crafting, and no one in this world can compare to me.","Middle","#ffffbf")
+					await dialog("Summoner","I recognize your strength, this book is for you. However, only those with exceptional talent can master the essence of crafting, and no one in this world can compare to me.","Unset","#ffffbf")
 					explore.event.artisanguide=4
 					return
 				}
 				if(explore.event.artisanguide===4) {
-					dialog("(The Florroom)","After Summoner finished speaking, he took out a book emiting bright yellow light with a striking title: Unusual Flower Artisan Guide+ ! (of course, not for you)","Middle","#dfdfdf")
+					dialog("(The Florroom)","After Summoner finished speaking, he took out a book emiting bright yellow light with a striking title: Unusual Flower Artisan Guide+ ! (of course, not for you)","Unset","#dfdfdf")
 					explore.event.artisanguide=5
 					return
 				}
@@ -3572,40 +3593,54 @@
 					addLog("[Resource] You received Flower Artisan Guide.","#7fff7f")
 					return
 				}
+				if(explore.event.basefloorending===0 && player.settings.skipdialog===true) {
+					explore.event.basefloorending="Completed"
+					document.getElementById("end1").style["pointer-events"]="unset"
+					for(let i=0;i<=30;i++) {
+						document.getElementById("end1").style.opacity=i/30
+						if(i===15) {
+							document.getElementById("dialog").style.display="none"
+							animation=false
+						}
+						await delay(100)
+					}
+					location.reload()
+					return
+				}
 				if(explore.event.basefloorending===0) {
-					dialog("(The Florroom)","Traveler defeated all guardians. The Jungle Gate opens.","Middle","#dfdfdf")
+					dialog("(The Florroom)","Traveler defeated all guardians. The Jungle Gate opens.","Unset","#dfdfdf")
 					explore.event.basefloorending=1
 					return
 				}
 				if(explore.event.basefloorending===1) {
-					dialog("(The Florroom)","He walked up the steps leading to Floor 1.","Middle","#dfdfdf")
+					dialog("(The Florroom)","He walked up the steps leading to Floor 1.","Unset","#dfdfdf")
 					explore.event.basefloorending=2
 					return
 				}
 				if(explore.event.basefloorending===2) {
-					dialog("(The Florroom)","He walks.","Middle","#dfdfdf")
+					dialog("(The Florroom)","He walks.","Unset","#dfdfdf")
 					explore.event.basefloorending=3
 					return
 				}
 				if(explore.event.basefloorending===3) {
-					dialog("(The Florroom)","He continue walks.","Middle","#dfdfdf")
+					dialog("(The Florroom)","He continue walks.","Unset","#dfdfdf")
 					explore.event.basefloorending=4
 					return
 				}
 				if(explore.event.basefloorending===4) {
-					dialog("(The Florroom)","He feels that time is freezing.","Middle","#dfdfdf")
+					dialog("(The Florroom)","He feels that time is freezing.","Unset","#dfdfdf")
 					explore.event.basefloorending=5
 					clearAllInterval()
 					return
 				}
 				if(explore.event.basefloorending===5) {
-					dialog("(The Florroom)","But he doesn't care.","Middle","#dfdfdf")
+					dialog("(The Florroom)","But he doesn't care.","Unset","#dfdfdf")
 					explore.event.basefloorending=6
 					clearAllInterval()
 					return
 				}
 				if(explore.event.basefloorending===6) {
-					dialog("(The Florroom)","He walks.","Middle","#dfdfdf")
+					dialog("(The Florroom)","He walks.","Unset","#dfdfdf")
 					explore.event.basefloorending=7
 					document.getElementById("calendar-day").setAttribute("class","grey")
 					document.getElementById("calendar-day").innerHTML="Day &("
@@ -3644,6 +3679,9 @@
 			document.getElementById("dialog-maintext").style.color=textColor
 			document.getElementById("dialog").style.display="flex"
 			dialogRemain=maintext
+			if(speed==="Unset" && player.settings.fasterdialog===true) speed="Fast"
+			if(speed==="Unset" && player.settings.slowerdialog===true) speed="Slow"
+			if(speed==="Unset") speed="Middle"
 			if(speed==="Instant") {
 				document.getElementById("dialog-maintext").innerHTML=maintext
 				dialogRemain=""
@@ -3655,6 +3693,7 @@
 				document.getElementById("dialog-maintext").innerHTML+=dialogRemain.slice(0,1)
 				dialogRemain=dialogRemain.slice(1)
 				if(!dialogRemain.length) dialogPrint=false
+				if(speed==="Fast" && document.getElementById("dialog-maintext").innerHTML.match(/[A-Za-z]$/)) await delay(30)
 				if(speed==="Middle" && document.getElementById("dialog-maintext").innerHTML.match(/[A-Za-z]$/)) await delay(50)
 				if(speed==="Slow" && document.getElementById("dialog-maintext").innerHTML.match(/[A-Za-z]$/)) await delay(80)
 			}
@@ -3768,6 +3807,7 @@
 			for(let i=1;i<=10;i++) player.inventory[i]=new Petal(0,1,0)
 		}
 		for(let i in player.inventory) player.inventory[i]=Object.assign(new Petal(),player.inventory[i])
+		if(!player.settings) player.settings=new Object()
 		if(!player.gallery) player.gallery=new Object()
 		if(!player.item) player.item=new Object()
 		player.item.add=function(itemname,itemamount) {
@@ -3928,9 +3968,10 @@
 			if(text==="Empty") newGrid.innerHTML="<span class='mid lgrey text3'>Empty</span>"
 			if(text==="Space") newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M0 20L0 0L20 0M80 0L100 0L100 20M100 80L100 100L80 100M20 100L0 100L0 80'/></svg><span class='mid lgrey text3'>Space</span>"
 			if(typeof(text)==="number" && text!==0) newGrid.innerHTML="<svg viewBox='0 0 100 100' class='in-svg'><path d='M50 10L90 50L50 90L10 50Z'/></svg><span class='mid'>"+text+"</span>"
-			if(text.startsWith("Petal")) newGrid.innerHTML=PetalSVGArray[text.slice(6)]
-			if(text.startsWith("Mob")) newGrid.innerHTML=MobSVGArray[text.slice(4).replaceAll("!","")]
-			if(text.startsWith("Item")) newGrid.innerHTML=ItemSVGArray[text.slice(5)]
+			if(typeof(text)==="string" && text.startsWith("Text")) newGrid.innerHTML="<span class='mid'>"+text.slice(5)+"</span>"
+			if(typeof(text)==="string" && text.startsWith("Petal")) newGrid.innerHTML=PetalSVGArray[text.slice(6)]
+			if(typeof(text)==="string" && text.startsWith("Mob")) newGrid.innerHTML=MobSVGArray[text.slice(4).replaceAll("!","")]
+			if(typeof(text)==="string" && text.startsWith("Item")) newGrid.innerHTML=ItemSVGArray[text.slice(5)]
 			if(newGrid.innerHTML.match("svgGradient")) {
 				svgGradientCount++
 				newGrid.innerHTML=newGrid.innerHTML.replaceAll("svgGradient","uniqueGradient"+svgGradientCount)
@@ -4237,7 +4278,558 @@
 				return
 			}
 			closeAll()
+			document.getElementById("settings").innerHTML="<h2>Settings</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><h3>Log Display</h3>"
+			let logDisplay=document.createElement("div")
+			if(!player.settings.hasOwnProperty("closehelplog")) {
+				let addButton=settingButton(1,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(1,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closecommandlog")) {
+				let addButton=settingButton(2,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(2,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closechatlog")) {
+				let addButton=settingButton(3,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(3,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closewarninglog")) {
+				let addButton=settingButton(4,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(4,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closecodelog")) {
+				let addButton=settingButton(5,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(5,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closecalculatorlog")) {
+				let addButton=settingButton(6,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(6,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closebotlog")) {
+				let addButton=settingButton(7,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(7,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closepetallog")) {
+				let addButton=settingButton(8,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(8,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closemoblog")) {
+				let addButton=settingButton(9,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(9,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closeflowerlog")) {
+				let addButton=settingButton(10,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(10,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closeturnlog")) {
+				let addButton=settingButton(11,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(11,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closedeterminelog")) {
+				let addButton=settingButton(12,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(12,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closeresourcelog")) {
+				let addButton=settingButton(13,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(13,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closelootlog")) {
+				let addButton=settingButton(14,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(14,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("closecraftlog")) {
+				let addButton=settingButton(15,1,"On")
+				logDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(15,1,"Off")
+				logDisplay.appendChild(addButton)
+			}
+			document.getElementById("settings").appendChild(logDisplay)
+			let dialogDisplayTitle=document.createElement("h3")
+			dialogDisplayTitle.innerHTML="Dialog Display"
+			document.getElementById("settings").appendChild(dialogDisplayTitle)
+			let dialogDisplay=document.createElement("div")
+			if(player.settings.slowerdialog) {
+				let addButton=settingButton(1,2,"Slow")
+				dialogDisplay.appendChild(addButton)
+			} else if(player.settings.fasterdialog) {
+				let addButton=settingButton(1,2,"Fast")
+				dialogDisplay.appendChild(addButton)
+			} else if(player.settings.skipdialog) {
+				let addButton=settingButton(1,2,"Skip")
+				dialogDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(1,2,"Middle")
+				dialogDisplay.appendChild(addButton)
+			}
+			document.getElementById("settings").appendChild(dialogDisplay)
 			document.getElementById("settings").style.display="flex"
+		}
+		function settingButton(setX,setY,state) {
+			if(setX===1 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Help",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Help",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===2 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Command",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===2 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Command",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===3 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Chat",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===3 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Chat",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===4 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Warning",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===4 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Warning",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===5 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Code",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===5 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Code",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===6 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Calculator",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===6 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Calculator",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===7 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Bot",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===7 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Bot",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===8 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Petal",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===8 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Petal",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===9 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Mob",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===9 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Mob",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===10 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Flower",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===10 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Flower",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===11 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Turn",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===11 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Turn",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===12 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Determine",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===12 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Determine",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===13 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Resource",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===13 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Resource",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===14 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Loot",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===14 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Loot",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===15 && setY===1 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Craft",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===15 && setY===1 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Craft",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===2 && state==="Slow") {
+				let addButton=createGrid(5,setX,setY,"Text_Speed<br><br>Slow",1,0)
+				addButton.classList.add("blue-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===2 && state==="Middle") {
+				let addButton=createGrid(5,setX,setY,"Text_Speed<br><br>Middle",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===2 && state==="Fast") {
+				let addButton=createGrid(5,setX,setY,"Text_Speed<br><br>Fast",1,0)
+				addButton.classList.add("yellow-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===2 && state==="Skip") {
+				let addButton=createGrid(5,setX,setY,"Text_Speed<br><br>Skip",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+		}
+		function settingClick(setX,setY) {
+			if(animation) return
+			if(setX===1 && setY===1) {
+				if(!player.settings.hasOwnProperty("closehelplog")) {
+					cleanLog()
+					player.settings.closehelplog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closehelplog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===2 && setY===1) {
+				if(!player.settings.hasOwnProperty("closecommandlog")) {
+					cleanLog()
+					player.settings.closecommandlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closecommandlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===3 && setY===1) {
+				if(!player.settings.hasOwnProperty("closechatlog")) {
+					cleanLog()
+					player.settings.closechatlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closechatlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===4 && setY===1) {
+				if(!player.settings.hasOwnProperty("closewarninglog")) {
+					cleanLog()
+					player.settings.closewarninglog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closewarninglog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===5 && setY===1) {
+				if(!player.settings.hasOwnProperty("closecodelog")) {
+					cleanLog()
+					player.settings.closecodelog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closecodelog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===6 && setY===1) {
+				if(!player.settings.hasOwnProperty("closecalculatorlog")) {
+					cleanLog()
+					player.settings.closecalculatorlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closecalculatorlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===7 && setY===1) {
+				if(!player.settings.hasOwnProperty("closebotlog")) {
+					cleanLog()
+					player.settings.closebotlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closebotlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===8 && setY===1) {
+				if(!player.settings.hasOwnProperty("closepetallog")) {
+					cleanLog()
+					player.settings.closepetallog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closepetallog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===9 && setY===1) {
+				if(!player.settings.hasOwnProperty("closemoblog")) {
+					cleanLog()
+					player.settings.closemoblog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closemoblog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===10 && setY===1) {
+				if(!player.settings.hasOwnProperty("closeflowerlog")) {
+					cleanLog()
+					player.settings.closeflowerlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closeflowerlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===11 && setY===1) {
+				if(!player.settings.hasOwnProperty("closeturnlog")) {
+					cleanLog()
+					player.settings.closeturnlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closeturnlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===12 && setY===1) {
+				if(!player.settings.hasOwnProperty("closedeterminelog")) {
+					cleanLog()
+					player.settings.closedeterminelog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closedeterminelog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===13 && setY===1) {
+				if(!player.settings.hasOwnProperty("closeresourcelog")) {
+					cleanLog()
+					player.settings.closeresourcelog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closeresourcelog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===14 && setY===1) {
+				if(!player.settings.hasOwnProperty("closelootlog")) {
+					cleanLog()
+					player.settings.closelootlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closelootlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===15 && setY===1) {
+				if(!player.settings.hasOwnProperty("closecraftlog")) {
+					cleanLog()
+					player.settings.closecraftlog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				} else {
+					cleanLog()
+					delete player.settings.closecraftlog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				}
+			}
+			if(setX===1 && setY===2) {
+				if(player.settings.slowerdialog===true) {
+					delete player.settings.slowerdialog
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Middle"))
+				} else if(player.settings.fasterdialog===true) {
+					delete player.settings.fasterdialog
+					player.settings.skipdialog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Skip"))
+				} else if(player.settings.skipdialog===true) {
+					delete player.settings.skipdialog
+					player.settings.slowerdialog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Slow"))
+				} else {
+					player.settings.fasterdialog=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Fast"))
+				}
+			}
 		}
 		function howToPlay(open=true) {
 			if(animation) return
@@ -4292,6 +4884,22 @@
 				return
 			}
 			closeAll()
+			document.getElementById("gallery").innerHTML="<h2>Gallery</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br>"
+			for(let i in MobNameList) if(player.gallery.hasOwnProperty(MobNameList[i])) {
+				let galleryLine=document.createElement("div")
+				galleryLine.setAttribute("class","cself")
+				galleryLine.style.display="flex"
+				galleryLine.style.gap="5px"
+				for(let j=1;j<=7;j++) {
+					if(player.gallery[MobNameList[i]]["rarity"+j+"killed"]>0 || player.gallery[MobNameList[i]]["rarity"+j+"looted"]>0) {
+						galleryLine.appendChild(createGrid(4,i,j,"Mob_"+MobNameList[i],1,j))
+					} else {
+						galleryLine.appendChild(createGrid(4,i,j,"Space",1,0))
+					}
+				}
+				document.getElementById("gallery").appendChild(galleryLine)
+				document.getElementById("gallery").appendChild(document.createElement("br"))
+			}
 			document.getElementById("gallery").style.display="flex"
 			document.getElementById("ladybug").style.scale=1
 			document.getElementById("ladybug-bg").style.display="flex"
@@ -4983,6 +5591,7 @@
 					editingGridItemHTML+="<br>"
 					document.getElementById("gridinfo").innerHTML=editingGridItemHTML
 					document.getElementById("gridinfo").style.display="flex"
+					return
 				}
 			}
 			if(gridValue===3) {
@@ -5058,6 +5667,45 @@
 					return
 				}
 			}
+			if(gridValue===4) {
+				if(player.gallery[MobNameList[gridX]]["rarity"+gridY+"killed"]===0 && player.gallery[MobNameList[gridX]]["rarity"+gridY+"looted"]===0) return
+				document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
+				document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
+				document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+20+"px"
+				let editingGridGalleryHTML="",testMob=new Mob(gridX,gridY,0,false)
+				editingGridGalleryHTML+="<h3 style='color: "+rarityColor[testMob.rarity].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+testMob.name+"</h3>"+"<span>"+MobDescriptionList[testMob.id]+"</span><br>"
+				if(testMob.behavior==="Passive") {
+					editingGridGalleryHTML+="<span style='color: #7fdf7f'>Behavior: Passive</span>"
+				}
+				if(testMob.behavior==="Neutral") {
+					editingGridGalleryHTML+="<span style='color: #dfdf3f'>Behavior: Neutral</span>"
+				}
+				if(testMob.behavior==="Hostile") {
+					editingGridGalleryHTML+="<span style='color: #ff7f7f'>Behavior: Hostile</span>"
+				}
+				editingGridGalleryHTML+="<span style='color: #7fdf7f'>Health: "+testMob.health+"</span>"
+				editingGridGalleryHTML+="<span style='color: #ff7f7f'>Damage: "+testMob.damage+"</span>"
+				editingGridGalleryHTML+="<span style='color: #7fdf7f'>Dodge: "+testMob.dodge+"%</span>"
+				editingGridGalleryHTML+="<span style='color: #9f9fff'>Speed: "+testMob.speed+"</span><br><br>"
+				document.getElementById("gridinfo").innerHTML=editingGridGalleryHTML
+				if(player.gallery[MobNameList[gridX]]["rarity"+gridY+"looted"]>0 && MobLootList[testMob.id].length>0) {
+					for(let i=0;i<MobLootList[testMob.id].length;i++) {
+						let lootList=document.createElement("div")
+						lootList.setAttribute("class","nlh")
+						lootList.style.height="60px"
+						let pendingID=PetalNameList.indexOf(MobLootList[testMob.id][i].slice(0,-2)),pendingDroprate=parseInt(MobLootList[testMob.id][i].slice(-1))
+						for(let j=PetalLowestRarityList[pendingID];j<=6;j++) if(MobLootBase(testMob.rarity,pendingDroprate,j)>0.001) {
+							let smallLootGrid=createGrid(79,0,0,"Petal_"+PetalNameList[pendingID],1,j)
+							smallLootGrid.style.scale=0.5
+							smallLootGrid.style.margin="-30px -15px"
+							smallLootGrid.innerHTML+="<sub class='text2'>"+(approx(MobLootBase(testMob.rarity,pendingDroprate,j)*10000)/100)+"%</sub>"
+							lootList.appendChild(smallLootGrid)
+						}
+						if(lootList.children.length) document.getElementById("gridinfo").appendChild(lootList)
+					}
+				}
+				document.getElementById("gridinfo").style.display="flex"
+			}
 		}
 		function closeGridInfo(forced=false) {
 			if(selectedGrid.select===true && forced===false) return
@@ -5077,7 +5725,7 @@
 				document.getElementById("central-room").style.display="unset"
 				if(!explore.event.hasOwnProperty("startdialog")) {
 					explore.event.startdialog=0
-					dialog("(The Florroom)","Today is an extraordinary day. Traveler, a flower that aspires to climb to the highest floor of Florroom, after defeating thousands of creatures and traversing diverse regions, however, returns to its starting point.","Middle","#dfdfdf")
+					dialog("(The Florroom)","Today is an extraordinary day. Traveler, a flower that aspires to climb to the highest floor of Florroom, after defeating thousands of creatures and traversing diverse regions, however, returns to its starting point.","Unset","#dfdfdf")
 					return
 				}
 				if(explore.event.hasOwnProperty("searchlibrary") && explore.event.searchlibrary!=="Completed") return
@@ -6595,11 +7243,7 @@
 			</svg>
 		</button>
 	</div>
-	<div id="settings" class="mid grey-bg box highz hsize nd">
-		<h2>Settings</h2>
-		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
-		<br>
-	</div>
+	<div id="settings" class="mid grey-bg box highz hsize nd"></div>
 	<div id="help" class="mid llpurple-bg box highz hsize nd">
 		<button type="button" tabindex='-1' onclick="book(-1)" class="circbtn tl" title="Previous book">
 			<svg viewBox="0 0 100 100" class="in-svg">
@@ -6632,11 +7276,7 @@
 		<br>
 		<button type="button" tabindex='-1' id="absall-btn" onclick="absorbAll()" class="bottommargin red-bg recbtn pointer mcont cself nd">Absorb All Petals Without Star</button>
 	</div>
-	<div id="gallery" class="mid lyellow-bg box highz hsize nd">
-		<h2>Gallery</h2>
-		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
-		<br>
-	</div>
+	<div id="gallery" class="mid lyellow-bg box highz hsize nd"></div>
 	<div class="cmargin text3-c">
 		<button type="button" tabindex='-1' onclick="importSave()" class="lmargin lblue-bg recbtn pointer" title="Import Save">Retrieve Memories (WIP)</button>
 		<button type="button" tabindex='-1' onclick="hardReset()" class="lmargin lred-bg recbtn forbidden" title="HARD RESET">Restart the Universe</button>
@@ -6717,19 +7357,15 @@
 			</svg>
 		</button>
 	</div>
-	<div id="mapinfo" class="llcyan-bg mid infobox nd">
-	</div>
-	<div id="gridinfo" class="llpurple-bg mid infobox highestz nd">
-	</div>
-	<div id="central-room" class="mid lhsize border nd">
-	</div>
+	<div id="mapinfo" class="llcyan-bg mid infobox nd"></div>
+	<div id="gridinfo" class="llpurple-bg mid infobox highestz nd"></div>
+	<div id="central-room" class="mid lhsize border nd"></div>
 	<div id="dialog" class="mid infobox text3-c shwidth nd" onclick="dialog('Skip',6361)">
 		<h3 id="dialog-title">Title</h3>
 		<span id="dialog-maintext"></span>
 		<br>
 	</div>
-	<div id="log" class="side-log">
-	</div>
+	<div id="log" class="side-log"></div>
 	<div id="command" class="side-command text3-c">
 		<input type="text" tabindex='-1' id="command-call" onkeydown="command(event.key)" class="side-input" autocomplete="off" title="Command">
 		<svg viewBox="0 0 10 10" id="cleaner" onclick="cleanLog()" class="llmargin small-svg circ">
@@ -6763,7 +7399,7 @@
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
 		<span>The last update was on 2025/11/26,</span>
-		<span>which updated books and statistics.</span>
+		<span>which updated books and statistics. Updated settings and gallery a few hours later.</span>
 		<span>Petals after Yin Yang still doesn't work (soon ig), many bugs fixed.</span>
 		<br>
 		<span>The last update was on 2025/11/24 (BETA update),</span>
