@@ -1305,7 +1305,7 @@
 			patk+=petal.atkbuff
 			if(mob.name==="!Fly!" && petal.atkbuff<0) patk+=2*petal.atkbuff
 			if(direction!=="Front") patk-=(18-petal.size)*(17-petal.size)/2
-			if(patk<10) return 0
+			if(patk<=10) return 0
 			if(patk>100) patk=100
 			if(mob.name==="!Fly" && patk>90) patk=90
 			if(mob.name==="Moth" && mob.behavior==="Neutral+") mdef+=60
@@ -1333,7 +1333,7 @@
 				if(petal.shootatt.bounce>petal.shootatt.freebon) patk-=(petal.shootatt.bounce-petal.shootatt.freebon)*petal.shootatt.bondec
 				for(let i=0;i<petal.shootatt.hitarray.length;i++) if(mob===petal.shootatt.hitarray[i]) patk-=petal.shootatt.repdec
 			}
-			if(patk<10) return 0
+			if(patk<=10) return 0
 			let petalClone=petal.clone()
 			petalClone.atk2=patk
 			return AttackSuccessChance(petalClone,mob)
@@ -1367,7 +1367,7 @@
 			pdef+=petal.defbuff
 			if(mob.name==="!Fly!" && petal.defbuff<0) pdef+=2*petal.defbuff
 			if(direction!=="Front") pdef-=(18-petal.size)*(17-petal.size)/2
-			if(pdef<10) return 0
+			if(pdef<=10) return 0
 			if(pdef>100) pdef=100
 			if(mob.name==="!Fly" && pdef>90) pdef=90
 			if(mob.name==="Moth" && mob.behavior==="Neutral+") matk+=60
@@ -2553,6 +2553,7 @@
 						addLog("[Mob] Queen Ant summons 2 Soldier Ant.","#bfbf00")
 						let pendingRarity=this.rarity-2
 						spawnNear(new Mob("Soldier Ant",pendingRarity,0),this.x,this.y,true)
+						spawnNear(new Mob("Soldier Ant",pendingRarity,0),this.x,this.y,true)
 					} else {
 						this.attack()
 					}
@@ -2569,6 +2570,7 @@
 			}
 			await waitConfirmation()
 			if(this.currenthealth<=0 && this.count<=1) return
+			await waitAnimation()
 			if(MobAttributeList[this.id].match("Doesn't move")===null) {
 				let moveflag=true
 				if(this.name==="!Hornet!" && this.calculate>=3) {
@@ -2899,7 +2901,7 @@
 				editingStatHTML+="<span style='color: #5f9f5f'>Total Petal Lost on Success: "+player.bookstat.artisan.totalleveluppetallostsuccess+"</span>"
 				editingStatHTML+="<span style='color: #9f5f5f'>Total Fail: "+player.bookstat.artisan.totallevelupfail+"</span>"
 				editingStatHTML+="<span style='color: #9f5f5f'>Total Petal Lost on Fail: "+player.bookstat.artisan.totalleveluppetallostfail+"</span>"
-				editingStatHTML+="<span style='color: #7f5f9f'>Expected Success: "+player.bookstat.artisan.totallevelupexpectedsuccess+"</span>"
+				editingStatHTML+="<span style='color: #7f5f9f'>Expected Success: "+approx(player.bookstat.artisan.totallevelupexpectedsuccess*100)/100+"</span>"
 				editingStatHTML+="<span style='color: #7f5f9f'>Success Variance: "+approx(player.bookstat.artisan.levelupsuccessvariance*1000)/1000+"</span>"
 				editingStatHTML+="<h3>Rarity Up Statistics</h3>"
 				editingStatHTML+="<span style='color: #5f7f9f'>Total Rarity Up: "+player.bookstat.artisan.totalrarityup
@@ -2913,7 +2915,7 @@
 				}
 				editingStatHTML+="</span><span style='color: #5f9f5f'>Total Success: "+player.bookstat.artisan.totalrarityupsuccess+"</span>"
 				editingStatHTML+="<span style='color: #9f5f5f'>Total Fail: "+player.bookstat.artisan.totalrarityupfail+"</span>"
-				editingStatHTML+="<span style='color: #5f7f9f'>Expected Success: "+player.bookstat.artisan.totalrarityupexpectedsuccess+"</span>"
+				editingStatHTML+="<span style='color: #5f7f9f'>Expected Success: "+approx(player.bookstat.artisan.totalrarityupexpectedsuccess*100)/100+"</span>"
 				editingStatHTML+="<span style='color: #5f7f9f'>Success Variance: "+approx(player.bookstat.artisan.rarityupsuccessvariance*1000)/1000+"</span>"
 				document.getElementById("book-content").innerHTML+=editingStatHTML
 			}
@@ -4847,8 +4849,8 @@
 			document.getElementById("help").style.display="flex"
 			document.getElementById("helpsvg").setAttribute("d","M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M50 18L50 62")
 		}
-		function openInventory(open=true) {
-			if(animation) return
+		function openInventory(open=true,force=false) {
+			if(animation && !force) return
 			if(open && document.getElementById("inventory").style.display==="flex") {
 				openInventory(false)
 				return
@@ -5686,7 +5688,9 @@
 				editingGridGalleryHTML+="<span style='color: #7fdf7f'>Health: "+testMob.health+"</span>"
 				editingGridGalleryHTML+="<span style='color: #ff7f7f'>Damage: "+testMob.damage+"</span>"
 				editingGridGalleryHTML+="<span style='color: #7fdf7f'>Dodge: "+testMob.dodge+"%</span>"
-				editingGridGalleryHTML+="<span style='color: #9f9fff'>Speed: "+testMob.speed+"</span><br><br>"
+				editingGridGalleryHTML+="<span style='color: #9f9fff'>Speed: "+testMob.speed+"</span>"
+				editingGridGalleryHTML+="<span style='color: #7f7f7f'>Killed/Looted: "+player.gallery[MobNameList[gridX]]["rarity"+gridY+"killed"]+"/"+player.gallery[MobNameList[gridX]]["rarity"+gridY+"looted"]+"</span><br>"
+				if(player.gallery[MobNameList[gridX]]["rarity"+gridY+"looted"]>0) editingGridGalleryHTML+="<br>"
 				document.getElementById("gridinfo").innerHTML=editingGridGalleryHTML
 				if(player.gallery[MobNameList[gridX]]["rarity"+gridY+"looted"]>0 && MobLootList[testMob.id].length>0) {
 					for(let i=0;i<MobLootList[testMob.id].length;i++) {
@@ -5772,7 +5776,7 @@
 		}
 		function startFight() {
 			if(lupoper.active===true) cancelLevelUp()
-			openInventory(false)
+			openInventory(false,true)
 			fight.active=true
 			fight.ready=false
 			fight.flower.effect=new Object()
@@ -5832,10 +5836,10 @@
 				if(fight.petal[i].name==="Cactus") {
 					if(!fight.flower.effect.hasOwnProperty("bloom")) fight.flower.effect.bloom={buff:0}
 					fight.flower.effect.bloom.buff+=fight.petal[i].health
-					fight.flower.health=FlowerMaxHealth()
-					fight.flower.currenthealth=FlowerMaxHealth()
 				}
 			}
+			fight.flower.health=FlowerMaxHealth()
+			fight.flower.currenthealth=FlowerMaxHealth()
 			updateFlowerState()
 			fight.turn="Flower"
 			updateT()
@@ -6062,8 +6066,8 @@
 			player.bookstat.artisan.totallevelup++
 			player.bookstat.artisan.totalraritylevelup[targetPetal.rarity]++
 			player.bookstat.artisan.totalleveluppetalused+=lupoper.selectedArray.length
-			player.bookstat.artisan.totallevelupexpectedsuccess+=lupSuccessChance
-			player.bookstat.artisan.levelupsuccessvariance+=lupSuccessChance*(1-lupSuccessChance)
+			player.bookstat.artisan.totallevelupexpectedsuccess+=0.01*lupSuccessChance
+			player.bookstat.artisan.levelupsuccessvariance+=(0.01*lupSuccessChance)*(1-0.01*lupSuccessChance)
 			if(determine(lupSuccessChance)) {
 				addLog("[Craft] Success!","#df9f7f")
 				player.bookstat.artisan.totallevelupsuccess++
@@ -6126,8 +6130,8 @@
 			let rupSuccessChance=PetalRarityUpChance(targetPetal.rarity,targetPetal.level)
 			player.bookstat.artisan.totalrarityup++
 			player.bookstat.artisan.totalrarityrarityup[targetPetal.rarity]++
-			player.bookstat.artisan.totalrarityupexpectedsuccess+=rupSuccessChance
-			player.bookstat.artisan.rarityupsuccessvariance=rupSuccessChance*(1-rupSuccessChance)
+			player.bookstat.artisan.totalrarityupexpectedsuccess+=0.01*rupSuccessChance
+			player.bookstat.artisan.rarityupsuccessvariance=(0.01*rupSuccessChance)*(1-0.01*rupSuccessChance)
 			if(determine(rupSuccessChance)) {
 				addLog("[Craft] Success!","#df9f7f")
 				player.bookstat.artisan.totalrarityupsuccess++
