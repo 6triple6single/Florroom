@@ -1,1 +1,1 @@
-Base Florr Completed, Petals after Yin Yang doesn't have specialty.
+Base Florr Completed, Petals after Compass doesn't have specialty.
