@@ -1748,7 +1748,6 @@
 				this.print()
 				this.state="Retired"
 				collapseGrid(getGrid(0,this.x,this.y))
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Pollen") {
@@ -1989,7 +1988,6 @@
 				this.y=targetY
 				this.print()
 				fight.manipulate=false
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			fight.manipulate=true
@@ -1998,9 +1996,8 @@
 		Petal.prototype.attack=async function(targetX,targetY) {
 			if(this.state==="Suspended") return
 			if(targetX!==undefined) {
-				let targetMob,confirmation2calc
+				let targetMob
 				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===targetX && fight.mob[i].y===targetY) targetMob=fight.mob[i]
-				if(targetMob.name==="!Dandelion!") confirmation2calc=targetMob.count
 				if(this.name==="Air" && this.calculate>0) {
 					targetMob.move(this.calculate)
 					this.calculate=0
@@ -2051,22 +2048,13 @@
 						flowerHeal(approx(damageDealt/2),"Lifesteal")
 					}
 					this.print()
-					if(targetMob.name==="Dandelion" && targetMob.currenthealth<=0) {
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
-						confirmation2=true
-						await waitConfirmation2()
-					}
-					if(targetMob.name==="!Dandelion!" && (targetMob.currenthealth<=0 || targetMob.count!==confirmation2calc)) {
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
-						confirmation2=true
-						await waitConfirmation2()
-					}
+					await waitAnimation()
+					missileCheck()
+					await waitMissile()
 					fight.manipulate=false
-					localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				} else {
 					this.print()
 					fight.manipulate=false
-					localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				}
 				return
 			}
@@ -2077,19 +2065,20 @@
 			if(animation) return
 			if(this.state==="Suspended") return
 			if(targetX!==undefined) {
-				let targetMob,confirmation2calc
+				let targetMob
 				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===targetX && fight.mob[i].y===targetY) targetMob=fight.mob[i]
 				if(!targetMob) {
 					addLog("[Petal] Shoot of "+this.name+" ended.","#9f9fdf")
 					this.destroy("Shoot")
 					this.shootatt.bounce=0
 					delete this.shootatt.hitarray
+					await waitAnimation()
+					missileCheck()
+					await waitMissile()
 					fight.manipulate=false
-					localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 					collapseTempGrid()
 					return
 				}
-				if(targetMob.name==="!Dandelion!") confirmation2calc=targetMob.count
 				addLog("[Petal] Shoot of "+this.name+": to "+targetMob.name+" at ("+targetMob.x+","+targetMob.y+")...","#9f9fdf")
 				if(determine(ShootSuccessChance(this,targetMob),true," for shoot")) {
 					if(getGrid(79,this.shootatt.x,this.shootatt.y)) getGrid(79,this.shootatt.x,this.shootatt.y).style.opacity=0.2
@@ -2104,30 +2093,6 @@
 						targetMob.injure({effectturn:5},"Suppression")
 					}
 					this.shootatt.hitarray.push(targetMob)
-					if(targetMob.name==="Dandelion" && targetMob.currenthealth<=0) {
-						this.destroy("Shoot")
-						this.shootatt.bounce=0
-						delete this.shootatt.hitarray
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
-						confirmation2=true
-						await waitConfirmation2()
-						fight.manipulate=false
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
-						collapseTempGrid()
-						return
-					}
-					if(targetMob.name==="!Dandelion!" && (targetMob.currenthealth<=0 || targetMob.count!==confirmation2calc)) {
-						this.destroy("Shoot")
-						this.shootatt.bounce=0
-						delete this.shootatt.hitarray
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
-						confirmation2=true
-						await waitConfirmation2()
-						fight.manipulate=false
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
-						collapseTempGrid()
-						return
-					}
 					let tempGrid=createGrid(79,targetX,targetY,"Petal_"+PetalNameList[this.id],1,this.rarity)
 					tempGrid.classList.add("apos")
 					tempGrid.style.top=getGrid(0,targetX,targetY).getBoundingClientRect().top+"px"
@@ -2135,15 +2100,16 @@
 					tempGrid.style.opacity=0.5
 					document.body.appendChild(tempGrid)
 					this.shootatt.bounce++
-					localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 					this.shootatt.continue=true
 					return
 				} else {
 					this.destroy("Shoot")
 					this.shootatt.bounce=0
 					delete this.shootatt.hitarray
+					await waitAnimation()
+					missileCheck()
+					await waitMissile()
 					fight.manipulate=false
-					localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 					collapseTempGrid()
 					return
 				}
@@ -2155,14 +2121,13 @@
 			fight.manipulate=true
 			operPrepare(this,"Shoot")
 		}
-		Petal.prototype.skill=function() {
+		Petal.prototype.skill=async function() {
 			if(this.name==="Rose") {
 				selectedGrid.select=false
 				closeGridInfo()
 				flowerHeal(2*this.health,this)
 				this.actionbar=0
 				this.destroy("Skill")
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Faster") {
@@ -2175,7 +2140,6 @@
 					fight.petal[i].progress(pendingProgress)
 				}
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Bubble") {
@@ -2192,7 +2156,6 @@
 				}
 				flowerHeal({effectturn:immuneTurn},"Immunity")
 				this.destroy("Skill")
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Beetle Egg") {
@@ -2206,7 +2169,6 @@
 				this.def1=60
 				this.def2=60
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Antennae") {
@@ -2218,7 +2180,6 @@
 				}
 				delete this.effect.refresh
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Yin") {
@@ -2245,7 +2206,6 @@
 					}
 					closestMob.injure({effectturn:10},"Restraint")
 				}
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Lightning") {
@@ -2261,7 +2221,8 @@
 				}
 				this.actionbar=0
 				this.destroy("Skill")
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
+				await waitAnimation()
+				missileCheck()
 				return
 			}
 			if(this.name==="Shell") {
@@ -2270,7 +2231,6 @@
 				flowerHeal(2*this.health,"Shield")
 				this.actionbar=0
 				this.destroy("Skill")
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Dahlia") {
@@ -2283,7 +2243,6 @@
 					this.actionbar=0
 				}
 				this.destroy("Skill")
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Stick") {
@@ -2297,7 +2256,6 @@
 				this.def1=80
 				this.def2=80
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Ant Egg") {
@@ -2311,7 +2269,6 @@
 				this.def1=60
 				this.def2=60
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Cotton") {
@@ -2320,7 +2277,6 @@
 				addLog("[Petal] Cotton is suspended.","#9f9fdf")
 				this.state="Suspended"
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Mark") {
@@ -2341,7 +2297,6 @@
 					}
 				}
 				flowerInjure(approx(fight.flower.health*(0.3-0.03*this.rarity-0.01*this.level)),"Mark")
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Dice") {
@@ -2362,7 +2317,6 @@
 				if(this.calculate===5) this.atk2=100
 				if(this.calculate===6) this.def2=100
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Compass") {
@@ -2382,7 +2336,6 @@
 				fight.turn="Mob"
 				flowerInjure(approx(fight.flower.health*(0.3-0.03*this.rarity-0.01*this.level)),"Shovel")
 				endTurn()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Chip") {
@@ -2397,7 +2350,6 @@
 					if(this.effect.immunity<1) this.effect.immunity=1
 				}
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Card") {
@@ -2413,18 +2365,18 @@
 				if(this.calculate===5) this.atk2=100
 				if(this.calculate===6) this.def2=100
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Glass") {
 				selectedGrid.select=false
 				closeGridInfo()
 				this.actionbar-=skillRequirement(this)
-				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===this.x) {
+				for(let i=fight.mob.length-1;i>=0;i--) if(fight.mob[i].x===this.x) {
 					fight.mob[i].injure(this.damage,this)
 				}
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
+				await waitAnimation()
+				missileCheck()
 				return
 			}
 			if(this.name==="Monstera") {
@@ -2436,7 +2388,6 @@
 					if(fight.petal[i].currenthealth>fight.petal[i].health) fight.petal[i].currenthealth=fight.petal[i].health
 					fight.petal[i].print()
 				}
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(this.name==="Domino") {
@@ -2453,7 +2404,6 @@
 				if(this.atk2<this.calculate) this.atk2=betterFloor(this.calculate/10)*10
 				if(this.atk2>100) this.atk2=100
 				this.print()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 		}
@@ -2637,16 +2587,13 @@
 					spawnNear(new Mob(summonSeed,this.rarity,this.shiny),0,0)
 				}
 				if(this.name==="!Dandelion!") {
-					this.calculate=8
 					for(let i=1;i<=8;i++) {
 						let shootingMissile=this.clone()
 						shootingMissile.origin=this
 						shootingMissile.name+=" (Missile)"
 						shootingMissile.damage=approx(0.2*shootingMissile.damage)
 						shootingMissile.dodge=50-10*betterFloor((i-1)/2)
-						shootingMissile.attack()
-						confirmation3=true
-						await waitConfirmation3()
+						fight.missile.push(shootingMissile)
 					}
 				}
 				return
@@ -2695,16 +2642,12 @@
 				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].y>0) fight.petal[i].knockback(100)
 			}
 			if(this.name==="Dandelion") {
-				this.calculate=2
 				for(let i=1;i<=2;i++) {
 					let shootingMissile=this.clone()
 					shootingMissile.origin=this
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.dodge=10
-					shootingMissile.attack()
-					fillMob()
-					confirmation3=true
-					await waitConfirmation3()
+					fight.missile.push(shootingMissile)
 				}
 			}
 			if(this.name==="Termite Egg" && this.effect.noloot) {
@@ -2719,10 +2662,7 @@
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(0.2*shootingMissile.damage)
 					shootingMissile.dodge=60-10*betterFloor((i-1)/2)
-					shootingMissile.attack()
-					fillMob()
-					confirmation3=true
-					await waitConfirmation3()
+					fight.missile.push(shootingMissile)
 				}
 			}
 			let termiteFlag=false,termiteType=["Baby Termite","Worker Termite","Soldier Termite","Termite Overmind","Termite Egg"]
@@ -2732,6 +2672,11 @@
 				fight.mob[i].remove()
 			}
 			fillMob()
+			if(fight.turn==="Mob") {
+				missileCheck()
+				await waitMissile()
+			}
+			updateT()
 		}
 		Mob.prototype.injure=function(damage,petal) {
 			if(this.name.match("(Missile)")!==null) return
@@ -3124,6 +3069,8 @@
 			await waitConfirmation()
 			if(this.currenthealth<=0 && this.count<=1) return
 			await waitAnimation()
+			missileCheck()
+			await waitMissile()
 			if(MobAttributeList[this.id].match("Doesn't move")===null) {
 				let moveflag=true
 				if(this.name==="!Hornet!" && this.calculate>=3) {
@@ -3210,9 +3157,7 @@
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(shootingMissile.damage/5)
 					shootingMissile.dodge=20
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
 				if(this.name==="Scorpion") {
 					let shootingMissile=this.clone()
@@ -3220,9 +3165,7 @@
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(shootingMissile.damage/3)
 					shootingMissile.dodge=30
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
 				if(this.name==="Jellyfish") {
 					flowerInjure(approx(0.4*this.damage),"Lightning")
@@ -3230,15 +3173,13 @@
 				if(this.name==="Leech") {
 					flowerInjure(approx(0.5*this.damage),this)
 				}
-				if(this.name==="Mantis") for(let i=1;i<=3;i++) if(this.currenthealth>0) {
+				if(this.name==="Mantis") for(let i=1;i<=3;i++) {
 					let shootingMissile=this.clone()
 					shootingMissile.origin=this
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=1
 					shootingMissile.dodge=10
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
 				if(this.name==="Beetle (Hell)") {
 					if(this.effect.charge) {
@@ -3251,46 +3192,38 @@
 				}
 				if(this.name==="Wasp") {
 					let shootingRepeat=roll(1,2)
-					for(let i=1;i<=shootingRepeat;i++) if(this.currenthealth>0) {
+					for(let i=1;i<=shootingRepeat;i++) {
 						let shootingMissile=this.clone()
 						shootingMissile.origin=this
 						shootingMissile.name+=" (Missile)"
 						shootingMissile.damage=approx(shootingMissile.damage/5)
 						shootingMissile.dodge=20
-						shootingMissile.attack()
-						confirmation2=true
-						await waitConfirmation2()
+						fight.missile.push(shootingMissile)
 					}
 				}
-				if(this.name==="Wasp (Hell)") for(let i=1;i<=5;i++) if(this.currenthealth>0) {
+				if(this.name==="Wasp (Hell)") for(let i=1;i<=5;i++) {
 					let shootingMissile=this.clone()
 					shootingMissile.origin=this
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(shootingMissile.damage/10)
 					shootingMissile.dodge=10
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
-				if(this.name==="!Hornet!") for(let i=1;i<=3;i++) if(this.currenthealth>0) {
+				if(this.name==="!Hornet!") for(let i=1;i<=3;i++) {
 					let shootingMissile=this.clone()
 					shootingMissile.origin=this
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(0.4*shootingMissile.damage)
 					shootingMissile.dodge=40
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
-				if(this.name==="!Dandelion!") for(let i=1;i<=8;i++) if(this.currenthealth>0) {
+				if(this.name==="!Dandelion!") for(let i=1;i<=8;i++) {
 					let shootingMissile=this.clone()
 					shootingMissile.origin=this
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(0.2*shootingMissile.damage)
 					shootingMissile.dodge=70-10*this.count-10*betterFloor((i-1)/2)
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
 				if(this.name==="!Scorpion!") {
 					let shootingMissile=this.clone()
@@ -3298,20 +3231,16 @@
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(shootingMissile.damage/5)
 					shootingMissile.dodge=80
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
 				if(this.name==="!Shell!") {
 					if(this.effect.pearl>=5) {
-						for(let i=1;i<=this.effect.pearl;i++) if(this.currenthealth>0) {
+						for(let i=1;i<=this.effect.pearl;i++) {
 							let shootingMissile=this.clone()
 							shootingMissile.origin=this
 							shootingMissile.name+=" (Missile)"
 							shootingMissile.dodge=40
-							shootingMissile.attack()
-							confirmation2=true
-							await waitConfirmation2()
+							fight.missile.push(shootingMissile)
 						}
 						delete this.effect.pearl
 					} else {
@@ -3325,25 +3254,21 @@
 					if(this.effect.hasOwnProperty("suppression")) buffEffectiveness-=2*this.effect.suppression.turn
 					if(buffEffectiveness>0) this.damage+=approx(this.effect.origindamage*buffEffectiveness/100)
 				}
-				if(this.name==="!Mantis!") for(let i=1;i<=5;i++) if(this.currenthealth>0) {
+				if(this.name==="!Mantis!") for(let i=1;i<=5;i++) {
 					let shootingMissile=this.clone()
 					shootingMissile.origin=this
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(shootingMissile.damage/5)
 					shootingMissile.dodge=20
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
-				if(this.name==="!Wasp!") for(let i=1;i<=3;i++) if(this.currenthealth>0) {
+				if(this.name==="!Wasp!") for(let i=1;i<=3;i++) {
 					let shootingMissile=this.clone()
 					shootingMissile.origin=this
 					shootingMissile.name+=" (Missile)"
 					shootingMissile.damage=approx(0.4*shootingMissile.damage)
 					shootingMissile.dodge=20
-					shootingMissile.attack()
-					confirmation2=true
-					await waitConfirmation2()
+					fight.missile.push(shootingMissile)
 				}
 			}
 			if(attackFlag) {
@@ -3351,12 +3276,14 @@
 				confirmation2=true
 				operPrepare(this,"Defend")
 				updateT()
-				if(this.name.match("(Missile)")!==null) return
 				await waitConfirmation2()
 			}
-			fight.mobattack=false
-			confirmation=false
-			updateT()
+			if(this.name.match("(Missile)")===null) {
+				fight.mobattack=false
+				confirmation=false
+				updateT()
+			}
+			if(this.name.match("(Missile)")!==null) missileCheck()
 		}
 		function spawnNear(mob,targetX,targetY,noloot) {
 			if(targetX===0 && targetY===0) {
@@ -4411,24 +4338,26 @@
 		for(let i in fight.mob) fight.mob[i]=Object.assign(new Mob(),fight.mob[i])
 		if(!fight.spawnmob) fight.spawnmob=new Array()
 		for(let i in fight.spawnmob) fight.spawnmob[i]=Object.assign(new Mob(),fight.spawnmob[i])
+		if(!fight.missile) fight.missile=new Array()
+		for(let i in fight.missile) fight.missile[i]=Object.assign(new Mob(),fight.missile[i])
 		localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 		localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 		localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
-		let animation=false,confirmation=false,confirmation2=false,confirmation3=false
+		let animation=false,confirmation=false,confirmation2=false,missile=false
 		function delay(time) {
 			return new Promise(resolve => setTimeout(resolve,time))
 		}
-		function waitAnimation(time) {
+		function waitAnimation() {
 			return new Promise(resolve => {const checkAnimation=() => animation? setTimeout(checkAnimation,20):resolve(); checkAnimation()})
 		}
-		function waitConfirmation(time) {
+		function waitConfirmation() {
 			return new Promise(resolve => {const checkConfirmation=() => confirmation? setTimeout(checkConfirmation,20):resolve(); checkConfirmation()})
 		}
-		function waitConfirmation2(time) {
+		function waitConfirmation2() {
 			return new Promise(resolve => {const checkConfirmation2=() => confirmation2? setTimeout(checkConfirmation2,20):resolve(); checkConfirmation2()})
 		}
-		function waitConfirmation3(time) {
-			return new Promise(resolve => {const checkConfirmation3=() => confirmation3? setTimeout(checkConfirmation3,20):resolve(); checkConfirmation3()})
+		function waitMissile() {
+			return new Promise(resolve => {const checkMissile=() => missile? setTimeout(checkMissile,20):resolve(); checkMissile()})
 		}
 		async function copyToClipboard(text) {
 			await navigator.clipboard.writeText(text)
@@ -5761,6 +5690,7 @@
 			document.getElementById("calendar-minute").innerHTML=Math.min(player.calendar.minute,79)
 			if(player.calendar.minute<10) document.getElementById("calendar-minute").innerHTML="0"+player.calendar.minute
 			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
+			localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 			document.getElementById("calendar").style.display="flex"
 			updatingCalendar=false
 		}
@@ -6509,6 +6439,7 @@
 			fight.petal=new Array()
 			fight.mob=new Array()
 			fight.spawnmob=new Array()
+			fight.missile=new Array()
 			if(explore.floor===0 && explore.flowerspot===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
 				fight.mob[0]=new Mob("Rock",7,0)
 				fight.mob[0].x=1
@@ -6535,7 +6466,6 @@
 				explore.event.artisanguide=1
 				dialog("Skip")
 			}
-			localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 			document.getElementById("flower-effect").innerHTML=""
 			displayFightField()
 			displayFight()
@@ -6672,7 +6602,6 @@
 			updateFlowerState()
 			fight.turn="Flower"
 			updateT()
-			localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 		}
 		function endFight(win) {
 			if(animation) return
@@ -6684,7 +6613,6 @@
 			fight.active=false
 			fight.ready=false
 			fight.manipulate=false
-			localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 			openInventory(false)
 			if(win!==true) {
 				for(let i in player.inventory) {
@@ -6696,7 +6624,6 @@
 				}
 				localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 				fight.flower.effect=new Object()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				explore.flowerspot=explore.floweroldspot
 				localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 				updateFlowerSpot(true)
@@ -6744,12 +6671,12 @@
 				let saveFloor=explore.floor
 				explore=new Object()
 				explore.floor=saveFloor+1
+				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 				endFloor(saveFloor)
 				return
 			}
 			fight.flower.effect=new Object()
-			localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 			localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 			displayMap()
 			updateFlowerState()
@@ -7218,18 +7145,18 @@
 				}
 				return
 			}
-			if(fight.turn==="Bonus") {
+			if(fight.turn==="Bonus" && !missile) {
 				document.getElementById("fight-t-btn").innerHTML="[T] End Turn (Bonus Turn)"
 				document.getElementById("fight-t-btn").setAttribute("onclick","endTurn()")
 				document.getElementById("fight-t-btn").style.cursor="pointer"
 			}
-			if(fight.turn==="Flower") {
+			if(fight.turn==="Flower" && !missile) {
 				document.getElementById("fight-t-btn").innerHTML="[T] End turn"
 				document.getElementById("fight-t-btn").setAttribute("onclick","endTurn()")
 				document.getElementById("fight-t-btn").style.cursor="pointer"
 			}
-			if(fight.turn==="Mob") {
-				if(fight.mobattack===true) {
+			if(fight.turn==="Mob" || missile) {
+				if(fight.mobattack===true || missile===true) {
 					document.getElementById("fight-t-btn").innerHTML="[T] Skip Defend"
 					document.getElementById("fight-t-btn").setAttribute("onclick","mobDefend('Skip')")
 					document.getElementById("fight-t-btn").style.cursor="pointer"
@@ -7520,7 +7447,6 @@
 							fight.mob[i].print()
 						}
 						fight.manipulate=false
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 					}
 					if(operingThing.name==="Yang") {
 						addLog("[Petal] Petals shifted.","#9f9fdf")
@@ -7534,7 +7460,6 @@
 							fight.petal[i].print()
 						}
 						fight.manipulate=false
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 					}
 					if(operingThing.name==="Compass") {
 						for(let i=1;i<=4;i++) if(3+dx[i]===operingX && 5+dy[i]===operingY) {
@@ -7542,7 +7467,6 @@
 							operingThing.print()
 						}
 						fight.manipulate=false
-						localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 					}
 				}
 				if(operingType==="Defend") {
@@ -7590,7 +7514,7 @@
 				shootingMissile.origin=operingThing
 				shootingMissile.name+=" (Missile)"
 				shootingMissile.dodge=10
-				shootingMissile.attack()
+				fight.missile.push(shootingMissile)
 			}
 			return
 		}
@@ -7690,7 +7614,6 @@
 				fight.mob[fight.mob.length-1].print()
 			}
 			if(fight.mob.length===0) endFight(true)
-			localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 		}
 		function spawnMob() {
 			for(let i=0;i<fight.mob.length;i++) {
@@ -7733,7 +7656,6 @@
 				fight.manipulate=false
 				for(let i=0;i<fight.petal.length;i++) fight.petal[i].progress()
 				updateT()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(fight.turn==="Bonus" || fight.turn==="Mob") {
@@ -7820,7 +7742,6 @@
 				fight.manipulate=false
 				for(let i=0;i<fight.petal.length;i++) fight.petal[i].progress()
 				updateT()
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				return
 			}
 			if(fight.turn==="Flower") {
@@ -7844,7 +7765,6 @@
 				addLog("[Turn] Flower turn ended. Mob turn starts.","#df9f9f")
 				fight.turn="Mob"
 				fight.manipulate=true
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				for(let i=fight.mob.length-1;i>=0;i--) {
 					fight.mob[i].progress()
 					if(fight.mob[i].effect.hasOwnProperty("poison")) {
@@ -8195,8 +8115,6 @@
 		}
 		function mobDefend(petal) {
 			if(animation) return
-			let confirmation2flag=false,confirmation2calc
-			if(operingThing.name==="!Dandelion!") confirmation2calc=operingThing.count
 			if(petal==="Skip") addLog("[Flower] Defend Skipped","#00bfbf")
 			if(isPetal(petal) && determine(DefendSuccessChance(petal,operingThing,"Auto","Auto"),true," for defend")) {
 				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].name==="Bulb" && fight.petal[i].calculate>0) fight.petal[i].calculate=0
@@ -8249,9 +8167,8 @@
 				if(petal.name==="Poo") {
 					operingThing.injure({effectturn:5+2*petal.level},"Tardy")
 				}
-				if(operingThing.name==="Shell" && operingThing.currenthealth>0) {
+				if(operingThing.name==="Shell") {
 					operingThing.calculate=1
-					confirmation2flag=true
 				}
 				if(operingThing.name==="!Shell!") {
 					if(!operingThing.effect.hasOwnProperty("pearl")) operingThing.effect.pearl=0
@@ -8305,30 +8222,22 @@
 			if(isPetal(petal) && petal.name==="Chip" && petal.effect.hasOwnProperty("immunity")) {
 				petal.progress(250)
 			}
-			if(operingThing.name==="Dandelion" && operingThing.currenthealth<=0) confirmation2flag=true
-			if(operingThing.name==="!Dandelion!" && (operingThing.currenthealth<=0 || operingThing.count!==confirmation2calc)) confirmation2flag=true
 			if(operingThing.name==="Dandelion (Missile)" && operingThing.origin.calculate>1) {
 				operingThing.origin.calculate--
-				confirmation2flag=true
-				confirmation3=false
 			}
 			if(operingThing.name==="Dandelion (Missile)" && operingThing.origin.calculate===1) {
 				operingThing.origin.calculate=0
-				confirmation3=false
 			}
 			if(operingThing.name==="Firefly") {
 				flowerInjure(3*operingThing.damage,"Lightning")
 			}
 			if(operingThing.name==="!Dandelion! (Missile)" && operingThing.origin.calculate>1) {
 				operingThing.origin.calculate--
-				confirmation2flag=true
-				confirmation3=false
 			}
 			if(operingThing.name==="!Dandelion! (Missile)" && operingThing.origin.calculate===1) {
 				operingThing.origin.calculate=0
-				confirmation3=false
 			}
-			confirmation2=confirmation2flag
+			confirmation2=false
 		}
 		function useItem(itemname) {
 			if(animation) return
@@ -8356,6 +8265,16 @@
 		function actionConfirm() {
 			if(animation) return
 			mobActionCheck()
+		}
+		function missileCheck() {
+			if(fight.missile.length===0) {
+				missile=false
+				updateT()
+				return
+			}
+			missile=true
+			fight.missile[0].attack()
+			fight.missile.splice(0,1)
 		}
 	</script>
 	<script>
@@ -8574,6 +8493,7 @@
 		<br>
 		<span>The last update was on 2025/11/30,</span>
 		<span>petals are finally completed, yay!</span>
+		<span>Mob missile are reworked. Fight now saves automatically in localStorage.</span>
 		<br>
 		<span>The last update was on 2025/11/29,</span>
 		<span>which updated many petals. Also some display improvement.</span>
