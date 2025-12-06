@@ -957,52 +957,6 @@
 		}
 	</style>
 	<script>
-		function test(asdfgh=0) {
-			fight.petal=new Array()
-			fight.mob=new Array()
-			for(let i=0;i<48;i++) if(PetalNameList[i+48*asdfgh]) {
-				fight.petal.push(new Petal(i+48*asdfgh,roll(1,6),i%3))
-				fight.petal[fight.petal.length-1].x=i%8+1
-				fight.petal[fight.petal.length-1].y=betterFloor(i/8)+1
-				fight.petal[fight.petal.length-1].state="Existing"
-				if(fight.petal[fight.petal.length-1].name==="Yin Yang") fight.petal[fight.petal.length-1].name="Yin"
-				if(fight.petal[fight.petal.length-1].name==="Third Eye") fight.petal[fight.petal.length-1].name="Concentrated Eye"
-				if(fight.petal[fight.petal.length-1].name==="Tomato") fight.petal[fight.petal.length-1].calculate=79
-				if(fight.petal[fight.petal.length-1].name==="Dice") fight.petal[fight.petal.length-1].calculate=3
-			}
-			displayFightField()
-		}
-		function tset(asdfgh=0) {
-			fight.petal=new Array()
-			fight.mob=new Array()
-			for(let i=0;i<48;i++) if(MobNameList[i+48*asdfgh]) {
-				fight.mob.push(new Mob(i+48*asdfgh,roll(1,7)))
-				fight.mob[fight.mob.length-1].x=i%8+1
-				fight.mob[fight.mob.length-1].y=betterFloor(i/8)+1
-			}
-			displayFightField()
-		}
-		let testspin=0,testspingo=0
-		function testspinidk() {
-			testspin=(testspin+testspingo)%360
-			if(testspin===0 && testspingo===0) return
-			if(testspin!==0 && testspingo===0) testspin=0
-			if(testspin**2===100) testspingo=-testspin/10
-			for(let i=1;i<=8;i++) {
-				for(let j=1;j<=6;j++) {
-					if(getGrid(0,i,j).children[1]!==undefined) {
-						getGrid(0,i,j).children[1].children[0].style.transform="rotate("+testspin+"deg)"
-						getGrid(0,i,j).children[2].style.setProperty("--transform2","translate(0px,15px)")
-					} else if(getGrid(0,i,j).children[0]!==undefined) {
-						getGrid(0,i,j).children[0].style.setProperty("--transform2","translate(0px,-4px)")
-					}
-				}
-			}
-		}
-		setInterval(testspinidk,50)
-		function tests() {
-			testspingo=1-testspingo**2
-		}
 		const PetalNameList=["Basic","Light","Rock","Rose","Stinger","Iris","Wing","Missile","Grapes","Cactus","Faster","Bubble","Pollen","Dandelion","Beetle Egg","Antennae","Heavy","Yin Yang","Web","Honey","Leaf","Salt","Rice","Corn","Sand","Pincer","Yucca","Magnet","Yggdrasil","Starfish","Pearl","Lightning","Jelly","Claw","Shell","Dahlia","Sponge","Soil","Fangs","Third Eye","Peas","Stick","Clover","Powder","Air","Basil","Orange","Ant Egg","Poo","Relic","Lotus","Bulb","Cotton","Carrot","Bone","Plank","Tomato","Mark","Rubber","Blood Stinger","Bur","Root","Dice","Talisman","Battery","Amulet","Compass","Disc","Shovel","Coin","Chip","Card","Moon Rock","Privet","Glass","Corruption","Coral","Wax","Golden Leaf","Monstera","Domino","Triangle"]
 		PetalNameList[222]="2 Turn Kill"
 		const PetalLowestRarityList=[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,4,1,1,1,1,1,1,1,1,1,4,5,1,1,1,1,1,1,1,1,4,1,5,1,4,1,4,1,5,1,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,5,1,1,5,1,5,5,4,1,1]
@@ -1141,9 +1095,9 @@
 		const MobDescriptionList=["","Just a rock. Maybe does something.","Avoid its thorns, that hurts.","Cute and harmless.","Stings. Don't touch it.","Weak and defenseless like you.","Still a weak one.","Got wings and ready to use them.","Really fat.","Ants hiding inside.","Hungry and flowers are its favorite meal.","Not as nice as the little bees.","Just there doing its thing.","Loves flowers.","Gotta go fast.","Cute and harmless too.","Shiny. Cute and harmless.","Spooky.","Stings!","Ant on fire.","Is this ant hole on fire?","Weather experts advise flowers not to go out.","Pop.","Gotta run.","Help. My petal is attacking me.","Retreats for heal.","Agile and hurts.","Makes the most delicious jam.","Absorbs damage taken by nearby mobs.","Slurp slurp.","Flower with many dandelions equipped.","Ant on fire.","Ant on fire.","Queen ant on fire.","Flies.","Leaf-shaped bug.","You better pray you don't become dinner.","Weak and defenseless but appears to be connected.","Still weak but appears to be connected.","Got wings and appears to be connected.","Fat and appears to be connected.","Why is this one not connected?","Not connected too.","Animals hiding inside.","Gotta go fast until gets tired.","Easily scared.","Shiny lightbulb.","Exotic creature.","They are angry.","Exotic creature.","Exotic creature.","Exotic creature."]
 		MobDescriptionList[66]="This could happen to you."
 		Object.assign(MobDescriptionList,{101:"Well, this one is evil and hungry.",102:"Got webs and good at using them.",103:"Why is the sky becoming white?",104:"A flower a day keeps summoner away~",105:"Be careful, it is quite poisonous.",106:"If you really want to go out in such a natural disaster...",107:"Harder shell. An unfriendly one is inside.",108:"Dr. Crab has won tons of battles. You are going to be a new defeated challenger.",109:"How to get rid of this?",110:"Flies around in unpredictable ways.",111:"Gotta go faster! Never feels tired.",112:"Hands up! You are surrounded!",113:"Why is this leaf so difficult to defeat? Must be a bug.",114:"Machine gun pea shooter enhanced.",115:"Mutated wasp. That's really frightening.",121:"He crafts everything... Including mobs?"})
-		const MobAttributeList=["","ACTION=Destroys without loot. Spawns (Worker Ant/Soldier Ant).","ATTRIBUTE=Doesn't move.&ATTACK=Can't be defended.","HOSTILE=30%","HOSTILE=10%","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Ant with rarity reduced by at most 2 and no loot, then attacks.","COUNT=10&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Baby Ant*2, Worker Ant*3, Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Queen Ant.","","ATTACK=Shoots a missile with [20%*Damage] and 20% accuracy instead.","COUNT=6&HOSTILE=10%&DAMAGE=Drops loot.","COUNT=6&DAMAGE=Drops loot.","COUNT=6&HOSTILE=30%&DAMAGE=Drops loot. Immunes all damage for 5 turns.","HOSTILE=30%","ATTRIBUTE=Guaranteed to be shiny.&HOSTILE=30%","CHARAC=Deals [1/3*Damage] [poison] for 8 turns when attack.","ATTACK=Shoots a missile with [1/3*Damage] and 30% accuracy instead. Applies [1/3*Damage] [poison] for 8 turns when hits.","","COUNT=5&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Soldier Ant*2.","ACTION=Additionally attacks if moving down outside first row.","ACTION=Destroys without loot. Deals 100 knockback to all petals.","ACTION=Has 30% probability to additionally attack.&CHARAC=Deals [50%*Damage] only when attack being defended.","ATTRIBUTE=Doesn't move.&HOSTILE=10%&CHARAC=When attack being defended, deals 100 knockback and shoots a missile for [100%*Damage] and 10% accuracy.","ACTION=When health is not above [50%*Health], heals for [20%*Health] and cancels action.","ACTION=Has 50% probability to attempt moving in row before attack.","ATTACK=Deals [40%*Damage] [lightning] instead. Can't be defended.","ATTRIBUTE=Doesn't move. Absorbs 50% of damage taken by other nearby enemies down to 1 health.&ACTION=Destroys without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Deals [50%*Damage] direct damage instead. Heals equal to damage dealt.","ACTION=Destroys without loot.&DESTROY=Shoots 2 missiles with [100%*Damage] and 10% accuracy. Applies disable passive heal for 10 turns when hits.","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Fire Ant with rarity reduced by at most 2 and no loot, then attacks.","","ATTRIBUTE=Has [50%*Damage] armor.&HOSTILE=20%","ATTACK=Shoots 3 missiles with 1 damage and 10% accuracy. Applies [25%*Damage] armor debuff for 10 turns when hits.","ATTRIBUTE=Connected.&ACTION=Additionally attacks if moving down outside first two rows.","ATTRIBUTE=Connected.&HOSTILE=50%","ATTRIBUTE=Connected.","ATTRIBUTE=Doesn't move. Immunes knockback. Connected.&HOSTILE=0%&ACTION=If hostile, destroys all termite mound without loot, then moves and attacks. Becomes hostile otherwise.","COUNT=2&ATTRIBUTE=Doesn't move. Destroys itself if remaining count is 1 and no termites are alive.&EXIST=Immunes all damage and prevents non-Termite mobs from spawning if remaining count is 1.&ACTION=Destroys a part if remaining count is 2. Does nothing otherwise.&DAMAGE=All other mobs retires (but will be back later) and clears all effects. Spawns Baby Termite*2, Worker Termite*3, Soldier Termite*4, (Termite Overmind/Termite Egg).","ACTION=Destroys without loot. Spawns Baby Termite without loot.","ATTRIBUTE=Doesn't move.&ACTION=Summons (Leafbug/Mantis/Firefly/Wasp) with rarity reduced by at most 1 and no loot.","HOSTILE=30%&STATURN=Speed becomes (health%+100%)/2 original value.","ATTRIBUTE=Gains 60% dodge while hostile.&HOSTILE=10%&ACTION=Retires if hostile.","HOSTILE=30%&CHARAC=Additionally deals [300%*Damage] [lightning] to flower whether attack is defended or not.","ACTION=Has 30% chance to charge up and cancel action if not charged.&ATTACK=Directly damages if charged up (and releases charging state).","ATTACK=Shoots (1~2) missiles with [20%*Damage] and 20% accuracy instead.","CHARAC=Deals [2/3*Damage] [poison] for 8 turns when attack.","COUNT=6&DAMAGE=Drops loot.","ATTACK=Shoots 5 missiles with [10%*Damage] and 10% accuracy instead."]
+		const MobAttributeList=["","ACTION=Destroys without loot. Spawns (Worker Ant/Soldier Ant) without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Can't be defended.","HOSTILE=30%","HOSTILE=10%","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Ant with rarity reduced by at most 2 and no loot, then attacks.","COUNT=10&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Baby Ant*2, Worker Ant*3, Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Queen Ant.","","ATTACK=Shoots a missile with [20%*Damage] and 20% accuracy instead.","COUNT=6&HOSTILE=10%&DAMAGE=Drops loot.","COUNT=6&DAMAGE=Drops loot.","COUNT=6&HOSTILE=30%&DAMAGE=Drops loot. Immunes all damage for 5 turns.","HOSTILE=30%","ATTRIBUTE=Guaranteed to be shiny.&HOSTILE=30%","CHARAC=Deals [1/3*Damage] [poison] for 8 turns when attack.","ATTACK=Shoots a missile with [1/3*Damage] and 30% accuracy instead. Applies [1/3*Damage] [poison] for 8 turns when hits.","","COUNT=5&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Soldier Fire Ant*4.&DESTROY=No loot if automatically destroyed. Summons Soldier Fire Ant*2.","ACTION=Additionally attacks if moving down outside first row.","ACTION=Destroys without loot. Deals 100 knockback to all petals.","ACTION=Has 30% probability to additionally attack.&CHARAC=Deals [50%*Damage] only when attack being defended.","ATTRIBUTE=Doesn't move.&HOSTILE=10%&CHARAC=When attack being defended, deals 100 knockback and shoots a missile for [100%*Damage] and 10% accuracy.","ACTION=When health is not above [50%*Health], heals for [20%*Health] and cancels action.","ACTION=Has 50% probability to attempt moving in row before attack.","ATTACK=Deals [40%*Damage] [lightning] instead. Can't be defended.","ATTRIBUTE=Doesn't move. Absorbs 50% of damage taken by other nearby enemies down to 1 health.&ACTION=Destroys without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Deals [50%*Damage] direct damage instead. Heals equal to damage dealt.","ACTION=Destroys without loot.&DESTROY=Shoots 2 missiles with [100%*Damage] and 10% accuracy. Applies disable passive heal for 10 turns when hits.","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Fire Ant with rarity reduced by at most 2 and no loot, then attacks.","","ATTRIBUTE=Has [50%*Damage] armor.&HOSTILE=20%","ATTACK=Shoots 3 missiles with 1 damage and 10% accuracy. Applies [25%*Damage] armor debuff for 10 turns when hits.","ATTRIBUTE=Connected.&ACTION=Additionally attacks if moving down outside first two rows.","ATTRIBUTE=Connected.&HOSTILE=50%","ATTRIBUTE=Connected.","ATTRIBUTE=Doesn't move. Immunes knockback. Connected.&HOSTILE=0%&ACTION=If hostile, destroys all termite mound without loot, then moves and attacks. Becomes hostile otherwise.","COUNT=2&ATTRIBUTE=Doesn't move. Destroys itself if remaining count is 1 and no termites are alive.&EXIST=Immunes all damage and prevents non-Termite mobs from spawning if remaining count is 1.&ACTION=Destroys a part if remaining count is 2. Does nothing otherwise.&DAMAGE=All other mobs retires (but will be back later) and clears all effects. Spawns Baby Termite*2, Worker Termite*3, Soldier Termite*4, (Termite Overmind/Termite Egg).","ACTION=Destroys without loot. Spawns Baby Termite without loot.","ATTRIBUTE=Doesn't move.&ACTION=Summons (Leafbug/Mantis/Firefly/Wasp) with rarity reduced by at most 1 and no loot.","HOSTILE=30%&STATURN=Speed becomes (health%+100%)/2 original value.","ATTRIBUTE=Gains 60% dodge while hostile.&HOSTILE=10%&ACTION=Retires if hostile.","HOSTILE=30%&CHARAC=Additionally deals [300%*Damage] [lightning] to flower whether attack is defended or not.","ACTION=Has 30% chance to charge up and cancel action if not charged.&ATTACK=Directly damages if charged up (and releases charging state).","ATTACK=Shoots (1~2) missiles with [20%*Damage] and 20% accuracy instead.","CHARAC=Deals [2/3*Damage] [poison] for 8 turns when attack.","COUNT=6&DAMAGE=Drops loot.","ATTACK=Shoots 5 missiles with [10%*Damage] and 10% accuracy instead."]
 		MobAttributeList[66]="ACTION=Plays 62-point."
-		Object.assign(MobAttributeList,{101:"BOSS&ATTRIBUTE=Moves up to 2 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 3, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 40% accuracy instead.",102:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Each petal has 30% probability to be restrained and gains halved action for 10 times.&CHARAC=Deals [20%*Damage] [poison] for 20 turns when attack.",103:"BOSS&COUNT=2&ATTRIBUTE=Doesn't move.&ATTACK=Shoots 8 missiles with [20%*Damage] and (50%,50%,40%,40%,30%,30%,20%,20%) accuracy instead. Applies 20% heal debuff and disable passive heal for 6 turns when hits. Both effectiveness and duration stacks.&DAMAGE=Performs an action. Then increases all accuracy by 10%&DESTROY=Performs an action.",104:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Each petal in the column or nearby column has [200-2*DEF1]% chance to take [50%*Damage] before attack.",105:"BOSS&ATTACK=Shoots a missile with [20%*Damage] and 80% accuracy instead. Applies [40%*Damage] [poison] for 6 turns when hits.",106:"BOSS&ATTRIBUTE=Moves up to 3 grids&ACTION=Each petal has [120-10*Size]% probability to move up 1 grid or receive [Damage] before attack.",107:"BOSS&ATTACK=Shoots all pearls with [Damage] and 40% accuracy instead if has at least 5 pearls. Otherwise gains (1~2) pearls if defended.",108:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Moves in row for at most 1 grid to find a gap before attack.",109:"BOSS&ATTACK=Directly damages and heals equal to damage dealt. Increases damage by 20% original value, effectiveness is decreased by 2% down to 0% by remaining suppression turn.",110:"BOSS&ATTRIBUTE=Moves up to 3 grids. Can't be shot. All petal with negative buff has tripled effective buff when targeted. All petal has at most 90% effective accuracy when targeted.",111:"BOSS&ATTRIBUTE=Moves up to 2 grids.&CHARAC=Increases resulting damage by 20% for every 6 speed above 54 up to 100%.",112:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Tries to summon Soldier Ant with no loot up to 2 instead. Otherwise tries to summon 2 Soldier Ant with rarity reduced by at most 1 and no loot up to 4 instead. Otherwise attacks.",113:"BOSS&ATTRIBUTE=Moves up to 2 grids. Has [30%*Damage] armor, increased to [60%*Damage] if speed reaches 30, increased to [150%*Damage] if speed reaches 40. Decreases all damage taken by 50% if speed reaches 50. Immunes all damage if speed reaches 60.&ACTION=Doesn't attack if speed is over 60.&CHARAC=Deals 10% less damage for every 5 speed above 40.",114:"BOSS&ATTACK=Shoots 5 missiles with [20%*Damage] and 20% accuracy instead. Applies stackable [40%*Damage] armor debuff for 20 turns when hits.",115:"BOSS&ATTRIBUTE=Moves up to 3 grids. Calculates [X] starting from 0.&STATURN=Increases [X] by 1.&ACTION=If [X] reaches 2, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 20% accuracy instead.",121:"BOSS&ATTRIBUTE=Immunes all damage while any Beetle is alive.&EXIST=When a Beetle attacks, all Beetles has 20% probability to get increased level and damage. When a Beetle dies, all Beetles get increased rarity and resets level."})
+		Object.assign(MobAttributeList,{101:"BOSS&ATTRIBUTE=Moves up to 2 grids. Calculates [X] starting from 0.&ACTION=Increases [X] by 1. If [X] reaches 3, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 40% accuracy instead.",102:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Each petal has 30% probability to be restrained and gains halved action for 10 times.&CHARAC=Deals [20%*Damage] [poison] for 20 turns when attack.",103:"BOSS&COUNT=2&ATTRIBUTE=Doesn't move.&ATTACK=Shoots 8 missiles with [20%*Damage] and (50%,50%,40%,40%,30%,30%,20%,20%) accuracy instead. Applies 20% heal debuff and disable passive heal for 6 turns when hits. Both effectiveness and duration stacks.&DAMAGE=Performs an action. Then increases all accuracy by 10%&DESTROY=Performs an action.",104:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Each petal in the column or nearby column has [200-2*DEF1]% chance to take [50%*Damage] before attack.",105:"BOSS&ATTACK=Shoots a missile with [20%*Damage] and 80% accuracy instead. Applies [40%*Damage] [poison] for 6 turns when hits.",106:"BOSS&ATTRIBUTE=Moves up to 3 grids&ACTION=Each petal has [120-10*Size]% probability to move up 1 grid or receive [Damage] before attack.",107:"BOSS&ATTACK=Shoots all pearls with [Damage] and 40% accuracy instead if has at least 5 pearls. Otherwise gains (1~2) pearls if defended.",108:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Moves in row for at most 1 grid to find a gap before attack.",109:"BOSS&ATTACK=Directly damages and heals equal to damage dealt. Increases damage by 20% original value, effectiveness is decreased by 2% down to 0% by remaining suppression turn.",110:"BOSS&ATTRIBUTE=Moves up to 3 grids. Can't be shot. All petal with negative buff has tripled effective buff when targeted. All petal has at most 90% effective accuracy when targeted.",111:"BOSS&ATTRIBUTE=Moves up to 2 grids.&CHARAC=Increases resulting damage by 20% for every 6 speed above 54 up to 100%.",112:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Tries to summon Soldier Ant with no loot up to 2 instead. Otherwise tries to summon 2 Soldier Ant with rarity reduced by at most 1 and no loot up to 4 instead. Otherwise attacks.",113:"BOSS&ATTRIBUTE=Moves up to 2 grids. Has [30%*Damage] armor, increased to [60%*Damage] if speed reaches 30, increased to [150%*Damage] if speed reaches 40. Decreases all damage taken by 50% if speed reaches 50. Immunes all damage if speed reaches 60.&ACTION=Doesn't attack if speed is over 60.&CHARAC=Deals 10% less damage for every 5 speed above 40.",114:"BOSS&ATTACK=Shoots 5 missiles with [20%*Damage] and 20% accuracy instead. Applies stackable [40%*Damage] armor debuff for 20 turns when hits.",115:"BOSS&ATTRIBUTE=Moves up to 3 grids. Calculates [X] starting from 0.&ACTION=Increases [X] by 1. If [X] reaches 2, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 20% accuracy instead.",121:"BOSS&ATTRIBUTE=Immunes all damage while any Beetle is alive.&EXIST=When a Beetle attacks, all Beetles has 20% probability to get increased level and damage. When a Beetle dies, all Beetles get increased rarity and resets level."})
 		const MobSVGArray=new Object()
 		MobSVGArray.Rock="<path class='fgrey-path ns' d='M38 30L50 26L60 28L63 44L55 52L45 50L36 40Z'/>"
 		MobSVGArray.Cactus="<path class='fgreen-path ns' d='M50 22.3A8 8 0 0 0 61.1 26.9A8 8 0 0 0 65.7 38A8 8 0 0 0 61.1 49.1A8 8 0 0 0 50 53.7A8 8 0 0 0 38.9 49.1A8 8 0 0 0 34.3 38A8 8 0 0 0 38.9 26.9A8 8 0 0 0 50 22.3'/><path class='flgreen-path ns ' d='M50 30A8 8 0 0 0 50 46A8 8 0 0 0 50 30'/>"
@@ -1909,6 +1863,7 @@
 			if(mobName==="!Leafbug!" && mob.quickness>3) {
 				let damageDebuff=10*(quickness-3)
 				resultingDamage-=approx(resultingDamage*damageDebuff/100)
+				if(resultingDamage<0) resultingDamage=0
 			}
 			if(resultingDamage) {
 				addLog("[Petal] "+this.name+" received "+resultingDamage+" damage from "+mobName+".","#9f9fdf")
@@ -3325,7 +3280,7 @@
 		const bookHTML=new Object()
 		bookHTML["Flower Artisan Guide"]="<h2>Flower Artisan Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Combine or refine common petals into powerful new forms. By combining different petals with similar characteristics, you gain stronger one improved in level, giving stronger damaging attributes. By refining petal with high level, you gain stronger one improved in rarity, guaranting better durability and wear resistance. Be proficient in the two production methods, and you can easily overwhelm your opponents during battles. This book is your guide to mastering the art of petal craft.</span><br><span>For Rarity Up, you only need to select 1 petal with positive Level (and Rarity should not be Mythic). Higher Level increases the success chance and higher Rarity decreases the chance. The chance is always 100% for petal with at least 3 Level. However, you may find it not worth in some cases. Higher rarity grants your petal higher Health but Damage might be significant decreased since <span class='bold'>Rarity Up resets Level</span>.</span><br><span>For Level Up, you need to select at least 2 petals of the same type with identical Rarity and Level. The success chance decreases as Rarity and Level increases, and the decay stops after 3 Level. To increase the success chance, you need to put more petals at once. (X+1) petals grants you X times success chance. However, success chance exceeds 100% does nothing, and you lost all petals when success or lost [1,X] petals when fail, so putting all petals together is not a wise decision.</span><br><span>Before you begin, there's one more thing to remind you: The Base Four Influencing Fators (Speed, Reload, ATKBuff, DEFBuff) is <span class='bold'>kept</span> on Rarity Up. On Level Up, they <span class='bold'>independently inherit</span> from one material. Choose your materials wisely! Here is another multifunctional calculator which is quite convenient to use by simply inputting Rarity and Level. 3 0 or 4 2 for example.</span><input type='text' tabindex='-1' id='craft-detail' onkeydown='craftdetail(event.key)' class='inner-input' list='craftdetaillist' autocomplete='off' title='Craft Detail'><datalist id='craftdetaillist'><option value='3 0'><option value='4 2'></datalist>"
 		bookHTML["Flower Combat Guide"]="<h2>Flower Combat Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>When you enter a map for the first time, mobs will be spawned and fight against you. There is a threshold depends on Floor that prevents too many mobs existing at the same time. Therefore, when you defeat a mob, a new mob may spawn.</span><br><span>The process of a round in battle is divided into the following parts: At the beginning, your petals gain action based on speed. You can move petals, use them for attack or perform special skills. Then mobs gain action. Mob with action exceeding the threshold will attack and you use petal to defend. If you skip defend or the defend fails, you take the damage. By default value, moving a petal costs 100 action, while using a petal to attack costs 200 action. The threshold for mob is 200 action.</span><br><span>Your petals can attack or defend mobs from <span class='bold'>the front or the side column</span>. The success rate of attack is based on petal ATK (atk2 for front row and atk1 for middle row) and mob Dodge. The success rate of defend is based on petal DEF (def2 for back row and def1 for middle row) and mob Dodge. These two formula have significant difference. When the mob is from side column, the formula also uses petal Size. Petal Size is capped at 20, but the best value for side-defending is <span class='bold'>17 to 18 Size</span>.</span><br><span>For shootable petal, before any bounces, the Accuracy (the petal ATK in success rate formula for shootable petals) is always 100% inside range. For each distance exceeds range, the Accuracy is decreased by Accuracy Decline. If it hits the target, it can bounce between enemies. The Accuracy is decreased by Repeated Accuracy Decline each time it hits a enemy that already hit. The Accuracy is decreased by Bounce Accuracy Decline each bounce exceeds Bounce. Any bounce hits can only hit enemy within Bounce Range.</span><br><span>Since you are facing mobs from all directions and not only from the front, <span class='bold'>the first and last columns are connected</span>, which means that both your petals and mobs can move from the first column to the last column or inverted, and the first and last columns are side columns to each other. The distance between two grids is calculated by horizontal distance plus vertical distance <span class='bold'>without using the Pythagorean theorem</span>. The word 'Retire' means a petal disappears and can't be used again in the same fight. If you are defeated, you only have 30% probability to temporary keep loot and they could be lost if you are defeated again in the same map.</span><br><span>You can calculate chance in the following box. For example, Aa-48S12 calculates the success rate of attacking 80% Dodge mob in side column with 12 Size, 100% ATK and -4 ATKbuff petal, A4+a6F calculates the success rate of attacking 60% Dodge mob in the front column with 40% ATK and +10 ATKbuff petal, D3+05F calculates the success rate of defending 50% Dodge mob in the front column with 30% DEF and +0 DEFbuff petal.</span><input type='text' tabindex='-1' id='combat-calc' onkeydown='combatcalc(event.key)' class='inner-input' list='calclist' autocomplete='off' title='Calculator'><datalist id='calclist'><option value='Aa-48S12'><option value='A4+a6F'><option value='D3+05F'></datalist>"
-		bookHTML["Flower Empty Guide"]="<h2>Flower Empty Guide <span style='color: #0078d7; font-style: italic; font-size: 12px; font-weight: noremal'>//TODO</span></h2><div class='white-bg inner-box'><span style='color: #008000'>#include&lt;PFLFtools.h&gt; <span style='color: #0078d7; font-style: italic;'>//should be replaced</span></span><span style='color: #008000'>#include&lt;iostream&gt;</span><span style='color: #008000'>#include&lt;time.h&gt;</span><span style='color: #008000'>#include&lt;math.h&gt;</span><span style='color: #008000'>#include&lt;string.h&gt;</span><span style='color: #008000'>#include&lt;fstream.h&gt;</span><span><span style='font-weight: bold'>using namespace</span> std<span style='color: #ff0000; font-weight: bold'>;</span></span><span><span style='font-weight: bold'>int</span> main<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>Sleep<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #800080'>2000</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadtext();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadgallery();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadmarvel();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// menu();</span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span> <span style='color: #800080'>0</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span></div>"
+		bookHTML["Flower Game Guide"]="<h2>Flower Game Guide <span style='color: #0078d7; font-style: italic; font-size: 12px; font-weight: noremal'>//TODO</span></h2><div class='white-bg inner-box'><span style='color: #008000'>#include&lt;PFLFtools.h&gt; <span style='color: #0078d7; font-style: italic;'>//should be replaced</span></span><span style='color: #008000'>#include&lt;iostream&gt;</span><span style='color: #008000'>#include&lt;time.h&gt;</span><span style='color: #008000'>#include&lt;math.h&gt;</span><span style='color: #008000'>#include&lt;string.h&gt;</span><span style='color: #008000'>#include&lt;fstream.h&gt;</span><span><span style='font-weight: bold'>using namespace</span> std<span style='color: #ff0000; font-weight: bold'>;</span></span><span><span style='font-weight: bold'>void</span> menu<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"↓MORE GAME (CLICK!)↓\"</span><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/PFLF' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"PFLF\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/Virus1' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"VIRUS 1\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span><span><span style='font-weight: bold'>int</span> main<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>Sleep<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #800080'>2000</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadtext();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadgallery();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadmarvel();</span><span style='margin-left: 2em'>menu<span style='color: #ff0000; font-weight: bold'>();</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span> <span style='color: #800080'>0</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span></div>"
 		bookHTML["Flower Evolutionary Guide"]="<h2>Flower Evolutionary Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Consume the petals to absorb their vital essence. This raw energy fuels your growth, allowing you to level up and evolve. With each infusion of experience, you grow stronger, gain access to higher tier abilities, naturally ascending to greater heights. This ancient cycle of growth is detailed within these pages.</span><br><span>You gain petals from defeated mobs, higher rarity mobs have better droprate. You can see the detail in gallery. The base Experience for a petal is <span class='bold'>(RarityFactor)*(Level+1)</span>. For Common, Unusual, Rare, Epic, Legendary, Mythic Petals, the Factors are 8, 12, 20, 40, 100, 300 respectively. Then, the Experience is multiplied by a random value from 0.8 to 1.2, and rounded to nearest integer, so the expected Experience is equivalent to base Experience.</span><br><span>Since this mechanic is not difficult to understand, you need no calculator for this. I provided another calculator here which helps you get the basic stat of petals. Your gained petals have 20% basic stat attribute floating <span class='bold'>except some special kinds</span>. To use this box, you just need to simply input Name, Rarity, Level. For example, Corn 3 0 calculates the stat of Rare Corn, Plank 4 2 calculates the stat of Epic Plank++.</span><input type='text' tabindex='-1' id='petal-stat' onkeydown='petalstat(event.key)' class='inner-input' list='petalstatlist' autocomplete='off' title='Petal Stat'><datalist id='petalstatlist'><option value='Corn 3 0'><option value='Plank 4 2'></datalist>"
 		bookHTML["Flower Survival Guide"]="<h2>Flower Survival Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Welcome to the Florroom! This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7. Here, you make powerful petals, travel between different regions and maps, defeat various mobs and continuously upgrade to gain stronger power!</span><br><span>This is your first book. As the story continues, you will learn more knowledge, which appears in the form of books in this section. If you don't have experience fighting in Florroom, it doesn't matter. You will receive the unique <span class='bold'>Flower Combat Guide</span> I wrote. Enter the name of this book below to get it!</span><br><span>If you remembered something, try writing in the following box to retrieve the corresponding item:</span><input type='text' tabindex='-1' id='item-code' onkeydown='itemcode(event.key)' class='inner-input' autocomplete='off' title='Code'><span>(NOt CASe SenSItiVE &amp; ign o r i ngspace s)</span>"
 		let somerandomlimit1=1,somerandomlimit2=1,somerandomlimit3=1,somerandomlimit4=1
@@ -3460,63 +3415,8 @@
 			if(commandInput.startsWith(".")) {
 				commandInput=commandInput.slice(1)
 				let validCommand=false
-				if(commandInput.startsWith("rep ")) {
-					validCommand=true
-					for(let i=0;i<fight.mob.length;i++) {
-						fight.mob[i]=Object.assign(new Mob(commandInput.slice(4),fight.mob[i].rarity),{x:fight.mob[i].x,y:fight.mob[i].y});
-						fight.mob[i].print()
-					}
-					addLog("[Command] Mob replaced.","#5f5f5f")
-				}
-				if(commandInput==="speed") {
-					validCommand=true
-					fight.mob[0].speed=100
-					for(let i=1;i<fight.mob.length;i++) fight.mob[i].speed=10
-					addLog("[Command] Mob speeded.","#5f5f5f")
-				}
-				if(commandInput.startsWith("prep ")) {
-					validCommand=true
-					for(let i=0;i<fight.petal.length;i++) {
-						fight.petal[i]=Object.assign(new Petal(commandInput.slice(5),fight.petal[i].rarity,fight.petal[i].level),{x:fight.petal[i].x,y:fight.petal[i].y,state:"Existing"});
-						fight.petal[i].print()
-					}
-					addLog("[Command] Petal replaced.","#5f5f5f")
-				}
-				if(commandInput.startsWith("bp ")) {
-					validCommand=true
-					if(parseInt(commandInput.slice(3))>0)  commandInput=parseInt(commandInput.slice(3))
-					for(let i=0;i<fight.petal.length;i++) {
-						fight.petal[i]=Object.assign(new Petal(typeof(commandInput)==="string"? commandInput.slice(3):commandInput,fight.petal[i].rarity,fight.petal[i].level),{x:fight.petal[i].x,y:fight.petal[i].y,state:"Existing"});
-						fight.petal[i].origin=fight.petal[i].clone()
-						fight.petal[i].print()
-					}
-					fight.petal[0].damage=10
-					addLog("[Command] Petal replaced.","#5f5f5f")
-					commandInput="pspeed"
-				}
-				if(commandInput==="pspeed") {
-					validCommand=true
-					fight.petal[0].speed=200
-					for(let i=1;i<fight.petal.length;i++) fight.petal[i].speed=10
-					addLog("[Command] Petal speeded.","#5f5f5f")
-				}
-				if(commandInput==="pro") {
-					validCommand=true
-					for(let i=0;i<fight.petal.length;i++) fight.petal[i].progress(250)
-					addLog("[Command] Petal progressed.","#5f5f5f")
-				}
-				if(commandInput==="heal") {
-					validCommand=true
-					flowerHeal(fight.flower.health-fight.flower.currenthealth)
-				}
 				if(commandInput==="help") {
 					validCommand=true
-					addLog("[Help] Replace: Replace all mobs with new type. (Format: .rep [mob's name], Example: .rep Ladybug (Garden))","#bf7fbf")
-					addLog("[Help] Speed: Set fight.mob[0].speed to 100 and other mobs to 10. (Format: .speed)","#bf7fbf")
-					addLog("[Help] Petal Replace: Replace all petals with new type. (Format: .prep [petal's name], Example: .prep Blood Stinger)","#bf7fbf")
-					addLog("[Help] Petal Speed: Set fight.petal[0].speed to 200 and other petals to 10. (Format: .speed)","#bf7fbf")
-					addLog("[Help] Progress: Progress all petals. (Format: .pro)","#bf7fbf")
-					addLog("[Help] Heal: Heals your flower to max. (Format: .heal)","#bf7fbf")
 					addLog("[Help] Help: Print list of all available commands. (Format: .help)","#bf7fbf")
 					addLog("[Help] PFLFstart: Play PFLF with bot#7976. (Format: .PFLFstart)","#bf7fbf")
 					addLog("[Help] PFLFend: End PFLF game. (Format: .PFLFend)","#bf7fbf")
@@ -4223,7 +4123,7 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20251130
+		const version=20251206,acceptedVersion=20251124
 		const svgNS="http://www.w3.org/2000/svg"
 		const dx=[0,0,1,0,-1],dy=[0,-1,0,1,0],dx5=[0,1,2,2,1,-1,-2,-2,-1],dy5=[0,-2,-1,1,2,2,1,-1,-2]
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
@@ -4242,7 +4142,7 @@
 		if(!fight) fight=new Object()
 		if(!player.book) {
 			player.book=new Array()
-			player.book[0]="Flower Empty Guide"
+			player.book[0]="Flower Game Guide"
 		}
 		if(!player.bookreading) player.bookreading=0
 		if(!player.bookstat) player.bookstat=new Object()
@@ -4340,6 +4240,7 @@
 		for(let i in fight.spawnmob) fight.spawnmob[i]=Object.assign(new Mob(),fight.spawnmob[i])
 		if(!fight.missile) fight.missile=new Array()
 		for(let i in fight.missile) fight.missile[i]=Object.assign(new Mob(),fight.missile[i])
+		player.book[0]="Flower Game Guide" //20251206
 		localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 		localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 		localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
@@ -5491,6 +5392,10 @@
 		}
 		function updateVersion(reset) {
 			if(reset===false) {
+				if(userVersion<acceptedVersion) {
+					document.getElementById("version3").innerHTML="Your version is too outdated..."
+					return
+				}
 				userVersion=version
 				localStorage.setItem("FLORROOMuserVersion",JSON.stringify(userVersion))
 				location.reload()
@@ -5566,6 +5471,7 @@
 				path.addEventListener("mouseenter",() => mapInfo(path))
 				path.addEventListener("mouseleave",closeMapInfo)
 			} )
+			if(fight.active===true && fight.ready===false) endFight()
 			if(fight.manipulate===true) endFight()
 			if(fight.active===true && player.calendar.second>0) endFight()
 			if(player.calendar.second>0) player.calendar.second=120
@@ -6017,6 +5923,7 @@
 				let pendingText="<span style='color: #bf0000'>Effect--Doom: Destroys after "+effectValue+" turn.</span>"
 				return pendingText
 			}
+			return ""
 		}
 		function gridInfo(grid) {
 			if(animation) return
@@ -6111,7 +6018,7 @@
 					if(JSON.stringify(fight.mob[i].effect)!=="{}") {
 						let pendingText=""
 						for(let j in fight.mob[i].effect) pendingText+=mobEffectText(j,fight.mob[i].effect[j])
-						editingGridMobHTML+=pendingText+"<br>"
+						if(pendingText!=="") editingGridMobHTML+=pendingText+"<br>"
 					}
 					document.getElementById("gridinfo").innerHTML=editingGridMobHTML
 					document.getElementById("gridinfo").style.display="flex"
@@ -7911,6 +7818,7 @@
 			if(mobName==="!Leafbug!" && mob.quickness>3) {
 				let damageDebuff=10*(quickness-3)
 				resultingDamage-=approx(resultingDamage*damageDebuff/100)
+				if(resultingDamage<0) resultingDamage=0
 			}
 			if(mobName==="Lightning") {
 				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Magnet" && resultingDamage>0) {
@@ -8491,13 +8399,13 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/11/30,</span>
+		<span>The last update was on 2025/12/6,</span>
+		<span>which updated Flower Game Guide.</span>
+		<span>Also deleted useless testing commands and functions.</span>
+		<br>
+		<span>The last update before was on 2025/11/30,</span>
 		<span>petals are finally completed, yay!</span>
 		<span>Mob missile are reworked. Fight now saves automatically in localStorage.</span>
-		<br>
-		<span>The last update was on 2025/11/29,</span>
-		<span>which updated many petals. Also some display improvement.</span>
-		<span>Petals after Compass doesn't work (very soon), some bugs fixed.</span>
 		<br>
 		<span>The last important update before was on 2025/11/24 (BETA update),</span>
 		<span>which updated all Base Floor content.</span>
