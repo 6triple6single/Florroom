@@ -321,6 +321,21 @@
 			justify-content: center;
 			align-items: center;
 		}
+		.side-bar-container {
+			background-color: #7f7f7f;
+			position: relative;
+			height: 500px;
+			width: 30px;
+			border-radius: 15px;
+		}
+		.side-bar {
+			background-color: #5fbf5f;
+			position: absolute;
+			bottom: 0px;
+			height: 50%;
+			width: 100%;
+			border-radius: 15px;
+		}
 		.pointer {
 			cursor: pointer;
 		}
@@ -754,12 +769,15 @@
 		.inner-box {
 			display: flex;
 			flex-direction: column;
-			font-family: consolas;
+			font-family: Consolas;
 			width: max-content;
 			border: 1.5px solid;
 			padding: 10px;
 			align-items: flex-start;
 			align-self: center;
+		}
+		.inner-box * {
+			font-family: Consolas;
 		}
 		.infobox {
 			display: flex;
@@ -924,6 +942,10 @@
 		.nd {
 			display: none;
 		}
+		.rflex {
+			display: flex;
+			flex-direction: row;
+		}
 		.cflex {
 			display: flex;
 			flex-direction: column;
@@ -963,7 +985,7 @@
 		PetalLowestRarityList[222]=2
 		const PetalHealthList=[5,2,10,5,1,"*",2,"*","*",8,3,"*",12,"*",10,"/",15,2,"*","*",3,5,"*",20,2,"*",5,8,2,5,12,"*",6,2,5,2,"/",5,2,"/","*",12,3,"/","*","/",6,10,5,5,6,3,8,"*",8,10,20,"*","/",1,"*",6,5,"/","/","/","/","/","*",6,1,5,100,"*","*","/",8,50,5,10,5,2]
 		PetalHealthList[222]="*2"
-		const PetalDamageList=[5,2,10,"*",20,3,5,5,2,2,6,"*",1,3,3,"/",6,2,"*","*",3,3,1,3,3,3,3,3,2,3,5,8,3,3,"*","*","/",3,6,"/",3,5,3,"/","*","/",3,2,"*",3,2,"*","*",2,5,6,2,"*","/",15,6,2,5,"/","/","/","/","/","*",6,3,5,2,3,1,"/",8,"*",6,2,2,5]
+		const PetalDamageList=[5,2,10,"*",20,3,5,6,2,2,6,"*",1,3,3,"/",6,2,"*","*",3,3,1,3,3,3,3,3,2,3,5,8,3,3,"*","*","/",3,6,"/",3,5,3,"/","*","/",3,2,"*",3,2,"*","*",2,5,6,2,"*","/",15,6,2,5,"/","/","/","/","/","*",6,3,5,2,3,1,"/",8,"*",6,2,2,5]
 		PetalDamageList[222]="*2"
 		const PetalSizeList=[10,6,12,10,6,6,5,"*","*",12,6,"*",15,"*",15,"/",15,10,"*","*",12,10,8,10,10,6,10,12,12,8,15,"*",10,10,10,6,"/",10,10,"/","*",15,6,"/","*","/",10,10,8,8,8,6,15,"*",10,12,5,"*","/",6,8,10,10,"/","/","/","/","/","*",10,8,10,20,6,"*","/",10,15,12,15,12,6]
 		PetalSizeList[222]="*2"
@@ -977,7 +999,7 @@
 		PetalDEFList[222]="0-0"
 		const PetalDescriptionList=["Nice petal, strong but can't craft.","Weaker than most petals, but recharges very quickly and has five parts.","Extremely durable, but takes a bit longer to recharge.","Its healing properties are amazing.","It really hurts, but it's very fragile.","Very poisonous, but takes a while to do its work.","Good at combat, but got nerfed in Florroom Rewritten.","You can actually shoot this one.","It goes poof with poison.","Somehow increases your maximum health.","It makes your other petals action faster.","Physics are for the another petal called magnet.","Asthmatics beware.","Its interesting properties inhibits healing effects on affected units.","Something interesting might pop out of this.","Allows you to sense incoming enemies.","This thing is so heavy that nothing gets in the way.","This mysterious thing rotates your petals in multiple ways.","It's really sticky.","It attracts mobs and let them prioritize this over flowers.","Gathers energy from the sun to heal your flower passively.","Reflects some of the damage you take back to the enemy that dealt it.","Spawns very quickly, but can't hit enemy back.","Takes a long time to spawn, but has a lot of health.","Bunch of sand particles.","Debilitates enemies temporarily, reducing their movement speed.","Heals your flower faster but has condition.","By physics laws, it attracts lightning.","Dried leaf from the Yggdrasil tree that could revive you.","Heals your flower faster but only while low health.","It can be moved even further.","Strikes all nearby enemies.","No one likes touching this.","Deals extra damage to undamaged targets.","Gives you a temporary shield.","Small amount of heal but fairly consistent.","Spreads damage taken by the flower over time.","Increases petal size.","Heals your flower based on damage dealt by it.","Improves your petal control skill.","It goes poof and hits multiple enemies.","Mysterious stick that summons the forces of the wind.","Weak petal. Perhaps it makes you lucky.","Increases movement speed and results in extra turns.","It's literally air but not nothing.","Improves healing petals.","Sweet citrus fruit.","More interesting things might pop out of this.","Makes mobs less likely to move.","Strange relic. Makes mobs become neutral.","Prevents your flower from poisoning.","Shiny lightbulb that attracts mobs.","Absorbs damage taken by the flower when suspended.","Sturdy and reliable. Can be shot and bounces between enemies.","Sturdy petal with high armor.","It's useful for defending projectiles.","Grows over time but don't let it grow too much.","Dark mark that teleports enemies to hell.","Knockbacks flower when damaged so you have more time to react.","It even hurts, but with some costs.","Decrease armor of affected unit.","Provides additional armor for flower.","Not to play PFLF but just roll it.","Pattern that allows you to evade enemy attacks.","Discharges electricity to compensate energy loss.","Converts a percentage of overheal into shields.","It guides your actions.","Reduces all phisical damage taken.","Becomes untargetable for a single turn.","Looks like basic, but gilded.","All in but there is no gamble feature.","Playing card.","This thing is so big its gravity pulls your other petals.","Deals extra poison damage.","Phases through enemies.","Corrupts your soul. Consumes your mind.","Breaks apart on impact with reduced strength.","Just a bigger honey.","Very special leaf lets your petals reload even faster.","Heals itself and petals around it.","Damage depends on the point.","The more it is, the stronger it is."]
 		PetalDescriptionList[222]="<==>, Turn 2, Score 2, Clear 0"
-		const PetalAttributeList=["ATTRIBUTE=Can't craft. Can't absorb. No attribute floating.","COUNT=5","DEFEND=Reduces action by 50 down to 0.","SKILL=Destroys. Heals flower for [200%*Health].","ATKDEF=Kills target if its remaining health (After damage dealt) is less than [Damage] when success.","DESTROY=Deals [Damage] [poison] for 10 turns.","DEFEND=Reduces action to 0.","SHOOT=10 range. 100% accuracy decline. 1 bounce. 5 bounce range. 100% bounce accuracy decline. 100% repeated hitting decline.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline. Deals [50%*Damage] [poison] for 3 turns.","EQUIP=Increases flower max health by [Health].","SKILL=Costs 200 action. Almost all petals (except faster, 1-speed petal and luck related petal) gain [45+3*Rarity] action.","SKILL=Reduces all mobs' action to [100-30*Level]. Neutral mobs turn back to passive. Applies immunity to flower for [2+Rarity] turns. Retires.","DESTROY=If there's a empty grid below and size is over 5, moves to that grid, reduces petal max health to [80%*Health] and sets health to max, reduces size by 1. Resets attribute otherwise.","SHOOT=5 range. 50% accuracy decline. 1 bounce. 3 bounce range. 50% bounce accuracy decline. 100% repeated hitting decline. Disables target's heal ability for 5 turns.","SKILL=Summons a beetle (60% atk/def, 4 action to attack or move) in grid.&DESTROY=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Anticipates [3+Level] upcoming mobs. Has [5*Rarity-10]% probability to gain a refresh chance whenever a creature spawns.","DEFEND=Has [30+5*Rarity]% probability to push the target upwards when success.","TYPE1&NAME=Yin&SKILL=Costs 150 action. You can move the column arbitrarily. Other affected petals gain [5*Rarity-10] action.&TYPE2&NAME=Yang&SKILL=Costs 150 action. You can move the row arbitrarily.","SKILL=Destroys. Restrains nearest enemy and let it gain halved action for 10 times. Effectiveness for Boss is 25%.","DEFEND=Can't defend projectiles. Defended target has [50-5*Rarity]% chance to immune honey and can't be defended by honey anymore.","ENDTURN=Heals flower for [10%*Health].","ATTRIBUTE=Doesn't stack.&EQUIP=Increases flower damage reflection by [60+10*Rarity]%.","ATTACK=Doesn't deal knockback.","DEFEND=Deals 1x extra knockback when success.","COUNT=4&DAMAGE=Reduces size by 1. Reduces atk/def by 10%.&DESTROY=Resets attribute.","DESTROY=Deals [50%*Damage] [poison] and halves target speed for 5 turns.","ENDTURN=Heals flower for [10%*Health] only if there are at least 2 nearby petals.","ATTRIBUTE=Doesn't stack.&EXIST=Absorbs lightning damage taken by flower.","ATTRIBUTE=Doesn't stack.&EXIST=If flower takes fatal damage, applies immunity to flower for 1 turn, heals flower to max and clears all negative effects, then retires.","ENDTURN=Heals flower for [10%*Health] while it is not above 50%.","ATTRIBUTE=Moving costs 50 more action. Can be moved to mob's field. Attacks target grid instead when moving to grid with a mob.","SKILL=Destroys. Deals [200%*Damage] [lightning] to mobs in column and reduces their action by [30+10*Rarity]%. Deals [Damage] [lightning] to mobs in nearby column.","ATKDEF=Deals 2x extra knockback when success.","ATTACK=Deals 5x damage and sets target's action to -50 when hits target with full health.","SKILL=Destroys. Applies [200%*Health] shield to flower.","COUNT=3&SKILL=Costs 100 action. Destroys a part. Heals flower for [150%*Health].","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Spreads non-poison damage taken over [2*Rarity+Level] turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Increases size of all petals by 2 up to 20.","ATKDEF=Heals flower for half of damage dealt.","DECORATION&ATTRIBUTE=Doesn't stack.&EQUIP=If [Rarity>=6], Has a 50% probability for each petal to gain 10% extra atk/def.&TYPE1&NAME=Concentrated Eye&EXIST=For all petals with positive atk/def, their atk1 won't be less than atk2-10%, and their def1 won't be less than def2-10%.&TYPE2&NAME=Specialized Eye&EXIST=For all petals with positive atk/def, their atk2 won't be less than atk1+30%, and their def2 won't be less than def1+30%.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","COUNT=2&SKILL=Summons a sandstorm (80% atk/def, 8 action to attack or move) in grid.&DESTROY=Resets attribute.","ATTACK=Deals halved knockback when success.&DESTROY=Has 1% probability of giving the following huge bonus: quadruples health and damage and doubles knockback (once in a fight), reloads all petals and sets their action to 250 (except 1-speed petal).","DECORATION&ENDTURN=Has [5*Rarity-5]% probability to get a bonus flower turn before next flower turn starts.","ATTACK=Tries to push the target before attack. Deals [30+10*Level]% knockback when success.","DECORATION&EXIST=Applies healing debuffs immunity to flower. Increases all healing effects by [20*Rarity+10*Level-30]%.","COUNT=3&DAMAGE=Decreases def by 20%.&DESTROY=Resets attribute.","COUNT=4&SKILL=Summons a soldier ant (60% atk/def, 5 action to attack or move) in grid.&DESTROY=Resets attribute.","DEFEND=Decreases target's action by 50 and applies tardy for [5+2*Level] turns (reduces speed exceeds 10) when success.","ATKDEF=Turns target back to passive and prevents damage when hits neutral+ mob.","EXIST=Applies [poison] immunity to flower.","DEFEND=You can choose another petal to defend if it fails.","ATTRIBUTE=Doesn't stack.&SKILL=Can't manipulate this petal anymore until destroyed. Absorbs damage dealt to flower and divides energy loss by 3.","SHOOT=5 range. 20% accuracy decline. 10 bounce. 1 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","EQUIP=Applies [30%*Health] armor to itself.","DEFEND=When target is projectile, receives no damage if the defend is successful, otherwise receives doubled damage and count the defend as successful.","EXIST=Calculates [X=total action]. Its health is at most [(130-X/20)%], damage is increased by [(X/2)%] from original value, size is increased by [X/200] from original value, atk/def is increased by [X/40]% from original value.&DESTROY=Resets attribute.","SKILL=Destroys. Marks the nearest non-boss mob, killing it after 3 turns without loot. Decreases flower health by [30-3*Rarity-Level]% flower max health.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When flower gets hit, has [20+3*Rarity+Level]% probability to apply evasion to flower for 3 turns, but also triples energy loss.","ATTACK=When hits target that is not connected, doubles resulting damage but decreases flower health by [20+5*Level]% flower max health down to 1, otherwise flower dies. (PSYONIC CONNECTION)","DESTROY=Applies [50%*Damage] armor debuff for 10 turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Applies [10%*Health] armor to flower.","SKILL=Costs 50 action. Calculates [X=Dice]. Gains 250 action for [X=1]. Makes petal damage become 2x original value for [X=2]. Gains +100% (additive) resulting damage for [X=3]. Makes atk1/def1 100% for [X=4]. Make atk2 100% for [X=5]. Makes def2 100% for [X=6].&STATURN=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&STATURN=Has [20+3*Rarity+Level]% probability to apply evasion to flower for a single turn.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Has [20+3*Rarity+Level]% probability to immune energy loss.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Converts [10*Rarity+5*Level]% flower overheal to shield.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When any petal moves in the specified direction, the restriction on that direction is removed or the required action is reduced by [10*Rarity]%.&STATURN=Randomly modify direction, or manually if [Rarity>=6]","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Decreases damage taken by flower by [20+3*Rarity+Level]%.","ATTRIBUTE=Doesn't stack.&SKILL=Costs [30-3*Rarity-Level]% flower max health flower health. Destroys. Ends turn. Skips mob turn and sets their action to 0 if they are about to action (at least 120 action).","ATTRIBUTE=Can't craft. No attribute floating.","ATKDEF=If it has damage immunity, gains 250 action when defend and attack only costs 50 action (but requirement is not changed).&SKILL=Costs 250 action. Calculates [X=Dice]. Destroys for [X=1]. Gains 250 action and damage immunity for 1 turn for [X>1].&STATURN=Resets attribute.","SKILL=Costs 50 action. Calculates [X=Dice]. Sets atk2 to 100% for [X=5]. Sets def2 to 100% for [X=6]. Sets max health to [50*X]% original value and damage to [250-50*X]% original value for [X<5].&DESTROY=Resets attribute.","ATTRIBUTE=Doesn't stack. Can't move.&EQUIP=Reloads.&EXIST=All petals cost no action when moving towards it, otherwise cost 50 extra action.&DESTROY=Kills nearest mob (50% probability to trigger on boss). Retires.","DESTROY=Settles all remaining [poison] damage to target and increases resulting damage by [10*Rarity]%.","SKILL=Costs 150 action. Deals [Damage] damage to mobs in column.","DECORATION&ATTRIBUTE=Can't absorb. Doesn't stack.&EQUIP=Decreases mind by [350-50*Rarity]. All petals get [5*Rarity*(4+Level)]% more damage.","COUNT=7&DAMAGE=If remaining count equals to 4 or 6, halves health and damage, decreases size by 2.&DESTROY=Resets attribute.","ATTRIBUTE=Can't move.&ENDTURN=Reduces def2 to health percentage (down to 40%).&DESTROY=Resets attribute but decreases def1 by 20% permanently in this fight.","EQUIP=Decreases all reload by [3*Rarity]% (additive up to 50%).","SKILL=Costs 200 action. Heals all nearby petals and itself by [50%*Health].","SKILL=Costs 50 action. Calculates [X=Dice*Dice*Dice]. Sets health to 200% original value for [X>79] (once). Damage becomes at least [X/36] original value after decreases by 5%. atk2 becomes at least [X]%.&DESTROY=Resets attribute.","EQUIP=All other triangles with same rarity increases damage by [10+2*Level]% (additive), and increases atk2 by 5%."]
+		const PetalAttributeList=["ATTRIBUTE=Can't craft. Can't absorb. No attribute floating.","COUNT=5","DEFEND=Reduces action by 50 down to 0.","SKILL=Destroys. Heals flower for [200%*Health].","ATKDEF=Kills target if its remaining health (After damage dealt) is less than [Damage] when success.","DESTROY=Deals [Damage] [poison] for 10 turns.","DEFEND=Reduces action to 0.","SHOOT=10 range. 100% accuracy decline. 1 bounce. 5 bounce range. 100% bounce accuracy decline. 100% repeated hitting decline.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline. Deals [25%*Damage] [poison] for 5 turns.","EQUIP=Increases flower max health by [Health].","SKILL=Costs 200 action. Almost all petals (except faster, 1-speed petal and luck related petal) gain [45+3*Rarity] action.","SKILL=Reduces all mobs' action to [100-30*Level]. Neutral mobs turn back to passive. Applies immunity to flower for [2+Rarity] turns. Retires.","DESTROY=If there's a empty grid below and size is over 5, moves to that grid, reduces petal max health to [80%*Health] and sets health to max, reduces size by 1. Resets attribute otherwise.","SHOOT=5 range. 50% accuracy decline. 1 bounce. 3 bounce range. 50% bounce accuracy decline. 100% repeated hitting decline. Disables target's heal ability for 5 turns.","SKILL=Summons a beetle (60% atk/def, 4 action to attack or move) in grid.&DESTROY=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Anticipates [3+Level] upcoming mobs. Has [5*Rarity-10]% probability to gain a refresh chance whenever a creature spawns.","DEFEND=Has [30+5*Rarity]% probability to push the target upwards when success.","TYPE1&NAME=Yin&SKILL=Costs 150 action. You can move the column arbitrarily. Other affected petals gain [5*Rarity-10] action.&TYPE2&NAME=Yang&SKILL=Costs 150 action. You can move the row arbitrarily.","SKILL=Destroys. Restrains nearest enemy and let it gain halved action for 10 times. Effectiveness for Boss is 25%.","DEFEND=Can't defend projectiles. Defended target has [50-5*Rarity]% chance to immune honey and can't be defended by honey anymore.","ENDTURN=Heals flower for [10%*Health].","ATTRIBUTE=Doesn't stack.&EQUIP=Increases flower damage reflection by [60+10*Rarity]%.","ATTACK=Doesn't deal knockback.","DEFEND=Deals 1x extra knockback when success.","COUNT=4&DAMAGE=Reduces size by 1. Reduces atk/def by 10%.&DESTROY=Resets attribute.","DESTROY=Deals [50%*Damage] [poison] and halves target speed for 5 turns.","ENDTURN=Heals flower for [10%*Health] only if there are at least 2 nearby petals.","ATTRIBUTE=Doesn't stack.&EXIST=Absorbs lightning damage taken by flower.","ATTRIBUTE=Doesn't stack.&EXIST=If flower takes fatal damage, applies immunity to flower for 1 turn, heals flower to max and clears all negative effects, then retires.","ENDTURN=Heals flower for [10%*Health] while it is not above 50%.","ATTRIBUTE=Moving costs 50 more action. Can be moved to mob's field. Attacks target grid instead when moving to grid with a mob.","SKILL=Destroys. Deals [200%*Damage] [lightning] to mobs in column and reduces their action by [30+10*Rarity]%. Deals [Damage] [lightning] to mobs in nearby column.","ATKDEF=Deals 2x extra knockback when success.","ATTACK=Deals 5x damage and sets target's action to -50 when hits target with full health.","SKILL=Destroys. Applies [200%*Health] shield to flower.","COUNT=3&SKILL=Costs 100 action. Destroys a part. Heals flower for [150%*Health].","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Spreads non-poison damage taken over [2*Rarity+Level] turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Increases size of all petals by 2 up to 20.","ATKDEF=Heals flower for half of damage dealt.","DECORATION&ATTRIBUTE=Doesn't stack.&EQUIP=If [Rarity>=6], Has a 50% probability for each petal to gain 10% extra atk/def.&TYPE1&NAME=Concentrated Eye&EXIST=For all petals with positive atk/def, their atk1 won't be less than atk2-10%, and their def1 won't be less than def2-10%.&TYPE2&NAME=Specialized Eye&EXIST=For all petals with positive atk/def, their atk2 won't be less than atk1+30%, and their def2 won't be less than def1+30%.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","COUNT=2&SKILL=Summons a sandstorm (80% atk/def, 8 action to attack or move) in grid.&DESTROY=Resets attribute.","ATTACK=Deals halved knockback when success.&DESTROY=Has 1% probability of giving the following huge bonus: quadruples health and damage and doubles knockback (once in a fight), reloads all petals and sets their action to 250 (except 1-speed petal).","DECORATION&ENDTURN=Has [5*Rarity-5]% probability to get a bonus flower turn before next flower turn starts.","ATTACK=Tries to push the target before attack. Deals [30+10*Level]% knockback when success.","DECORATION&EXIST=Applies healing debuffs immunity to flower. Increases all healing effects by [20*Rarity+10*Level-30]%.","COUNT=3&DAMAGE=Decreases def by 20%.&DESTROY=Resets attribute.","COUNT=4&SKILL=Summons a soldier ant (60% atk/def, 5 action to attack or move) in grid.&DESTROY=Resets attribute.","DEFEND=Decreases target's action by 50 and applies tardy for [5+2*Level] turns (reduces speed exceeds 10) when success.","ATKDEF=Turns target back to passive and prevents damage when hits neutral+ mob.","EXIST=Applies [poison] immunity to flower.","DEFEND=You can choose another petal to defend if it fails.","ATTRIBUTE=Doesn't stack.&SKILL=Can't manipulate this petal anymore until destroyed. Absorbs damage dealt to flower and divides energy loss by 3.","SHOOT=5 range. 20% accuracy decline. 10 bounce. 1 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","EQUIP=Applies [20%*Health] armor to itself.","DEFEND=When target is projectile, receives no damage if the defend is successful, otherwise receives doubled damage and count the defend as successful.","EXIST=Calculates [X=total action]. Its health is at most [(130-X/20)%], damage is increased by [(X/2)%] from original value, size is increased by [X/200] from original value, atk/def is increased by [X/40]% from original value.&DESTROY=Resets attribute.","SKILL=Destroys. Marks the nearest non-boss mob, killing it after 3 turns without loot. Decreases flower health by [30-3*Rarity-Level]% flower max health.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When flower gets hit, has [20+3*Rarity+Level]% probability to apply evasion to flower for 3 turns, but also triples energy loss.","ATTACK=When hits target that is not connected, doubles resulting damage but decreases flower health by [20+5*Level]% flower max health down to 1, otherwise flower dies. (PSYONIC CONNECTION)","DESTROY=Applies [50%*Damage] armor debuff for 10 turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Applies [10%*Health] armor to flower.","SKILL=Costs 50 action. Calculates [X=Dice]. Gains 250 action for [X=1]. Makes petal damage become 2x original value for [X=2]. Gains +100% (additive) resulting damage for [X=3]. Makes atk1/def1 100% for [X=4]. Make atk2 100% for [X=5]. Makes def2 100% for [X=6].&STATURN=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&STATURN=Has [20+3*Rarity+Level]% probability to apply evasion to flower for a single turn.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Has [20+3*Rarity+Level]% probability to immune energy loss.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Converts [10*Rarity+5*Level]% flower overheal to shield.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When any petal moves in the specified direction, the restriction on that direction is removed or the required action is reduced by [10*Rarity]%.&STATURN=Randomly modify direction, or manually if [Rarity>=6]","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Decreases damage taken by flower by [20+3*Rarity+Level]%.","ATTRIBUTE=Doesn't stack.&SKILL=Costs [30-3*Rarity-Level]% flower max health flower health. Destroys. Ends turn. Skips mob turn and sets their action to 0 if they are about to action (at least 120 action).","ATTRIBUTE=Can't craft. No attribute floating.","ATKDEF=If it has damage immunity, gains 250 action when defend and attack only costs 50 action (but requirement is not changed).&SKILL=Costs 250 action. Calculates [X=Dice]. Destroys for [X=1]. Gains 250 action and damage immunity for 1 turn for [X>1].&STATURN=Resets attribute.","SKILL=Costs 50 action. Calculates [X=Dice]. Sets atk2 to 100% for [X=5]. Sets def2 to 100% for [X=6]. Sets max health to [50*X]% original value and damage to [250-50*X]% original value for [X<5].&DESTROY=Resets attribute.","ATTRIBUTE=Doesn't stack. Can't move.&EQUIP=Reloads.&EXIST=All petals cost no action when moving towards it, otherwise cost 50 extra action.&DESTROY=Kills nearest mob (50% probability to trigger on boss). Retires.","DESTROY=Settles all remaining [poison] damage to target and increases resulting damage by [10*Rarity]%.","SKILL=Costs 150 action. Deals [Damage] damage to mobs in column.","DECORATION&ATTRIBUTE=Can't absorb. Doesn't stack.&EQUIP=Decreases mind by [350-50*Rarity]. All petals get [5*Rarity*(4+Level)]% more damage.","COUNT=7&DAMAGE=If remaining count equals to 4 or 6, halves health and damage, decreases size by 2.&DESTROY=Resets attribute.","ATTRIBUTE=Can't move.&ENDTURN=Reduces def2 to health percentage (down to 40%).&DESTROY=Resets attribute but decreases def1 by 20% permanently in this fight.","EQUIP=Decreases all reload by [3*Rarity]% (additive up to 50%).","SKILL=Costs 200 action. Heals all nearby petals and itself by [50%*Health].","SKILL=Costs 50 action. Calculates [X=Dice*Dice*Dice]. Sets health to 200% original value for [X>79] (once). Damage becomes at least [X/36] original value after decreases by 5%. atk2 becomes at least [X]%.&DESTROY=Resets attribute.","EQUIP=All other triangles with same rarity increases damage by [10+2*Level]% (additive), and increases atk2 by 5%."]
 		PetalAttributeList[222]="LOOT=Mobs killed in second turn has 7/1296 probability to drop it additionally.&ATTRIBUTE=Can't absorb.&ATTACK=Kills mob after 2 turn."
 		PetalAttributeList["Yin"]="SKILL=Costs 150 action. You can move the column arbitrarily. Other affected petals gain [5*Rarity-10] action."
 		PetalAttributeList["Yang"]="SKILL=Costs 150 action. You can move the row arbitrarily."
@@ -1095,7 +1117,7 @@
 		const MobDescriptionList=["","Just a rock. Maybe does something.","Avoid its thorns, that hurts.","Cute and harmless.","Stings. Don't touch it.","Weak and defenseless like you.","Still a weak one.","Got wings and ready to use them.","Really fat.","Ants hiding inside.","Hungry and flowers are its favorite meal.","Not as nice as the little bees.","Just there doing its thing.","Loves flowers.","Gotta go fast.","Cute and harmless too.","Shiny. Cute and harmless.","Spooky.","Stings!","Ant on fire.","Is this ant hole on fire?","Weather experts advise flowers not to go out.","Pop.","Gotta run.","Help. My petal is attacking me.","Retreats for heal.","Agile and hurts.","Makes the most delicious jam.","Absorbs damage taken by nearby mobs.","Slurp slurp.","Flower with many dandelions equipped.","Ant on fire.","Ant on fire.","Queen ant on fire.","Flies.","Leaf-shaped bug.","You better pray you don't become dinner.","Weak and defenseless but appears to be connected.","Still weak but appears to be connected.","Got wings and appears to be connected.","Fat and appears to be connected.","Why is this one not connected?","Not connected too.","Animals hiding inside.","Gotta go fast until gets tired.","Easily scared.","Shiny lightbulb.","Exotic creature.","They are angry.","Exotic creature.","Exotic creature.","Exotic creature."]
 		MobDescriptionList[66]="This could happen to you."
 		Object.assign(MobDescriptionList,{101:"Well, this one is evil and hungry.",102:"Got webs and good at using them.",103:"Why is the sky becoming white?",104:"A flower a day keeps summoner away~",105:"Be careful, it is quite poisonous.",106:"If you really want to go out in such a natural disaster...",107:"Harder shell. An unfriendly one is inside.",108:"Dr. Crab has won tons of battles. You are going to be a new defeated challenger.",109:"How to get rid of this?",110:"Flies around in unpredictable ways.",111:"Gotta go faster! Never feels tired.",112:"Hands up! You are surrounded!",113:"Why is this leaf so difficult to defeat? Must be a bug.",114:"Machine gun pea shooter enhanced.",115:"Mutated wasp. That's really frightening.",121:"He crafts everything... Including mobs?"})
-		const MobAttributeList=["","ACTION=Destroys without loot. Spawns (Worker Ant/Soldier Ant) without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Can't be defended.","HOSTILE=30%","HOSTILE=10%","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Ant with rarity reduced by at most 2 and no loot, then attacks.","COUNT=10&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Baby Ant*2, Worker Ant*3, Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Queen Ant.","","ATTACK=Shoots a missile with [20%*Damage] and 20% accuracy instead.","COUNT=6&HOSTILE=10%&DAMAGE=Drops loot.","COUNT=6&DAMAGE=Drops loot.","COUNT=6&HOSTILE=30%&DAMAGE=Drops loot. Immunes all damage for 5 turns.","HOSTILE=30%","ATTRIBUTE=Guaranteed to be shiny.&HOSTILE=30%","CHARAC=Deals [1/3*Damage] [poison] for 8 turns when attack.","ATTACK=Shoots a missile with [1/3*Damage] and 30% accuracy instead. Applies [1/3*Damage] [poison] for 8 turns when hits.","","COUNT=5&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Soldier Fire Ant*4.&DESTROY=No loot if automatically destroyed. Summons Soldier Fire Ant*2.","ACTION=Additionally attacks if moving down outside first row.","ACTION=Destroys without loot. Deals 100 knockback to all petals.","ACTION=Has 30% probability to additionally attack.&CHARAC=Deals [50%*Damage] only when attack being defended.","ATTRIBUTE=Doesn't move.&HOSTILE=10%&CHARAC=When attack being defended, deals 100 knockback and shoots a missile for [100%*Damage] and 10% accuracy.","ACTION=When health is not above [50%*Health], heals for [20%*Health] and cancels action.","ACTION=Has 50% probability to attempt moving in row before attack.","ATTACK=Deals [40%*Damage] [lightning] instead. Can't be defended.","ATTRIBUTE=Doesn't move. Absorbs 50% of damage taken by other nearby enemies down to 1 health.&ACTION=Destroys without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Deals [50%*Damage] direct damage instead. Heals equal to damage dealt.","ACTION=Destroys without loot.&DESTROY=Shoots 2 missiles with [100%*Damage] and 10% accuracy. Applies disable passive heal for 10 turns when hits.","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Fire Ant with rarity reduced by at most 2 and no loot, then attacks.","","ATTRIBUTE=Has [50%*Damage] armor.&HOSTILE=20%","ATTACK=Shoots 3 missiles with 1 damage and 10% accuracy. Applies [25%*Damage] armor debuff for 10 turns when hits.","ATTRIBUTE=Connected.&ACTION=Additionally attacks if moving down outside first two rows.","ATTRIBUTE=Connected.&HOSTILE=50%","ATTRIBUTE=Connected.","ATTRIBUTE=Doesn't move. Immunes knockback. Connected.&HOSTILE=0%&ACTION=If hostile, destroys all termite mound without loot, then moves and attacks. Becomes hostile otherwise.","COUNT=2&ATTRIBUTE=Doesn't move. Destroys itself if remaining count is 1 and no termites are alive.&EXIST=Immunes all damage and prevents non-Termite mobs from spawning if remaining count is 1.&ACTION=Destroys a part if remaining count is 2. Does nothing otherwise.&DAMAGE=All other mobs retires (but will be back later) and clears all effects. Spawns Baby Termite*2, Worker Termite*3, Soldier Termite*4, (Termite Overmind/Termite Egg).","ACTION=Destroys without loot. Spawns Baby Termite without loot.","ATTRIBUTE=Doesn't move.&ACTION=Summons (Leafbug/Mantis/Firefly/Wasp) with rarity reduced by at most 1 and no loot.","HOSTILE=30%&STATURN=Speed becomes (health%+100%)/2 original value.","ATTRIBUTE=Gains 60% dodge while hostile.&HOSTILE=10%&ACTION=Retires if hostile.","HOSTILE=30%&CHARAC=Additionally deals [300%*Damage] [lightning] to flower whether attack is defended or not.","ACTION=Has 30% chance to charge up and cancel action if not charged.&ATTACK=Directly damages if charged up (and releases charging state).","ATTACK=Shoots (1~2) missiles with [20%*Damage] and 20% accuracy instead.","CHARAC=Deals [2/3*Damage] [poison] for 8 turns when attack.","COUNT=6&DAMAGE=Drops loot.","ATTACK=Shoots 5 missiles with [10%*Damage] and 10% accuracy instead."]
+		const MobAttributeList=["","ACTION=Destroys without loot. Spawns (Worker Ant/Soldier Ant) without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Can't be defended.","HOSTILE=30%","HOSTILE=10%","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Ant with rarity reduced by at most 2 and no loot, then attacks.","COUNT=10&ATTRIBUTE=Doesn't move.&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Baby Ant*2, Worker Ant*3, Soldier Ant*4.&DESTROY=No loot if automatically destroyed. Summons Queen Ant.","","ATTACK=Shoots a missile with [20%*Damage] and 20% accuracy instead.","COUNT=6&HOSTILE=10%&DAMAGE=Drops loot.","COUNT=6&DAMAGE=Drops loot.","COUNT=6&HOSTILE=30%&DAMAGE=Drops loot. Immunes all damage for 5 turns.","HOSTILE=30%","ATTRIBUTE=Guaranteed to be shiny.&HOSTILE=30%","CHARAC=Deals [1/3*Damage] [poison] for 8 turns when attack.","ATTACK=Shoots a missile with [1/3*Damage] and 30% accuracy instead. Applies [1/3*Damage] [poison] for 8 turns when hits.","","COUNT=5&ACTION=Destroys a part.&DAMAGE=Spawns following mobs in order: Soldier Fire Ant*4.&DESTROY=No loot if automatically destroyed. Summons Soldier Fire Ant*2.","ACTION=Additionally attacks if moving down outside first row.","ACTION=Destroys without loot. Deals 100 knockback to all petals.","ACTION=Has 30% probability to additionally attack.&CHARAC=Deals [50%*Damage] only when attack being defended.","ATTRIBUTE=Doesn't move.&HOSTILE=10%&CHARAC=When attack being defended, deals 100 knockback and shoots a missile for [100%*Damage] and 10% accuracy.","ACTION=When health is not above [50%*Health], heals for [20%*Health] and cancels action.","ACTION=Has 50% probability to attempt moving in row before attack.","ATTACK=Deals [40%*Damage] [lightning] instead. Can't be defended.","ATTRIBUTE=Absorbs 50% of damage taken by other nearby enemies down to 1 health.&ACTION=Destroys without loot.","ATTRIBUTE=Doesn't move.&ATTACK=Deals [50%*Damage] direct damage instead. Heals equal to damage dealt.","ACTION=Destroys without loot.&DESTROY=Shoots 2 missiles with [100%*Damage] and 10% accuracy. Applies disable passive heal for 10 turns when hits.","ACTION=Additionally attacks if moving down outside first two rows.","HOSTILE=50%","ATTRIBUTE=Immunes knockback.&ACTION=Summons Soldier Fire Ant with rarity reduced by at most 2 and no loot, then attacks.","","ATTRIBUTE=Has [50%*Damage] armor.&HOSTILE=20%","ATTACK=Shoots 3 missiles with 1 damage and 10% accuracy. Applies [25%*Damage] armor debuff for 10 turns when hits.","ATTRIBUTE=Connected.&ACTION=Additionally attacks if moving down outside first two rows.","ATTRIBUTE=Connected.&HOSTILE=50%","ATTRIBUTE=Connected.","ATTRIBUTE=Doesn't move. Immunes knockback. Connected.&HOSTILE=0%&ACTION=If hostile, destroys all termite mound without loot, then moves and attacks. Becomes hostile otherwise.","COUNT=2&ATTRIBUTE=Doesn't move. Destroys itself if remaining count is 1 and no termites are alive.&EXIST=Immunes all damage and prevents non-Termite mobs from spawning if remaining count is 1.&ACTION=Destroys a part if remaining count is 2. Does nothing otherwise.&DAMAGE=All other mobs retires (but will be back later) and clears all effects. Spawns Baby Termite*2, Worker Termite*3, Soldier Termite*4, (Termite Overmind/Termite Egg).","ACTION=Destroys without loot. Spawns Baby Termite without loot.","ATTRIBUTE=Doesn't move.&ACTION=Summons (Leafbug/Mantis/Firefly/Wasp) with rarity reduced by at most 1 and no loot.","HOSTILE=30%&STATURN=Speed becomes (health%+100%)/2 original value.","ATTRIBUTE=Gains 60% dodge while hostile.&HOSTILE=10%&ACTION=Retires if hostile.","HOSTILE=30%&CHARAC=Additionally deals [300%*Damage] [lightning] to flower whether attack is defended or not.","ACTION=Has 30% chance to charge up and cancel action if not charged.&ATTACK=Directly damages if charged up (and releases charging state).","ATTACK=Shoots (1~2) missiles with [20%*Damage] and 20% accuracy instead.","CHARAC=Deals [2/3*Damage] [poison] for 8 turns when attack.","COUNT=6&DAMAGE=Drops loot.","ATTACK=Shoots 5 missiles with [10%*Damage] and 10% accuracy instead."]
 		MobAttributeList[66]="ACTION=Plays 62-point."
 		Object.assign(MobAttributeList,{101:"BOSS&ATTRIBUTE=Moves up to 2 grids. Calculates [X] starting from 0.&ACTION=Increases [X] by 1. If [X] reaches 3, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 40% accuracy instead.",102:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Each petal has 30% probability to be restrained and gains halved action for 10 times.&CHARAC=Deals [20%*Damage] [poison] for 20 turns when attack.",103:"BOSS&COUNT=2&ATTRIBUTE=Doesn't move.&ATTACK=Shoots 8 missiles with [20%*Damage] and (50%,50%,40%,40%,30%,30%,20%,20%) accuracy instead. Applies 20% heal debuff and disable passive heal for 6 turns when hits. Both effectiveness and duration stacks.&DAMAGE=Performs an action. Then increases all accuracy by 10%&DESTROY=Performs an action.",104:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Each petal in the column or nearby column has [200-2*DEF1]% chance to take [50%*Damage] before attack.",105:"BOSS&ATTACK=Shoots a missile with [20%*Damage] and 80% accuracy instead. Applies [40%*Damage] [poison] for 6 turns when hits.",106:"BOSS&ATTRIBUTE=Moves up to 3 grids&ACTION=Each petal has [120-10*Size]% probability to move up 1 grid or receive [Damage] before attack.",107:"BOSS&ATTACK=Shoots all pearls with [Damage] and 40% accuracy instead if has at least 5 pearls. Otherwise gains (1~2) pearls if defended.",108:"BOSS&ATTRIBUTE=Moves up to 3 grids.&ACTION=Moves in row for at most 1 grid to find a gap before attack.",109:"BOSS&ATTACK=Directly damages and heals equal to damage dealt. Increases damage by 20% original value, effectiveness is decreased by 2% down to 0% by remaining suppression turn.",110:"BOSS&ATTRIBUTE=Moves up to 3 grids. Can't be shot. All petal with negative buff has tripled effective buff when targeted. All petal has at most 90% effective accuracy when targeted.",111:"BOSS&ATTRIBUTE=Moves up to 2 grids.&CHARAC=Increases resulting damage by 20% for every 6 speed above 54 up to 100%.",112:"BOSS&ATTRIBUTE=Moves up to 2 grids.&ACTION=Tries to summon Soldier Ant with no loot up to 2 instead. Otherwise tries to summon 2 Soldier Ant with rarity reduced by at most 1 and no loot up to 4 instead. Otherwise attacks.",113:"BOSS&ATTRIBUTE=Moves up to 2 grids. Has [30%*Damage] armor, increased to [60%*Damage] if speed reaches 30, increased to [150%*Damage] if speed reaches 40. Decreases all damage taken by 50% if speed reaches 50. Immunes all damage if speed reaches 60.&ACTION=Doesn't attack if speed is over 60.&CHARAC=Deals 10% less damage for every 5 speed above 40.",114:"BOSS&ATTACK=Shoots 5 missiles with [20%*Damage] and 20% accuracy instead. Applies stackable [40%*Damage] armor debuff for 20 turns when hits.",115:"BOSS&ATTRIBUTE=Moves up to 3 grids. Calculates [X] starting from 0.&ACTION=Increases [X] by 1. If [X] reaches 2, changes move to deal [20%*Damage] to flower and all petals, then resets [X] to 0.&ATTACK=Shoots 3 missiles with [40%*Damage] and 20% accuracy instead.",121:"BOSS&ATTRIBUTE=Immunes all damage while any Beetle is alive.&EXIST=When a Beetle attacks, all Beetles has 20% probability to get increased level and damage. When a Beetle dies, all Beetles get increased rarity and resets level."})
 		const MobSVGArray=new Object()
@@ -1162,6 +1184,19 @@
 		const ItemSVGArray=new Object()
 		ItemSVGArray["Energy Drink"]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fcorange-path' d='M35 25A15 5 0 0 0 65 25L65 75A15 5 0 0 1 35 75Z'/><path class='flgrey-path' d='M35 25A15 5 0 0 1 65 25A15 5 0 0 1 35 25Z'/><path class='fyellow-path yellow-path wide' d='M50 47A5 4.5 90 0 1 50 57A5 4.5 90 0 1 50 47M50 44L50 38M55 46L59 41M57.5 52L62.5 51.5M55 58L59 62M50 60L50 66M45 58L41 62M42.5 52L37.5 51.5M45 46L41 41'/></svg><span class='nd'>Energy Drink</span>"
 		ItemSVGArray.Arrow="<svg viewBox='0 0 100 100' class='in-svg'><path class='fcyan-path ns' d='M50 20L75 45A3.5 1.5 135 0 1 70 50L50 30L30 50A3.5 1.5 45 0 1 25 45ZM50 45L75 70A3.5 1.5 135 0 1 70 75L50 55L30 75A3.5 1.5 45 0 1 25 70Z'/></svg><span class='nd'>Arrow</span>"
+		ItemSVGArray["Epic Rose Juice"]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fgreen-path' d='M32 25A18 6 0 0 0 68 25L68 75A18 6 0 0 1 32 75Z'/><path class='flgrey-path' d='M32 25A18 6 0 0 0 68 25A18 6 0 0 0 32 25Z'/><path class='cpink-path' d='M50 44A22 22 0 0 1 61 63A22 22 0 0 1 39 63A22 22 0 0 1 50 44Z' style='filter: brightness(90%)'/><path class='fcpink-path ns' d='M50 44A22 22 0 0 1 61 63A22 22 0 0 1 39 63A22 22 0 0 1 50 44Z'/></svg><span class='nd'>Epic Rose Juice</span>"
+		ItemSVGArray["Triple Web"]="<svg viewBox='0 0 100 100' class='in-svg'><path class='fwhite-path ns' d='M39 29.5A15 15 0 0 0 50 21.5A15 15 0 0 0 61 29.5A14 14 0 0 0 56.8 42.5A15 15 0 0 0 43.2 42.5A15 15 0 0 0 39 29.5ZM54.3 56A15 15 0 0 0 65.3 48A15 15 0 0 0 76.3 56A14 14 0 0 0 72.1 69A15 15 0 0 0 58.5 69A15 15 0 0 0 54.3 56ZM23.7 56A15 15 0 0 0 34.7 48A15 15 0 0 0 45.7 56A14 14 0 0 0 41.5 69A15 15 0 0 0 27.9 69A15 15 0 0 0 23.7 56Z'/><path class='white-path wide' d='M39 29.5A15 15 0 0 0 50 21.5A15 15 0 0 0 61 29.5A14 14 0 0 0 56.8 42.5A15 15 0 0 0 43.2 42.5A15 15 0 0 0 39 29.5ZM54.3 56A15 15 0 0 0 65.3 48A15 15 0 0 0 76.3 56A14 14 0 0 0 72.1 69A15 15 0 0 0 58.5 69A15 15 0 0 0 54.3 56ZM23.7 56A15 15 0 0 0 34.7 48A15 15 0 0 0 45.7 56A14 14 0 0 0 41.5 69A15 15 0 0 0 27.9 69A15 15 0 0 0 23.7 56Z' style='filter: brightness(90%)'/></svg><span class='nd'>Triple Web</span>"
+		const CardSVGArray=new Object()
+		CardSVGArray.Default="<svg viewBox='0 0 100 100' class='in-svg'><path class='grey-path wider' stroke-linecap='round' stroke-linejoin='round' d='M34 26L66 26L66 74L34 74Z' style='filter: brightness(90%)'/><path class='fgrey-path ns' d='M34 26L66 26L66 74L34 74Z'/><path class='fwhite-path ns' d='M34 50A24 16 90 0 0 66 50A24 16 90 0 0 34 50'/><path class='black-path mwidth' d='M38 41L47 41L47 59M62 50L53 50L53 41L62 41L62 59L53 59'/></svg><span class='nd'>Default</span>"
+		CardSVGArray.Basic="<svg viewBox='0 0 100 100' class='in-svg' style='border-radius: 8%; overflow: hidden'><path class='fblack-path ns' fill-opacity='0.2' d='M0 0L100 0L100 0L0 0Z'/><path class='white-path wider' d='M50 32A18 18 0 0 0 50 68A18 18 0 0 0 50 32' style='filter: brightness(90%)'/><path class='fwhite-path ns' d='M50 32A18 18 0 0 0 50 68A18 18 0 0 0 50 32'/></svg><span class='nd'>Basic</span>"
+		CardSVGArray.Rock="<svg viewBox='0 0 100 100' class='in-svg'><path class='grey-path wider' d='M28 42L49 26L70 47L65 66L38 69Z' style='filter: brightness(90%)'/><path class='fgrey-path ns' d='M28 42L49 26L70 47L65 66L38 69Z'/></svg><span class='nd'>Rock</span>"
+		CardSVGArray["Blood Stinger"]="<svg viewBox='0 0 100 100' class='in-svg'><path class='cdred-path wider' stroke-linecap='round' stroke-linejoin='round' d='M46 43L58 50L46 57Z' style='filter: brightness(90%)'/><path class='fcdred-path ns' d='M46 43L58 50L46 57Z'/></svg><span class='nd'>Blood Stinger</span>"
+		CardSVGArray.Dice="<svg viewBox='0 0 100 100' class='in-svg'><path class='white-path wider' stroke-linecap='round' stroke-linejoin='round' d='M32 32L68 32L68 68L32 68Z' style='filter: brightness(90%)'/><path class='fwhite-path ns' d='M32 32L68 32L68 68L32 68Z'/><path class='fred-path ns' d='M50 44A6 6 0 0 0 50 56A6 6 0 0 0 50 44'/></svg><span class='nd'>Dice</span>"
+		CardSVGArray.Air="<svg viewBox='0 0 100 100' class='in-svg'><path class='fwhite-path ns' fill-opacity='0.1' d='M10 10L90 10L90 90L10 90'/></svg><span class='nd'>Air</span>"
+		CardSVGArray.Yggdrasil="<svg viewBox='0 0 100 100' class='in-svg'><path class='cbrown-path wider' stroke-linecap='round' stroke-linejoin='round' d='M37 73.4A27.3 13 115 0 0 64.2 26.5A27.3 13 125 0 0 37 73.4' style='filter: brightness(90%)'/><path class='fcbrown-path ns' d='M37 73.4A27.3 13 115 0 0 64.2 26.5A27.3 13 125 0 0 37 73.4'/><path class='cbrown-path wide' d='M40.4 67.7L56.9 38.3' style='filter: brightness(90%)'/></svg><span class='nd'>Yggdrasil</span>"
+		CardSVGArray.Criticize="<svg viewBox='0 0 100 100' class='in-svg'><path class='yellow-path' d='M50 18L50 62'/><path class='fyellow-path ns' d='M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75'/></svg><span class='nd'>Criticize</span>"
+		CardSVGArray.Disregard="<svg viewBox='0 0 100 100' class='in-svg'><path class='cyan-path' d='M35 35A15 15 0 1 1 59 47A22.5 22.5 0 0 0 50 65'/><path class='fcyan-path ns' d='M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75'/></svg><span class='nd'>Disregard</span>"
+		CardSVGArray.Refresh="<svg viewBox='0 0 100 100' class='in-svg'><path class='white-path wider' d='M67 67A24 24 0 1 1 67 33M71 31L65 37L71 37Z'></path></svg><span class='nd'>Refresh</span>"
 		function LevelExp(level) {
 			if(level===0) return 1
 			let answer=1.06361**level-1
@@ -1490,7 +1525,7 @@
 			let answer=[5,6,7,8,8,9,9,10]
 			return answer[floor]
 		}
-		function Petal(id=0,rarity=1,level=0,float=true) {
+		function Petal(id=0,rarity=1,level=0,float=true,nobuff=false) {
 			this.id=id,this.rarity=rarity,this.level=level
 			if(typeof(this.id)==="string") this.id=PetalNameList.indexOf(this.id)
 			this.name=PetalNameList[this.id]
@@ -1851,10 +1886,6 @@
 				return
 			}
 			let resultingDamage=damage
-			if(isMob(mob) && this.effect.hasOwnProperty("resistance")) {
-				resultingDamage-=this.effect.resistance
-				if(resultingDamage<0) resultingDamage=0
-			}
 			if(mobName==="!Roach!" && mob.quickness>4) {
 				let damageBuff=20*(quickness-4)
 				if(damageBuff>100) damageBuff=100
@@ -1863,6 +1894,11 @@
 			if(mobName==="!Leafbug!" && mob.quickness>3) {
 				let damageDebuff=10*(quickness-3)
 				resultingDamage-=approx(resultingDamage*damageDebuff/100)
+				if(resultingDamage<0) resultingDamage=0
+			}
+			if(explore.floor>=1) resultingDamage=approx(resultingDamage*10000/fight.energy)
+			if(isMob(mob) && this.effect.hasOwnProperty("resistance")) {
+				resultingDamage-=this.effect.resistance
 				if(resultingDamage<0) resultingDamage=0
 			}
 			if(resultingDamage) {
@@ -1904,6 +1940,7 @@
 				this.effect.restraint--
 				if(!this.effect.restraint) delete this.effect.restraint
 			}
+			if(explore.floor>=1 && fight.energy<6400) pendingAction=approx(pendingAction*(fight.energy-3500)/3000)
 			this.actionbar+=pendingAction
 			if(this.state==="Existing" && this.name==="Tomato") {
 				this.calculate+=pendingAction
@@ -2024,6 +2061,7 @@
 				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===targetX && fight.mob[i].y===targetY) targetMob=fight.mob[i]
 				if(!targetMob) {
 					addLog("[Petal] Shoot of "+this.name+" ended.","#9f9fdf")
+					this.actionbar=0
 					this.destroy("Shoot")
 					this.shootatt.bounce=0
 					delete this.shootatt.hitarray
@@ -2039,10 +2077,10 @@
 					if(getGrid(79,this.shootatt.x,this.shootatt.y)) getGrid(79,this.shootatt.x,this.shootatt.y).style.opacity=0.2
 					this.shootatt.x=targetMob.x
 					this.shootatt.y=targetMob.y
-					let damageDealt=this.damage*2
+					let damageDealt=this.damage
 					targetMob.injure(damageDealt,this.clone())
 					if(this.name==="Grapes" && targetMob.currenthealth>0) {
-						targetMob.injure({effectdamage:this.damage/2,effectturn:3},"Poison")
+						targetMob.injure({effectdamage:approx(this.damage/4),effectturn:5},"Poison")
 					}
 					if(this.name==="Dandelion" && targetMob.currenthealth>0) {
 						targetMob.injure({effectturn:5},"Suppression")
@@ -2058,6 +2096,7 @@
 					this.shootatt.continue=true
 					return
 				} else {
+					this.actionbar=0
 					this.destroy("Shoot")
 					this.shootatt.bounce=0
 					delete this.shootatt.hitarray
@@ -2717,6 +2756,7 @@
 				return
 			}
 			let resultingDamage=damage
+			if(explore.floor>=1) resultingDamage=approx(resultingDamage*fight.energy/10000)
 			if(this.effect.hasOwnProperty("vulnerability")) {
 				resultingDamage+=this.effect.vulnerability[0]
 			}
@@ -3240,87 +3280,21 @@
 			}
 			if(this.name.match("(Missile)")!==null) missileCheck()
 		}
-		function spawnNear(mob,targetX,targetY,noloot) {
-			if(targetX===0 && targetY===0) {
-				addLog("[Mob] "+mob.name+" with "+mob.health+" health spawned.","#bfbf00")
-				let pendingPlace=new Array()
-				for(let i=1;i<=8;i++) {
-					for(let j=1;j<=3;j++) if(!getFilledGrid(i,j)) pendingPlace.push({x:i,y:j})
-				}
-				let resultingPlace=pendingPlace[roll(0,pendingPlace.length-1)]
-				fight.mob.push(mob)
-				fight.mob[fight.mob.length-1].x=resultingPlace.x
-				fight.mob[fight.mob.length-1].y=resultingPlace.y
-				if(noloot) fight.mob[fight.mob.length-1].effect.noloot=true
-				fight.mob[fight.mob.length-1].print()
-				return
-			}
-			let pendingPlace=new Array()
-			if(!getFilledGrid(targetX,targetY)) pendingPlace.push(0)
-			if(targetY>1 && !getFilledGrid(targetX,targetY-1)) pendingPlace.push(1)
-			if(!getFilledGrid(toCord(targetX+1),targetY)) pendingPlace.push(2)
-			if(targetY<3 && !getFilledGrid(targetX,targetY+1)) pendingPlace.push(3)
-			if(!getFilledGrid(toCord(targetX-1),targetY)) pendingPlace.push(4)
-			if(pendingPlace.length>0) {
-				addLog("[Mob] "+mob.name+" with "+mob.health+" health spawned.","#bfbf00")
-				let resultingPlace=pendingPlace[roll(0,pendingPlace.length-1)]
-				fight.mob.push(mob)
-				fight.mob[fight.mob.length-1].x=toCord(targetX+dx[resultingPlace])
-				fight.mob[fight.mob.length-1].y=targetY+dy[resultingPlace]
-				if(noloot) fight.mob[fight.mob.length-1].effect.noloot=true
-				fight.mob[fight.mob.length-1].print()
-			} else {
-				fight.spawnmob.unshift(mob)
-				fight.spawnmob[0].effect.summoned=true
-				if(noloot) fight.spawnmob[0].effect.noloot=true
-			}
-		}
 	</script>
 	<script>
 		const bookHTML=new Object()
 		bookHTML["Flower Artisan Guide"]="<h2>Flower Artisan Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Combine or refine common petals into powerful new forms. By combining different petals with similar characteristics, you gain stronger one improved in level, giving stronger damaging attributes. By refining petal with high level, you gain stronger one improved in rarity, guaranting better durability and wear resistance. Be proficient in the two production methods, and you can easily overwhelm your opponents during battles. This book is your guide to mastering the art of petal craft.</span><br><span>For Rarity Up, you only need to select 1 petal with positive Level (and Rarity should not be Mythic). Higher Level increases the success chance and higher Rarity decreases the chance. The chance is always 100% for petal with at least 3 Level. However, you may find it not worth in some cases. Higher rarity grants your petal higher Health but Damage might be significant decreased since <span class='bold'>Rarity Up resets Level</span>.</span><br><span>For Level Up, you need to select at least 2 petals of the same type with identical Rarity and Level. The success chance decreases as Rarity and Level increases, and the decay stops after 3 Level. To increase the success chance, you need to put more petals at once. (X+1) petals grants you X times success chance. However, success chance exceeds 100% does nothing, and you lost all petals when success or lost [1,X] petals when fail, so putting all petals together is not a wise decision.</span><br><span>Before you begin, there's one more thing to remind you: The Base Four Influencing Fators (Speed, Reload, ATKBuff, DEFBuff) is <span class='bold'>kept</span> on Rarity Up. On Level Up, they <span class='bold'>independently inherit</span> from one material. Choose your materials wisely! Here is another multifunctional calculator which is quite convenient to use by simply inputting Rarity and Level. 3 0 or 4 2 for example.</span><input type='text' tabindex='-1' id='craft-detail' onkeydown='craftdetail(event.key)' class='inner-input' list='craftdetaillist' autocomplete='off' title='Craft Detail'><datalist id='craftdetaillist'><option value='3 0'><option value='4 2'></datalist>"
 		bookHTML["Flower Combat Guide"]="<h2>Flower Combat Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>When you enter a map for the first time, mobs will be spawned and fight against you. There is a threshold depends on Floor that prevents too many mobs existing at the same time. Therefore, when you defeat a mob, a new mob may spawn.</span><br><span>The process of a round in battle is divided into the following parts: At the beginning, your petals gain action based on speed. You can move petals, use them for attack or perform special skills. Then mobs gain action. Mob with action exceeding the threshold will attack and you use petal to defend. If you skip defend or the defend fails, you take the damage. By default value, moving a petal costs 100 action, while using a petal to attack costs 200 action. The threshold for mob is 200 action.</span><br><span>Your petals can attack or defend mobs from <span class='bold'>the front or the side column</span>. The success rate of attack is based on petal ATK (atk2 for front row and atk1 for middle row) and mob Dodge. The success rate of defend is based on petal DEF (def2 for back row and def1 for middle row) and mob Dodge. These two formula have significant difference. When the mob is from side column, the formula also uses petal Size. Petal Size is capped at 20, but the best value for side-defending is <span class='bold'>17 to 18 Size</span>.</span><br><span>For shootable petal, before any bounces, the Accuracy (the petal ATK in success rate formula for shootable petals) is always 100% inside range. For each distance exceeds range, the Accuracy is decreased by Accuracy Decline. If it hits the target, it can bounce between enemies. The Accuracy is decreased by Repeated Accuracy Decline each time it hits a enemy that already hit. The Accuracy is decreased by Bounce Accuracy Decline each bounce exceeds Bounce. Any bounce hits can only hit enemy within Bounce Range.</span><br><span>Since you are facing mobs from all directions and not only from the front, <span class='bold'>the first and last columns are connected</span>, which means that both your petals and mobs can move from the first column to the last column or inverted, and the first and last columns are side columns to each other. The distance between two grids is calculated by horizontal distance plus vertical distance <span class='bold'>without using the Pythagorean theorem</span>. The word 'Retire' means a petal disappears and can't be used again in the same fight. If you are defeated, you only have 30% probability to temporary keep loot and they could be lost if you are defeated again in the same map.</span><br><span>You can calculate chance in the following box. For example, Aa-48S12 calculates the success rate of attacking 80% Dodge mob in side column with 12 Size, 100% ATK and -4 ATKbuff petal, A4+a6F calculates the success rate of attacking 60% Dodge mob in the front column with 40% ATK and +10 ATKbuff petal, D3+05F calculates the success rate of defending 50% Dodge mob in the front column with 30% DEF and +0 DEFbuff petal.</span><input type='text' tabindex='-1' id='combat-calc' onkeydown='combatcalc(event.key)' class='inner-input' list='calclist' autocomplete='off' title='Calculator'><datalist id='calclist'><option value='Aa-48S12'><option value='A4+a6F'><option value='D3+05F'></datalist>"
-		bookHTML["Flower Game Guide"]="<h2>Flower Game Guide <span style='color: #0078d7; font-style: italic; font-size: 12px; font-weight: noremal'>//TODO</span></h2><div class='white-bg inner-box'><span style='color: #008000'>#include&lt;PFLFtools.h&gt; <span style='color: #0078d7; font-style: italic;'>//should be replaced</span></span><span style='color: #008000'>#include&lt;iostream&gt;</span><span style='color: #008000'>#include&lt;time.h&gt;</span><span style='color: #008000'>#include&lt;math.h&gt;</span><span style='color: #008000'>#include&lt;string.h&gt;</span><span style='color: #008000'>#include&lt;fstream.h&gt;</span><span><span style='font-weight: bold'>using namespace</span> std<span style='color: #ff0000; font-weight: bold'>;</span></span><span><span style='font-weight: bold'>void</span> menu<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"↓MORE GAME (CLICK!)↓\"</span><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/PFLF' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"PFLF\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/Virus1' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"VIRUS 1\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span><span><span style='font-weight: bold'>int</span> main<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>Sleep<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #800080'>2000</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadtext();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadgallery();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadmarvel();</span><span style='margin-left: 2em'>menu<span style='color: #ff0000; font-weight: bold'>();</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span> <span style='color: #800080'>0</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span></div>"
+		bookHTML["Flower Debate Guide"]="<h2 style='color: #7eef6d'>Flower Debate Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Floor 1 Game: Debate Strategy. Reward: Some good things, including talent system.</span><br><br><span>At the beginning, you and your opponent have the same Momentum. When one's Momentum drops to zero, the opponent win. You will receive rewards only when winning for the first time. There are no punishment after failure, and attempts is not limited.</span><br><span>There are 4 types of basic cards: Rock(25%), Blood Stinger(25%), Dice(25%), Air(10%). Basic cards have random rarities from Common to Epic, and levels from 0 to 3. They are petals without attribute floating. If you get a high quality card and don't have any petals of that quality, the level will be reduced until you have a petal at same quality. If there is still no same quality petal after level reduced to 0, rarity will also be reduced.</span><br><span>There are 4 types of advanced cards: Yggdrasil(2%), Criticize(6%), Disregard(6%), Refresh(1%). The rarities of high quality cards are fixed at Legendary, and levels are fixed at 0. Each player has 6 cards.</span><br><span>There are 5 topics: Health(25%), Damage(25%), DPT(25%), Special(20%), Scarce(5%). For each topic, both players choose a card and compare. The loser will get Momentum reduced by 1. Then, both players draw a new card and start a new topic. Each topic has different judgments:</span><span>1. Health Petals: If both player use basic cards, the one with higher health wins.</span><span>2. Damage Petals: If both player use basic cards, the one with higher damage wins. Blood stinger's damage is considered twice as much.</span><span>3. DPT Petals: If both player use basic cards, the one with higher DPT wins. Dice's DPT is considered 6 times as much. Rock is considered as it can hit twice.</span><span>4. Special Petals: If both player use basic cards, the one uses Air wins.</span><span>5. Scarce Petals: If both player use basic cards, no one wins.</span><br><span>Yggdrasil: It is considered as basic cards in topic 1~3. In topic 4~5 it wins all previous cards. In topic 5, it will also cause the opponent to lose an additional 2 Momentum when win.</span><span>Criticize: It wins all previous cards in all topics.</span><span>Disregard: It wins all previous cards in all topics. However, the loser will keep the Momentum.</span><span>Refresh: It wins all previous cards in all topics. However, the loser will keep the Momentum. Instead, the winner discards all cards and draws new cards.</span><br><span>You can see the rarity of your opponent's card. And your attention is amazing, with a 20% chance of recognize when your opponent gains or moves Air.</span>"
 		bookHTML["Flower Evolutionary Guide"]="<h2>Flower Evolutionary Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Consume the petals to absorb their vital essence. This raw energy fuels your growth, allowing you to level up and evolve. With each infusion of experience, you grow stronger, gain access to higher tier abilities, naturally ascending to greater heights. This ancient cycle of growth is detailed within these pages.</span><br><span>You gain petals from defeated mobs, higher rarity mobs have better droprate. You can see the detail in gallery. The base Experience for a petal is <span class='bold'>(RarityFactor)*(Level+1)</span>. For Common, Unusual, Rare, Epic, Legendary, Mythic Petals, the Factors are 8, 12, 20, 40, 100, 300 respectively. Then, the Experience is multiplied by a random value from 0.8 to 1.2, and rounded to nearest integer, so the expected Experience is equivalent to base Experience.</span><br><span>Since this mechanic is not difficult to understand, you need no calculator for this. I provided another calculator here which helps you get the basic stat of petals. Your gained petals have 20% basic stat attribute floating <span class='bold'>except some special kinds</span>. To use this box, you just need to simply input Name, Rarity, Level. For example, Corn 3 0 calculates the stat of Rare Corn, Plank 4 2 calculates the stat of Epic Plank++.</span><input type='text' tabindex='-1' id='petal-stat' onkeydown='petalstat(event.key)' class='inner-input' list='petalstatlist' autocomplete='off' title='Petal Stat'><datalist id='petalstatlist'><option value='Corn 3 0'><option value='Plank 4 2'></datalist>"
+		bookHTML["Flower Game Guide"]="<h2>Flower Game Guide <span style='color: #0078d7; font-style: italic; font-size: 12px; font-weight: noremal'>//TODO</span></h2><div class='white-bg inner-box'><span style='color: #008000'>#include&lt;PFLFtools.h&gt; <span style='color: #0078d7; font-style: italic;'>//should be replaced</span></span><span style='color: #008000'>#include&lt;iostream&gt;</span><span style='color: #008000'>#include&lt;time.h&gt;</span><span style='color: #008000'>#include&lt;math.h&gt;</span><span style='color: #008000'>#include&lt;string.h&gt;</span><span style='color: #008000'>#include&lt;fstream.h&gt;</span><span><span style='font-weight: bold'>using namespace</span> std<span style='color: #ff0000; font-weight: bold'>;</span></span><span><span style='font-weight: bold'>void</span> menu<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"↓MORE GAME (CLICK!)↓\"</span><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/PFLF' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"PFLF\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/Virus1' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"VIRUS 1\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span><span><span style='font-weight: bold'>int</span> main<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>Sleep<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #800080'>2000</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadtext();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadgallery();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadmarvel();</span><span style='margin-left: 2em'>menu<span style='color: #ff0000; font-weight: bold'>();</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span> <span style='color: #800080'>0</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span></div>"
+		bookHTML["Flower Subsist Guide"]="<h2 style='color: #7eef6d'>Flower Subsist Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>In this long journey, it is inevitable to feel bored and tired, Traveler. You need enough time to strengthen yourself and travel towards higher places. But time won't wait for you. If you don't speed up, you will be greeted by the collapse of Florroom.</span><br><span>And you have realized that things are far more than that, your energy has started to drain slowly but steadily. The cyan vertical bar on the left represents your energy, the lower the energy, the weaker you will be. The upper limit of energy is 100%, and the lower limit is 36%. Never try to cross the 64% safe line, it will only accelerate your death.</span><br><span>Let's be more specific about the effects of energy on combat. As energy is lost, your petals lose more Health when hit, increased to 1/Energy of the original value. Your petals cause lower damage to mobs, which is multiplied by Energy. After crossing the safety line, the flower will receive higher damage, multiplied by 0.3/(Energy-35%). Petals also receive fewer action bars, which is (Energy-35%)/0.3 times the speed.</span><br><span>You should strive to maintain sufficient energy to enter the next floor, where you will receive a 6% energy recovery. Do not waste any items that provide energy recovery, as these tools are extremely scarce and crucial for your survival. To avoid losing too much energy, you need to always remember the following two things:</span><span>1. Don't spend too much turns in battle, as each turn will cause you to lose 0.01% Energy.</span><span>2. Defend mob attacks as much as possible, as each injury will cause you to lose 0.03% Energy.</span><br><span>That's all. Good luck.</span>"
 		bookHTML["Flower Survival Guide"]="<h2>Flower Survival Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Welcome to the Florroom! This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7. Here, you make powerful petals, travel between different regions and maps, defeat various mobs and continuously upgrade to gain stronger power!</span><br><span>This is your first book. As the story continues, you will learn more knowledge, which appears in the form of books in this section. If you don't have experience fighting in Florroom, it doesn't matter. You will receive the unique <span class='bold'>Flower Combat Guide</span> I wrote. Enter the name of this book below to get it!</span><br><span>If you remembered something, try writing in the following box to retrieve the corresponding item:</span><input type='text' tabindex='-1' id='item-code' onkeydown='itemcode(event.key)' class='inner-input' autocomplete='off' title='Code'><span>(NOt CASe SenSItiVE &amp; ign o r i ngspace s)</span>"
-		let somerandomlimit1=1,somerandomlimit2=1,somerandomlimit3=1,somerandomlimit4=1
+		let somerandomlimit1=1,somerandomlimit3=1,somerandomlimit4=1
 		function book(modify) {
 			if(modify===-1 && player.bookreading>0) player.bookreading--
 			if(modify===1 && player.bookreading<player.book.length-1) player.bookreading++
 			document.getElementById("book-content").innerHTML=bookHTML[player.book[player.bookreading]]
-			if(player.book[player.bookreading]==="Flower Evolutionary Guide") {
-				let editingStatHTML="<h3>Absorb Statistics</h3>"
-				editingStatHTML+="<span style='color: #9f7f5f'>Total Petal Absorbed: "+player.bookstat.evolutionary.totalabsorb
-				for(let i=1;i<=6;i++) {
-					if(i===1) {
-						editingStatHTML+="="
-					} else {
-						editingStatHTML+="+"
-					}
-					editingStatHTML+="<span style='color: "+rarityColor[i].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+player.bookstat.evolutionary.totalrarityabsorb[i]+"</span>"
-				}
-				editingStatHTML+="</span><span style='color: #5f9f5f'>Total Exp Gained: "+player.bookstat.evolutionary.totalgainedexp+"</span>"
-				editingStatHTML+="<span style='color: #5f9f5f'>Expected Exp: "+player.bookstat.evolutionary.totalexpectedexp+"</span>"
-				editingStatHTML+="<span style='color: #5f9f5f'>Exp Variance: "+approx(player.bookstat.evolutionary.expvariance*1000)/1000+"</span>"
-				if(player.level<50) {
-					editingStatHTML+="<h3>Level Rewards</h3><div class='green-bg inner-box'>"
-					for(let i=betterFloor(player.level/10)*10+1;i<=betterFloor(player.level/10)*10+10;i++) {
-						editingStatHTML+="<span style='color: "
-						if(i<=player.level) {
-							editingStatHTML+="#5fbf5f"
-						} else if(i===player.level+1) {
-							editingStatHTML+="#9f9f5f"
-						} else {
-							editingStatHTML+="#7f7f7f"
-						}
-						editingStatHTML+="'>Level "+i+(i<10? " ":"")+": Requires "+LevelExp(i-1)+" Exp, Rewards: 3 Talent Point"
-						if(i===10 || i===20 || i===30 || i===40) editingStatHTML+=" <span class='bold'>And 1 Slot</span>"
-						editingStatHTML+="</span>"
-					}
-				}
-				if(explore.floor<somerandomlimit1) editingStatHTML=editingStatHTML.replaceAll("3 Talent Point","???")
-				document.getElementById("book-content").innerHTML+=editingStatHTML
-			}
 			if(player.book[player.bookreading]==="Flower Artisan Guide") {
 				let editingStatHTML="<h3>Level Up Statistics</h3>"
 				editingStatHTML+="<span style='color: #7f5f9f'>Total Level Up: "+player.bookstat.artisan.totallevelup
@@ -3353,6 +3327,76 @@
 				editingStatHTML+="<span style='color: #9f5f5f'>Total Fail: "+player.bookstat.artisan.totalrarityupfail+"</span>"
 				editingStatHTML+="<span style='color: #5f7f9f'>Expected Success: "+approx(player.bookstat.artisan.totalrarityupexpectedsuccess*100)/100+"</span>"
 				editingStatHTML+="<span style='color: #5f7f9f'>Success Variance: "+approx(player.bookstat.artisan.rarityupsuccessvariance*1000)/1000+"</span>"
+				document.getElementById("book-content").innerHTML+=editingStatHTML
+			}
+			if(player.book[player.bookreading]==="Flower Debate Guide") {
+				let editingStatHTML="<h3>Your opponents</h3><div class='green-bg inner-box'>"
+				for(let i=1;i<=9;i++) {
+					editingStatHTML+="<span style='color: "
+					if(player.floor1gamestat[i]==="Completed") {
+						editingStatHTML+="#5fbf5f"
+					} else if(player.floor1gamestat[i]==="Incomplete") {
+						editingStatHTML+="#9f9f5f"
+					} else {
+						editingStatHTML+="#7f7f7f"
+					}
+					editingStatHTML+="'>"
+					if(player.floor1gamestat[i]==="Locked" || fight.active===true || fight.hasOwnProperty("spevent")) {
+						editingStatHTML+="<button class='lred-bg srecbtn forbidden'>Locked</button>"
+					} else {
+						editingStatHTML+="<button onclick='startFight("+(100+i)+")' class='lblue-bg srecbtn pointer'>Start!</button>"
+					}
+					editingStatHTML+="<span class='llmargin' style='color: "+rarityColor[i].replace("#ffe65d","#ffe65d; filter: brightness(90%)").replace("#2bffa3","#2bffa3; filter: brightness(90%)")+"'>"+rarityName[i].slice(0,4)+".</span>"+"Flower, Reward: Nothing(WIP)"
+					editingStatHTML+="</span>"
+				}
+				editingStatHTML+="</div>"
+				if(player.floor1gamestat[2]!=="Locked")
+				editingStatHTML+="<br><span>Opponents after <span style='color: #ffe65d; filter: brightness(90%)'>Unusual</span> have higher momentum.</span>"
+				if(player.floor1gamestat[4]!=="Locked")
+				editingStatHTML+="<span>Opponents after <span style='color: #861f6d'>Epic</span> have higher DPT.</span>"
+				if(player.floor1gamestat[5]!=="Locked")
+				editingStatHTML+="<span>Opponents after <span style='color: #de1f1f'>Legendary</span> have higher momentum again.</span>"
+				if(player.floor1gamestat[7]!=="Locked")
+				editingStatHTML+="<span>Opponents after <span style='color: #1fdbde'>Ultra</span> have higher DPT again.</span>"
+				if(player.floor1gamestat[9]!=="Locked")
+				editingStatHTML+="<span><span style='color: #555555'>Unique</span> opponent has higher damage.</span>"
+				document.getElementById("book-content").innerHTML+=editingStatHTML
+			}
+			if(player.book[player.bookreading]==="Flower Evolutionary Guide") {
+				if(explore.floor===1) {
+					document.getElementById("book-content").innerHTML=document.getElementById("book-content").innerHTML.replace(" This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7."," This is a tower with 7 floors. As something you should have known, the goal of the game is to climb from Floor 1 to Floor 7.")
+				}
+				let editingStatHTML="<h3>Absorb Statistics</h3>"
+				editingStatHTML+="<span style='color: #9f7f5f'>Total Petal Absorbed: "+player.bookstat.evolutionary.totalabsorb
+				for(let i=1;i<=6;i++) {
+					if(i===1) {
+						editingStatHTML+="="
+					} else {
+						editingStatHTML+="+"
+					}
+					editingStatHTML+="<span style='color: "+rarityColor[i].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+player.bookstat.evolutionary.totalrarityabsorb[i]+"</span>"
+				}
+				editingStatHTML+="</span><span style='color: #5f9f5f'>Total Exp Gained: "+player.bookstat.evolutionary.totalgainedexp+"</span>"
+				editingStatHTML+="<span style='color: #5f9f5f'>Expected Exp: "+player.bookstat.evolutionary.totalexpectedexp+"</span>"
+				editingStatHTML+="<span style='color: #5f9f5f'>Exp Variance: "+approx(player.bookstat.evolutionary.expvariance*1000)/1000+"</span>"
+				if(player.level<50) {
+					editingStatHTML+="<h3>Level Rewards</h3><div class='green-bg inner-box'>"
+					for(let i=betterFloor(player.level/10)*10+1;i<=betterFloor(player.level/10)*10+10;i++) {
+						editingStatHTML+="<span style='color: "
+						if(i<=player.level) {
+							editingStatHTML+="#5fbf5f"
+						} else if(i===player.level+1) {
+							editingStatHTML+="#9f9f5f"
+						} else {
+							editingStatHTML+="#7f7f7f"
+						}
+						editingStatHTML+="'>Level "+i+(i<10? " ":"")+": Requires "+LevelExp(i-1)+" Exp, Rewards: 3 Talent Point"
+						if(i===10 || i===20 || i===30 || i===40) editingStatHTML+=" <span class='bold'>And 1 Slot</span>"
+						editingStatHTML+="</span>"
+					}
+					editingStatHTML+="</div>"
+				}
+				if(explore.floor<somerandomlimit1) editingStatHTML=editingStatHTML.replaceAll("3 Talent Point","???")
 				document.getElementById("book-content").innerHTML+=editingStatHTML
 			}
 		}
@@ -3614,6 +3658,7 @@
 				if(explore.event.searchlibrary===2 && dialogRemain.match(/\)/)) return
 				if(explore.event.searchlibrary===10 && dialogRemain.match(/\)/)) return
 				if(explore.event.searchlibrary===12 && dialogRemain.match(/\)/)) return
+				if(explore.event.floor1hotel===2 && dialogRemain.length>0) return
 				if(dialogRemain.length) {
 					dialogPrint=false
 					document.getElementById("dialog-maintext").innerHTML+=dialogRemain
@@ -4021,7 +4066,6 @@
 				if(explore.event.basefloorending===5) {
 					dialog("(The Florroom)","But he doesn't care.","Unset","#dfdfdf")
 					explore.event.basefloorending=6
-					clearAllInterval()
 					return
 				}
 				if(explore.event.basefloorending===6) {
@@ -4055,6 +4099,265 @@
 					location.reload()
 					return
 				}
+				if(explore.event.floor1startdialog===0 && player.settings.skipdialog===true) explore.event.floor1startdialog=19
+				if(explore.event.floor1startdialog===0) {
+					dialog("Traveler (You)","(Waking up) Where am I now?","Unset","#dfdfff")
+					explore.event.floor1startdialog=1
+					return
+				}
+				if(explore.event.floor1startdialog===1) {
+					dialog("(The Florroom)","He starts walking around. There are some messy newspapers on the ground. He picked up one and read.","Unset","#dfdfdf")
+					explore.event.floor1startdialog=2
+					return
+				}
+				if(explore.event.floor1startdialog===2) {
+					dialog("(Newspaper)","BREAKING NEWS: The underground world suddenly collapsed! The reason is unknown and is currently under investigation.","Slow","#ffffff")
+					explore.event.floor1startdialog=3
+					return
+				}
+				if(explore.event.floor1startdialog===3) {
+					dialog("(Newspaper)","Recently, there have been a large number of flowers claiming to come from underground world, and the police are registering their information.","Slow","#ffffff")
+					explore.event.floor1startdialog=4
+					return
+				}
+				if(explore.event.floor1startdialog===4) {
+					dialog("(Newspaper)","Some of them have already formed squads, searching or digging for downward passages. They have received support from the construction committee. Good luck to them.","Slow","#ffffff")
+					explore.event.floor1startdialog=5
+					return
+				}
+				if(explore.event.floor1startdialog===5) {
+					dialog("(Newspaper)","In addition, we also interviewed a flower named Summoner. According to him, he was on a staircase when the collapse occurred and felt the surrounding time and space becoming chaotic, which has some credibility.","Slow","#ffffff")
+					explore.event.floor1startdialog=6
+					return
+				}
+				if(explore.event.floor1startdialog===6) {
+					dialog("(The Florroom)","Right at this moment, several police arrived.","Unset","#dfdfdf")
+					explore.event.floor1startdialog=7
+					return
+				}
+				if(explore.event.floor1startdialog===7) {
+					dialog("Police","Here comes a new flower!","Unset","#9f9fff")
+					explore.event.floor1startdialog=8
+					return
+				}
+				if(explore.event.floor1startdialog===8) {
+					dialog("Police","Name?","Unset","#9f9fff")
+					explore.event.floor1startdialog=9
+					return
+				}
+				if(explore.event.floor1startdialog===9) {
+					dialog("Traveler (You)","Traveler.","Unset","#dfdfff")
+					explore.event.floor1startdialog=10
+					return
+				}
+				if(explore.event.floor1startdialog===10) {
+					dialog("Police","Age?","Unset","#9f9fff")
+					explore.event.floor1startdialog=11
+					return
+				}
+				if(explore.event.floor1startdialog===11) {
+					dialog("Traveler (You)","I don't know.","Unset","#dfdfff")
+					explore.event.floor1startdialog=12
+					return
+				}
+				if(explore.event.floor1startdialog===12) {
+					dialog("Police","Fine. Turn left ahead and go to the hotel to register. Here is your ID card.","Unset","#9f9fff")
+					explore.event.floor1startdialog=13
+					return
+				}
+				if(explore.event.floor1startdialog===13) {
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1startdialog=14;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Sure.</button><button type='button' onclick='event.stopPropagation();explore.event.floor1startdialog=15;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>I have questions...</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.floor1startdialog===14) {
+					dialog("Police","Don't you have any question to ask?","Unset","#9f9fff")
+					explore.event.floor1startdialog=16
+					return
+				}
+				if(explore.event.floor1startdialog===15) {
+					dialog("Traveler (You)","What is the cause of the collapse?","Unset","#dfdfff")
+					explore.event.floor1startdialog=18
+					return
+				}
+				if(explore.event.floor1startdialog===16) {
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1startdialog=17;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>No.</button><button type='button' onclick='event.stopPropagation();explore.event.floor1startdialog=15;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Yes, I have questions.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.floor1startdialog===17) {
+					dialog("Police","You are interesting...","Unset","#9f9fff")
+					explore.event.floor1startdialog=19
+					return
+				}
+				if(explore.event.floor1startdialog===18) {
+					dialog("Police","They have already discovered some connections... Remember, always pay attention to the time.","Unset","#9f9fff")
+					explore.event.floor1startdialog=19
+					return
+				}
+				if(explore.event.floor1startdialog===19) {
+					explore.event.floor1startdialog="Completed"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					displayCentralRoom()
+					return
+				}
+				if(explore.event.floor1hotel===0 && player.settings.skipdialog===true) explore.event.floor1hotel=4
+				if(explore.event.floor1hotel===0) {
+					displayCentralRoom()
+					dialog("Clerk","Please show me your ID card.","Fast","#ffffdf")
+					explore.event.floor1hotel=1
+					return
+				}
+				if(explore.event.floor1hotel===1) {
+					dialog("Traveler (You)","Here you are.","Unset","#dfdfff")
+					explore.event.floor1hotel=2
+					return
+				}
+				if(explore.event.floor1hotel===2) {
+					displayCentralRoom()
+					dialog("Clerk","Okay... Wait...","Slow","#ffffdf")
+					explore.event.floor1hotel=3
+					return
+				}
+				if(explore.event.floor1hotel===3) {
+					displayCentralRoom()
+					dialog("Clerk","Someone bought a nearby house for you. That one with yellow roof.","Fast","#ffffdf")
+					explore.event.floor1hotel=4
+					return
+				}
+				if(explore.event.floor1hotel===4) {
+					explore.event.floor1hotel="Completed"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					displayCentralRoom()
+					return
+				}
+				if(explore.event.floor1warehouse===0 && player.settings.skipdialog===true) explore.event.floor1warehouse=14
+				if(explore.event.floor1warehouse===0) {
+					displayCentralRoom()
+					dialog("(The Florroom)","Traveler walked into his room, wondering who had bought it for him.","Unset","#dfdfdf")
+					explore.event.floor1warehouse=1
+					return
+				}
+				if(explore.event.floor1warehouse===1) {
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1warehouse=2;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Walk around room.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.floor1warehouse===2) {
+					if(maintext!==6361) addLog("[Resource] You found two exquisite cans of drinks inside of chaos spider webs. Who left them here?","#7fff7f")
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1warehouse=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Go to bed.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.floor1warehouse===3) {
+					dialog("(The Florroom)","Traveler immediately fell asleep after going to bed. He feels energetic after not sleeping well for a long time, but...","Unset","#dfdfdf")
+					explore.event.floor1warehouse=4
+					if(player.calendar.day<70) player.calendar.day++
+					return
+				}
+				if(explore.event.floor1warehouse===4) {
+					dialog("(The Florroom)","<span style='color: #ff3f3f'>He has never considered about <span style='color: #7fffff'>energy</span>, has he?</span>","Instant","#dfdfdf")
+					explore.event.floor1warehouse=5
+					explore.energy=10000
+					document.getElementById("bar-energy-c").style.opacity=0
+					updateFlowerState()
+					for(let i=0;i<=20;i++) {
+						document.getElementById("bar-energy-c").style.opacity=i/20
+						await delay(100)
+					}
+					explore.event.floor1warehouse=6
+					return
+				}
+				if(explore.event.floor1warehouse===6) {
+					explore.event.floor1warehouse="Completed"
+					document.getElementById("dialog").style.display="none"
+					player.item.add("Epic Rose Juice",2)
+					player.item.add("Triple Web",3)
+					player.book.push("Flower Subsist Guide")
+					addLog("[Resource] You received Flower Subsist Guide.","#7fff7f")
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					displayCentralRoom()
+					return
+				}
+				if(explore.event.floor1game===0 && player.settings.skipdialog===true) explore.event.floor1game=8
+				if(explore.event.floor1game===0) {
+					displayCentralRoom()
+					dialog("(From far distance)","Rock does high damage, it is much better...","Unset","#ffdfff")
+					explore.event.floor1game=1
+					return
+				}
+				if(explore.event.floor1game===1) {
+					dialog("(From far distance)","But why not use stinger? It deals higher damage, and...","Unset","#ffdfff")
+					explore.event.floor1game=2
+					return
+				}
+				if(explore.event.floor1game===2) {
+					dialog("(From far distance)","No! Rock can hit enemy multiple times, it has higher damage.","Unset","#ffdfff")
+					explore.event.floor1game=3
+					return
+				}
+				if(explore.event.floor1game===3) {
+					dialog("(From far distance)","It is too slow. Multiple hits don't mean good average damage.","Unset","#ffdfff")
+					explore.event.floor1game=4
+					return
+				}
+				if(explore.event.floor1game===4) {
+					dialog("(From far distance)","Then what do you use for better damage per turn?","Unset","#ffdfff")
+					explore.event.floor1game=5
+					return
+				}
+				if(explore.event.floor1game===5) {
+					dialog("Traveler (You)","Excuse me. Is there a talent activation device here?","Unset","#dfdfff")
+					explore.event.floor1game=6
+					return
+				}
+				if(explore.event.floor1game===6) {
+					dialog("(From far distance)","Only strong people can use it. If you can defeat me in the debate, I will give you the right to use it. Come find me later.","Unset","#ffdfff")
+					explore.event.floor1game=7
+					return
+				}
+				if(explore.event.floor1game===7) {
+					displayCentralRoom()
+					dialog("(The Florroom)","Traveler walked towards the door. He may need to first understand the content of the debate.","Unset","#dfdfdf")
+					explore.event.floor1game=8
+					return
+				}
+				if(explore.event.floor1game===8) {
+					explore.event.floor1game="Completed"
+					document.getElementById("dialog").style.display="none"
+					player.book.push("Flower Debate Guide")
+					addLog("[Resource] You received Flower Debate Guide.","#7fff7f")
+					player.floor1gamestat=new Array(10).fill("Locked")
+					player.floor1gamestat[1]="Incomplete"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					displayCentralRoom()
+					return
+				}
+				if(explore.event.floor1exitcentral===0) {
+					displayCentralRoom()
+					dialog("(The Florroom)","Are you sure to exit central room?","Instant","#dfdfdf")
+					explore.event.floor1exitcentral=1
+					return
+				}
+				if(explore.event.floor1exitcentral===1) {
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=2;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>No, I forgot something.</button><button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Yes, I'm sure.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.floor1exitcentral===2) {
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>You can come back whenever you want.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.floor1exitcentral===3) {
+					explore.event.floor1exitcentral="Completed"
+					document.getElementById("dialog").style.display="none"
+					animation=false
+					explore.explored[10]=true
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					displayMap()
+					return
+				}
 				return
 			}
 			document.getElementById("dialog").style["background-color"]=bgColor
@@ -4084,8 +4387,10 @@
 			}
 		}
 		let EndingList=new Object()
-		EndingList.beta="<h2>The Journey Conquered</h2><span>You have completed Base Floor. Congratulations!</span><br><span>This is the entire content of Florroom Rewritten BETA.</span><span>More content will be release soon, stay tuned!</span><br><span>↓↓This game is so balanced that I want to play again↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
-		EndingList.collapse1="<h2>The Journey Halted</h2><span>It is Day 80, and Base Floor has collapsed.</span><br><span>You made much contributions to the exploration of Florroom</span><span>during you lifetime. Flowers will always remember you.</span><br><span>↓↓I'm sure I could have finished it faster. Let's try again.↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
+//		EndingList.beta="<h2>The Journey Conquered</h2><span>You have completed Base Floor. Congratulations!</span><br><span>This is the entire content of Florroom Rewritten BETA.</span><span>More content will be release soon, stay tuned!</span><br><span>↓↓This game is so balanced that I want to play again↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
+		EndingList.collapse1="<h2>The Journey Halted</h2><span>It is Day 80, and Base Floor has collapsed.</span><br><span>You made much contributions to the exploration of Florroom</span><span>during your lifetime. Flowers will always remember you.</span><br><span>↓↓I'm sure I could have finished it faster. Let's try again.↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
+		EndingList.collapse2="<h2>The Journey Halted</h2><span>It is Day 80, and Floor 1 has collapsed.</span><br><span>You made much contributions to the exploration of Florroom</span><span>during your lifetime. Flowers will always remember you.</span><br><span>↓↓I'm sure I could have gone further. Let's try again.↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
+		EndingList.exhaust1="<h2>The Journey Halted</h2><span>You felt your eyes darken and then faint, in Floor 1.</span><br><span>You made much contributions to the exploration of Florroom</span><span>during your lifetime. Flowers will always remember you.</span><br><span>↓↓I'm sure I am fully prepared now. Let's try again.↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
 		async function endGameDisplay() {
 			document.getElementById("endgame1").style.display="unset"
 			document.getElementById("endgame2").style.display="flex"
@@ -4097,19 +4402,36 @@
 			return
 		}
 		function gameEnded() {
-			if(explore.flowerspot===10 && explore.floor===1) {
-				document.getElementById("endgame2").innerHTML=EndingList.beta
+//			if(explore.flowerspot===10 && explore.floor===1) {
+//				document.getElementById("endgame2").innerHTML=EndingList.beta
+//				endGameDisplay()
+//				return true
+//			}
+			if((player.calendar.second>=5 && explore.floor===0 && player.calendar.day===79) || player.calendar.day===80) {
+				document.getElementById("endgame2").innerHTML=EndingList.collapse1
 				endGameDisplay()
 				return true
 			}
-			if(player.calendar.second===5 && explore.floor===0 && player.calendar.day>=79) {
-				document.getElementById("endgame2").innerHTML=EndingList.collapse1
+			if((player.calendar.second>=5 && explore.floor===1 && player.calendar.day===79) || player.calendar.day===80) {
+				document.getElementById("endgame2").innerHTML=EndingList.collapse2
+				endGameDisplay()
+				return true
+			}
+			if(explore.energy<3600) {
+				document.getElementById("endgame2").innerHTML=EndingList.exhaust1
 				endGameDisplay()
 				return true
 			}
 			return false
 		}
 		function endFloor(previousFloor) {
+			if(previousFloor===0) {
+				delete player.item["Energy Drink"]
+				delete player.item.Arrow
+			}
+			delete player.memory
+			delete player.calendar.reset
+			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 			if(previousFloor===0) {
 				explore.event=new Object()
 				explore.event.basefloorending=0
@@ -4123,7 +4445,7 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20251206,acceptedVersion=20251124
+		const version=20260122,acceptedVersion=20251206
 		const svgNS="http://www.w3.org/2000/svg"
 		const dx=[0,0,1,0,-1],dy=[0,-1,0,1,0],dx5=[0,1,2,2,1,-1,-2,-2,-1],dy5=[0,-2,-1,1,2,2,1,-1,-2]
 		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
@@ -4180,6 +4502,39 @@
 		if(!player.calendar.hour) player.calendar.hour=1
 		if(!player.calendar.minute) player.calendar.minute=1
 		if(!player.calendar.second) player.calendar.second=0
+		if(!player.calendar.reset) {
+			player.calendar.reset=true
+			if(explore.floor===1) {
+				player.calendar.day=30
+				player.calendar.hour=1
+				player.calendar.minute=1
+				player.calendar.second=0
+			}
+			if(explore.floor===2) {
+				player.calendar.day=20
+				player.calendar.hour=1
+				player.calendar.minute=1
+				player.calendar.second=0
+			}
+			if(explore.floor===3) {
+				player.calendar.day=10
+				player.calendar.hour=1
+				player.calendar.minute=1
+				player.calendar.second=0
+			}
+			if(explore.floor===4) {
+				player.calendar.day=1
+				player.calendar.hour=1
+				player.calendar.minute=1
+				player.calendar.second=0
+			}
+			if(explore.floor>=5) {
+				player.calendar.day=79
+				player.calendar.hour=1
+				player.calendar.minute=1
+				player.calendar.second=0
+			}
+		}
 		if(!player.PFLF) player.PFLF=new Object()
 		if(!player.PFLF.highscore) player.PFLF.highscore=0
 		if(!player.PFLF.highscoreturn) player.PFLF.highscoreturn=0
@@ -4240,7 +4595,7 @@
 		for(let i in fight.spawnmob) fight.spawnmob[i]=Object.assign(new Mob(),fight.spawnmob[i])
 		if(!fight.missile) fight.missile=new Array()
 		for(let i in fight.missile) fight.missile[i]=Object.assign(new Mob(),fight.missile[i])
-		player.book[0]="Flower Game Guide" //20251206
+		delete fight.spevent
 		localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 		localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 		localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
@@ -4367,6 +4722,7 @@
 			if(typeof(text)==="string" && text.startsWith("Petal")) newGrid.innerHTML=PetalSVGArray[text.slice(6)]
 			if(typeof(text)==="string" && text.startsWith("Mob")) newGrid.innerHTML=MobSVGArray[text.slice(4).replaceAll("!","")]
 			if(typeof(text)==="string" && text.startsWith("Item")) newGrid.innerHTML=ItemSVGArray[text.slice(5)]
+			if(typeof(text)==="string" && text.startsWith("Card")) newGrid.innerHTML=CardSVGArray[text.slice(5)]
 			if(newGrid.innerHTML.match("svgGradient")) {
 				svgGradientCount++
 				newGrid.innerHTML=newGrid.innerHTML.replaceAll("svgGradient","uniqueGradient"+svgGradientCount)
@@ -4383,6 +4739,33 @@
 			if(document.getElementById("gridinfo").style.display==="none") return
 			if(fight.ready && fight.turn==="Mob") return
 			let buttonValue=parseInt(button.value),buttonX=parseInt(button.getAttribute("data-x")),buttonY=parseInt(button.getAttribute("data-y"))
+			if(fight.hasOwnProperty("spevent")) {
+				if(fight.spevent.event>=101 && fight.spevent.event<=109 && buttonValue===0 && buttonY===6 && buttonX%3!==0) {
+					if(selectedGrid.select===true && selectedGrid.value===buttonValue && selectedGrid.x===buttonX && selectedGrid.y===buttonY) {
+						selectedGrid.select=false
+						closeGridInfo()
+						gridInfo(button)
+					} else {
+						if(selectedGrid.select===true) {
+							selectedGrid.select=false
+							closeGridInfo()
+							gridInfo(button)
+						}
+						selectedGrid.select=true
+						selectedGrid.value=buttonValue
+						selectedGrid.x=buttonX
+						selectedGrid.y=buttonY
+						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
+						let option=document.createElement("div")
+						option.innerHTML+="<button type='button' onclick='playCard("+buttonX+")' class='llmargin lgrey-bg srecbtn pointer'>[X] Play</button>"
+						if(option.innerHTML!=="") {
+							document.getElementById("gridinfo").appendChild(option)
+							document.getElementById("gridinfo").innerHTML+="<br>"
+						}
+					}
+				}
+				return
+			}
 			if(lupoper.active===true) {
 				let targetPetal=player.inventory[lupoper.selectedArray[0]].clone()
 				if(player.inventory[buttonX].id===targetPetal.id && player.inventory[buttonX].rarity===targetPetal.rarity && player.inventory[buttonX].level===targetPetal.level) {
@@ -4578,6 +4961,8 @@
 						let option=document.createElement("div")
 						if(buttonX===1 && player.item["Energy Drink"]>=1) option.innerHTML+="<button type='button' onclick='useItem(\"Energy Drink\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
 						if(buttonX===2 && player.item["Arrow"]>=1) option.innerHTML+="<button type='button' onclick='useItem(\"Arrow\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
+						if(buttonX===3 && player.item["Epic Rose Juice"]>=1 && explore.energy<9000 && fight.flower.currenthealth<FlowerMaxHealth()/2) option.innerHTML+="<button type='button' onclick='useItem(\"Epic Rose Juice\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
+						if(buttonX===4 && player.item["Triple Web"]>=1 && JSON.stringify(fight.flower.effect)==="{}") option.innerHTML+="<button type='button' onclick='useItem(\"Triple Web\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
 							document.getElementById("gridinfo").innerHTML+="<br>"
@@ -5279,6 +5664,9 @@
 				openInventory(false)
 				return
 			}
+			if(fight.hasOwnProperty("spevent")) {
+				return
+			}
 			if(!open) {
 				selectedGrid.select=false
 				closeGridInfo()
@@ -5330,24 +5718,100 @@
 			document.getElementById("ladybug").style.scale=1
 			document.getElementById("ladybug-bg").style.display="flex"
 		}
-		async function importSave() {
-			if(animation) return
-			let getSave=prompt("Retrieve your memories...")
-			if(getSave===null) return
-			clearAllInterval()
-			document.getElementById("end1").style["pointer-events"]="unset"
-			for(let i=0;i<=10;i++) {
-				document.getElementById("end1").style.opacity=i/10
-				await delay(100)
+		function encodeFile(savestr) {
+			if(savestr.length%2>0) savestr+="79.76"
+			let encodedstr=""
+			for(let i=0;i<savestr.length/2;i++) {
+				let encodeValue=(savestr[2*i].charCodeAt()-20)*130+(savestr[2*i+1].charCodeAt()-20)
+				encodedstr+=String.fromCharCode(65+betterFloor(encodeValue/676))
+				encodedstr+=String.fromCharCode(65+betterFloor(encodeValue/26)%26)
+				encodedstr+=String.fromCharCode(65+encodeValue%26)
 			}
-			location.reload()
+			for(let i=0;i<encodedstr.length;i++) {
+				encodedstr[i]=String.fromCharCode(65+(encodedstr[i].charCodeAt()-65+betterFloor((i+1)/(encodedstr.length+1)*354233654))%26)
+			}
+			return encodedstr
+		}
+		function decodeFile(encodedstr) {
+			let savestr=""
+			for(let i=0;i<encodedstr.length;i++) {
+				encodedstr[i]=String.fromCharCode(65+(encodedstr[i].charCodeAt()-65-betterFloor((i+1)/(encodedstr.length+1)*354233654))%26)
+			}
+			for(let i=0;i<encodedstr.length/3;i++) {
+				let encodeValue=(encodedstr[3*i].charCodeAt()-65)*676+(encodedstr[3*i+1].charCodeAt()-65)*26+(encodedstr[3*i+2].charCodeAt()-65)
+				savestr+=String.fromCharCode(20+betterFloor(encodeValue/130))
+				savestr+=String.fromCharCode(20+encodeValue%130)
+			}
+			if(savestr[savestr.length-1]==="6") savestr=savestr.slice(0,-5)
+			return savestr
+		}
+		function importSave() {
+			if(animation) return
+			document.querySelectorAll("input[type='file']").forEach(input => input.remove())
+			let fileInput=document.createElement("input")
+			fileInput.type="file"
+			fileInput.accept=".txt"
+			fileInput.style.display="none"
+			fileInput.addEventListener("change",function(e) {
+				let savefile=e.target.files[0]
+				if(!savefile) {
+					document.body.removeChild(fileInput)
+					return
+				}
+				let reader=new FileReader()
+				reader.onload=async function(event) {
+					try {
+						savefile=JSON.parse(decodeFile(event.target.result))
+						if(!(savefile.player&&savefile.explore&&savefile.fight)) throw new Error()
+						if(savefile.player.hasOwnProperty("memory")) {
+							savefile.player.memory--
+						} else {
+							savefile.player.memory=3
+						}
+						if(savefile.player.memory<0) {
+							alert("Error: Memory is broken")
+							return
+						}
+						clearAllInterval()
+						localStorage.setItem("FLORROOMplayer",JSON.stringify(savefile.player))
+						localStorage.setItem("FLORROOMexplore",JSON.stringify(savefile.explore))
+						localStorage.setItem("FLORROOMfight",JSON.stringify(savefile.fight))
+						document.getElementById("end1").style["pointer-events"]="unset"
+						for(let i=0;i<=10;i++) {
+							document.getElementById("end1").style.opacity=i/10
+							await delay(100)
+						}
+						location.reload()
+					} catch {
+						document.body.removeChild(fileInput)
+						alert("Error: Memory incomplete")
+					}
+				}
+				reader.readAsText(savefile)
+			})
+			document.body.appendChild(fileInput)
+			fileInput.click()
 		}
 		async function exportSave() {
 			if(animation) return
-			copyToClipboard("The game is perfect, there are no bugs")
+			animation=true
+			if(player.hasOwnProperty("memory")) player.memory--
+			let savefile={player:player,explore:explore,fight:fight}
+			if(player.hasOwnProperty("memory")) player.memory++
+			let blob=new Blob([encodeFile(JSON.stringify(savefile))],{type:"text/plain"})
+			let downloadElement=document.createElement("a")
+			downloadElement.href=URL.createObjectURL(blob)
+			if(player.memory===0) {
+				downloadElement.download="broken memory.txt"
+			} else {
+				downloadElement.download="memory.txt"
+			}
+			downloadElement.click()
 			document.getElementById("export-btn").innerHTML="Memories Stored!"
 			await delay(1000)
 			document.getElementById("export-btn").innerHTML="Store Memories"
+			if(player.hasOwnProperty("memory")) document.getElementById("export-btn").innerHTML+=" ("+player.memory+")"
+			animation=false
 		}
 		async function hardReset() {
 			if(animation) return
@@ -5475,6 +5939,7 @@
 			if(fight.manipulate===true) endFight()
 			if(fight.active===true && player.calendar.second>0) endFight()
 			if(player.calendar.second>0) player.calendar.second=120
+			if(player.hasOwnProperty("memory")) document.getElementById("export-btn").innerHTML+=" ("+player.memory+")"
 			document.addEventListener("keydown",(e) => {
 				if((e.key===" " || e.key==="Enter") && e.target.tagName==="BUTTON") {
 					e.preventDefault()
@@ -5501,6 +5966,7 @@
 			} else if(fight.active===true) {
 				displayFightField()
 				displayFight()
+				if(explore.floor>=1) explore.energy=fight.energy
 			} else {
 				displayMap()
 			}
@@ -5563,6 +6029,10 @@
 						location.reload()
 					}
 					if(player.calendar.second===5 && explore.floor===0 && player.calendar.day>=79) {
+						localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
+						location.reload()
+					}
+					if(player.calendar.second===5 && explore.floor===1 && player.calendar.day>=79) {
 						localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 						location.reload()
 					}
@@ -5753,6 +6223,9 @@
 			if(flowerMove) return
 			let spotValue=parseInt(spot.getAttribute("value"))
 			if(distance(explore.flowerspot,spotValue)===-1) return
+//todo
+			if(explore.floor===1 && explore.flowerspot>60) return
+//delete this after update
 			if(spotValue===explore.flowerspot) {
 				if(explore.floor===0 && explore.flowerspot===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
 					startFight()
@@ -5761,6 +6234,13 @@
 				}
 				if(explore.floor===0 && explore.flowerspot===21 && explore.event.hasOwnProperty("artisanguide") && explore.event.artisanguide!=="Completed") {
 					startFight()
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					return
+				}
+				if(explore.floor===1 && explore.flowerspot===10) {
+					explore.explored[10]=false
+					delete explore.event.floor1exitcentral
+					displayCentralRoom()
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 					return
 				}
@@ -5800,6 +6280,9 @@
 			if(explore.floor===0 && spotValue===21 && explore.event.hasOwnProperty("artisanguide") && explore.event.artisanguide!=="Completed") {
 				editingMapHTML+="<span style='color: #bf7fbf; font-weight: bold'>Special Event: You remembered the words on book...</span><br>"
 			}
+			if(explore.floor===1 && spotValue===10) {
+				editingMapHTML+="<span style='color: #bf7fbf; font-weight: bold'>Special Event: Go back to central room.</span><br>"
+			}
 			document.getElementById("mapinfo").innerHTML=editingMapHTML
 			document.getElementById("mapinfo").style.display="flex"
 		}
@@ -5814,7 +6297,7 @@
 				let dirEnglish=["specified","North","East","South","West"]
 				text=text.replaceAll("specified",dirEnglish[petal.calculate])
 			}
-			if(explore.floor<somerandomlimit2) {
+			if(explore.floor<1) {
 				text=text.replaceAll("divides energy loss by 3","???")
 				text=text.replaceAll("triples energy loss","???")
 				text=text.replaceAll("immune energy loss","???")
@@ -5925,12 +6408,64 @@
 			}
 			return ""
 		}
+		function compareAverage(attribute,average,float) {
+			if(float<0) {
+				float*=-1
+				attribute=2*average-attribute
+			}
+			if(attribute===average) return " <span style='color: #555555'>--AVG--</span>"
+			if(attribute<average-average*float*0.75) return " <span style='color: #555555'>##FAIL##</span>"
+			if(attribute<average) return " <span style='color: #555555'>↓WEAK↓</span>"
+			if(attribute>average+average*float*0.75) return " <span style='color: #555555'>==BEST==</span>"
+			return " <span style='color: #555555'>↑GOOD↑</span>"
+		}
 		function gridInfo(grid) {
 			if(animation) return
 			if(selectedGrid.select===true) return
 			if(grid.style.scale>0 && grid.style.scale<1) return
 			let gridValue=parseInt(grid.getAttribute("value")),gridX=parseInt(grid.dataset.x),gridY=parseInt(grid.dataset.y)
 			if(gridValue>6000) return
+			if(fight.hasOwnProperty("spevent")) {
+				if(fight.spevent.event>=101 && fight.spevent.event<=109 && gridValue===0) {
+					document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
+					if(gridY===1 && gridX%3===0) {
+						document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,50%)")
+						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().bottom+10+"px"
+						let editingGridCardHTML="<h3>Your opponent</h3>"
+						editingGridCardHTML+="<span>Momentum: "+fight.spevent.opponentmomentum+"</span><br>"
+						document.getElementById("gridinfo").innerHTML=editingGridCardHTML
+						document.getElementById("gridinfo").style.display="flex"
+					}
+					if(gridY===1 && gridX%3!==0) {
+						document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,50%)")
+						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().bottom+10+"px"
+						let editingGridCardHTML="<h3 style='color: "+rarityColor[fight.spevent.opponentcard[gridX].rarity].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>A Card</h3>"
+						document.getElementById("gridinfo").innerHTML=editingGridCardHTML
+						document.getElementById("gridinfo").style.display="flex"
+					}
+					if(gridY===6 && gridX%3===0) {
+						document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
+						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
+						let editingGridCardHTML="<h3>Traveler (You)</h3>"
+						editingGridCardHTML+="<span>Momentum: "+fight.spevent.travelermomentum+"</span><br>"
+						document.getElementById("gridinfo").innerHTML=editingGridCardHTML
+						document.getElementById("gridinfo").style.display="flex"
+					}
+					if(gridY===6 && gridX%3!==0) {
+						document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
+						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
+						let editingGridCardHTML="<h3 style='color: "+rarityColor[fight.spevent.travelercard[gridX].rarity].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+fight.spevent.travelercard[gridX].name+"<span class='black'>+</span>".repeat(fight.spevent.travelercard[gridX].level)+"</h3>"
+						if(fight.spevent.travelercard[gridX].id<=4) {
+							editingGridCardHTML+="<span style='color: #7fdf7f'>Health: "+fight.spevent.travelercard[gridX].health+"</span>"
+							editingGridCardHTML+="<span style='color: #ff7f7f'>Damage: "+fight.spevent.travelercard[gridX].damage+"</span>"
+							editingGridCardHTML+="<span style='color: #dfdf5f'>DPT: "+fight.spevent.travelercard[gridX].dpt+"</span><br>"
+						}
+						document.getElementById("gridinfo").innerHTML=editingGridCardHTML
+						document.getElementById("gridinfo").style.display="flex"
+					}
+				}
+				return
+			}
 			if(document.getElementById("inventory").style.display==="flex" && gridValue===0) return
 			if(gridValue===0) {
 				if(gridY===0) return
@@ -6029,22 +6564,31 @@
 				document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
 				document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
 				document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
-				let editingGridPetalHTML="<h3 style='color: "+rarityColor[player.inventory[gridX].rarity]+"'>"+(player.inventory[gridX].hasOwnProperty("temploot")? "?":"")+player.inventory[gridX].name+"<span class='black'>+</span>".repeat(player.inventory[gridX].level)+"⭐".repeat(player.inventory[gridX].star)+"</h3>"
+				let editingPetal=player.inventory[gridX],editingPetalBase=new Petal(editingPetal.id,editingPetal.rarity,editingPetal.level,false)
+				let editingGridPetalHTML="<h3 style='color: "+rarityColor[editingPetal.rarity]+"'>"+(editingPetal.hasOwnProperty("temploot")? "?":"")+editingPetal.name+"<span class='black'>+</span>".repeat(editingPetal.level)+"⭐".repeat(editingPetal.star)+"</h3>"
 				editingGridPetalHTML=editingGridPetalHTML.replace("#ffe65d","#ffe65d; filter: brightness(90%)")
-				editingGridPetalHTML+="<span>"+PetalDescriptionList[player.inventory[gridX].id]+"</span><br>"
-				if(PetalAttributeList[player.inventory[gridX].id].match("DECORATION")===null) {
-					editingGridPetalHTML+="<span style='color: #7fdf7f'>Health: "+player.inventory[gridX].health+"</span>"
-					editingGridPetalHTML+="<span style='color: #ff7f7f'>Damage: "+player.inventory[gridX].damage+"</span>"
-					editingGridPetalHTML+="<span style='color: #dfdf5f'>Size: "+player.inventory[gridX].size+"</span>"
-					editingGridPetalHTML+="<span style='color: #ff7f7f'>ATK: "+player.inventory[gridX].atk1+"%->"+player.inventory[gridX].atk2+"% (buff: "+player.inventory[gridX].atkbuff+")</span>"
-					editingGridPetalHTML+="<span style='color: #7fdf7f'>DEF: "+player.inventory[gridX].def1+"%->"+player.inventory[gridX].def2+"% (buff: "+player.inventory[gridX].defbuff+")</span>"
-					editingGridPetalHTML+="<span style='color: #bf7fff'>Speed: "+player.inventory[gridX].speed+"</span>"
-					editingGridPetalHTML+="<span style='color: #ff7fbf'>Reload: "+player.inventory[gridX].reload+"</span><br>"
+				editingGridPetalHTML+="<span>"+PetalDescriptionList[editingPetal.id]+"</span><br>"
+				if(PetalAttributeList[editingPetal.id].match("DECORATION")===null) {
+					editingGridPetalHTML+="<span style='color: #7fdf7f'>Health: "+editingPetal.health
+					editingGridPetalHTML+=compareAverage(editingPetal.health,editingPetalBase.health,0.2)
+					editingGridPetalHTML+="</span>"
+					editingGridPetalHTML+="<span style='color: #ff7f7f'>Damage: "+editingPetal.damage
+					editingGridPetalHTML+=compareAverage(editingPetal.damage,editingPetalBase.damage,0.2)
+					editingGridPetalHTML+="</span>"
+					editingGridPetalHTML+="<span style='color: #dfdf5f'>Size: "+editingPetal.size+"</span>"
+					editingGridPetalHTML+="<span style='color: #ff7f7f'>ATK: "+editingPetal.atk1+"%->"+editingPetal.atk2+"% (buff: "+editingPetal.atkbuff+")</span>"
+					editingGridPetalHTML+="<span style='color: #7fdf7f'>DEF: "+editingPetal.def1+"%->"+editingPetal.def2+"% (buff: "+editingPetal.defbuff+")</span>"
+					editingGridPetalHTML+="<span style='color: #bf7fff'>Speed: "+editingPetal.speed
+					editingGridPetalHTML+=compareAverage(editingPetal.speed,editingPetalBase.speed,0.1)
+					editingGridPetalHTML+="</span>"
+					editingGridPetalHTML+="<span style='color: #ff7fbf'>Reload: "+editingPetal.reload
+					editingGridPetalHTML+=compareAverage(editingPetal.reload,editingPetalBase.reload,-0.1)
+					editingGridPetalHTML+="</span><br>"
 				}
-				if(PetalAttributeList[player.inventory[gridX].id].length>0) {
-					let pendingText=PetalAttributeList[player.inventory[gridX].id]
-					if(PetalAttributeList[player.inventory[gridX].name]!==undefined) pendingText=PetalAttributeList[player.inventory[gridX].name]
-					pendingText=petalTextReplace(pendingText,player.inventory[gridX])
+				if(PetalAttributeList[editingPetal.id].length>0) {
+					let pendingText=PetalAttributeList[editingPetal.id]
+					if(PetalAttributeList[editingPetal.name]!==undefined) pendingText=PetalAttributeList[editingPetal.name]
+					pendingText=petalTextReplace(pendingText,editingPetal)
 					editingGridPetalHTML+=pendingText+"<br>"
 				}
 				document.getElementById("gridinfo").innerHTML=editingGridPetalHTML
@@ -6090,6 +6634,18 @@
 						editingGridItemHTML+="<span>A bow and some arrows with signs of wear and tear, but functional.</span><br>"
 						editingGridItemHTML+="<span style='color: #7f7f7f'>Deals 50 damage to a mob. Consumed after every use.</span>"
 						editingGridItemHTML+="<span style='color: #3fbf3f'>Amount: "+player.item.Arrow+"</span>"
+					}
+					if(gridX===3) {
+						editingGridItemHTML="<h3 style='color: "+rarityColor[4]+"'>Epic Rose Juice (Available Item)</h3>"
+						editingGridItemHTML+="<span>Tasty juice. It is said that after drinking it, one will dream of a rose garden.</span><br>"
+						editingGridItemHTML+="<span style='color: #7f7f7f'>Can only be used when Energy is below 90% and Health is below half. Heals flower to full health. Restore 5% Energy. Consumed after every use.</span>"
+						editingGridItemHTML+="<span style='color: #3fbf3f'>Amount: "+player.item["Epic Rose Juice"]+"</span>"
+					}
+					if(gridX===4) {
+						editingGridItemHTML="<h3 style='color: "+rarityColor[5]+"'>Triple Web (Available Item)</h3>"
+						editingGridItemHTML+="<span>Stick large webs. You know, it will also trap yourself.</span><br>"
+						editingGridItemHTML+="<span style='color: #7f7f7f'>Can only be used when you have no buffs and debuffs. Sets all petals and mobs to 0 action. Applies 10% Wither to yourself. Consumed after every use.</span>"
+						editingGridItemHTML+="<span style='color: #3fbf3f'>Amount: "+player.item["Triple Web"]+"</span>"
 					}
 					editingGridItemHTML+="<br>"
 					document.getElementById("gridinfo").innerHTML=editingGridItemHTML
@@ -6283,6 +6839,10 @@
 			document.getElementById("map-container").style.display="unset"
 		}
 		function displayCentralRoom() {
+			document.getElementById("map-container").style.display="none"
+			document.getElementById("fight-btn").style.display="none"
+			document.getElementById("fight-container").style.display="none"
+			document.getElementById("fight-item").style.display="none"
 			if(explore.floor===0) {
 				document.getElementById("central-room").innerHTML="<h2 class='rmid apos'>Base Floor-Central Room</h2>"
 				document.getElementById("central-room").classList.add("lgreen-bg")
@@ -6306,6 +6866,45 @@
 				}
 				return
 			}
+			if(explore.floor===1) {
+				if(!explore.flowergrid) explore.flowergrid=1
+				if(explore.flowergrid===1) {
+					document.getElementById("central-room").innerHTML="<h2 class='rmid apos'>Floor 1-Central Room</h2>"
+				}
+				if(explore.flowergrid===2) {
+					document.getElementById("central-room").innerHTML="<h2 class='rmid apos'>Floor 1-Central Room-Hotel</h2>"
+				}
+				document.getElementById("central-room").classList.add("lgreen-bg")
+				document.getElementById("central-room").style.display="unset"
+				if(!explore.event.hasOwnProperty("floor1startdialog")) {
+					explore.event.floor1startdialog=0
+					dialog("(The Florroom)","Traveler wakes up on the ground.","Unset","#dfdfdf")
+					return
+				}
+				if(explore.event.hasOwnProperty("floor1game") && explore.event.floor1game!=="Completed") return
+				if(explore.event.hasOwnProperty("floor1hotel") && explore.event.floor1hotel!=="Completed") return
+				if(explore.event.hasOwnProperty("floor1warehouse") && explore.event.floor1warehouse!=="Completed") return
+				if(explore.event.hasOwnProperty("floor1exitcentral") && explore.event.floor1exitcentral!=="Completed") return
+				if(explore.flowergrid===1) {
+					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.flowergrid=2;displayCentralRoom();localStorage.setItem(\"FLORROOMexplore\",JSON.stringify(explore))' class='lpurple-bg cmid bgrid apos' style='left: 40px; height: 120px; width: 120px' title='Walk'><svg viewBox='0 0 100 100' class='in-svg'><path class='grey-path rcap' d='M20 50L40 30M20 50L40 70M20 50L80 50'/></svg></button>"
+				}
+				if(explore.flowergrid===2) {
+					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.flowergrid=1;displayCentralRoom();localStorage.setItem(\"FLORROOMexplore\",JSON.stringify(explore))' class='lpurple-bg cmid bgrid apos' style='right: 40px; height: 120px; width: 120px' title='Walk'><svg viewBox='0 0 100 100' class='in-svg'><path class='grey-path rcap' d='M80 50L60 30M80 50L60 70M80 50L20 50'/></svg></button>"
+				}
+				if(explore.flowergrid===1 && !explore.event.hasOwnProperty("floor1game")) {
+					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.floor1game=0;dialog(\"Skip\")' class='yellow-bg bgrid apos' style='top: 40px; left: 40px; height: 120px; width: 120px' title='Game'><svg viewBox='0 0 100 100' class='in-svg'><path class='dgrey-path rcap wide' d='M14 14L86 14M14 38L86 38M14 62L86 62M14 86L86 86M14 14L14 86M38 14L38 86M62 14L62 86M86 14L86 86'/><path class='blue-path wide' d='M50 43A7 7 0 0 1 50 57A7 7 0 0 1 50 43ZM74 67A7 7 0 0 1 74 81A7 7 0 0 1 74 67Z'/><path class='red-path rcap wide' d='M68 44L80 56M80 44L68 56M20 20L32 32M32 20L20 32'/></svg></button>"
+				}
+				if(explore.flowergrid===2 && !explore.event.hasOwnProperty("floor1hotel")) {
+					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.floor1hotel=0;dialog(\"Skip\")' class='green-bg mid bgrid apos' style='height: 120px; width: 120px' title='Hotel'><svg viewBox='0 0 100 100' class='in-svg'><path class='fdbrown-path' d='M10 45L50 12L90 45Z'/><path class='fgrey-path' d='M20 45L80 45L80 80L20 80Z'/><path class='fcyan-path' d='M28 51L38 51L38 61L28 61ZM45 51L55 51L55 61L45 61ZM62 51L72 51L72 61L62 61ZM28 65L38 65L38 75L28 75ZM62 65L72 65L72 75L62 75Z'/><path class='fdblue-path' d='M45 80L45 65L55 65L55 80Z'/></svg></button>"
+				}
+				if(explore.flowergrid===2 && explore.event.hasOwnProperty("floor1hotel") && !explore.event.hasOwnProperty("floor1warehouse")) {
+					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.floor1warehouse=0;dialog(\"Skip\")' class='yellow-bg bgrid apos' style='top: 40px; right: 40px; height: 120px; width: 120px' title='Warehouse'><svg viewBox='0 0 100 100' class='in-svg'><path class='fcorange-path' d='M20 45L50 20L80 45Z'/><path class='fdbrown-path' d='M30 45L30 75L70 75L70 45Z'/><path class='fdgreen-path' d='M52 75L52 55L64 55L64 75Z'/></svg></button>"
+				}
+				if(explore.flowergrid===1 && explore.event.floor1warehouse==="Completed") {
+					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.floor1exitcentral=0;dialog(\"Skip\")' class='lgrey-bg rmid bgrid apos' style='bottom: 40px; height: 120px; width: 120px' title='Exit'><svg viewBox='0 0 100 100' class='in-svg'><path class='fwhite-path ns' d='M35 20L65 20A5 5 0 0 1 70 25L70 32L65 32L65 25L35 25L35 75L65 75L65 68L70 68L70 75A5 5 0 0 1 65 80L35 80A5 5 0 0 1 30 75L30 25A5 5 0 0 1 35 20'/><path class='white-path rcap wide' d='M75 50L55 50M75 50L68 43M75 50L68 57'/></svg></button>"
+				}
+				return
+			}
 		}
 		function displayFight() {
 			document.getElementById("central-room").style.display="none"
@@ -6322,6 +6921,8 @@
 			document.getElementById("fight-item").innerHTML=""
 			if(player.item.hasOwnProperty("Energy Drink")) document.getElementById("fight-item").appendChild(createGrid(2,1,1,"Item_Energy Drink",1,1))
 			if(player.item.hasOwnProperty("Arrow")) document.getElementById("fight-item").appendChild(createGrid(2,2,1,"Item_Arrow",1,1))
+			if(player.item.hasOwnProperty("Epic Rose Juice")) document.getElementById("fight-item").appendChild(createGrid(2,3,1,"Item_Epic Rose Juice",1,4))
+			if(player.item.hasOwnProperty("Triple Web")) document.getElementById("fight-item").appendChild(createGrid(2,4,1,"Item_Triple Web",1,5))
 			for(let i=1;i<=8;i++) {
 				for(let j=1;j<=6;j++) getGrid(0,i,j).replaceWith(createGrid(0,i,j,"Empty",1,0))
 			}
@@ -6335,9 +6936,40 @@
 			}
 			for(let i=0;i<fight.mob.length;i++) fight.mob[i].print()
 		}
-		function startFight() {
+		function startFight(specialevent) {
 			if(lupoper.active===true) cancelLevelUp()
+			if(specialevent) {
+				if(flowerMove) return
+				howToPlay(false)
+				fight.spevent=new Object()
+				fight.spevent.event=specialevent
+				displayFight()
+				if(fight.spevent.event>=101 && fight.spevent.event<=109) {
+					fight.spevent.turn="Traveler"
+					let momentumList=[0,10,20,20,20,30,30,30,30,30]
+					fight.spevent.travelermomentum=fight.spevent.opponentmomentum=momentumList[fight.spevent.event-100]
+					fight.spevent.travelercard=new Array()
+					for(let i of [1,2,4,5,7,8]) {
+						fight.spevent.travelercard[i]=new Card("Traveler")
+						fight.spevent.travelercard[i].print(i,6)
+					}
+					getGrid(0,3,6).replaceWith(createGrid(0,3,6,"Card_Basic",1,9))
+					getGrid(0,6,6).replaceWith(createGrid(0,6,6,"Card_Basic",1,9))
+					fight.spevent.opponentcard=new Array()
+					for(let i of [1,2,4,5,7,8]) {
+						fight.spevent.opponentcard[i]=new Card(fight.spevent.event-100)
+						fight.spevent.opponentcard[i].print(i,1)
+					}
+					getGrid(0,3,1).replaceWith(createGrid(0,3,1,"Card_Basic",1,9))
+					getGrid(0,6,1).replaceWith(createGrid(0,6,1,"Card_Basic",1,9))
+					fight.spevent.topic=roll(1,4)
+					if(fight.spevent.topic===4 && determine(20)) fight.spevent.topic=5
+					printTopic(fight.spevent.topic)
+				}
+				return
+			}
 			openInventory(false,true)
+			howToPlay(false)
 			fight.active=true
 			fight.ready=false
 			fight.flower.effect=new Object()
@@ -6347,6 +6979,8 @@
 			fight.mob=new Array()
 			fight.spawnmob=new Array()
 			fight.missile=new Array()
+			fight.mobattack=false
+			if(explore.floor>=1) fight.energy=explore.energy
 			if(explore.floor===0 && explore.flowerspot===11 && explore.event.hasOwnProperty("evolutionaryguide") && explore.event.evolutionaryguide!=="Completed") {
 				fight.mob[0]=new Mob("Rock",7,0)
 				fight.mob[0].x=1
@@ -6461,7 +7095,7 @@
 				}
 				if(fight.petal[i].name==="Bone") {
 					if(!fight.petal[i].effect.hasOwnProperty("resistance")) fight.petal[i].effect.resistance=0
-					fight.petal[i].effect.resistance=approx(0.3*fight.petal[i].health)
+					fight.petal[i].effect.resistance=approx(0.2*fight.petal[i].health)
 				}
 				if(fight.petal[i].name==="Root") {
 					if(!fight.flower.effect.hasOwnProperty("resistance")) fight.flower.effect.resistance={buff:0}
@@ -6512,6 +7146,22 @@
 		}
 		function endFight(win) {
 			if(animation) return
+			if(fight.hasOwnProperty("spevent")) {
+				if(fight.spevent.event>=101 && fight.spevent.event<=109 && win===true) {
+					if(player.floor1gamestat[fight.spevent.event-100]==="Incomplete") {
+						player.floor1gamestat[fight.spevent.event-100]="Incomplete"
+						console.log("Completed without reward")
+						if(fight.spevent.event!==109) player.floor1gamestat[fight.spevent.event-99]="Incomplete"
+					}
+				}
+				delete fight.spevent
+				if(explore.explored[10]) {
+					displayMap()
+				} else {
+					displayCentralRoom()
+				}
+				return
+			}
 			if(operingType==="Shoot") {
 				document.removeEventListener("mousemove",operGrid)
 				document.body.removeChild(operingGrid)
@@ -6541,6 +7191,7 @@
 			for(let i in player.inventory) if(player.inventory[i].effect.temploot===explore.flowerspot) delete player.inventory[i].effect.temploot
 			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 			explore.explored[explore.flowerspot]=true
+			if(explore.floor>=1) explore.energy=fight.energy
 			if(explore.floor===0 && explore.flowerspot===11 && explore.event.evolutionaryguide==="Incomplete") {
 				explore.highest=explore.flowerspot
 				explore.event.evolutionaryguide=3
@@ -6575,11 +7226,12 @@
 				} )
 			}
 			if(explore.flowerspot===67) {
-				let saveFloor=explore.floor
+				let saveFloor=explore.floor,saveEnergy=explore.energy
 				explore=new Object()
 				explore.floor=saveFloor+1
-				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
+				if(explore.floor>1) explore.energy=saveEnergy
 				localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+				localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 				endFloor(saveFloor)
 				return
 			}
@@ -6640,12 +7292,14 @@
 		function printSinglePetal(order) {
 			if(lupoper.active && player.inventory[order].hasOwnProperty("temploot")) return
 			let place=0
+			let newPlace=createGrid(1,order,player.inventory[order].star,"Petal_"+player.inventory[order].name,1,player.inventory[order].rarity)
 			while(place<document.getElementById("inv-petal").children.length && player.inventory[order].star<=document.getElementById("inv-petal").children[place].dataset.y && (player.inventory[order].star<document.getElementById("inv-petal").children[place].dataset.y || order>parseInt(document.getElementById("inv-petal").children[place].dataset.x))) place++
 			if(place===document.getElementById("inv-petal").children.length) {
-				document.getElementById("inv-petal").appendChild(createGrid(1,order,player.inventory[order].star,"Petal_"+player.inventory[order].name,1,player.inventory[order].rarity))
+				document.getElementById("inv-petal").appendChild(newPlace)
 			} else {
-				document.getElementById("inv-petal").insertBefore(createGrid(1,order,player.inventory[order].star,"Petal_"+player.inventory[order].name,1,player.inventory[order].rarity),document.getElementById("inv-petal").children[place])
+				document.getElementById("inv-petal").insertBefore(newPlace,document.getElementById("inv-petal").children[place])
 			}
+			return newPlace
 		}
 		let lupoper=new Object()
 		lupoper.active=false
@@ -6689,7 +7343,13 @@
 			closeGridInfo()
 			getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star).remove()
 			player.inventory[selectedGrid.x].star+=modify
-			printSinglePetal(selectedGrid.x)
+			let newPlace=printSinglePetal(selectedGrid.x)
+			let placeRect=newPlace.getBoundingClientRect(),containRect=document.getElementById("inventory").getBoundingClientRect()
+			if(placeRect.top<containRect.top+120) {
+				document.getElementById("inventory").scrollTop-=(containRect.top-placeRect.top+130)
+			} else if(placeRect.bottom>containRect.bottom) {
+				document.getElementById("inventory").scrollTop+=(placeRect.bottom-containRect.bottom+10)
+			}
 			gridInfo(getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star))
 			clickGrid(getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star))
 		}
@@ -6921,6 +7581,15 @@
 			animation=false
 		}
 		function updateFlowerState() {
+			if(explore.hasOwnProperty("energy")) {
+				document.getElementById("bar-energy").style.height=(explore.energy/100)+"%"
+				if(explore.energy<10000 && explore.energy>=3600) {
+					document.getElementById("bar-energy").innerHTML=betterFloor(explore.energy/100)+"<span class='text5'>."+(betterFloor(explore.energy/10)%10)+(explore.energy%10)+"%</span>"
+				} else {
+					document.getElementById("bar-energy").innerHTML=""
+				}
+				document.getElementById("bar-energy-c").style.display="unset"
+			}
 			if(fight.active) {
 				document.getElementById("flower-maxhealth").innerHTML="&nbsp;"
 				document.getElementById("flower-level").innerHTML="&nbsp;"
@@ -7016,6 +7685,14 @@
 			document.getElementById("flower-state").style.display="flex"
 		}
 		function updateT() {
+			if(fight.hasOwnProperty("spevent")) {
+				if(fight.spevent.event>=101 && fight.spevent.event<=109) {
+					document.getElementById("fight-t-btn").innerHTML="[T] Exit Early"
+					document.getElementById("fight-t-btn").setAttribute("onclick","endFight()")
+					document.getElementById("fight-t-btn").style.cursor="default"
+				}
+				return
+			}
 			if(fight.active===false) return
 			if(operingX!==0 && operingType==="Attack") {
 				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].x===operingX && fight.mob[i].y===operingY) {
@@ -7058,7 +7735,7 @@
 				document.getElementById("fight-t-btn").style.cursor="pointer"
 			}
 			if(fight.turn==="Flower" && !missile) {
-				document.getElementById("fight-t-btn").innerHTML="[T] End turn"
+				document.getElementById("fight-t-btn").innerHTML="[T] End Turn"
 				document.getElementById("fight-t-btn").setAttribute("onclick","endTurn()")
 				document.getElementById("fight-t-btn").style.cursor="pointer"
 			}
@@ -7324,7 +8001,6 @@
 					operingThing.attack(operingX,operingY)
 				}
 				if(operingType==="Shoot") {
-					operingThing.actionbar-=shootRequirement(operingThing)
 					operingThing.shoot(operingX,operingY)
 				}
 				if(operingType==="Skill") {
@@ -7557,6 +8233,7 @@
 		}
 		async function endTurn() {
 			if(animation) return
+			if(selectedGrid.select===true) return
 			if(fight.turn==="Mob" && bonusTurnCheck()) {
 				addLog("[Turn] Mob turn ended. Bonus flower turn starts.","#df9f9f")
 				fight.turn="Bonus"
@@ -7668,6 +8345,15 @@
 						}
 					}
 					if(pendingHeal>0) flowerHeal(approx(pendingHeal),"Passive Healings")
+				}
+				if(explore.floor>=1) {
+					fight.energy--
+					explore.energy=fight.energy
+					updateFlowerState()
+					if(explore.energy<3600) {
+						localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+						flowerRetreat()
+					}
 				}
 				addLog("[Turn] Flower turn ended. Mob turn starts.","#df9f9f")
 				fight.turn="Mob"
@@ -7804,12 +8490,8 @@
 				updateFlowerState()
 				return
 			}
-			let resultingDamage=damage
-			if(fight.flower.effect.hasOwnProperty("vulnerability") && isMob(mob)) resultingDamage+=approx(fight.flower.effect.vulnerability[0])
-			if(fight.flower.effect.hasOwnProperty("resistance") && isMob(mob)) {
-				resultingDamage-=approx(fight.flower.effect.resistance.buff)
-				if(resultingDamage<0) resultingDamage=0
-			}
+			let resultingDamage=damage,energyLoss=0
+			if(isMob(mob)) energyLoss=3
 			if(mobName==="!Roach!" && mob.quickness>4) {
 				let damageBuff=20*(quickness-4)
 				if(damageBuff>100) damageBuff=100
@@ -7818,6 +8500,12 @@
 			if(mobName==="!Leafbug!" && mob.quickness>3) {
 				let damageDebuff=10*(quickness-3)
 				resultingDamage-=approx(resultingDamage*damageDebuff/100)
+				if(resultingDamage<0) resultingDamage=0
+			}
+			if(explore.floor>=1 && fight.energy<6400) resultingDamage=approx(resultingDamage*3000/(fight.energy-3500))
+			if(fight.flower.effect.hasOwnProperty("vulnerability") && isMob(mob)) resultingDamage+=approx(fight.flower.effect.vulnerability[0])
+			if(fight.flower.effect.hasOwnProperty("resistance") && isMob(mob)) {
+				resultingDamage-=approx(fight.flower.effect.resistance.buff)
 				if(resultingDamage<0) resultingDamage=0
 			}
 			if(mobName==="Lightning") {
@@ -7835,6 +8523,7 @@
 			addLog("[Flower] Flower received "+resultingDamage+" damage from "+mobName+".","#00bfbf")
 			let resultingInjure=resultingDamage
 			for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Suspended" && fight.petal[i].name==="Cotton") {
+				if(energyLoss>1) energyLoss/=3
 				if(fight.petal[i].currenthealth>resultingInjure) {
 					fight.petal[i].injure(resultingInjure,"Absorption")
 					resultingInjure=0
@@ -7865,6 +8554,26 @@
 			}
 			if(resultingInjure) {
 				fight.flower.currenthealth-=resultingInjure
+			}
+			if(isMob(mob)) {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Rubber" && determine(20+3*fight.petal[i].rarity+fight.petal[i].level,true," for evasion")) {
+					energyLoss*=3
+					flowerHeal({effectturn:3},"Evasion")
+				}
+			}
+			if(explore.floor>=1 && energyLoss>0) {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Battery" && determine(20+3*fight.petal[i].rarity+fight.petal[i].level,true," for recharge")) {
+					energyLoss=0
+				}
+			}
+			if(explore.floor>=1 && energyLoss>0) {
+				fight.energy-=energyLoss
+				explore.energy=fight.energy
+				updateFlowerState()
+				if(explore.energy<3600) {
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					flowerRetreat()
+				}
 			}
 			if(fight.flower.currenthealth<=0 && mobName==="Blood Stinger") fight.flower.currenthealth=1
 			if(fight.flower.currenthealth<=0) yggpls()
@@ -7934,7 +8643,7 @@
 			}
 			let resultingHealing=healing
 			if(fight.flower.effect.hasOwnProperty("purity")) resultingHealing+=approx(resultingHealing*fight.flower.effect.purity.buff/100)
-			if(fight.flower.effect.hasOwnProperty("suppression")) resultingHealing-=approx(resultingHealing*fight.flower.effect.suppression.debuff)
+			if(fight.flower.effect.hasOwnProperty("suppression") && petalName!=="Epic Rose Juice") resultingHealing-=approx(resultingHealing*fight.flower.effect.suppression.debuff)
 			addLog("[Flower] Flower received "+resultingHealing+" healing from "+petalName+".","#00bfbf")
 			fight.flower.currenthealth+=resultingHealing
 			if(fight.flower.currenthealth>fight.flower.health) {
@@ -7945,6 +8654,41 @@
 				}
 			}
 			updateFlowerState()
+		}
+		function spawnNear(mob,targetX,targetY,noloot) {
+			if(targetX===0 && targetY===0) {
+				addLog("[Mob] "+mob.name+" with "+mob.health+" health spawned.","#bfbf00")
+				let pendingPlace=new Array()
+				for(let i=1;i<=8;i++) {
+					for(let j=1;j<=3;j++) if(!getFilledGrid(i,j)) pendingPlace.push({x:i,y:j})
+				}
+				let resultingPlace=pendingPlace[roll(0,pendingPlace.length-1)]
+				fight.mob.push(mob)
+				fight.mob[fight.mob.length-1].x=resultingPlace.x
+				fight.mob[fight.mob.length-1].y=resultingPlace.y
+				if(noloot) fight.mob[fight.mob.length-1].effect.noloot=true
+				fight.mob[fight.mob.length-1].print()
+				return
+			}
+			let pendingPlace=new Array()
+			if(!getFilledGrid(targetX,targetY)) pendingPlace.push(0)
+			if(targetY>1 && !getFilledGrid(targetX,targetY-1)) pendingPlace.push(1)
+			if(!getFilledGrid(toCord(targetX+1),targetY)) pendingPlace.push(2)
+			if(targetY<3 && !getFilledGrid(targetX,targetY+1)) pendingPlace.push(3)
+			if(!getFilledGrid(toCord(targetX-1),targetY)) pendingPlace.push(4)
+			if(pendingPlace.length>0) {
+				addLog("[Mob] "+mob.name+" with "+mob.health+" health spawned.","#bfbf00")
+				let resultingPlace=pendingPlace[roll(0,pendingPlace.length-1)]
+				fight.mob.push(mob)
+				fight.mob[fight.mob.length-1].x=toCord(targetX+dx[resultingPlace])
+				fight.mob[fight.mob.length-1].y=targetY+dy[resultingPlace]
+				if(noloot) fight.mob[fight.mob.length-1].effect.noloot=true
+				fight.mob[fight.mob.length-1].print()
+			} else {
+				fight.spawnmob.unshift(mob)
+				fight.spawnmob[0].effect.summoned=true
+				if(noloot) fight.spawnmob[0].effect.noloot=true
+			}
 		}
 		function moveRequirement(petal,movex,movey) {
 			let answer=100
@@ -8103,9 +8847,6 @@
 				}
 				if(undefended) {
 					flowerInjure(damageReceived,operingThing)
-					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Rubber" && determine(20+3*fight.petal[i].rarity+fight.petal[i].level,true," for evasion")) {
-						flowerHeal({effectturn:3},"Evasion")
-					}
 				}
 				if(operingThing.name==="Scorpion (Missile)" && undefended) {
 					flowerInjure({effectdamage:approx(operingThing.origin.damage/3),effectturn:8},"Poison")
@@ -8159,6 +8900,31 @@
 				if(!player.item.subtract("Arrow",1)) return
 				operPrepare("Arrow","Item")
 			}
+			if(itemname==="Epic Rose Juice") {
+				if(!player.item.subtract("Epic Rose Juice",1)) return
+				selectedGrid.select=false
+				closeGridInfo()
+				flowerHeal(FlowerMaxHealth(),"Epic Rose Juice")
+				fight.energy+=500
+				if(fight.energy>10000) fight.energy=10000
+				explore.energy=fight.energy
+				updateFlowerState()
+			}
+			if(itemname==="Triple Web") {
+				if(!player.item.subtract("Triple Web",1)) return
+				selectedGrid.select=false
+				closeGridInfo()
+				for(let i=0;i<fight.petal.length;i++) {
+					fight.petal[i].actionbar=0
+					fight.petal[i].print()
+				}
+				for(let i=0;i<fight.mob.length;i++) {
+					fight.mob[i].actionbar=0
+					fight.mob[i].print()
+				}
+				flowerInjure({effectstrength:approx(fight.flower.health/10)},"Wither")
+				if(fight.flower.currenthealth>fight.flower.health) fight.flower.currenthealth=fight.flower.health
+			}
 		}
 		function mobActionCheck() {
 			let actionMobArray=new Array()
@@ -8183,6 +8949,626 @@
 			missile=true
 			fight.missile[0].attack()
 			fight.missile.splice(0,1)
+		}
+	</script>
+	<script>
+		function Card(drawPlayer) {
+			this.rarity=5,this.level=0,this.health=1,this.damage=1,this.dpt=0
+			let seed=roll(1,100)
+			if(seed<=85) {
+				if(seed<=25) {
+					this.id=1,this.name="Rock"
+				} else if(seed<=50) {
+					this.id=2,this.name="Blood Stinger"
+				} else if(seed<=75) {
+					this.id=3,this.name="Dice"
+				} else {
+					this.id=4,this.name="Air"
+				}
+				this.rarity=roll(1,4),this.level=roll(0,3)
+				let ownArray={1:new Array(),2:new Array(),3:new Array(),4:new Array()}
+				if(drawPlayer==="Traveler") {
+					for(let i in player.inventory) if(player.inventory[i].rarity<=4 && player.inventory[i].level<=3) {
+						ownArray[player.inventory[i].rarity][player.inventory[i].level]=true
+					}
+				} else {
+					if(drawPlayer>=1) ownArray[1][0]=ownArray[2][0]=true
+					if(drawPlayer>=2) ownArray[1][1]=ownArray[3][0]=true
+					if(drawPlayer>=3) ownArray[2][1]=ownArray[3][1]=true
+					if(drawPlayer>=4) ownArray[1][2]=ownArray[4][0]=true
+					if(drawPlayer>=5) ownArray[2][2]=ownArray[4][1]=true
+					if(drawPlayer>=6) ownArray[1][3]=ownArray[3][2]=true
+					if(drawPlayer>=7) ownArray[2][3]=ownArray[4][2]=true
+					if(drawPlayer>=8) ownArray[3][3]=ownArray[4][3]=true
+				}
+				while(this.level>0 && !ownArray[this.rarity][this.level]) this.level--
+				while(!ownArray[this.rarity][this.level]) this.rarity--
+				if(this.id<=3) {
+					if(drawPlayer==="Traveler") {
+						let cardPetal=new Petal(this.name,this.rarity,this.level,false)
+						this.health=cardPetal.health
+						this.damage=cardPetal.damage
+						if(this.id===2) this.damage*=2
+						if(this.id===1) this.dpt=2*this.damage*2*cardPetal.speed/(cardPetal.reload+2*attackRequirement(new Object()))
+						if(this.id===2) this.dpt=this.damage*2*cardPetal.speed/(cardPetal.reload+attackRequirement(new Object()))
+						if(this.id===3) this.dpt=6*this.damage*2*cardPetal.speed/(cardPetal.reload+attackRequirement(new Object()))
+						this.dpt=approx(this.dpt)
+					} else {
+						let cardPetal=new Petal(this.name,this.rarity,this.level,false,true)
+						if(drawPlayer===9) {
+							cardPetal.health=approx(1.5*this.health)
+							cardPetal.damage=approx(1.5*this.damage)
+						}
+						if(drawPlayer>6) {
+							cardPetal.speed=approx(1.2*this.speed)
+							cardPetal.reload=approx(0.8*this.reload)
+						} else if(drawPlayer>3) {
+							cardPetal.speed=approx(1.1*this.speed)
+							cardPetal.reload=approx(0.9*this.reload)
+						}
+						this.health=cardPetal.health
+						this.damage=cardPetal.damage
+						if(this.id===2) this.damage*=2
+						if(this.id===1) this.dpt=2*this.damage*2*cardPetal.speed/(cardPetal.reload+400)
+						if(this.id===2) this.dpt=this.damage*2*cardPetal.speed/(cardPetal.reload+200)
+						if(this.id===3) this.dpt=6*this.damage*2*cardPetal.speed/(cardPetal.reload+200)
+						this.dpt=approx(this.dpt)
+					}
+				}
+				return
+			}
+			if(seed<=87) {
+				this.id=5,this.name="Yggdrasil"
+				return
+			}
+			if(seed<=93) {
+				this.id=6,this.name="Criticize"
+				return
+			}
+			if(seed<=99) {
+				this.id=7,this.name="Disregard"
+				return
+			}
+			this.id=8,this.name="Refresh"
+		}
+		Card.prototype.print=function(x,y,force=false) {
+			if(this.name==="Air" && determine(20)) force=true
+			if(y<=3 && !force) {
+				getGrid(0,x,y).replaceWith(createGrid(0,x,y,"Card_Default",1,this.rarity))
+			} else {
+				getGrid(0,x,y).replaceWith(createGrid(0,x,y,"Card_"+this.name,1,this.rarity))
+			}
+		}
+		function printTopic(topicNumber) {
+			let topicText=["None","Health","Damage","DPT","Specialty","Scarcity"]
+			getGrid(0,8,3).replaceWith(createGrid(0,8,3,"Text_Topic<br><sub>"+topicText[topicNumber]+"</sub>",1,7))
+		}
+		function momentumDecrease(player,decrease=1) {
+			if(player==="Traveler") {
+				fight.spevent.travelermomentum-=decrease
+				if(fight.spevent.travelermomentum<0) fight.spevent.travelermomentum=0
+				let momentumList=[0,10,20,20,20,30,30,30,30,30]
+				let remainPercentage=fight.spevent.travelermomentum/momentumList[fight.spevent.event-100]*100
+				let newPath="M0 0L100 0L100 "+(100-remainPercentage)+"L0 "+(100-remainPercentage)+"Z"
+				getGrid(0,3,6).children[0].children[0].setAttribute("d",newPath)
+				getGrid(0,6,6).children[0].children[0].setAttribute("d",newPath)
+			} else {
+				fight.spevent.opponentmomentum-=decrease
+				if(fight.spevent.opponentmomentum<0) fight.spevent.opponentmomentum=0
+				let momentumList=[0,10,20,20,20,30,30,30,30,30]
+				let remainPercentage=fight.spevent.opponentmomentum/momentumList[fight.spevent.event-100]*100
+				let newPath="M0 0L100 0L100 "+(100-remainPercentage)+"L0 "+(100-remainPercentage)+"Z"
+				getGrid(0,3,1).children[0].children[0].setAttribute("d",newPath)
+				getGrid(0,6,1).children[0].children[0].setAttribute("d",newPath)
+			}
+		}
+		async function compareCard(topic,travelerCard,opponentCard) {
+			let talkElement=document.createElement("span")
+			talkElement.setAttribute("class","blue rmid text3")
+			if(travelerCard.name==="Refresh" && opponentCard.name==="Refresh") {
+				await delay(1000)
+				return
+			}
+			if(travelerCard.name==="Refresh" && opponentCard.id<=5) {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				for(let i of [1,2,4,5,7,8]) if(i!==fight.spevent.travelerselect) {
+					fight.spevent.travelercard[i]=new Card("Traveler")
+					fight.spevent.travelercard[i].print(i,6)
+				}
+				talkElement.innerHTML="I have something else to show you."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(travelerCard.name==="Refresh") {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				for(let i of [1,2,4,5,7,8]) if(i!==fight.spevent.travelerselect) {
+					fight.spevent.travelercard[i]=new Card("Traveler")
+					fight.spevent.travelercard[i].print(i,6)
+				}
+				talkElement.innerHTML="Wait... How about these?"
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Refresh" && travelerCard.id<=5) {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				for(let i of [1,2,4,5,7,8]) if(i!==fight.spevent.opponentselect) {
+					fight.spevent.opponentcard[i]=new Card(fight.spevent.event-100)
+					fight.spevent.opponentcard[i].print(i,1)
+				}
+				talkElement.innerHTML="I have something else to show you."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Refresh") {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				for(let i of [1,2,4,5,7,8]) if(i!==fight.spevent.opponentselect) {
+					fight.spevent.opponentcard[i]=new Card(fight.spevent.event-100)
+					fight.spevent.opponentcard[i].print(i,1)
+				}
+				talkElement.innerHTML="Wait... How about these?"
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(travelerCard.name==="Disregard" && opponentCard.name==="Disregard") {
+				await delay(1000)
+				return
+			}
+			if(travelerCard.name==="Disregard" && opponentCard.id<=5) {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				talkElement.innerHTML="I didn't hear that."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(travelerCard.name==="Disregard") {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				talkElement.innerHTML="We need to talk about something else."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Disregard" && travelerCard.id<=5) {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				talkElement.innerHTML="I didn't hear that."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Disregard") {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				talkElement.innerHTML="We need to talk about something else."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(travelerCard.name==="Criticize" && opponentCard.name==="Criticize") {
+				await delay(1000)
+				return
+			}
+			if(travelerCard.name==="Criticize") {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				momentumDecrease("Opponent")
+				let winWords=["","That is slow.","You will die faster.","It needs good luck.","Literally useless.","Not possible to get."]
+				talkElement.innerHTML=winWords[opponentCard.id]
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Criticize") {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				momentumDecrease("Traveler")
+				let winWords=["","That is slow.","You will die faster.","It needs good luck.","Literally useless.","Not possible to get."]
+				talkElement.innerHTML=winWords[travelerCard.id]
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(travelerCard.name==="Yggdrasil" && opponentCard.name==="Yggdrasil") {
+				await delay(1000)
+				return
+			}
+			if(travelerCard.name==="Air" && opponentCard.name==="Air") {
+				await delay(1000)
+				return
+			}
+			if(travelerCard.name==="Yggdrasil" && topic===4) {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				momentumDecrease("Opponent")
+				talkElement.innerHTML="You need second chance for safe farm."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Yggdrasil" && topic===4) {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				momentumDecrease("Traveler")
+				talkElement.innerHTML="You need second chance for safe farm."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(travelerCard.name==="Yggdrasil" && topic===5) {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				momentumDecrease("Opponent",3)
+				talkElement.innerHTML="It is quite rare."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Yggdrasil" && topic===5) {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				momentumDecrease("Traveler",3)
+				talkElement.innerHTML="It is quite rare."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(travelerCard.name==="Air" && topic===4) {
+				talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Traveler"
+				momentumDecrease("Opponent")
+				talkElement.innerHTML="It is useful in some builds."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(opponentCard.name==="Air" && topic===4) {
+				talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+				fight.spevent.turn="Opponent"
+				momentumDecrease("Traveler")
+				talkElement.innerHTML="It is useful in some builds."
+				document.body.appendChild(talkElement)
+				await delay(2000)
+				talkElement.remove()
+				return
+			}
+			if(topic===1) {
+				if(travelerCard.health===1) {
+					getGrid(0,4,4).replaceWith(createGrid(0,4,4,"Cross",1,0))
+				} else {
+					getGrid(0,4,4).replaceWith(createGrid(0,4,4,travelerCard.health,1,0))
+				}
+				if(opponentCard.health===1) {
+					getGrid(0,5,3).replaceWith(createGrid(0,5,3,"Cross",1,0))
+				} else {
+					getGrid(0,5,3).replaceWith(createGrid(0,5,3,opponentCard.health,1,0))
+				}
+				let winWords=["It is more durable.","It defends multiple mobs at the same time.","High damage saves time.","Good DPT is required for boss fight."]
+				if(travelerCard.health>opponentCard.health) {
+					talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+					fight.spevent.turn="Traveler"
+					momentumDecrease("Opponent")
+					talkElement.innerHTML=winWords[travelerCard.id]
+					if(travelerCard.name==="Rock" && opponentCard.name==="Rock") talkElement.innerHTML=winWords[0]
+					document.body.appendChild(talkElement)
+					await delay(2000)
+					talkElement.remove()
+					return
+				}
+				if(opponentCard.health>travelerCard.health) {
+					talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+					fight.spevent.turn="Opponent"
+					momentumDecrease("Traveler")
+					talkElement.innerHTML=winWords[opponentCard.id]
+					if(travelerCard.name==="Rock" && opponentCard.name==="Rock") talkElement.innerHTML=winWords[0]
+					document.body.appendChild(talkElement)
+					await delay(2000)
+					talkElement.remove()
+					return
+				}
+				await delay(1000)
+				return
+			}
+			if(topic===2) {
+				if(travelerCard.damage===1) {
+					getGrid(0,4,4).replaceWith(createGrid(0,4,4,"Cross",1,0))
+				} else {
+					getGrid(0,4,4).replaceWith(createGrid(0,4,4,travelerCard.damage,1,0))
+				}
+				if(opponentCard.damage===1) {
+					getGrid(0,5,3).replaceWith(createGrid(0,5,3,"Cross",1,0))
+				} else {
+					getGrid(0,5,3).replaceWith(createGrid(0,5,3,opponentCard.damage,1,0))
+				}
+				let winWords=["It has higher damage.","Defend is important anyways.","It instant kills neutral mobs.","Good DPT is required for boss fight."]
+				if(travelerCard.damage>opponentCard.damage) {
+					talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+					fight.spevent.turn="Traveler"
+					momentumDecrease("Opponent")
+					talkElement.innerHTML=winWords[travelerCard.id]
+					if(travelerCard.name==="Blood Stinger" && opponentCard.name==="Blood Stinger") talkElement.innerHTML=winWords[0]
+					document.body.appendChild(talkElement)
+					await delay(2000)
+					talkElement.remove()
+					return
+				}
+				if(opponentCard.damage>travelerCard.damage) {
+					talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+					fight.spevent.turn="Opponent"
+					momentumDecrease("Traveler")
+					talkElement.innerHTML=winWords[opponentCard.id]
+					if(travelerCard.name==="Blood Stinger" && opponentCard.name==="Blood Stinger") talkElement.innerHTML=winWords[0]
+					document.body.appendChild(talkElement)
+					await delay(2000)
+					talkElement.remove()
+					return
+				}
+				await delay(1000)
+				return
+			}
+			if(topic===3) {
+				if(travelerCard.dpt===0) {
+					getGrid(0,4,4).replaceWith(createGrid(0,4,4,"Cross",1,0))
+				} else {
+					getGrid(0,4,4).replaceWith(createGrid(0,4,4,travelerCard.dpt,1,0))
+				}
+				if(opponentCard.dpt===0) {
+					getGrid(0,5,3).replaceWith(createGrid(0,5,3,"Cross",1,0))
+				} else {
+					getGrid(0,5,3).replaceWith(createGrid(0,5,3,opponentCard.dpt,1,0))
+				}
+				let winWords=["It deals higher DPT.","Defend is important anyways.","High damage saves time.","It is the best for mobs with high health."]
+				if(travelerCard.dpt>opponentCard.dpt) {
+					talkElement.style.top=getGrid(0,1,5).getBoundingClientRect().top+30+"px"
+					fight.spevent.turn="Traveler"
+					momentumDecrease("Opponent")
+					talkElement.innerHTML=winWords[travelerCard.id]
+					if(travelerCard.name==="Dice" && opponentCard.name==="Dice") talkElement.innerHTML=winWords[0]
+					document.body.appendChild(talkElement)
+					await delay(2000)
+					talkElement.remove()
+					return
+				}
+				if(opponentCard.dpt>travelerCard.dpt) {
+					talkElement.style.top=getGrid(0,1,2).getBoundingClientRect().top+30+"px"
+					fight.spevent.turn="Opponent"
+					momentumDecrease("Traveler")
+					talkElement.innerHTML=winWords[opponentCard.id]
+					if(travelerCard.name==="Dice" && opponentCard.name==="Dice") talkElement.innerHTML=winWords[0]
+					document.body.appendChild(talkElement)
+					await delay(2000)
+					talkElement.remove()
+					return
+				}
+				await delay(1000)
+				return
+			}
+			await delay(1000)
+			return
+		}
+		function opponentChoice(cardRarity) {
+			let cardSlot=[0,1,2,4,5,7,8]
+			for(let i=1;i<=5;i++) {
+				let swapPlace=roll(i,6)
+				if(swapPlace>i) {
+					cardSlot[swapPlace]+=cardSlot[i]
+					cardSlot[i]=cardSlot[swapPlace]-cardSlot[i]
+					cardSlot[swapPlace]=cardSlot[swapPlace]-cardSlot[i]
+				}
+			}
+			if(determine(15)) {
+				fight.spevent.opponentselect=cardSlot[1]
+				return
+			}
+			if(cardRarity===5) {
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id>=6) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===5 && fight.spevent.topic===5) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				let typeCount=new Array(9).fill(0)
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id<=4) typeCount[fight.spevent.opponentcard[cardSlot[i]].id]++
+				for(let i=1;i<=7;i++) for(let j=1;j<=6;j++) if(typeCount[fight.spevent.opponentcard[cardSlot[j]].id]>=2 && fight.spevent.opponentcard[cardSlot[j]].rarity+fight.spevent.opponentcard[cardSlot[j]].level===i) {
+					fight.spevent.opponentselect=cardSlot[j]
+					return
+				}
+				fight.spevent.opponentselect=cardSlot[1]
+				return
+			}
+			if(cardRarity>0) {
+				if(fight.spevent.topic>=4) {
+					for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===5 && fight.spevent.topic===5) {
+						fight.spevent.opponentselect=cardSlot[i]
+						return
+					}
+					for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===4) {
+						fight.spevent.opponentselect=cardSlot[i]
+						return
+					}
+					for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===5) {
+						fight.spevent.opponentselect=cardSlot[i]
+						return
+					}
+					for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id>=6) {
+						fight.spevent.opponentselect=cardSlot[i]
+						return
+					}
+					let typeCount=new Array(9).fill(0)
+					for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id<=4) typeCount[fight.spevent.opponentcard[cardSlot[i]].id]++
+					for(let i=1;i<=7;i++) for(let j=1;j<=6;j++) if(typeCount[fight.spevent.opponentcard[cardSlot[j]].id]>=2 && fight.spevent.opponentcard[cardSlot[j]].rarity+fight.spevent.opponentcard[cardSlot[j]].level===i) {
+						fight.spevent.opponentselect=cardSlot[j]
+						return
+					}
+					fight.spevent.opponentselect=cardSlot[1]
+					return
+				}
+				let functionalCount=0
+				for(let i=1;i<=6;i++) {
+					if(fight.spevent.opponentcard[cardSlot[i]].id>=6) functionalCount++
+					if(fight.spevent.opponentcard[cardSlot[i]].id===8) functionalCount+=9
+				}
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===8 && functionalCount%10===0) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===6) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===7 && functionalCount>=2) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				let maxStat=1,maxSlot=0
+				for(let i=1;i<=6;i++) {
+					let newStat
+					if(fight.spevent.topic===1) newStat=fight.spevent.opponentcard[cardSlot[i]].health
+					if(fight.spevent.topic===2) newStat=fight.spevent.opponentcard[cardSlot[i]].damage
+					if(fight.spevent.topic===3) newStat=fight.spevent.opponentcard[cardSlot[i]].dpt
+					if(newStat>maxStat) {
+						maxStat=newStat
+						maxSlot=cardSlot[i]
+					}
+				}
+				if(maxSlot!==0) {
+					fight.spevent.opponentselect=maxSlot
+					return
+				}
+				fight.spevent.opponentselect=cardSlot[1]
+				return
+			}
+			if(fight.spevent.topic>=4) {
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===5 && fight.spevent.topic===5) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				let functionalCount=0
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id>=6) functionalCount++
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===4 && functionalCount<=2) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id>=6) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===5) {
+					fight.spevent.opponentselect=cardSlot[i]
+					return
+				}
+				let typeCount=new Array(9).fill(0)
+				for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id<=4) typeCount[fight.spevent.opponentcard[cardSlot[i]].id]++
+				for(let i=1;i<=7;i++) for(let j=1;j<=6;j++) if(typeCount[fight.spevent.opponentcard[cardSlot[j]].id]>=2 && fight.spevent.opponentcard[cardSlot[j]].rarity+fight.spevent.opponentcard[cardSlot[j]].level===i) {
+					fight.spevent.opponentselect=cardSlot[j]
+					return
+				}
+				fight.spevent.opponentselect=cardSlot[1]
+				return
+			}
+			let functionalCount=0
+			for(let i=1;i<=6;i++) {
+				if(fight.spevent.opponentcard[cardSlot[i]].id>=6) functionalCount++
+				if(fight.spevent.opponentcard[cardSlot[i]].id===8) functionalCount+=9
+			}
+			for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===8 && functionalCount%10===0) {
+				fight.spevent.opponentselect=cardSlot[i]
+				return
+			}
+			for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===7 && functionalCount>=3) {
+				fight.spevent.opponentselect=cardSlot[i]
+				return
+			}
+			for(let i=1;i<=6;i++) if(fight.spevent.opponentcard[cardSlot[i]].id===6 && functionalCount>=3) {
+				fight.spevent.opponentselect=cardSlot[i]
+				return
+			}
+			let maxStat=1,maxSlot=0
+			for(let i=1;i<=6;i++) {
+				let newStat
+				if(fight.spevent.topic===1) newStat=fight.spevent.opponentcard[cardSlot[i]].health
+				if(fight.spevent.topic===2) newStat=fight.spevent.opponentcard[cardSlot[i]].damage
+				if(fight.spevent.topic===3) newStat=fight.spevent.opponentcard[cardSlot[i]].dpt
+				if(newStat>maxStat) {
+					maxStat=newStat
+					maxSlot=cardSlot[i]
+				}
+			}
+			if(maxSlot!==0) {
+				fight.spevent.opponentselect=maxSlot
+				return
+			}
+			fight.spevent.opponentselect=cardSlot[1]
+			return
+		}
+		async function playCard(playerchoice) {
+			if(animation) return
+			animation=true
+			fight.spevent.travelerselect=playerchoice
+			getGrid(0,fight.spevent.travelerselect,6).replaceWith(createGrid(0,fight.spevent.travelerselect,6,"Empty",1,0))
+			fight.spevent.travelercard[fight.spevent.travelerselect].print(5,4)
+			selectedGrid.select=false
+			closeGridInfo(true)
+			if(fight.spevent.turn==="Traveler") {
+				opponentChoice(fight.spevent.travelercard[fight.spevent.travelerselect].rarity)
+				getGrid(0,fight.spevent.opponentselect,1).replaceWith(createGrid(0,fight.spevent.opponentselect,1,"Empty",1,0))
+			}
+			fight.spevent.opponentcard[fight.spevent.opponentselect].print(4,3,true)
+			await compareCard(fight.spevent.topic,fight.spevent.travelercard[fight.spevent.travelerselect],fight.spevent.opponentcard[fight.spevent.opponentselect])
+			getGrid(0,4,3).replaceWith(createGrid(0,4,3,"Empty",1,0))
+			getGrid(0,5,3).replaceWith(createGrid(0,5,3,"Empty",1,0))
+			getGrid(0,4,4).replaceWith(createGrid(0,4,4,"Empty",1,0))
+			getGrid(0,5,4).replaceWith(createGrid(0,5,4,"Empty",1,0))
+			if(fight.spevent.travelermomentum<=0) {
+				await delay(1000)
+				animation=false
+				endFight()
+				return
+			}
+			if(fight.spevent.opponentmomentum<=0) {
+				await delay(1000)
+				animation=false
+				endFight(true)
+				return
+			}
+			fight.spevent.travelercard[fight.spevent.travelerselect]=new Card("Traveler")
+			fight.spevent.travelercard[fight.spevent.travelerselect].print(fight.spevent.travelerselect,6)
+			fight.spevent.opponentcard[fight.spevent.opponentselect]=new Card(fight.spevent.event-100)
+			fight.spevent.opponentcard[fight.spevent.opponentselect].print(fight.spevent.opponentselect,1)
+			fight.spevent.topic=roll(1,4)
+			if(fight.spevent.topic===4 && determine(20)) fight.spevent.topic=5
+			printTopic(fight.spevent.topic)
+			if(fight.spevent.turn==="Opponent") {
+				opponentChoice(0)
+				getGrid(0,fight.spevent.opponentselect,1).replaceWith(createGrid(0,fight.spevent.opponentselect,1,"Empty",1,0))
+				fight.spevent.opponentcard[fight.spevent.opponentselect].print(4,3)
+			}
+			animation=false
 		}
 	</script>
 	<script>
@@ -8279,9 +9665,9 @@
 	</div>
 	<div id="gallery" class="mid lyellow-bg box highz hsize nd"></div>
 	<div class="cmargin text3-c">
-		<button type="button" tabindex='-1' onclick="importSave()" class="lmargin lblue-bg recbtn pointer" title="Import Save">Retrieve Memories (WIP)</button>
+		<button type="button" tabindex='-1' onclick="importSave()" class="lmargin lblue-bg recbtn pointer" title="Import Save">Retrieve Memories</button>
 		<button type="button" tabindex='-1' onclick="hardReset()" class="lmargin lred-bg recbtn forbidden" title="HARD RESET">Restart the Universe</button>
-		<button type="button" tabindex='-1' id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer" title="Export Save">Store Memories (WIP)</button>
+		<button type="button" tabindex='-1' id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer" title="Export Save">Store Memories</button>
 	</div>
 	<div id="calendar" class="cmargin text2-c nd">
 		<span id="calendar-day"></span>
@@ -8380,6 +9766,11 @@
 			<path class="purple-path mwidth" d="M2 5L8 5"/>
 		</svg>
 	</div>
+	<div id="side-state" class="tl cmid rflex">
+		<div id="bar-energy-c" class="side-bar-container nd">
+			<div id="bar-energy" class="cyan-bg side-bar text2-c cflex"></div>
+		</div>
+	</div>
 	<div id="flower-state" class="bottom text3-c cflex">
 		<span id="flower-maxhealth">&nbsp;</span>
 		<span id="flower-level">&nbsp;</span>
@@ -8399,13 +9790,14 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2025/12/6,</span>
+		<span>The last update was on 2026/1/22,</span>
+		<span>which updated Floor 1.</span>
+		<span>Fixed some bugs. Small rebalancing (shootable petals mostly).</span>
+		<span>Some special event, floor ending, talent is still not available.</span>
+		<br>
+		<span>The last update before was on 2025/12/6,</span>
 		<span>which updated Flower Game Guide.</span>
 		<span>Also deleted useless testing commands and functions.</span>
-		<br>
-		<span>The last update before was on 2025/11/30,</span>
-		<span>petals are finally completed, yay!</span>
-		<span>Mob missile are reworked. Fight now saves automatically in localStorage.</span>
 		<br>
 		<span>The last important update before was on 2025/11/24 (BETA update),</span>
 		<span>which updated all Base Floor content.</span>
