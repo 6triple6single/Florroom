@@ -8996,15 +8996,15 @@
 					} else {
 						let cardPetal=new Petal(this.name,this.rarity,this.level,false,true)
 						if(drawPlayer===9) {
-							cardPetal.health=approx(1.5*this.health)
-							cardPetal.damage=approx(1.5*this.damage)
+							cardPetal.health=approx(1.5*cardPetal.health)
+							cardPetal.damage=approx(1.5*cardPetal.damage)
 						}
 						if(drawPlayer>6) {
-							cardPetal.speed=approx(1.2*this.speed)
-							cardPetal.reload=approx(0.8*this.reload)
+							cardPetal.speed=approx(1.2*cardPetal.speed)
+							cardPetal.reload=approx(0.8*cardPetal.reload)
 						} else if(drawPlayer>3) {
-							cardPetal.speed=approx(1.1*this.speed)
-							cardPetal.reload=approx(0.9*this.reload)
+							cardPetal.speed=approx(1.1*cardPetal.speed)
+							cardPetal.reload=approx(0.9*cardPetal.reload)
 						}
 						this.health=cardPetal.health
 						this.damage=cardPetal.damage
