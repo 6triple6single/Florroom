@@ -788,6 +788,7 @@
 			padding: 10px;
 			padding-top: 5px;
 			text-align: center;
+			opacity: 0.95;
 		}
 		.itembox {
 			background-color: rgba(191,191,191,0.8);
@@ -1886,13 +1887,13 @@
 				return
 			}
 			let resultingDamage=damage
-			if(mobName==="!Roach!" && mob.quickness>4) {
-				let damageBuff=20*(quickness-4)
+			if(mobName==="!Roach!" && mob.effect.quickness>4) {
+				let damageBuff=20*(mob.effect.quickness-4)
 				if(damageBuff>100) damageBuff=100
 				resultingDamage+=approx(resultingDamage*damageBuff/100)
 			}
-			if(mobName==="!Leafbug!" && mob.quickness>3) {
-				let damageDebuff=10*(quickness-3)
+			if(mobName==="!Leafbug!" && mob.effect.quickness>3) {
+				let damageDebuff=10*(mob.effect.quickness-3)
 				resultingDamage-=approx(resultingDamage*damageDebuff/100)
 				if(resultingDamage<0) resultingDamage=0
 			}
@@ -2681,10 +2682,6 @@
 			if(isPetal(petal)) {
 				petalName=petal.name
 				if(this.behavior==="Neutral") this.behavior="Neutral+"
-				if(fight.turn!=="Mob" && MobAttributeList[this.id].match("BOSS")!==null) {
-					if(!this.effect.hasOwnProperty("quickness")) this.effect.quickness=0
-					this.effect.quickness++
-				}
 			}
 			if(petalName==="Poison") {
 				addLog("[Mob] "+this.name+" is poisoned.","#bfbf00")
@@ -2767,12 +2764,12 @@
 			}
 			if(this.name==="!Leafbug!") {
 				let armorBlock=approx(0.3*this.damage)
-				if(this.quickness>=1) armorBlock=approx(0.6*this.damage)
-				if(this.quickness>=3) armorBlock=approx(1.5*this.damage)
+				if(this.effect.quickness>=1) armorBlock=approx(0.6*this.damage)
+				if(this.effect.quickness>=3) armorBlock=approx(1.5*this.damage)
 				resultingDamage-=armorBlock
 				if(resultingDamage<0) resultingDamage=0
-				if(this.quickness>=5) resultingDamage=approx(resultingDamage/2)
-				if(this.quickness>=7) resultingDamage=0
+				if(this.effect.quickness>=5) resultingDamage=approx(resultingDamage/2)
+				if(this.effect.quickness>=7) resultingDamage=0
 			}
 			if(this.name!=="Sponge") {
 				for(let i=1;i<=4;i++) if(this.y+dy[i]>=1 && this.y+dy[i]<=3) {
@@ -2794,6 +2791,10 @@
 					fight.mob[i].injure(resultingDamage,"Psyonic Connection")
 				}
 				resultingDamage=0
+			}
+			if(isPetal(petal) && fight.turn!=="Mob" && MobAttributeList[this.id].match("BOSS")!==null) {
+				if(!this.effect.hasOwnProperty("quickness")) this.effect.quickness=0
+				this.effect.quickness++
 			}
 			if(resultingDamage) {
 				addLog("[Mob] "+this.name+" received "+resultingDamage+" damage from "+petalName+".","#bfbf00")
@@ -3051,7 +3052,7 @@
 						this.attack()
 					}
 				}
-				if(this.name==="!Leafbug!" && this.quickness<=7) {
+				if(this.name==="!Leafbug!" && (this.effect.quickness<=7 || !this.effect.hasOwnProperty("quickness"))) {
 					this.attack()
 				}
 				if(this.name==="!Wasp!") {
@@ -3351,15 +3352,15 @@
 				}
 				editingStatHTML+="</div>"
 				if(player.floor1gamestat[2]!=="Locked")
-				editingStatHTML+="<br><span>Opponents after <span style='color: #ffe65d; filter: brightness(90%)'>Unusual</span> have higher momentum.</span>"
+				editingStatHTML+="<br><span>Opponents after <span style='color: "+rarityColor[2].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+rarityName[2]+"</span> have higher momentum.</span>"
 				if(player.floor1gamestat[4]!=="Locked")
-				editingStatHTML+="<span>Opponents after <span style='color: #861f6d'>Epic</span> have higher DPT.</span>"
+				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColor[4]+"'>"+rarityName[4]+"</span> have higher DPT.</span>"
 				if(player.floor1gamestat[5]!=="Locked")
-				editingStatHTML+="<span>Opponents after <span style='color: #de1f1f'>Legendary</span> have higher momentum again.</span>"
+				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColor[5]+"'>"+rarityName[5]+"</span> have higher momentum again.</span>"
 				if(player.floor1gamestat[7]!=="Locked")
-				editingStatHTML+="<span>Opponents after <span style='color: #1fdbde'>Ultra</span> have higher DPT again.</span>"
+				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColor[7].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+rarityName[7]+"</span> have higher DPT again.</span>"
 				if(player.floor1gamestat[9]!=="Locked")
-				editingStatHTML+="<span><span style='color: #555555'>Unique</span> opponent has higher damage.</span>"
+				editingStatHTML+="<span><span style='color: "+rarityColor[9]+"'>"+rarityName[9]+"</span> opponent has higher damage.</span>"
 				document.getElementById("book-content").innerHTML+=editingStatHTML
 			}
 			if(player.book[player.bookreading]==="Flower Evolutionary Guide") {
@@ -3665,7 +3666,7 @@
 					dialogRemain=""
 					return
 				}
-				if(explore.event.startdialog===0 && player.settings.skipdialog===true) explore.event.startdialog=15
+				if(explore.event.startdialog===0 && player.settings.dialog==="Skip") explore.event.startdialog=15
 				if(explore.event.startdialog===0) {
 					dialog("Traveler (You)","The 8th Floor isn't a lie! Let's continue...","Unset","#dfdfff")
 					explore.event.startdialog=1
@@ -3748,7 +3749,7 @@
 					displayCentralRoom()
 					return
 				}
-				if(explore.event.searchlibrary===0 && player.settings.skipdialog===true) explore.event.searchlibrary=11
+				if(explore.event.searchlibrary===0 && player.settings.dialog==="Skip") explore.event.searchlibrary=11
 				if(explore.event.searchlibrary===0) {
 					displayCentralRoom()
 					dialog("Librarian","Hello, may I ask what book you need to borrow?","Unset","#bfffff")
@@ -3857,7 +3858,7 @@
 					explore.event.searchlibrary=15
 					return
 				}
-				if(explore.event.basefloorwarehouse===0 && player.settings.skipdialog===true) explore.event.basefloorwarehouse=14
+				if(explore.event.basefloorwarehouse===0 && player.settings.dialog==="Skip") explore.event.basefloorwarehouse=14
 				if(explore.event.basefloorwarehouse===0) {
 					displayCentralRoom()
 					dialog("(The Florroom)","Traveler walked into a warehouse. The goods inside are messy, like they were left behind after looting.","Unset","#dfdfdf")
@@ -3962,7 +3963,7 @@
 					displayMap()
 					return
 				}
-				if(explore.event.evolutionaryguide===1 && player.settings.skipdialog===true) explore.event.evolutionaryguide=2
+				if(explore.event.evolutionaryguide===1 && player.settings.dialog==="Skip") explore.event.evolutionaryguide=2
 				if(explore.event.evolutionaryguide===1) {
 					await dialog("(The Florroom)","Traveler found a book under boulder. The title \"Flower Survival Guide\" appears on the side of the book. This book is important and it should not be difficult to push away the boulder to get the book...","Unset","#dfdfdf")
 					explore.event.evolutionaryguide=2
@@ -3975,7 +3976,7 @@
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 					return
 				}
-				if(explore.event.evolutionaryguide===3 && player.settings.skipdialog===true) explore.event.evolutionaryguide=4
+				if(explore.event.evolutionaryguide===3 && player.settings.dialog==="Skip") explore.event.evolutionaryguide=4
 				if(explore.event.evolutionaryguide===3) {
 					await dialog("(The Florroom)","Traveler got the book. On the cover of the book, there is a sentence: \"I have got all the Flower Artisan Guide from Library using my 125 alt accounts. If you want this book, come to Desert, find me and show me your true abilities.\"","Unset","#dfdfdf")
 					explore.event.evolutionaryguide=4
@@ -3990,7 +3991,7 @@
 					addLog("[Resource] You received Flower Evolutionary Guide.","#7fff7f")
 					return
 				}
-				if(explore.event.artisanguide===1 && player.settings.skipdialog===true) explore.event.artisanguide=2
+				if(explore.event.artisanguide===1 && player.settings.dialog==="Skip") explore.event.artisanguide=2
 				if(explore.event.artisanguide===1) {
 					await dialog("Summoner","A new challenger? Well, let's get started now.","Unset","#ffffbf")
 					explore.event.artisanguide=2
@@ -4003,7 +4004,7 @@
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 					return
 				}
-				if(explore.event.artisanguide===3 && player.settings.skipdialog===true) explore.event.artisanguide=5
+				if(explore.event.artisanguide===3 && player.settings.dialog==="Skip") explore.event.artisanguide=5
 				if(explore.event.artisanguide===3) {
 					await dialog("Summoner","I recognize your strength, this book is for you. However, only those with exceptional talent can master the essence of crafting, and no one in this world can compare to me.","Unset","#ffffbf")
 					explore.event.artisanguide=4
@@ -4023,7 +4024,7 @@
 					addLog("[Resource] You received Flower Artisan Guide.","#7fff7f")
 					return
 				}
-				if(explore.event.basefloorending===0 && player.settings.skipdialog===true) {
+				if(explore.event.basefloorending===0 && player.settings.dialog==="Skip") {
 					explore.event.basefloorending="Completed"
 					document.getElementById("end1").style["pointer-events"]="unset"
 					for(let i=0;i<=30;i++) {
@@ -4099,7 +4100,7 @@
 					location.reload()
 					return
 				}
-				if(explore.event.floor1startdialog===0 && player.settings.skipdialog===true) explore.event.floor1startdialog=19
+				if(explore.event.floor1startdialog===0 && player.settings.dialog==="Skip") explore.event.floor1startdialog=19
 				if(explore.event.floor1startdialog===0) {
 					dialog("Traveler (You)","(Waking up) Where am I now?","Unset","#dfdfff")
 					explore.event.floor1startdialog=1
@@ -4201,7 +4202,7 @@
 					displayCentralRoom()
 					return
 				}
-				if(explore.event.floor1hotel===0 && player.settings.skipdialog===true) explore.event.floor1hotel=4
+				if(explore.event.floor1hotel===0 && player.settings.dialog==="Skip") explore.event.floor1hotel=4
 				if(explore.event.floor1hotel===0) {
 					displayCentralRoom()
 					dialog("Clerk","Please show me your ID card.","Fast","#ffffdf")
@@ -4233,7 +4234,7 @@
 					displayCentralRoom()
 					return
 				}
-				if(explore.event.floor1warehouse===0 && player.settings.skipdialog===true) explore.event.floor1warehouse=14
+				if(explore.event.floor1warehouse===0 && player.settings.dialog==="Skip") explore.event.floor1warehouse=14
 				if(explore.event.floor1warehouse===0) {
 					displayCentralRoom()
 					dialog("(The Florroom)","Traveler walked into his room, wondering who had bought it for him.","Unset","#dfdfdf")
@@ -4280,7 +4281,7 @@
 					displayCentralRoom()
 					return
 				}
-				if(explore.event.floor1game===0 && player.settings.skipdialog===true) explore.event.floor1game=8
+				if(explore.event.floor1game===0 && player.settings.dialog==="Skip") explore.event.floor1game=8
 				if(explore.event.floor1game===0) {
 					displayCentralRoom()
 					dialog("(From far distance)","Rock does high damage, it is much better...","Unset","#ffdfff")
@@ -4367,9 +4368,7 @@
 			document.getElementById("dialog-maintext").style.color=textColor
 			document.getElementById("dialog").style.display="flex"
 			dialogRemain=maintext
-			if(speed==="Unset" && player.settings.fasterdialog===true) speed="Fast"
-			if(speed==="Unset" && player.settings.slowerdialog===true) speed="Slow"
-			if(speed==="Unset") speed="Middle"
+			if(speed==="Unset") speed=player.settings.dialog
 			if(speed==="Instant") {
 				document.getElementById("dialog-maintext").innerHTML=maintext
 				dialogRemain=""
@@ -4445,11 +4444,11 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20260122,acceptedVersion=20251206
+		const version=20260131,acceptedVersion=20251206
 		const svgNS="http://www.w3.org/2000/svg"
 		const dx=[0,0,1,0,-1],dy=[0,-1,0,1,0],dx5=[0,1,2,2,1,-1,-2,-2,-1],dy5=[0,-2,-1,1,2,2,1,-1,-2]
-		const rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
-		const rarityName=["None","Common","Unusual","Rare","Epic","Legendary","Mythic","Ultra","Super","Unique"]
+		let rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
+		let rarityName=["None","Common","Unusual","Rare","Epic","Legendary","Mythic","Ultra","Super","Unique"]
 		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
 		const pathArray=[1011,1013,1112,1121,1131,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1724,1739,2122,2224,2225,2226,2324,2325,2353,2461,2526,3132,3133,3233,3236,3239,3334,3335,3436,3438,3537,3538,3639,3738,3761,3943,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5664,6162,6263,6265,6364,6365,6466,6566,6667]
 		const tutorialOrder=[10,11,12,14,21,22,24,31,41,42,43,51,52,53,23,61,62,63,64,65,66,67]
@@ -5201,13 +5200,13 @@
 			dialogDisplayTitle.innerHTML="Dialog Display"
 			document.getElementById("settings").appendChild(dialogDisplayTitle)
 			let dialogDisplay=document.createElement("div")
-			if(player.settings.slowerdialog) {
+			if(player.settings.dialog==="Slow") {
 				let addButton=settingButton(1,2,"Slow")
 				dialogDisplay.appendChild(addButton)
-			} else if(player.settings.fasterdialog) {
+			} else if(player.settings.dialog==="Fast") {
 				let addButton=settingButton(1,2,"Fast")
 				dialogDisplay.appendChild(addButton)
-			} else if(player.settings.skipdialog) {
+			} else if(player.settings.dialog==="Skip") {
 				let addButton=settingButton(1,2,"Skip")
 				dialogDisplay.appendChild(addButton)
 			} else {
@@ -5215,6 +5214,29 @@
 				dialogDisplay.appendChild(addButton)
 			}
 			document.getElementById("settings").appendChild(dialogDisplay)
+			let themeTitle=document.createElement("h3")
+			themeTitle.innerHTML="Theme (Requires Refresh)"
+			document.getElementById("settings").appendChild(themeTitle)
+			let themeDisplay=document.createElement("div")
+			if(player.settings.theme==="C++") {
+				let addButton=settingButton(1,3,"C++")
+				themeDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(1,3,"Classic")
+				themeDisplay.appendChild(addButton)
+			}
+			if(player.settings.rarity==="U-nique") {
+				let addButton=settingButton(2,3,"U-nique")
+				themeDisplay.appendChild(addButton)
+			} else if(player.settings.rarity==="Inverted") {
+				let addButton=settingButton(2,3,"Inverted")
+				themeDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(2,3,"Normal")
+				themeDisplay.appendChild(addButton)
+			}
+			document.getElementById("settings").appendChild(themeDisplay)
+			document.getElementById("settings").appendChild(document.createElement("br"))
 			document.getElementById("settings").style.display="flex"
 		}
 		function settingButton(setX,setY,state) {
@@ -5456,6 +5478,41 @@
 				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
 				return addButton
 			}
+			if(setX===1 && setY===3 && state==="Classic") {
+				let addButton=createGrid(5,setX,setY,"Text_Theme<br><br>Classic",1,0)
+				addButton.classList.add("white-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===3 && state==="C++") {
+				let addButton=createGrid(5,setX,setY,"Text_Theme<br><br>C++",1,0)
+				addButton.classList.add("dgrey-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===2 && setY===3 && state==="Normal") {
+				let addButton=createGrid(5,setX,setY,"Text_Rarity<br><br>Normal",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===2 && setY===3 && state==="Prefixed") {
+				let addButton=createGrid(5,setX,setY,"Text_Rarity<br><br>Prefixed",1,0)
+				addButton.classList.add("dgrey-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===2 && setY===3 && state==="Inverted") {
+				let addButton=createGrid(5,setX,setY,"Text_Rarity<br><br>Inverted",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
 		}
 		function settingClick(setX,setY) {
 			if(animation) return
@@ -5625,20 +5682,42 @@
 				}
 			}
 			if(setX===1 && setY===2) {
-				if(player.settings.slowerdialog===true) {
-					delete player.settings.slowerdialog
+				if(!player.settings.hasOwnProperty("dialog")) player.settings.dialog="Middle"
+				if(player.settings.dialog==="Slow") {
+					player.settings.dialog="Middle"
 					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Middle"))
-				} else if(player.settings.fasterdialog===true) {
-					delete player.settings.fasterdialog
-					player.settings.skipdialog=true
-					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Skip"))
-				} else if(player.settings.skipdialog===true) {
-					delete player.settings.skipdialog
-					player.settings.slowerdialog=true
-					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Slow"))
-				} else {
-					player.settings.fasterdialog=true
+				} else if(player.settings.dialog==="Middle") {
+					player.settings.dialog="Fast"
 					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Fast"))
+				} else if(player.settings.dialog==="Fast") {
+					player.settings.dialog="Skip"
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Skip"))
+				} else {
+					player.settings.dialog="Slow"
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Slow"))
+				}
+			}
+			if(setX===1 && setY===3) {
+				if(!player.settings.hasOwnProperty("theme")) player.settings.theme="Classic"
+				if(player.settings.theme==="Classic") {
+					player.settings.theme="C++"
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"C++"))
+				} else {
+					player.settings.theme="Classic"
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Classic"))
+				}
+			}
+			if(setX===2 && setY===3) {
+				if(!player.settings.hasOwnProperty("rarity")) player.settings.rarity="Normal"
+				if(player.settings.rarity==="Normal") {
+					player.settings.rarity="Prefixed"
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Prefixed"))
+				} else if(player.settings.rarity==="Prefixed") {
+					player.settings.rarity="Inverted"
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Inverted"))
+				} else {
+					player.settings.rarity="Normal"
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Normal"))
 				}
 			}
 		}
@@ -5904,6 +5983,19 @@
 				return
 			}
 			if(gameEnded()) return
+			if(player.settings.theme==="C++") {
+				document.body.classList.add("dgrey-bg")
+				for(let i in PetalSVGArray) PetalSVGArray[i]=PetalSVGArray[i].replace(/<g>.+<\/g>/,"<g></g>").replace("20px","0px")
+				for(let i in MobSVGArray) MobSVGArray[i]=MobSVGArray[i].replace(/<g>.+<\/g>/,"<g></g>").replace("20px)","0px); font-family: Consolas")
+				document.getElementById("gridinfo").style["font-family"]="Consolas"
+			}
+			if(player.settings.rarity==="Prefixed") {
+				rarityName=["Une","Ummon","Unusual","Ure","Upic","Ugendary","Uthic","Ultra","Uper","Unique"]
+			}
+			if(player.settings.rarity==="Inverted") {
+				rarityColor=["#000000","#2bffa3","#ff2b75","#1fdbde","#de1f1f","#861fde","#4d52e3","#ffe65d","#7eef6d","#555555"]
+				rarityName=["None","Super","Ultra","Mythic","Legendary","Epic","Rare","Unusual","Common","Unique"]
+			}
 			setInterval(cogRotate,10)
 			setInterval(flowerRotate,10)
 			setInterval(cleanerRotate,10)
@@ -8492,13 +8584,13 @@
 			}
 			let resultingDamage=damage,energyLoss=0
 			if(isMob(mob)) energyLoss=3
-			if(mobName==="!Roach!" && mob.quickness>4) {
-				let damageBuff=20*(quickness-4)
+			if(mobName==="!Roach!" && mob.effect.quickness>4) {
+				let damageBuff=20*(mob.effect.quickness-4)
 				if(damageBuff>100) damageBuff=100
 				resultingDamage+=approx(resultingDamage*damageBuff/100)
 			}
-			if(mobName==="!Leafbug!" && mob.quickness>3) {
-				let damageDebuff=10*(quickness-3)
+			if(mobName==="!Leafbug!" && mob.effect.quickness>3) {
+				let damageDebuff=10*(mob.effect.quickness-3)
 				resultingDamage-=approx(resultingDamage*damageDebuff/100)
 				if(resultingDamage<0) resultingDamage=0
 			}
@@ -8807,6 +8899,10 @@
 				if(petal.name==="Rock" && petal.actionbar>0) {
 					petal.actionbar-=50
 					if(petal.actionbar<0) petal.actionbar=0
+					petal.print()
+				}
+				if(petal.name==="Wing" && petal.actionbar>0) {
+					petal.actionbar=0
 					petal.print()
 				}
 				if(petal.name==="Honey" && determine(50-5*petal.rarity," for immune")) {
@@ -9599,7 +9695,7 @@
 		<button type="button" tabindex='-1' onclick="openInventory()" class="circbtn" title="Inventory">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"/>
-				<path class="wide" d="M50 35A15 15 0 0 0 50 65A15 15 0 0 0 50 35"/>
+				<path class="fyellow-bg wide" d="M50 35A15 15 0 0 0 50 65A15 15 0 0 0 50 35"/>
 				<g id="flower">
 					<path class="fgreen-path" d="M41.5 36.8A10 13 0 1 1 58.5 36.8A15.7 15.7 0 0 0 41.5 36.8"/>
 					<path class="rot72 fblue-path" d="M41.5 36.8A10 13 0 1 1 58.5 36.8A15.7 15.7 0 0 0 41.5 36.8"/>
@@ -9790,14 +9886,14 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2026/1/22,</span>
+		<span>The last update was on 2026/1/31,</span>
+		<span>which updated theme settings.</span>
+		<span>Fixed a bug related to mob quickness.</span>
+		<br>
+		<span>The last update before was on 2026/1/22,</span>
 		<span>which updated Floor 1.</span>
 		<span>Fixed some bugs. Small rebalancing (shootable petals mostly).</span>
 		<span>Some special event, floor ending, talent is still not available.</span>
-		<br>
-		<span>The last update before was on 2025/12/6,</span>
-		<span>which updated Flower Game Guide.</span>
-		<span>Also deleted useless testing commands and functions.</span>
 		<br>
 		<span>The last important update before was on 2025/11/24 (BETA update),</span>
 		<span>which updated all Base Floor content.</span>
