@@ -3319,6 +3319,7 @@
 		const bookHTML=new Object()
 		bookHTML["Flower Artisan Guide"]="<h2>Flower Artisan Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Combine or refine common petals into powerful new forms. By combining different petals with similar characteristics, you gain stronger one improved in level, giving stronger damaging attributes. By refining petal with high level, you gain stronger one improved in rarity, guaranting better durability and wear resistance. Be proficient in the two production methods, and you can easily overwhelm your opponents during battles. This book is your guide to mastering the art of petal craft.</span><br><span>For Rarity Up, you only need to select 1 petal with positive Level (and Rarity should not be Mythic). Higher Level increases the success chance and higher Rarity decreases the chance. The chance is always 100% for petal with at least 3 Level. However, you may find it not worth in some cases. Higher rarity grants your petal higher Health but Damage might be significant decreased since <span class='bold'>Rarity Up resets Level</span>.</span><br><span>For Level Up, you need to select at least 2 petals of the same type with identical Rarity and Level. The success chance decreases as Rarity and Level increases, and the decay stops after 3 Level. To increase the success chance, you need to put more petals at once. (X+1) petals grants you X times success chance. However, success chance exceeds 100% does nothing, and you lost all petals when success or lost [1,X] petals when fail, so putting all petals together is not a wise decision.</span><br><span>Before you begin, there's one more thing to remind you: The Base Four Influencing Fators (Speed, Reload, ATKBuff, DEFBuff) is <span class='bold'>kept</span> on Rarity Up. On Level Up, they <span class='bold'>independently inherit</span> from one material. Choose your materials wisely! Here is another multifunctional calculator which is quite convenient to use by simply inputting Rarity and Level. 3 0 or 4 2 for example.</span><input type='text' tabindex='-1' id='craft-detail' onkeydown='craftdetail(event.key)' class='inner-input' list='craftdetaillist' autocomplete='off' title='Craft Detail'><datalist id='craftdetaillist'><option value='3 0'><option value='4 2'></datalist>"
 		bookHTML["Flower Combat Guide"]="<h2>Flower Combat Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>When you enter a map for the first time, mobs will be spawned and fight against you. There is a threshold depends on Floor that prevents too many mobs existing at the same time. Therefore, when you defeat a mob, a new mob may spawn.</span><br><span>The process of a round in battle is divided into the following parts: At the beginning, your petals gain action based on speed. You can move petals, use them for attack or perform special skills. Then mobs gain action. Mob with action exceeding the threshold will attack and you use petal to defend. If you skip defend or the defend fails, you take the damage. By default value, moving a petal costs 100 action, while using a petal to attack costs 200 action. The threshold for mob is 200 action.</span><br><span>Your petals can attack or defend mobs from <span class='bold'>the front or the side column</span>. The success rate of attack is based on petal ATK (atk2 for front row and atk1 for middle row) and mob Dodge. The success rate of defend is based on petal DEF (def2 for back row and def1 for middle row) and mob Dodge. These two formula have significant difference. When the mob is from side column, the formula also uses petal Size. Petal Size is capped at 20, but the best value for side-defending is <span class='bold'>17 to 18 Size</span>.</span><br><span>For shootable petal, before any bounces, the Accuracy (the petal ATK in success rate formula for shootable petals) is always 100% inside range. For each distance exceeds range, the Accuracy is decreased by Accuracy Decline. If it hits the target, it can bounce between enemies. The Accuracy is decreased by Repeated Accuracy Decline each time it hits a enemy that already hit. The Accuracy is decreased by Bounce Accuracy Decline each bounce exceeds Bounce. Any bounce hits can only hit enemy within Bounce Range.</span><br><span>Since you are facing mobs from all directions and not only from the front, <span class='bold'>the first and last columns are connected</span>, which means that both your petals and mobs can move from the first column to the last column or inverted, and the first and last columns are side columns to each other. The distance between two grids is calculated by horizontal distance plus vertical distance <span class='bold'>without using the Pythagorean theorem</span>. The word 'Retire' means a petal disappears and can't be used again in the same fight. If you are defeated, you only have 30% probability to temporary keep loot and they could be lost if you are defeated again in the same map.</span><br><span>You can calculate chance in the following box. For example, Aa-48S12 calculates the success rate of attacking 80% Dodge mob in side column with 12 Size, 100% ATK and -4 ATKbuff petal, A4+a6F calculates the success rate of attacking 60% Dodge mob in the front column with 40% ATK and +10 ATKbuff petal, D3+05F calculates the success rate of defending 50% Dodge mob in the front column with 30% DEF and +0 DEFbuff petal.</span><input type='text' tabindex='-1' id='combat-calc' onkeydown='combatcalc(event.key)' class='inner-input' list='calclist' autocomplete='off' title='Calculator'><datalist id='calclist'><option value='Aa-48S12'><option value='A4+a6F'><option value='D3+05F'></datalist>"
+		bookHTML["Flower Control Guide"]="<h2>Flower Control Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><h3>Hot Keys</h3><div class='green-bg inner-box'><span style='color: #7f7f7f'>S: Open/Close settings</span><span style='color: #7f7f7f'>H: Open/Close help</span><span style='color: #7f7f7f'>Z: Open/Close inventory</span><span style='color: #7f7f7f'>V: Open/Close gallery</span><br><span style='color: #9f9f00'>W=↑: Move up</span><span style='color: #9f9f00'>D=→: Move right</span><span style='color: #9f9f00'>S=↓: Move down</span><span style='color: #9f9f00'>A=←: Move left</span><br><span style='color: #009f9f'>T: End turn (mostly)</span><span style='color: #009f9f'>M: Move</span><span style='color: #009f9f'>R: Attack</span><span style='color: #009f9f'>X: Special actions</span><br><span style='color: #ffffff'>Enter: Confirm</span><span style='color: #ffffff'>Backspace: Cancel</span></div>"
 		bookHTML["Flower Debate Guide"]="<h2 style='color: #7eef6d'>Flower Debate Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Floor 1 Game: Debate Strategy. Reward: Some good things, including talent system.</span><br><br><span>At the beginning, you and your opponent have the same Momentum. When one's Momentum drops to zero, the opponent win. You will receive rewards only when winning for the first time. There are no punishment after failure, and attempts is not limited.</span><br><span>There are 4 types of basic cards: Rock(25%), Blood Stinger(25%), Dice(25%), Air(10%). Basic cards have random rarities from Common to Epic, and levels from 0 to 3. They are petals without attribute floating. If you get a high quality card and don't have any petals of that quality, the level will be reduced until you have a petal at same quality. If there is still no same quality petal after level reduced to 0, rarity will also be reduced.</span><br><span>There are 4 types of advanced cards: Yggdrasil(2%), Criticize(6%), Disregard(6%), Refresh(1%). The rarities of high quality cards are fixed at Legendary, and levels are fixed at 0. Each player has 6 cards.</span><br><span>There are 5 topics: Health(25%), Damage(25%), DPT(25%), Special(20%), Scarce(5%). For each topic, both players choose a card and compare. The loser will get Momentum reduced by 1. Then, both players draw a new card and start a new topic. Each topic has different judgments:</span><span>1. Health Petals: If both player use basic cards, the one with higher health wins.</span><span>2. Damage Petals: If both player use basic cards, the one with higher damage wins. Blood stinger's damage is considered twice as much.</span><span>3. DPT Petals: If both player use basic cards, the one with higher DPT wins. Dice's DPT is considered 6 times as much. Rock is considered as it can hit twice.</span><span>4. Special Petals: If both player use basic cards, the one uses Air wins.</span><span>5. Scarce Petals: If both player use basic cards, no one wins.</span><br><span>Yggdrasil: It is considered as basic cards in topic 1~3. In topic 4~5 it wins all previous cards. In topic 5, it will also cause the opponent to lose an additional 2 Momentum when win.</span><span>Criticize: It wins all previous cards in all topics.</span><span>Disregard: It wins all previous cards in all topics. However, the loser will keep the Momentum.</span><span>Refresh: It wins all previous cards in all topics. However, the loser will keep the Momentum. Instead, the winner discards all cards and draws new cards.</span><br><span>You can see the rarity of your opponent's card. And your attention is amazing, with a 20% chance of recognize when your opponent gains or moves Air.</span>"
 		bookHTML["Flower Evolutionary Guide"]="<h2>Flower Evolutionary Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Consume the petals to absorb their vital essence. This raw energy fuels your growth, allowing you to level up and evolve. With each infusion of experience, you grow stronger, gain access to higher tier abilities, naturally ascending to greater heights. This ancient cycle of growth is detailed within these pages.</span><br><span>You gain petals from defeated mobs, higher rarity mobs have better droprate. You can see the detail in gallery. The base Experience for a petal is <span class='bold'>(RarityFactor)*(Level+1)</span>. For Common, Unusual, Rare, Epic, Legendary, Mythic Petals, the Factors are 8, 12, 20, 40, 100, 300 respectively. Then, the Experience is multiplied by a random value from 0.8 to 1.2, and rounded to nearest integer, so the expected Experience is equivalent to base Experience.</span><br><span>Since this mechanic is not difficult to understand, you need no calculator for this. I provided another calculator here which helps you get the basic stat of petals. Your gained petals have 20% basic stat attribute floating <span class='bold'>except some special kinds</span>. To use this box, you just need to simply input Name, Rarity, Level. For example, Corn 3 0 calculates the stat of Rare Corn, Plank 4 2 calculates the stat of Epic Plank++.</span><input type='text' tabindex='-1' id='petal-stat' onkeydown='petalstat(event.key)' class='inner-input' list='petalstatlist' autocomplete='off' title='Petal Stat'><datalist id='petalstatlist'><option value='Corn 3 0'><option value='Plank 4 2'></datalist>"
 		bookHTML["Flower Game Guide"]="<h2>Flower Game Guide <span style='color: #0078d7; font-style: italic; font-size: 12px; font-weight: noremal'>//TODO</span></h2><div class='white-bg inner-box'><span style='color: #008000'>#include&lt;PFLFtools.h&gt; <span style='color: #0078d7; font-style: italic;'>//should be replaced</span></span><span style='color: #008000'>#include&lt;iostream&gt;</span><span style='color: #008000'>#include&lt;time.h&gt;</span><span style='color: #008000'>#include&lt;math.h&gt;</span><span style='color: #008000'>#include&lt;string.h&gt;</span><span style='color: #008000'>#include&lt;fstream.h&gt;</span><span><span style='font-weight: bold'>using namespace</span> std<span style='color: #ff0000; font-weight: bold'>;</span></span><span><span style='font-weight: bold'>void</span> menu<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"↓MORE GAME (CLICK!)↓\"</span><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/PFLF' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"PFLF\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/Virus1' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"VIRUS 1\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span><span><span style='font-weight: bold'>int</span> main<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>Sleep<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #800080'>2000</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadtext();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadgallery();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadmarvel();</span><span style='margin-left: 2em'>menu<span style='color: #ff0000; font-weight: bold'>();</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span> <span style='color: #800080'>0</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span></div>"
@@ -4487,7 +4488,7 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20260203,acceptedVersion=20251206
+		const version=20260205,acceptedVersion=20260122
 		const svgNS="http://www.w3.org/2000/svg"
 		const dx=[0,0,1,0,-1],dy=[0,-1,0,1,0],dx5=[0,1,2,2,1,-1,-2,-2,-1],dy5=[0,-2,-1,1,2,2,1,-1,-2]
 		let rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
@@ -4507,6 +4508,7 @@
 		if(!player.book) {
 			player.book=new Array()
 			player.book[0]="Flower Game Guide"
+			player.book[1]="Flower Control Guide"
 		}
 		if(!player.bookreading) player.bookreading=0
 		if(!player.bookstat) player.bookstat=new Object()
@@ -4646,6 +4648,11 @@
 		localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 		localStorage.setItem("FLORROOMfight",JSON.stringify(fight))
 		let animation=false,confirmation=false,confirmation2=false,missile=false
+		function safeReload() {
+			requestAnimationFrame(() => {
+				location.reload()
+			} )
+		}
 		function delay(time) {
 			return new Promise(resolve => setTimeout(resolve,time))
 		}
@@ -4800,15 +4807,15 @@
 						if(selectedGrid.select===true) {
 							selectedGrid.select=false
 							closeGridInfo()
-							gridInfo(button)
 						}
+						gridInfo(button)
 						selectedGrid.select=true
 						selectedGrid.value=buttonValue
 						selectedGrid.x=buttonX
 						selectedGrid.y=buttonY
 						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
 						let option=document.createElement("div")
-						option.innerHTML+="<button type='button' onclick='playCard("+buttonX+")' class='llmargin lgrey-bg srecbtn pointer'>[X] Play</button>"
+						option.innerHTML+="<button type='button' id='keyx-btn' onclick='playCard("+buttonX+")' class='llmargin lgrey-bg srecbtn pointer'>[X] Play</button>"
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
 							document.getElementById("gridinfo").innerHTML+="<br>"
@@ -4822,7 +4829,7 @@
 				if(player.inventory[buttonX].id===targetPetal.id && player.inventory[buttonX].rarity===targetPetal.rarity && player.inventory[buttonX].level===targetPetal.level) {
 					lupoper.selectedArray.push(buttonX)
 					collapseGrid(button)
-					document.getElementById("lup-confirm").innerHTML="Level Up"
+					document.getElementById("lup-confirm").innerHTML="[L] Level Up"
 				}
 				return
 			}
@@ -4835,18 +4842,18 @@
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
 						closeGridInfo()
-						gridInfo(button)
 					}
+					gridInfo(button)
 					selectedGrid.select=true
 					selectedGrid.value=buttonValue
 					selectedGrid.x=buttonX
 					selectedGrid.y=buttonY
 					document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
 					let option=document.createElement("div")
-					if(player.inventory[buttonX].star>0) option.innerHTML+="<button type='button' onclick='star(-1)' class='llmargin lblue-bg srecbtn pointer'>Star-</button>"
-					if(player.inventory[buttonX].star<10) option.innerHTML+="<button type='button' onclick='star(1)' class='llmargin lgreen-bg srecbtn pointer'>Star+</button>"
-					if(levelUpCheck(player.inventory[buttonX])) option.innerHTML+="<button type='button' id='lup-btn' onclick='levelUp()' class='llmargin lpurple-bg srecbtn pointer'>Level Up</button>"
-					if(rarityUpCheck(player.inventory[buttonX])) option.innerHTML+="<button type='button' id='rup-btn' onclick='rarityUp()' class='llmargin lcyan-bg srecbtn pointer'>Rarity Up</button>"
+					if(player.inventory[buttonX].star>0) option.innerHTML+="<button type='button' id='star-btn1' onclick='star(-1)' class='llmargin lblue-bg srecbtn pointer'>Star-</button>"
+					if(player.inventory[buttonX].star<10) option.innerHTML+="<button type='button' id='star-btn2' onclick='star(1)' class='llmargin lgreen-bg srecbtn pointer'>Star+</button>"
+					if(levelUpCheck(player.inventory[buttonX])) option.innerHTML+="<button type='button' id='lup-btn' onclick='levelUp()' class='llmargin lpurple-bg srecbtn pointer'>[L] Level Up</button>"
+					if(rarityUpCheck(player.inventory[buttonX])) option.innerHTML+="<button type='button' id='rup-btn' onclick='rarityUp()' class='llmargin lcyan-bg srecbtn pointer'>[U] Rarity Up</button>"
 					if(absorbCheck(player.inventory[buttonX])) option.innerHTML+="<button type='button' id='abs-btn' onclick='absorb()' class='llmargin lred-bg srecbtn forbidden'>Absorb</button>"
 					if(option.innerHTML!=="") {
 						document.getElementById("gridinfo").appendChild(option)
@@ -4854,6 +4861,8 @@
 					}
 				}
 			}
+			if(document.getElementById("inventory").style.display==="flex" && buttonValue===0) return
+			if(document.getElementById("inventory").style.display==="flex" && buttonValue===2) return
 			if(fight.active===true && buttonValue===1) {
 				if(selectedGrid.select===true && selectedGrid.value===buttonValue && selectedGrid.x===buttonX && selectedGrid.y===buttonY) {
 					selectedGrid.select=false
@@ -4863,8 +4872,8 @@
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
 						closeGridInfo()
-						gridInfo(button)
 					}
+					gridInfo(button)
 					selectedGrid.select=true
 					selectedGrid.value=buttonValue
 					selectedGrid.x=buttonX
@@ -4873,10 +4882,10 @@
 					let option=document.createElement("div")
 					if(equipCheck(player.inventory[buttonX])) {
 						if(PetalAttributeList[player.inventory[buttonX].id].match("TYPE")===null) {
-							option.innerHTML+="<button type='button' onclick='equip(0)' class='llmargin white-bg srecbtn pointer'>Equip</button>"
+							option.innerHTML+="<button type='button' id='equip-btn' onclick='equip(0)' class='llmargin white-bg srecbtn pointer'>Equip</button>"
 						} else {
-							option.innerHTML+="<button type='button' onclick='equip(1)' class='llmargin white-bg srecbtn pointer'>Equip as T1</button>"
-							option.innerHTML+="<button type='button' onclick='equip(2)' class='llmargin white-bg srecbtn pointer'>Equip as T2</button>"
+							option.innerHTML+="<button type='button' id='equip1-btn' onclick='equip(1)' class='llmargin white-bg srecbtn pointer'>Equip as T1</button>"
+							option.innerHTML+="<button type='button' id='equip2-btn' onclick='equip(2)' class='llmargin white-bg srecbtn pointer'>Equip as T2</button>"
 						}
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
@@ -4894,8 +4903,8 @@
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
 						closeGridInfo()
-						gridInfo(button)
 					}
+					gridInfo(button)
 					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].x===buttonX && fight.petal[i].y===buttonY && fight.petal[i].state!=="Retired") {
 						selectedGrid.select=true
 						selectedGrid.value=buttonValue
@@ -4903,7 +4912,7 @@
 						selectedGrid.y=buttonY
 						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
 						let option=document.createElement("div")
-						option.innerHTML+="<button type='button' onclick='unequip()' class='llmargin lwhite-bg srecbtn pointer'>Unequip</button>"
+						option.innerHTML+="<button type='button' id='equip-btn' onclick='unequip()' class='llmargin lwhite-bg srecbtn pointer'>Unequip</button>"
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
 							document.getElementById("gridinfo").innerHTML+="<br>"
@@ -4920,8 +4929,8 @@
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
 						closeGridInfo()
-						gridInfo(button)
 					}
+					gridInfo(button)
 					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].x===buttonX && fight.petal[i].y===buttonY && fight.petal[i].state!=="Retired") {
 						selectedGrid.select=true
 						selectedGrid.value=buttonValue
@@ -4929,7 +4938,7 @@
 						selectedGrid.y=buttonY
 						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
 						let option=document.createElement("div")
-						option.innerHTML+="<button type='button' onclick='unequip()' class='llmargin lwhite-bg srecbtn pointer'>Unequip</button>"
+						option.innerHTML+="<button type='button' id='equip-btn' onclick='unequip()' class='llmargin lwhite-bg srecbtn pointer'>Unequip</button>"
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
 							document.getElementById("gridinfo").innerHTML+="<br>"
@@ -4946,8 +4955,8 @@
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
 						closeGridInfo()
-						gridInfo(button)
 					}
+					gridInfo(button)
 					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].x===buttonX && fight.petal[i].y===buttonY && fight.petal[i].state!=="Retired") {
 						selectedGrid.select=true
 						selectedGrid.value=buttonValue
@@ -4955,10 +4964,10 @@
 						selectedGrid.y=buttonY
 						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
 						let option=document.createElement("div")
-						if(moveCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].move()' class='llmargin lblue-bg srecbtn pointer'>[M] Move</button>"
-						if(attackCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].attack()' class='llmargin lyellow-bg srecbtn pointer'>[R] Attack</button>"
-						if(shootCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].shoot()' class='llmargin lyellow-bg srecbtn pointer'>[R] Shoot</button>"
-						if(skillCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].skill()' class='llmargin lpurple-bg srecbtn pointer'>[X] Special Skill</button>"
+						if(moveCheck(fight.petal[i])) option.innerHTML+="<button type='button' id='keym-btn' onclick='fight.petal["+i+"].move()' class='llmargin lblue-bg srecbtn pointer'>[M] Move</button>"
+						if(attackCheck(fight.petal[i])) option.innerHTML+="<button type='button' id='keyr-btn' onclick='fight.petal["+i+"].attack()' class='llmargin lyellow-bg srecbtn pointer'>[R] Attack</button>"
+						if(shootCheck(fight.petal[i])) option.innerHTML+="<button type='button' id='keyr-btn' onclick='fight.petal["+i+"].shoot()' class='llmargin lyellow-bg srecbtn pointer'>[R] Shoot</button>"
+						if(skillCheck(fight.petal[i])) option.innerHTML+="<button type='button' id='keyx-btn' onclick='fight.petal["+i+"].skill()' class='llmargin lpurple-bg srecbtn pointer'>[X] Special Skill</button>"
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
 							document.getElementById("gridinfo").innerHTML+="<br>"
@@ -4975,8 +4984,8 @@
 					if(selectedGrid.select===true) {
 						selectedGrid.select=false
 						closeGridInfo()
-						gridInfo(button)
 					}
+					gridInfo(button)
 					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].x===buttonX && fight.petal[i].y===buttonY && fight.petal[i].state!=="Retired") {
 						selectedGrid.select=true
 						selectedGrid.value=buttonValue
@@ -4997,7 +5006,7 @@
 							document.getElementById("gridinfo").appendChild(perceivedMob)
 						}
 						let option=document.createElement("div")
-						if(skillCheck(fight.petal[i])) option.innerHTML+="<button type='button' onclick='fight.petal["+i+"].skill()' class='llmargin lpurple-bg srecbtn pointer'>[X] Special Skill</button>"
+						if(skillCheck(fight.petal[i])) option.innerHTML+="<button type='button' id='keyx-btn' onclick='fight.petal["+i+"].skill()' class='llmargin lpurple-bg srecbtn pointer'>[X] Special Skill</button>"
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
 							document.getElementById("gridinfo").innerHTML+="<br>"
@@ -5010,10 +5019,10 @@
 						selectedGrid.y=buttonY
 						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
 						let option=document.createElement("div")
-						if(buttonX===1 && player.item["Energy Drink"]>=1) option.innerHTML+="<button type='button' onclick='useItem(\"Energy Drink\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
-						if(buttonX===2 && player.item["Arrow"]>=1) option.innerHTML+="<button type='button' onclick='useItem(\"Arrow\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
-						if(buttonX===3 && player.item["Epic Rose Juice"]>=1 && explore.energy<9000 && fight.flower.currenthealth<FlowerMaxHealth()/2) option.innerHTML+="<button type='button' onclick='useItem(\"Epic Rose Juice\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
-						if(buttonX===4 && player.item["Triple Web"]>=1 && JSON.stringify(fight.flower.effect)==="{}") option.innerHTML+="<button type='button' onclick='useItem(\"Triple Web\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
+						if(buttonX===1 && player.item["Energy Drink"]>=1) option.innerHTML+="<button type='button' id='keyx-btn' onclick='useItem(\"Energy Drink\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
+						if(buttonX===2 && player.item["Arrow"]>=1) option.innerHTML+="<button type='button' id='keyx-btn' onclick='useItem(\"Arrow\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
+						if(buttonX===3 && player.item["Epic Rose Juice"]>=1 && explore.energy<9000 && fight.flower.currenthealth<FlowerMaxHealth()/2) option.innerHTML+="<button type='button' id='keyx-btn' onclick='useItem(\"Epic Rose Juice\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
+						if(buttonX===4 && player.item["Triple Web"]>=1 && JSON.stringify(fight.flower.effect)==="{}") option.innerHTML+="<button type='button' id='keyx-btn' onclick='useItem(\"Triple Web\")' class='llmargin lpurple-bg srecbtn pointer'>[X] Use Item</button>"
 						if(option.innerHTML!=="") {
 							document.getElementById("gridinfo").appendChild(option)
 							document.getElementById("gridinfo").innerHTML+="<br>"
@@ -5124,10 +5133,18 @@
 			}
 		}
 		function closeAll() {
+			if(document.getElementById("mapinfo").style.display==="flex") closeMapInfo()
 			if(document.getElementById("settings").style.display==="flex") settings(false)
 			if(document.getElementById("help").style.display==="flex") howToPlay(false)
 			if(document.getElementById("inventory").style.display==="flex") openInventory(false)
 			if(document.getElementById("gallery").style.display==="flex") openGallery(false)
+		}
+		function cornerDisplay() {
+			if(document.getElementById("settings").style.display==="flex") return true
+			if(document.getElementById("help").style.display==="flex") return true
+			if(document.getElementById("inventory").style.display==="flex") return true
+			if(document.getElementById("gallery").style.display==="flex") return true
+			return false
 		}
 		function settings(open=true) {
 			if(animation) return
@@ -5140,6 +5157,8 @@
 				return
 			}
 			closeAll()
+			selectedGrid.select=false
+			closeGridInfo()
 			document.getElementById("settings").innerHTML="<h2>Settings</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>REC means recommended</span><h3>Log Display</h3>"
 			let logDisplay=document.createElement("div")
 			if(!player.settings.hasOwnProperty("closehelplog")) {
@@ -5288,8 +5307,22 @@
 				themeDisplay.appendChild(addButton)
 			}
 			document.getElementById("settings").appendChild(themeDisplay)
+			let qolTitle=document.createElement("h3")
+			qolTitle.innerHTML="Quality of Life"
+			document.getElementById("settings").appendChild(qolTitle)
+			let qolDisplay=document.createElement("div")
+			if(!player.settings.hasOwnProperty("alwaysscroll")) {
+				let addButton=settingButton(1,4,"Off")
+				qolDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(1,4,"On")
+				qolDisplay.appendChild(addButton)
+			}
+			document.getElementById("settings").appendChild(qolDisplay)
 			document.getElementById("settings").appendChild(document.createElement("br"))
 			document.getElementById("settings").style.display="flex"
+			if(player.settings.alwaysscroll===true) document.getElementById("settings").scrollTop=0
+			document.getElementById("settings").focus()
 		}
 		function settingButton(setX,setY,state) {
 			if(setX===1 && setY===1 && state==="On") {
@@ -5565,6 +5598,20 @@
 				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
 				return addButton
 			}
+			if(setX===1 && setY===4 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Always<br>scroll<br>before<br>display",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===4 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Always<br>scroll<br>before<br>display",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
 		}
 		function settingClick(setX,setY) {
 			if(animation) return
@@ -5772,6 +5819,15 @@
 					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Normal"))
 				}
 			}
+			if(setX===1 && setY===4) {
+				if(!player.settings.hasOwnProperty("alwaysscroll")) {
+					player.settings.alwaysscroll=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				} else {
+					delete player.settings.alwaysscroll
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				}
+			}
 		}
 		function howToPlay(open=true) {
 			if(animation) return
@@ -5785,9 +5841,13 @@
 				return
 			}
 			closeAll()
+			selectedGrid.select=false
+			closeGridInfo()
 			book()
 			document.getElementById("help").style.display="flex"
 			document.getElementById("helpsvg").setAttribute("d","M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M50 18L50 62")
+			if(player.settings.alwaysscroll===true) document.getElementById("help").scrollTop=0
+			document.getElementById("help").focus()
 		}
 		function openInventory(open=true,force=false) {
 			if(animation && !force) return
@@ -5814,6 +5874,7 @@
 			flowerSpin=1
 			if(dice()===1) flowerSpin=-1
 			if(dice()===1) flowerSpin*=3
+			if(player.settings.alwaysscroll===true) document.getElementById("inventory").scrollTop=0
 		}
 		function openGallery(open=true) {
 			if(animation) return
@@ -5829,6 +5890,8 @@
 				return
 			}
 			closeAll()
+			selectedGrid.select=false
+			closeGridInfo()
 			document.getElementById("gallery").innerHTML="<h2>Gallery</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br>"
 			for(let i in MobNameList) if(player.gallery.hasOwnProperty(MobNameList[i])) {
 				let galleryLine=document.createElement("div")
@@ -5848,6 +5911,7 @@
 			document.getElementById("gallery").style.display="flex"
 			document.getElementById("ladybug").style.scale=1
 			document.getElementById("ladybug-bg").style.display="flex"
+			if(player.settings.alwaysscroll===true) document.getElementById("gallery").scrollTop=0
 		}
 		function encodeFile(savestr) {
 			if(savestr.length%2>0) savestr+="79.76"
@@ -5919,7 +5983,7 @@
 					}
 				}
 				reader.readAsText(savefile)
-			})
+			} )
 			document.body.appendChild(fileInput)
 			fileInput.click()
 		}
@@ -6002,11 +6066,144 @@
 		function updateGame() {
 			console.log("updateGame")
 		}
-		let letterArray=[" ","t","m","r","x"]
+		function getDir(validArray,dir,oldPlaceX,oldPlaceY,placeX=8,placeY=6)
+		{
+			if(dir===1) {
+				for(let i=(oldPlaceY-2)*placeX+oldPlaceX-1;i>=0;i--) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+				for(let i=0;i<placeX*placeY;i++) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+			}
+			if(dir===2) {
+				for(let i=(oldPlaceY-1)*placeX+oldPlaceX;i<placeX*placeY;i++) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+				for(let i=placeX*placeY-1;i>=0;i--) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+			}
+			if(dir===3) {
+				for(let i=oldPlaceY*placeX+oldPlaceX-1;i<placeX*placeY;i++) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+				for(let i=placeX*placeY-1;i>=0;i--) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+			}
+			if(dir===4) {
+				for(let i=(oldPlaceY-1)*placeX+oldPlaceX-2;i>=0;i--) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+				for(let i=0;i<placeX*placeY;i++) {
+					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				}
+			}
+		}
+		let letterArray=[" ","1","2","3","4","5","6","7","8","9","0","t","m","r","x","q","h","z","v","u","l","w","d","s","a","-","+"]
 		function tryInput(num) {
-			if(animation) return
 			if(document.getElementById("end1").style["pointer-events"]==="unset") return
+			if(document.getElementById("dialog").style.display==="flex") {
+				if(num===0) {
+					dialog("Skip",6361)
+					return
+				}
+				if(num===79) {
+					dialog("Skip",6361)
+					return
+				}
+			}
+			if(animation) return
+			if(document.getElementById("map-container").style.display==="unset" && cornerDisplay()===false && flowerMove===false) {
+				if(num===0) {
+					let connectedArray=new Array()
+					connectedArray.push(explore.flowerspot)
+					for(let i of mapArray) if(getSpot(i,explore.flowerspot)!==null && getSpot(i,explore.flowerspot).style.display!=="none") connectedArray.push(i)
+					let newSpot=connectedArray[(connectedArray.indexOf(selectedSpot)+1)%connectedArray.length]
+					closeMapInfo()
+					selectedSpot=newSpot
+					mapInfo(getSpot(selectedSpot))
+					return
+				}
+				if(num===79) {
+					if(selectedSpot>0) chooseMap(getSpot(selectedSpot))
+					return
+				}
+				if(num===81) {
+					closeMapInfo()
+					return
+				}
+			}
+			if(document.getElementById("help").style.display==="flex" && help.querySelector("input")!==null && num===0) {
+				help.querySelector("input").scrollIntoView({block:"nearest"})
+				help.querySelector("input").focus()
+				return
+			}
+			if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("equip-btn")!==null && num===79) {
+				document.getElementById("equip-btn").onclick()
+				return
+			}
+			if(document.getElementById("gridinfo").style.display==="flex" && selectedGrid.value===0 && cornerDisplay()===false && num===79) {
+				clickGrid(getGrid(0,selectedGrid.x,selectedGrid.y))
+				return
+			}
+			if(document.getElementById("inventory").style.display==="flex" && selectedGrid.value===1 && getGrid(1,selectedGrid.x,selectedGrid.y)!==null && num===79) {
+				clickGrid(getGrid(1,selectedGrid.x,selectedGrid.y))
+				return
+			}
+			if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("abs-btn")!==null && num===81) {
+				document.getElementById("abs-btn").onclick()
+				return
+			}
+			if(document.getElementById("inventory").style.display==="flex" && document.getElementById("absall-btn").style.display==="unset" && selectedGrid.select===false && num===81) {
+				document.getElementById("absall-btn").onclick()
+				return
+			}
+			if(trackingGrid && trackingGrid.isConnected && num===79) {
+				trackingGrid.onclick()
+				return
+			}
+			if(trackingGrid && trackingGrid.isConnected && num===81) {
+				trackingX=0
+				trackingY=0
+				trackingGrid.onclick()
+				return
+			}
+			if(operingGrid && operingGrid.isConnected && num===79) {
+				operingGrid.onclick()
+				return
+			}
+			if(operingGrid && operingGrid.isConnected && num===81) {
+				operingX=0
+				operingGrid.onclick()
+				return
+			}
+			if(document.getElementById("gridinfo").style.display==="flex" && num===81) {
+				selectedGrid.select=false
+				closeGridInfo()
+				return
+			}
+			if(document.getElementById("inventory").style.display==="flex" && document.getElementById("lup-cancel").style.display==="unset" && num===81) {
+				document.getElementById("lup-cancel").onclick()
+				return
+			}
 			if(num===1) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("equip1-btn")!==null) {
+					document.getElementById("equip1-btn").onclick()
+					return
+				}
+				return
+			}
+			if(num===2) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("equip2-btn")!==null) {
+					document.getElementById("equip1-btn").onclick()
+					return
+				}
+				return
+			}
+			if(num===11) {
+				if(cornerDisplay()) return
 				if(fight.hasOwnProperty("spevent")) {
 					document.getElementById("fight-t-btn").onclick()
 					return
@@ -6015,17 +6212,207 @@
 				document.getElementById("fight-t-btn").onclick()
 				return
 			}
-			if(num>=2 && num<=4) {
-				if(document.getElementById("gridinfo").style.display!=="flex") return
-				if(document.getElementById("fight-"+letterArray[num]+"-btn")===null) return
-				document.getElementById("fight-"+letterArray[num]+"-btn").onclick()
+			if(num===12) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("keym-btn")!==null) {
+					document.getElementById("keym-btn").onclick()
+					return
+				}
+				return
+			}
+			if(num===13) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("keyr-btn")!==null) {
+					document.getElementById("keyr-btn").onclick()
+					return
+				}
+				return
+			}
+			if(num===14) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("keyx-btn")!==null) {
+					document.getElementById("keyx-btn").onclick()
+					return
+				}
+				return
+			}
+			if(num===15) {
+				if(trackingGrid && trackingGrid.isConnected) return
+				if(operingGrid && operingGrid.isConnected) return
+				settings()
+				return
+			}
+			if(num===16) {
+				if(trackingGrid && trackingGrid.isConnected) return
+				if(operingGrid && operingGrid.isConnected) return
+				howToPlay()
+				return
+			}
+			if(num===17) {
+				if(trackingGrid && trackingGrid.isConnected) return
+				if(operingGrid && operingGrid.isConnected) return
+				openInventory()
+				return
+			}
+			if(num===18) {
+				if(trackingGrid && trackingGrid.isConnected) return
+				if(operingGrid && operingGrid.isConnected) return
+				openGallery()
+				return
+			}
+			if(num===19) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("rup-btn")!==null) {
+					document.getElementById("rup-btn").onclick()
+					return
+				}
+				return
+			}
+			if(num===20) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("lup-btn")!==null) {
+					document.getElementById("lup-btn").onclick()
+					return
+				}
+				if(document.getElementById("inventory").style.display==="flex" && document.getElementById("lup-confirm").style.display==="unset") {
+					document.getElementById("lup-confirm").onclick()
+					return
+				}
+				return
+			}
+			if(num>=21 && num<=24) {
+				if(document.getElementById("help").style.display==="flex") {
+					if(num===22) book(1)
+					if(num===24) book(-1)
+					return
+				}
+				if(document.getElementById("inventory").style.display==="flex") {
+					if(document.getElementById("inv-petal").children.length===0) return
+					let selectedIndex=-1,newIndex=-1
+					if(selectedGrid.value===1) {
+						for(let i=0;i<document.getElementById("inv-petal").children.length;i++) {
+							let pendingGrid=document.getElementById("inv-petal").children[i]
+							if(pendingGrid===getGrid(1,selectedGrid.x,selectedGrid.y)) selectedIndex=i
+						}
+					}
+					if(selectedIndex===-1) {
+						newIndex=0
+					} else {
+						if(num===21) {
+							for(let i=0;i<selectedIndex;i++) if(Math.abs(document.getElementById("inv-petal").children[selectedIndex].getBoundingClientRect().left-document.getElementById("inv-petal").children[i].getBoundingClientRect().left)<1) newIndex=i
+							if(newIndex===-1) newIndex=0
+						}
+						if(num===22) newIndex=Math.min(selectedIndex+1,document.getElementById("inv-petal").children.length-1)
+						if(num===23) {
+							for(let i=document.getElementById("inv-petal").children.length-1;i>selectedIndex;i--) if(Math.abs(document.getElementById("inv-petal").children[selectedIndex].getBoundingClientRect().left-document.getElementById("inv-petal").children[i].getBoundingClientRect().left)<1) newIndex=i
+							if(newIndex===-1) newIndex=document.getElementById("inv-petal").children.length-1
+						}
+						if(num===24) newIndex=Math.max(selectedIndex-1,0)
+					}
+					selectedGrid.select=false
+					selectedGrid.value=1
+					selectedGrid.x=parseInt(document.getElementById("inv-petal").children[newIndex].dataset.x)
+					selectedGrid.y=document.getElementById("inv-petal").children[newIndex].dataset.y
+					justifyInventory(getGrid(1,selectedGrid.x,selectedGrid.y))
+					gridInfo(document.getElementById("inv-petal").children[newIndex])
+					return
+				}
+				if(trackingGrid && trackingGrid.isConnected) {
+					if(getGrid(2,0,0)!==null) {
+						trackingY=-1
+						trackingGrid.style.top=getGrid(2,0,0).getBoundingClientRect().top+40+"px"
+						trackingGrid.style.left=getGrid(2,0,0).getBoundingClientRect().left+40+"px"
+					}
+					let validArray=new Array()
+					for(let i=1;i<=8;i++) for(let j=1;j<=6;j++) if(trackCheck(i,j)) validArray.push({x:i,y:j})
+					if(validArray.length===0) return
+					let newCord=getDir(validArray,num-20,trackingX,trackingY)
+					trackingX=newCord.x
+					trackingY=newCord.y
+					trackingGrid.style.top=getGrid(0,trackingX,trackingY).getBoundingClientRect().top+40+"px"
+					trackingGrid.style.left=getGrid(0,trackingX,trackingY).getBoundingClientRect().left+40+"px"
+					return
+				}
+				if(operingGrid && operingGrid.isConnected) {
+					let validArray=new Array()
+					for(let i=1;i<=8;i++) for(let j=1;j<=6;j++) if(operCheck(i,j)) validArray.push({x:i,y:j})
+					if(validArray.length===0) return
+					let newCord=getDir(validArray,num-20,operingX,operingY)
+					operingX=newCord.x
+					operingY=newCord.y
+					operingGrid.style.top=getGrid(0,operingX,operingY).getBoundingClientRect().top+40+"px"
+					operingGrid.style.left=getGrid(0,operingX,operingY).getBoundingClientRect().left+40+"px"
+					updateT()
+					return
+				}
+				if(document.getElementById("fight-container").style.display==="grid") {
+					if(selectedGrid.value!==0) {
+						selectedGrid.value=0
+						selectedGrid.x=0
+						selectedGrid.y=0
+					}
+					let validArray=new Array()
+					for(let i=1;i<=8;i++) for(let j=1;j<=6;j++) if(getGrid(0,i,j).children[0].innerHTML!=="Empty") {
+						if(fight.hasOwnProperty("spevent") && fight.spevent.event>=101 && fight.spevent.event<=109 && j>1 && j<6) continue
+						validArray.push({x:i,y:j})
+					}
+					if(validArray.length===0) return
+					let newCord=getDir(validArray,num-20,selectedGrid.x,selectedGrid.y)
+					selectedGrid.x=newCord.x
+					selectedGrid.y=newCord.y
+					gridInfo(getGrid(0,selectedGrid.x,selectedGrid.y))
+					return
+				}
+				return
+			}
+			if(num===25) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("star-btn1")!==null) {
+					document.getElementById("star-btn1").onclick()
+					return
+				}
+				return
+			}
+			if(num===26) {
+				if(document.getElementById("gridinfo").style.display==="flex" && document.getElementById("star-btn2")!==null) {
+					document.getElementById("star-btn2").onclick()
+					return
+				}
 				return
 			}
 		}
 		document.addEventListener("keydown",function(pressed) {
-			if(pressed.target.tagName==="INPUT") return
-			if(letterArray.indexOf(pressed.key.toLowerCase())>0) {
+			if(pressed.target.tagName==="INPUT") {
+				if(pressed.target.value==="" && pressed.key==="Backspace") {
+					if(document.getElementById("help").style.display==="flex") document.getElementById("help").focus()
+					pressed.target.blur()
+				}
+				return
+			}
+			if(letterArray.indexOf(pressed.key.toLowerCase())>=0) {
 				tryInput(letterArray.indexOf(pressed.key.toLowerCase()))
+				if(document.getElementById("help").style.display==="flex" && pressed.key===" ") pressed.preventDefault()
+				return
+			}
+			if(pressed.key.startsWith("Arrow")) {
+				if(pressed.key==="ArrowUp") tryInput(21)
+				if(pressed.key==="ArrowRight") tryInput(22)
+				if(pressed.key==="ArrowDown") tryInput(23)
+				if(pressed.key==="ArrowLeft") tryInput(24)
+				return
+			}
+			if(pressed.key==="_") {
+				tryInput(25)
+				return
+			}
+			if(pressed.key==="=") {
+				tryInput(26)
+				return
+			}
+			if(pressed.key==="Enter") {
+				tryInput(79)
+				return
+			}
+			if(pressed.key==="Backspace") {
+				tryInput(81)
+				return
+			}
+			if(pressed.key==="Escape") {
+				safeReload()
 				return
 			}
 		} )
@@ -6105,7 +6492,10 @@
 					e.preventDefault()
 					e.stopPropagation()
 				}
-			})
+			} )
+			document.addEventListener("contextmenu",(e) => {
+				e.preventDefault()
+			} )
 			animation=true
 			document.getElementById("end2").innerText="Welcome to the Florroom!"
 			for(let i=0;i<=10;i++) {
@@ -6241,6 +6631,7 @@
 			mapElement=document.getElementById("map-trans")
 			containElement.addEventListener("mousedown",function(mouse) {
 				if(mouse.target.id!=="blank") return
+				closeMapInfo()
 				drag=true
 				dragX=mouseX
 				dragY=mouseY
@@ -6348,7 +6739,7 @@
 				} )
 			}
 		}
-		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerSpotX=0,flowerSpotY=0
+		let flowerMove=false,flowerMoveStartTime=Date.now(),flowerSpotX=0,flowerSpotY=0,selectedSpot=0
 		function travel(spot) {
 			if(animation) return
 			explore.floweroldspot=explore.flowerspot
@@ -6383,10 +6774,15 @@
 			document.getElementById("flowerspot").style.transform="translate("+(flowerSpotX-50)+"px, "+(flowerSpotY-50)+"px)"
 			updateHome()
 		}
+		function getSpot(spotValue,spotValue2) {
+			if(spotValue2!==undefined) spotValue=spotValue+spotValue2+99*Math.min(spotValue,spotValue2)
+			return document.getElementById("map-trans").querySelector("[value='"+spotValue+"']")
+		}
 		function chooseMap(spot) {
 			if(animation) return
 			if(flowerMove) return
 			let spotValue=parseInt(spot.getAttribute("value"))
+			closeMapInfo()
 			if(distance(explore.flowerspot,spotValue)===-1) return
 //todo
 			if(explore.floor===1 && explore.flowerspot>60) return
@@ -6412,7 +6808,6 @@
 				return
 			}
 			travel(spotValue)
-			closeMapInfo()
 		}
 		function mapInfo(spot) {
 			if(flowerMove) return
@@ -6452,6 +6847,7 @@
 			document.getElementById("mapinfo").style.display="flex"
 		}
 		function closeMapInfo() {
+			selectedSpot=0
 			document.getElementById("mapinfo").style.display="none"
 		}
 		function petalTextReplace(text,petal) {
@@ -6632,6 +7028,7 @@
 				return
 			}
 			if(document.getElementById("inventory").style.display==="flex" && gridValue===0) return
+			if(document.getElementById("inventory").style.display==="flex" && gridValue===2) return
 			if(gridValue===0) {
 				if(gridY===0) return
 				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].x===gridX && fight.petal[i].y===gridY && fight.petal[i].state!=="Retired") {
@@ -7012,6 +7409,7 @@
 		}
 		function closeGridInfo(forced=false) {
 			if(selectedGrid.select===true && forced===false) return
+			selectedGrid.select=false
 			document.getElementById("gridinfo").style.display="none"
 		}
 		function displayMap() {
@@ -7355,12 +7753,15 @@
 					if(player.floor1gamestat[fight.spevent.event-100]==="Incomplete") {
 						player.floor1gamestat[fight.spevent.event-100]="Completed"
 						if(fight.spevent.event===101) {
+							addLog("[Resource] You received 2 pieces of Time Shard.","#7fff7f")
 							player.item.add("Time Shard",2)
 						}
 						if(fight.spevent.event===102) {
+							addLog("[Resource] You received 3 pieces of Time Shard.","#7fff7f")
 							player.item.add("Time Shard",3)
 						}
 						if(fight.spevent.event===103) {
+							addLog("[Resource] You received talent activation ticket. Go back to use it.","#7fff7f")
 							explore.event.talentactivation="Incomplete"
 							localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 						}
@@ -7592,19 +7993,22 @@
 			addLog("[Loot] You received a "+player.inventory[inventorySpace].name+"+".repeat(player.inventory[inventorySpace].level)+"("+rarityName[player.inventory[inventorySpace].rarity]+").","#9f9fdf")
 			return inventorySpace
 		}
+		function justifyInventory(grid) {
+			let placeRect=grid.getBoundingClientRect(),containRect=document.getElementById("inventory").getBoundingClientRect()
+			if(placeRect.top<containRect.top+120) {
+				document.getElementById("inventory").scrollTop-=(containRect.top-placeRect.top+130)
+			} else if(placeRect.bottom>containRect.bottom) {
+				document.getElementById("inventory").scrollTop+=(placeRect.bottom-containRect.bottom+10)
+			}
+		}
 		function star(modify) {
 			if(animation) return
 			selectedGrid.select=false
 			closeGridInfo()
 			getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star).remove()
 			player.inventory[selectedGrid.x].star+=modify
-			let newPlace=printSinglePetal(selectedGrid.x)
-			let placeRect=newPlace.getBoundingClientRect(),containRect=document.getElementById("inventory").getBoundingClientRect()
-			if(placeRect.top<containRect.top+120) {
-				document.getElementById("inventory").scrollTop-=(containRect.top-placeRect.top+130)
-			} else if(placeRect.bottom>containRect.bottom) {
-				document.getElementById("inventory").scrollTop+=(placeRect.bottom-containRect.bottom+10)
-			}
+			selectedGrid.y+=modify
+			justifyInventory(printSinglePetal(selectedGrid.x))
 			gridInfo(getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star))
 			clickGrid(getGrid(1,selectedGrid.x,player.inventory[selectedGrid.x].star))
 		}
@@ -7620,7 +8024,7 @@
 			if(animation) return
 			if(lupoper.active===false) {
 				let targetPetal=player.inventory[selectedGrid.x].clone()
-				if(document.getElementById("lup-btn").innerHTML==="Level Up") {
+				if(document.getElementById("lup-btn").innerHTML==="[L] Level Up") {
 					document.getElementById("lup-btn").innerHTML="Confirm? "+PetalLevelUpChance(targetPetal.rarity,targetPetal.level,2)+"%+ Success"
 					return
 				}
@@ -7629,14 +8033,14 @@
 				await collapseGrid(getGrid(1,selectedGrid.x,selectedGrid.y))
 				lupoper.active=true
 				selectedGrid.select=false
-				document.getElementById("lup-confirm").innerHTML="Level Up"
+				document.getElementById("lup-confirm").innerHTML="[L] Level Up"
 				document.getElementById("lup-cancel").style.display="unset"
 				document.getElementById("lup-confirm").style.display="unset"
 				printInventory()
 			}
 			if(lupoper.selectedArray.length<2) return
 			let targetPetal=player.inventory[lupoper.selectedArray[0]].clone()
-			if(document.getElementById("lup-confirm").innerHTML==="Level Up") {
+			if(document.getElementById("lup-confirm").innerHTML==="[L] Level Up") {
 				document.getElementById("lup-confirm").innerHTML="Confirm? "+PetalLevelUpChance(targetPetal.rarity,targetPetal.level,lupoper.selectedArray.length)+"% Success"
 				return
 			}
@@ -7683,7 +8087,7 @@
 			lupoper.active=false
 			document.getElementById("lup-cancel").style.display=""
 			document.getElementById("lup-confirm").style.display=""
-			document.getElementById("lup-confirm").innerHTML==="Level Up"
+			document.getElementById("lup-confirm").innerHTML==="[L] Level Up"
 			printInventory()
 			addLog("[Craft] Level up canceled. All petals returned.","#df9f7f")
 		}
@@ -7697,7 +8101,7 @@
 		async function rarityUp() {
 			if(animation) return
 			let targetPetal=player.inventory[selectedGrid.x].clone()
-			if(document.getElementById("rup-btn").innerHTML==="Rarity Up") {
+			if(document.getElementById("rup-btn").innerHTML==="[U] Rarity Up") {
 				document.getElementById("rup-btn").innerHTML="Confirm? "+PetalRarityUpChance(targetPetal.rarity,targetPetal.level)+"% Success"
 				return
 			}
@@ -8007,6 +8411,11 @@
 			}
 		}
 		let trackingGrid,trackingX=0,trackingY=0,trackingType=0
+		function trackCheck(newX,newY) {
+			if(newY<=3) return false
+			for(let k in fight.petal) if(fight.petal[k].x===newX && fight.petal[k].y===newY) return false
+			return true
+		}
 		function trackGrid() {
 			if(PetalAttributeList[player.inventory[selectedGrid.x].id].match("DECORATION")!==null) {
 				if(Math.abs(mouseY-getGrid(2,0,0).getBoundingClientRect().top-40)<=25 && Math.abs(mouseX-getGrid(2,0,0).getBoundingClientRect().left-40)<=25) {
@@ -8017,11 +8426,8 @@
 				}
 			} else {
 				for(let i=1;i<=8;i++) {
-					for(let j=4;j<=6;j++) {
-						if(Math.abs(mouseY-getGrid(0,i,j).getBoundingClientRect().top-40)<=25 && Math.abs(mouseX-getGrid(0,i,j).getBoundingClientRect().left-40)<=25) {
-							let emptyFlag=true
-							for(let k in fight.petal) if(fight.petal[k].state!=="Retired" && fight.petal[k].x===i && fight.petal[k].y===j) emptyFlag=false
-							if(!emptyFlag) continue
+					for(let j=1;j<=6;j++) {
+						if(Math.abs(mouseY-getGrid(0,i,j).getBoundingClientRect().top-40)<=25 && Math.abs(mouseX-getGrid(0,i,j).getBoundingClientRect().left-40)<=25 && trackCheck(i,j)) {
 							trackingGrid.style.top=getGrid(0,i,j).getBoundingClientRect().top+40+"px"
 							trackingGrid.style.left=getGrid(0,i,j).getBoundingClientRect().left+40+"px"
 							trackingX=i
@@ -8490,6 +8896,8 @@
 		async function endTurn() {
 			if(animation) return
 			if(selectedGrid.select===true) return
+			if(cornerDisplay()) return
+			closeGridInfo()
 			if(fight.turn==="Mob" && bonusTurnCheck()) {
 				addLog("[Turn] Mob turn ended. Bonus flower turn starts.","#df9f9f")
 				fight.turn="Bonus"
@@ -9915,7 +10323,7 @@
 		<div class="text3-c">
 			<button type="button" tabindex='-1' id="lup-cancel" onclick="cancelLevelUp()" class="lmargin lred-bg recbtn pointer nd">Cancel</button>
 			<h2>Inventory</h2>
-			<button type="button" tabindex='-1' id="lup-confirm" onclick="levelUp()" class="lmargin corange-bg recbtn pointer nd">Level Up</button>
+			<button type="button" tabindex='-1' id="lup-confirm" onclick="levelUp()" class="lmargin corange-bg recbtn pointer nd">[L] Level Up</button>
 		</div>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
@@ -10052,13 +10460,13 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
-		<span>The last update was on 2026/2/3,</span>
+		<span>The last update was on 2026/2/5,</span>
+		<span>which updated keyboard control.</span>
+		<span>More QoL will be complemented later.</span>
+		<br>
+		<span>The last update before was on 2026/2/3,</span>
 		<span>which updated Time Shard (minigame reward).</span>
 		<span>"T" key is available now, more keyboard control soon.</span>
-		<br>
-		<span>The last update before was on 2026/1/31,</span>
-		<span>which updated theme settings.</span>
-		<span>Fixed a bug related to mob quickness.</span>
 		<br>
 		<span>The last important update before was on 2026/1/22,</span>
 		<span>which updated Floor 1.</span>
