@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Play Florroom!</title>
-	<link rel="icon" href="data:image/svg+xml,
+	<link id="cute6361omg" rel="icon" href="data:image/svg+xml,
 		<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
 			<path d='M0 0L100 0L100 100L0 100Z' style='stroke: none; fill: %23ffff7f'/>
 			<path d='M18 66A40 40 0 0 0 82 66M30 18L30 50M70 18L70 50' style='stroke: %23000000; stroke-width: 5px; fill: none'/>
@@ -355,6 +355,12 @@
 			stroke-width: 5px;
 			fill: none;
 		}
+		.in-text {
+			font-size: 2px;
+			stroke: none;
+			fill: #000000;
+			text-anchor: middle;
+		}
 		.small-svg {
 			height: 15px;
 			min-width: 15px;
@@ -633,6 +639,19 @@
 		.dblue-path {
 			stroke: #3f3fbf;
 		}
+		.dyellow {
+			color: #bfbf3f;
+		}
+		.dyellow-bg {
+			background-color: #bfbf3f;
+		}
+		.fdyellow-path {
+			stroke-width: 1px;
+			fill: #bfbf3f;
+		}
+		.dyellow-path {
+			stroke: #bfbf3f;
+		}
 		.cpurple {
 			color: #bf3fff;
 		}
@@ -910,6 +929,9 @@
 		.mwidth {
 			stroke-width: 1.5px;
 		}
+		.fwidth {
+			stroke-width: 1px;
+		}
 		.narrow {
 			stroke-width: 0.5px;
 		}
@@ -998,9 +1020,9 @@
 		Object.assign(PetalATKList,{222:"0-100",401:"0-30"})
 		const PetalDEFList=["60-80","50-70","70-90","30-30","50-70","30-40","60-90","0-0","0-0","40-80","50-60","0-0","70-80","0-0","0-0","/","30-80","60-60","0-0","100-100","30-60","40-70","20-30","50-90","50-90","50-80","60-80","50-60","60-80","50-60","30-80","0-0","60-90","50-80","30-30","30-30","/","50-60","30-80","/","0-0","0-0","40-60","/","0-0","/","60-90","0-0","0-80","40-80","50-60","50-50","10-50","0-0","60-70","60-90","20-40","0-0","/","50-70","0-30","30-60","40-80","/","/","/","/","/","0-0","60-80","30-80","50-50","90-100","30-70","0-0","/","50-80","80-100","40-70","60-80","0-0","0-30"]
 		Object.assign(PetalDEFList,{222:"0-100",401:"0-0"})
-		const PetalDescriptionList=["Nice petal, strong but can't craft.","Weaker than most petals, but recharges very quickly and has five parts.","Extremely durable, but takes a bit longer to recharge.","Its healing properties are amazing.","It really hurts, but it's very fragile.","Very poisonous, but takes a while to do its work.","Good at combat, but got nerfed in Florroom Rewritten.","You can actually shoot this one.","It goes poof with poison.","Somehow increases your maximum health.","It makes your other petals action faster.","Physics are for the another petal called magnet.","Asthmatics beware.","Its interesting properties inhibits healing effects on affected units.","Something interesting might pop out of this.","Allows you to sense incoming enemies.","This thing is so heavy that nothing gets in the way.","This mysterious thing rotates your petals in multiple ways.","It's really sticky.","It attracts mobs and let them prioritize this over flowers.","Gathers energy from the sun to heal your flower passively.","Reflects some of the damage you take back to the enemy that dealt it.","Spawns very quickly, but can't hit enemy back.","Takes a long time to spawn, but has a lot of health.","Bunch of sand particles.","Debilitates enemies temporarily, reducing their movement speed.","Heals your flower faster but has condition.","By physics laws, it attracts lightning.","Dried leaf from the Yggdrasil tree that could revive you.","Heals your flower faster but only while low health.","It can be moved even further.","Strikes all nearby enemies.","No one likes touching this.","Deals extra damage to undamaged targets.","Gives you a temporary shield.","Small amount of heal but fairly consistent.","Spreads damage taken by the flower over time.","Increases petal size.","Heals your flower based on damage dealt by it.","Improves your petal control skill.","It goes poof and hits multiple enemies.","Mysterious stick that summons the forces of the wind.","Weak petal. Perhaps it makes you lucky.","Increases movement speed and results in extra turns.","It's literally air but not nothing.","Improves healing petals.","Sweet citrus fruit.","More interesting things might pop out of this.","Makes mobs less likely to move.","Strange relic. Makes mobs become neutral.","Prevents your flower from poisoning.","Shiny lightbulb that attracts mobs.","Absorbs damage taken by the flower when suspended.","Sturdy and reliable. Can be shot and bounces between enemies.","Sturdy petal with high armor.","It's useful for defending projectiles.","Grows over time but don't let it grow too much.","Dark mark that teleports enemies to hell.","Knockbacks flower when damaged so you have more time to react.","It even hurts, but with some costs.","Decrease armor of affected unit.","Provides additional armor for flower.","Not to play PFLF but just roll it.","Pattern that allows you to evade enemy attacks.","Discharges electricity to compensate energy loss.","Converts a percentage of overheal into shields.","It guides your actions.","Reduces all phisical damage taken.","Becomes untargetable for a single turn.","Looks like basic, but gilded.","All in but there is no gamble feature.","Playing card.","This thing is so big its gravity pulls your other petals.","Deals extra poison damage.","Phases through enemies.","Corrupts your soul. Consumes your mind.","Breaks apart on impact with reduced strength.","Just a bigger honey.","Very special leaf lets your petals reload even faster.","Heals itself and petals around it.","Damage depends on the point.","The more it is, the stronger it is."]
+		const PetalDescriptionList=["Nice petal, strong but can't craft.","Weaker than most petals, but recharges very quickly and has five parts.","Extremely durable, but takes a bit longer to recharge.","Its healing properties are amazing.","It really hurts, but it's very fragile.","Very poisonous, but takes a while to do its work.","Good at combat, but got nerfed in Florroom Rewritten.","You can actually shoot this one.","It goes poof with poison.","Somehow increases your maximum health.","It makes your other petals action faster.","Physics are for the another petal called magnet.","Asthmatics beware.","Its interesting properties inhibits healing effects on affected units.","Something interesting might pop out of this.","Allows you to sense incoming enemies.","This thing is so heavy that nothing gets in the way.","This mysterious thing rotates your petals in multiple ways.","It's really sticky.","It attracts mobs and let them prioritize this over flowers.","Gathers energy from the sun to heal your flower passively.","Reflects some of the damage you take back to the enemy that dealt it.","Spawns very quickly, but can't hit enemy back.","Takes a long time to spawn, but has a lot of health.","Bunch of sand particles.","Debilitates enemies temporarily, reducing their movement speed.","Heals your flower faster but has condition.","By physics laws, it attracts lightning.","Dried leaf from the Yggdrasil tree that could revive you.","Heals your flower faster but only while low health.","It can be moved even further.","Strikes all nearby enemies.","No one likes touching this.","Deals extra damage to undamaged targets.","Gives you a temporary shield.","Small amount of heal but fairly consistent.","Spreads damage taken by the flower over time.","Expands petal size.","Heals your flower based on damage dealt by it.","Improves your petal control skill.","It goes poof and hits multiple enemies.","Mysterious stick that summons the forces of the wind.","Weak petal. Perhaps it makes you lucky.","Increases movement speed and results in extra turns.","It's literally air but not nothing.","Improves healing petals.","Sweet citrus fruit.","More interesting things might pop out of this.","Makes mobs less likely to move.","Strange relic. Makes mobs become neutral.","Prevents your flower from poisoning.","Shiny lightbulb that attracts mobs.","Absorbs damage taken by the flower when suspended.","Sturdy and reliable. Can be shot and bounces between enemies.","Sturdy petal with high armor.","It's useful for defending projectiles.","Grows over time but don't let it grow too much.","Dark mark that teleports enemies to hell.","Knockbacks flower when damaged so you have more time to react.","It even hurts, but with some costs.","Decrease armor of affected unit.","Provides additional armor for flower.","Not to play PFLF but just roll it.","Pattern that allows you to evade enemy attacks.","Discharges electricity to compensate energy loss.","Converts a percentage of overheal into shields.","It guides your actions.","Reduces all phisical damage taken.","Becomes untargetable for a single turn.","Looks like basic, but gilded.","All in but there is no gamble feature.","Playing card.","This thing is so big its gravity pulls your other petals.","Deals extra poison damage.","Phases through enemies.","Corrupts your soul. Consumes your mind.","Breaks apart on impact with reduced strength.","Just a bigger honey.","Very special leaf lets your petals reload even faster.","Heals itself and petals around it.","Damage depends on the point.","The more it is, the stronger it is."]
 		Object.assign(PetalDescriptionList,{222:"<==>, Turn 2, Score 2, Clear 0",401:"Exile mobs into the abyss... But what is the cost?"})
-		const PetalAttributeList=["ATTRIBUTE=Can't craft. Can't absorb. No attribute floating.","COUNT=5","DEFEND=Reduces action by 50 down to 0.","SKILL=Destroys. Heals flower for [200%*Health].","ATKDEF=Kills target if its remaining health (After damage dealt) is less than [Damage] when success.","DESTROY=Deals [Damage] [poison] for 10 turns.","DEFEND=Reduces action to 0.","SHOOT=10 range. 100% accuracy decline. 1 bounce. 5 bounce range. 100% bounce accuracy decline. 100% repeated hitting decline.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline. Deals [25%*Damage] [poison] for 5 turns.","EQUIP=Increases flower max health by [Health].","SKILL=Costs 200 action. Almost all petals (except faster, 1-speed petal and luck related petal) gain [45+3*Rarity] action.","SKILL=Reduces all mobs' action to [100-30*Level]. Neutral mobs turn back to passive. Applies immunity to flower for [2+Rarity] turns. Retires.","DESTROY=If there's a empty grid below and size is over 5, moves to that grid, reduces petal max health to [80%*Health] and sets health to max, reduces size by 1. Resets attribute otherwise.","SHOOT=5 range. 50% accuracy decline. 1 bounce. 3 bounce range. 50% bounce accuracy decline. 100% repeated hitting decline. Disables target's heal ability for 5 turns.","SKILL=Summons a beetle (60% atk/def, 4 action to attack or move) in grid.&DESTROY=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Anticipates [3+Level] upcoming mobs. Has [5*Rarity-10]% probability to gain a refresh chance whenever a creature spawns.","DEFEND=Has [30+5*Rarity]% probability to push the target upwards when success.","TYPE1&NAME=Yin&SKILL=Costs 150 action. You can move the column arbitrarily. Other affected petals gain [5*Rarity-10] action.&TYPE2&NAME=Yang&SKILL=Costs 150 action. You can move the row arbitrarily.","SKILL=Destroys. Restrains nearest enemy and let it gain halved action for 10 times. Effectiveness for Boss is 25%.","DEFEND=Can't defend projectiles. Defended target has [50-5*Rarity]% chance to immune honey and can't be defended by honey anymore.","ENDTURN=Heals flower for [10%*Health].","ATTRIBUTE=Doesn't stack.&EQUIP=Increases flower damage reflection by [60+10*Rarity]%.","ATTACK=Doesn't deal knockback.","DEFEND=Deals 1x extra knockback when success.","COUNT=4&DAMAGE=Reduces size by 1. Reduces atk/def by 10%.&DESTROY=Resets attribute.","DESTROY=Deals [50%*Damage] [poison] and halves target speed for 5 turns.","ENDTURN=Heals flower for [10%*Health] only if there are at least 2 nearby petals.","ATTRIBUTE=Doesn't stack.&EXIST=Absorbs lightning damage taken by flower.","ATTRIBUTE=Doesn't stack.&EXIST=If flower takes fatal damage, applies immunity to flower for 1 turn, heals flower to max and clears all negative effects, then retires.","ENDTURN=Heals flower for [10%*Health] while it is not above 50%.","ATTRIBUTE=Moving costs 50 more action. Can be moved to mob's field. Attacks target grid instead when moving to grid with a mob.","SKILL=Destroys. Deals [200%*Damage] [lightning] to mobs in column and reduces their action by [30+10*Rarity]%. Deals [Damage] [lightning] to mobs in nearby column.","ATKDEF=Deals 2x extra knockback when success.","ATTACK=Deals 5x damage and sets target's action to -50 when hits target with full health.","SKILL=Destroys. Applies [200%*Health] shield to flower.","COUNT=3&SKILL=Costs 100 action. Destroys a part. Heals flower for [150%*Health].","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Spreads non-poison damage taken over [2*Rarity+Level] turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Increases size of all petals by 2 up to 20.","ATKDEF=Heals flower for half of damage dealt.","DECORATION&ATTRIBUTE=Doesn't stack.&EQUIP=If [Rarity>=6], Has a 50% probability for each petal to gain 10% extra atk/def.&TYPE1&NAME=Concentrated Eye&EXIST=For all petals with positive atk/def, their atk1 won't be less than atk2-10%, and their def1 won't be less than def2-10%.&TYPE2&NAME=Specialized Eye&EXIST=For all petals with positive atk/def, their atk2 won't be less than atk1+30%, and their def2 won't be less than def1+30%.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","COUNT=2&SKILL=Summons a sandstorm (80% atk/def, 8 action to attack or move) in grid.&DESTROY=Resets attribute.","ATTACK=Deals halved knockback when success.&DESTROY=Has 1% probability of giving the following huge bonus: quadruples health and damage and doubles knockback (once in a fight), reloads all petals and sets their action to 250 (except 1-speed petal).","DECORATION&ENDTURN=Has [5*Rarity-5]% probability to get a bonus flower turn before next flower turn starts.","ATTACK=Tries to push the target before attack. Deals [30+10*Level]% knockback when success.","DECORATION&EXIST=Applies healing debuffs immunity to flower. Increases all healing effects by [20*Rarity+10*Level-30]%.","COUNT=3&DAMAGE=Decreases def by 20%.&DESTROY=Resets attribute.","COUNT=4&SKILL=Summons a soldier ant (60% atk/def, 5 action to attack or move) in grid.&DESTROY=Resets attribute.","DEFEND=Decreases target's action by 50 and applies tardy for [5+2*Level] turns (reduces speed exceeds 10) when success.","ATKDEF=Turns target back to passive and prevents damage when hits neutral+ mob.","EXIST=Applies [poison] immunity to flower.","DEFEND=You can choose another petal to defend if it fails.","ATTRIBUTE=Doesn't stack.&SKILL=Can't manipulate this petal anymore until destroyed. Absorbs damage dealt to flower and divides energy loss by 3.","SHOOT=5 range. 20% accuracy decline. 10 bounce. 1 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","EQUIP=Applies [20%*Health] armor to itself.","DEFEND=When target is projectile, receives no damage if the defend is successful, otherwise receives doubled damage and count the defend as successful.","EXIST=Calculates [X=total action]. Its health is at most [(130-X/20)%], damage is increased by [(X/2)%] from original value, size is increased by [X/200] from original value, atk/def is increased by [X/40]% from original value.&DESTROY=Resets attribute.","SKILL=Destroys. Marks the nearest non-boss mob, killing it after 3 turns without loot. Decreases flower health by [30-3*Rarity-Level]% flower max health.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When flower gets hit, has [20+3*Rarity+Level]% probability to apply evasion to flower for 3 turns, but also triples energy loss.","ATTACK=When hits target that is not connected, doubles resulting damage but decreases flower health by [20+5*Level]% flower max health down to 1, otherwise flower dies. (PSYONIC CONNECTION)","DESTROY=Applies [50%*Damage] armor debuff for 10 turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Applies [10%*Health] armor to flower.","SKILL=Costs 50 action. Calculates [X=Dice]. Gains 250 action for [X=1]. Makes petal damage become 2x original value for [X=2]. Gains +100% (additive) resulting damage for [X=3]. Makes atk1/def1 100% for [X=4]. Make atk2 100% for [X=5]. Makes def2 100% for [X=6].&STATURN=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&STATURN=Has [20+3*Rarity+Level]% probability to apply evasion to flower for a single turn.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Has [20+3*Rarity+Level]% probability to immune energy loss.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Converts [10*Rarity+5*Level]% flower overheal to shield.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When any petal moves in the specified direction, the restriction on that direction is removed or the required action is reduced by [10*Rarity]%.&STATURN=Randomly modify direction, or manually if [Rarity>=6]","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Decreases damage taken by flower by [20+3*Rarity+Level]%.","ATTRIBUTE=Doesn't stack.&SKILL=Costs [30-3*Rarity-Level]% flower max health flower health. Destroys. Ends turn. Skips mob turn and sets their action to 0 if they are about to action (at least 120 action).","ATTRIBUTE=Can't craft. No attribute floating.","ATKDEF=If it has damage immunity, gains 250 action when defend and attack only costs 50 action (but requirement is not changed).&SKILL=Costs 250 action. Calculates [X=Dice]. Destroys for [X=1]. Gains 250 action and damage immunity for 1 turn for [X>1].&STATURN=Resets attribute.","SKILL=Costs 50 action. Calculates [X=Dice]. Sets atk2 to 100% for [X=5]. Sets def2 to 100% for [X=6]. Sets max health to [50*X]% original value and damage to [250-50*X]% original value for [X<5].&DESTROY=Resets attribute.","ATTRIBUTE=Doesn't stack. Can't move.&EQUIP=Reloads.&EXIST=All petals cost no action when moving towards it, otherwise cost 50 extra action.&DESTROY=Kills nearest mob (50% probability to trigger on boss). Retires.","DESTROY=Settles all remaining [poison] damage to target and increases resulting damage by [10*Rarity]%.","SKILL=Costs 150 action. Deals [Damage] damage to mobs in column.","DECORATION&ATTRIBUTE=Can't absorb. Doesn't stack.&EQUIP=Decreases mind by [350-50*Rarity]. All petals get [5*Rarity*(4+Level)]% more damage.","COUNT=7&DAMAGE=If remaining count equals to 4 or 6, halves health and damage, decreases size by 2.&DESTROY=Resets attribute.","ATTRIBUTE=Can't move.&ENDTURN=Reduces def2 to health percentage (down to 40%).&DESTROY=Resets attribute but decreases def1 by 20% permanently in this fight.","EQUIP=Decreases all reload by [3*Rarity]% (additive up to 50%).","SKILL=Costs 200 action. Heals all nearby petals and itself by [50%*Health].","SKILL=Costs 50 action. Calculates [X=Dice*Dice*Dice]. Sets health to 200% original value for [X>79] (once). Damage becomes at least [X/36] original value after decreases by 5%. atk2 becomes at least [X]%.&DESTROY=Resets attribute.","EQUIP=All other triangles with same rarity increases damage by [10+2*Level]% (additive), and increases atk2 by 5%."]
+		const PetalAttributeList=["ATTRIBUTE=Can't craft. Can't absorb. No attribute floating.","COUNT=5","DEFEND=Reduces action by 50 down to 0.","SKILL=Destroys. Heals flower for [200%*Health].","ATKDEF=Kills target if its remaining health (After damage dealt) is less than [Damage] when success.","DESTROY=Deals [Damage] [poison] for 10 turns.","DEFEND=Reduces action to 0.","SHOOT=10 range. 100% accuracy decline. 1 bounce. 5 bounce range. 100% bounce accuracy decline. 100% repeated hitting decline.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline. Deals [25%*Damage] [poison] for 5 turns.","EQUIP=Increases flower max health by [Health].","SKILL=Costs 200 action. Almost all petals (except faster, 1-speed petals and luck related petals) gain [45+3*Rarity] action.","SKILL=Reduces all mobs' action to [100-30*Level]. Neutral mobs turn back to passive. Applies immunity to flower for [2+Rarity] turns. Retires.","DESTROY=If there's a empty grid below and size is over 5, moves to that grid, reduces petal max health to [80%*Health] and sets health to max, reduces size by 1. Resets attribute otherwise.","SHOOT=5 range. 50% accuracy decline. 1 bounce. 3 bounce range. 50% bounce accuracy decline. 100% repeated hitting decline. Disables target's heal ability for 5 turns.","SKILL=Summons a beetle (60% atk/def, 4 action to attack or move) in grid.&DESTROY=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Anticipates [3+Level] upcoming mobs. Has [5*Rarity-10]% probability to gain a refresh chance whenever a creature spawns.","DEFEND=Has [30+5*Rarity]% probability to push the target upwards when success.","TYPE1&NAME=Yin&SKILL=Costs 150 action. You can move the column arbitrarily. Other affected petals gain [5*Rarity-10] action.&TYPE2&NAME=Yang&SKILL=Costs 150 action. You can move the row arbitrarily.","SKILL=Destroys. Restrains nearest enemy and let it gain halved action for 10 times. Effectiveness for Boss is 25%.","DEFEND=Can't defend projectiles. Defended target has [50-5*Rarity]% chance to immune honey and can't be defended by honey anymore.","ENDTURN=Heals flower for [10%*Health].","ATTRIBUTE=Doesn't stack.&EQUIP=Increases flower damage reflection by [60+10*Rarity]%.","ATTACK=Doesn't deal knockback.","DEFEND=Deals 1x extra knockback when success.","COUNT=4&DAMAGE=Reduces size by 1. Reduces atk/def by 10%.&DESTROY=Resets attribute.","DESTROY=Deals [50%*Damage] [poison] and halves target speed for 5 turns.","ENDTURN=Heals flower for [10%*Health] only if there are at least 2 nearby petals.","ATTRIBUTE=Doesn't stack.&EXIST=Absorbs lightning damage taken by flower.","ATTRIBUTE=Doesn't stack.&EXIST=If flower takes fatal damage, applies immunity to flower for 1 turn, heals flower to max and clears all negative effects, then retires.","ENDTURN=Heals flower for [10%*Health] while it is not above 50%.","ATTRIBUTE=Moving costs 50 more action. Can be moved to mob's field. Attacks target grid instead when moving to grid with a mob.","SKILL=Destroys. Deals [200%*Damage] [lightning] to mobs in column and reduces their action by [30+10*Rarity]%. Deals [Damage] [lightning] to mobs in nearby column.","ATKDEF=Deals 2x extra knockback when success.","ATTACK=Deals 5x damage and sets target's action to -50 when hits target with full health.","SKILL=Destroys. Applies [200%*Health] shield to flower.","COUNT=3&SKILL=Costs 100 action. Destroys a part. Heals flower for [150%*Health].","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Spreads non-poison damage taken over [2*Rarity+Level] turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Expands size of all petals by 2 up to 20.","ATKDEF=Heals flower for half of damage dealt.","DECORATION&ATTRIBUTE=Doesn't stack.&EQUIP=If [Rarity>=6], Has a 50% probability for each petal to gain 10% extra atk/def.&TYPE1&NAME=Concentrated Eye&EXIST=For all petals with positive atk/def, their atk1 won't be less than atk2-10%, and their def1 won't be less than def2-10%.&TYPE2&NAME=Specialized Eye&EXIST=For all petals with positive atk/def, their atk2 won't be less than atk1+30%, and their def2 won't be less than def1+30%.","SHOOT=3 range. 10% accuracy decline. 3 bounce. 2 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","COUNT=2&SKILL=Summons a sandstorm (80% atk/def, 8 action to attack or move) in grid.&DESTROY=Resets attribute.","ATTACK=Deals halved knockback when success.&DESTROY=Has 1% probability of giving the following huge bonus: quadruples health and damage and doubles knockback (once in a fight), reloads all petals and sets their action to 250 (except 1-speed petal).","DECORATION&ATTRIBUTE=Doesn't stack.&ENDTURN=Has [5*Rarity-5]% probability to get a bonus flower turn before next flower turn starts.","ATTACK=Tries to push the target before attack. Deals [30+10*Level]% knockback when success.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Applies healing debuffs immunity to flower. Increases all healing effects by [20*Rarity+10*Level-30]%.","COUNT=3&DAMAGE=Decreases def by 20%.&DESTROY=Resets attribute.","COUNT=4&SKILL=Summons a soldier ant (60% atk/def, 5 action to attack or move) in grid.&DESTROY=Resets attribute.","DEFEND=Decreases target's action by 50 and applies tardy for [5+2*Level] turns (reduces speed exceeds 10) when success.","ATKDEF=Turns target back to passive and prevents damage when hits neutral+ mob.","EXIST=Applies [poison] immunity to flower.","DEFEND=You can choose another petal to defend if it fails.","ATTRIBUTE=Doesn't stack.&SKILL=Can't manipulate this petal anymore until destroyed. Absorbs damage dealt to flower and divides energy loss by 3.","SHOOT=5 range. 20% accuracy decline. 10 bounce. 1 bounce range. 20% bounce accuracy decline. 30% repeated hitting decline.","EQUIP=Applies [20%*Health] armor to itself.","DEFEND=When target is projectile, receives no damage if the defend is successful, otherwise receives doubled damage and count the defend as successful.","EXIST=Calculates [X=total action]. Its health is at most [(130-X/20)%], damage is increased by [(X/2)%] from original value, size is increased by [X/200] from original value, atk/def is increased by [X/40]% from original value.&DESTROY=Resets attribute.","SKILL=Destroys. Marks the nearest non-boss mob, killing it after 3 turns without loot. Decreases flower health by [30-3*Rarity-Level]% flower max health.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When flower gets hit, has [20+3*Rarity+Level]% probability to apply evasion to flower for 3 turns, but also triples energy loss.","ATTACK=When hits target that is not connected, doubles resulting damage but decreases flower health by [20+5*Level]% flower max health down to 1, otherwise flower dies. (PSYONIC CONNECTION)","DESTROY=Applies [50%*Damage] armor debuff for 10 turns.","ATTRIBUTE=Doesn't stack.&EQUIP=Applies [10%*Health] armor to flower.","SKILL=Costs 50 action. Calculates [X=Dice]. Gains 250 action for [X=1]. Makes petal damage become 2x original value for [X=2]. Gains +100% (additive) resulting damage for [X=3]. Makes atk1/def1 100% for [X=4]. Make atk2 100% for [X=5]. Makes def2 100% for [X=6].&STATURN=Resets attribute.","DECORATION&ATTRIBUTE=Doesn't stack.&STATURN=Has [20+3*Rarity+Level]% probability to apply evasion to flower for a single turn.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Has [20+3*Rarity+Level]% probability to immune energy loss.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Converts [10*Rarity+5*Level]% flower overheal to shield.","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=When any petal moves in the specified direction, the restriction on that direction is removed or the required action is reduced by [10*Rarity]%.&STATURN=Randomly modify direction, or manually if [Rarity>=6]","DECORATION&ATTRIBUTE=Doesn't stack.&EXIST=Decreases damage taken by flower by [20+3*Rarity+Level]%.","ATTRIBUTE=Doesn't stack.&SKILL=Costs [30-3*Rarity-Level]% flower max health flower health. Destroys. Ends turn. Skips mob turn and sets their action to 0 if they are about to action (at least 120 action).","ATTRIBUTE=Can't craft. No attribute floating.","ATKDEF=If it has damage immunity, gains 250 action when defend and attack only costs 50 action (but requirement is not changed).&SKILL=Costs 250 action. Calculates [X=Dice]. Destroys for [X=1]. Gains 250 action and damage immunity for 1 turn for [X>1].&STATURN=Resets attribute.","SKILL=Costs 50 action. Calculates [X=Dice]. Sets atk2 to 100% for [X=5]. Sets def2 to 100% for [X=6]. Sets max health to [50*X]% original value and damage to [250-50*X]% original value for [X<5].&DESTROY=Resets attribute.","ATTRIBUTE=Doesn't stack. Can't move.&EQUIP=Reloads.&EXIST=All petals cost no action when moving towards it, otherwise cost 50 extra action.&DESTROY=Kills nearest mob (50% probability to trigger on boss). Retires.","DESTROY=Settles all remaining [poison] damage to target and increases resulting damage by [10*Rarity]%.","SKILL=Costs 150 action. Deals [Damage] damage to mobs in column.","DECORATION&ATTRIBUTE=Can't absorb. Doesn't stack.&EQUIP=Decreases mind by [350-50*Rarity]. All petals get [5*Rarity*(4+Level)]% more damage.","COUNT=7&DAMAGE=If remaining count equals to 4 or 6, halves health and damage, decreases size by 2.&DESTROY=Resets attribute.","ATTRIBUTE=Can't move.&ENDTURN=Reduces def2 to health percentage (down to 40%).&DESTROY=Resets attribute but decreases def1 by 20% permanently in this fight.","EQUIP=Decreases all reload by [3*Rarity]% (additive up to 50%).","SKILL=Costs 200 action. Heals all nearby petals and itself by [50%*Health].","SKILL=Costs 50 action. Calculates [X=Dice*Dice*Dice]. Sets health to 200% original value for [X>79] (once). Damage becomes at least [X/36] original value after decreases by 5%. atk2 becomes at least [X]%.&DESTROY=Resets attribute.","EQUIP=All other triangles with same rarity increases damage by [10+2*Level]% (additive), and increases atk2 by 5%."]
 		Object.assign(PetalAttributeList,{222:"LOOT=Mobs killed in second turn has 7/1296 probability to drop it additionally.&ATTRIBUTE=Can't absorb.&ATTACK=Kills mob after 2 turn.",401:"ATTRIBUTE=Doesn't stack.&DESTROY=If target is mob, creates rifts near it and retires."})
 		PetalAttributeList["Yin"]="SKILL=Costs 150 action. You can move the column arbitrarily. Other affected petals gain [5*Rarity-10] action."
 		PetalAttributeList["Yang"]="SKILL=Costs 150 action. You can move the row arbitrarily."
@@ -1200,6 +1222,19 @@
 		CardSVGArray.Criticize="<svg viewBox='0 0 100 100' class='in-svg'><path class='yellow-path' d='M50 18L50 62'/><path class='fyellow-path ns' d='M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75'/></svg><span class='nd'>Criticize</span>"
 		CardSVGArray.Disregard="<svg viewBox='0 0 100 100' class='in-svg'><path class='cyan-path' d='M35 35A15 15 0 1 1 59 47A22.5 22.5 0 0 0 50 65'/><path class='fcyan-path ns' d='M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75'/></svg><span class='nd'>Disregard</span>"
 		CardSVGArray.Refresh="<svg viewBox='0 0 100 100' class='in-svg'><path class='white-path wider' d='M67 67A24 24 0 1 1 67 33M71 31L65 37L71 37Z'></path></svg><span class='nd'>Refresh</span>"
+		let TalentTreeNodeList=new Array()
+		TalentTreeNodeList[1]=[[""],["","-5 TP","THR5","THR4","THR3","TH R2","PR O2","PRO3","PR O4"],["","TR E5","TR E4","TR E3","TR E2","TH R1","PRO1","-3 TP","PRO5"],["","-5 TP","-4 TP","-3 TP","TRE1","ST A1","SE R1","-3TP","SE R5"],["","REC5","REC4","REC3","REC2","REC1","SER2","SER3","SER4"]]
+		TalentTreeNodeList[2]=[[""],["","-8 TP","SKI5","SKI4","SKI3","SK I2","LU C2","LUC3","LU C4"],["","AG I5","AG I4","AG I3","AG I2","SK I1","LUC1","-4 TP","LUC5"],["","-8 TP","-6 TP","-4 TP","AGI1","ST A2","GR O1","-4TP","GR O5"],["","FOR5","FOR4","FOR3","FOR2","FOR1","GRO2","GRO3","GRO4"]]
+		TalentTreeNodeList[3]=[[""],["","HY P3","HYP4","","EXP4","EX P3"],["","HYP2","HYP1","ST A3","EXP1","EXP2"],["","","","IM P1","",""],["","","","IM P2","",""],["","","","IM P3","",""],["","","","IMP4","",""]]
+		let TalentTreeBranchList=new Array()
+		TalentTreeBranchList[1]=[1112,1121,1213,1314,1415,1525,1617,1626,1718,1828,2122,2131,2223,2232,2324,2333,2434,2535,2635,2728,2737,3141,3242,3343,3435,3536,3545,3646,3738,3848,4142,4243,4344,4445,4647,4748]
+		TalentTreeBranchList[2]=[1112,1121,1213,1314,1415,1525,1617,1626,1718,1828,2122,2131,2223,2232,2324,2333,2434,2535,2635,2728,2737,3141,3242,3343,3435,3536,3545,3646,3738,3848,4142,4243,4344,4445,4647,4748]
+		TalentTreeBranchList[3]=[1112,1121,1415,1525,2122,2223,2324,2333,2425,3343,4353,5363]
+		const TalentIndexList=[111,112,113,114,115,116,117,118,121,122,123,124,125,126,127,128,131,132,133,134,135,136,137,138,141,142,143,144,145,146,147,148,211,212,213,214,215,216,217,218,221,222,223,224,225,226,227,228,231,232,233,234,235,236,237,238,241,242,243,244,245,246,247,248,311,312,314,315,321,322,323,324,325,333,343,353,363]
+		const TalentNameList=["","Thriving","Treatment","Recover","Protection","Serrated","Skillful","Agile","Forcedly","Luckily","Growth","Hypertoxic","Expansion","Improvement"]
+		const TalentRarityList=[0,1,1,1,1,1,3,3,3,3,3,6,6,6]
+		const TalentXList=[[],[0,10,20,30,45,60],[0,10,20,30,45,60],[0,2,4,6,9,12],[0,4,8,12,18,24],[0,3,6,10,15,21],[0,10,20,30,40,50],[100,92,85,79,74,70],[200,188,177,167,158,150],[0,1,2,3,4,5],[0,5,10,15,20,25],[0,15,30,45,60],[0,1,2,3,4],[0,1,2,3,4]]
+		const TalentDescriptionList=["","Increases maximum health by [X].","Increases healing effects by [X]%.","Heals flower for [X] at end of turn.","Reduces physical damage received by [X].","Increases flower body damage by [X*(5+Floor)] based on current Floor.","Reduces action cost of petal skill (except luck related petals) by [X]%.","Reduces base action cost of petal movement from 100 to [X].","Reduces base action cost of petal attack from 200 to [X].","Improves various luck related petals. Clover: [X/5]% lucky. Dice: [3*X]% 🎲1🎲. Chip: [10*X]% 🎲>1🎲. Card: [6*X]% 🎲5/2/6🎲. Domino: [2*X]% 🎲6🎲.","Reduces petal reload by [X]%.","Increases all [poison] dealt by [2*X]%. Reduces all [poison] received by [X]%.","Expands size of all petals by [X].","Improves petal formula with 3*Rarity+Level to [3+X/2]*Rarity+[1+X/4]*Level."]
 		function LevelExp(level) {
 			if(level===0) return 1
 			let answer=1.06361**level-1
@@ -1211,6 +1246,7 @@
 		}
 		function FlowerMaxHealth() {
 			let answer=FlowerMaxHealthBase(player.level)
+			if(getTalentLevel(1)>0) answer+=TalentXList[1][getTalentLevel(1)]
 			if(fight.flower.effect.hasOwnProperty("bloom")) answer+=fight.flower.effect.bloom.buff
 			if(fight.flower.effect.hasOwnProperty("wither")) answer-=fight.flower.effect.wither.debuff
 			if(answer<1) return 1
@@ -1218,6 +1254,15 @@
 		}
 		function FlowerSlot() {
 			let answer=6+betterFloor(player.level/10)
+			return answer
+		}
+		function TotalTalentPoint() {
+			let answer=6+player.level*3
+			return answer
+		}
+		function RemainingTalentPoint() {
+			let answer=TotalTalentPoint()
+			for(let i of player.talent) answer-=talentCost(i)
 			return answer
 		}
 		function PetalAbsorbExp(rarity,level) {
@@ -1878,7 +1923,7 @@
 			if(this.effect.hasOwnProperty("restraint")) delete this.effect.restraint
 			this.print()
 			if(this.actionbar>=this.reload) this.load()
-			if(this.name==="Clover" && determine(1,true," for lucky")) {
+			if(this.name==="Clover" && determine(1+TalentXList[9][getTalentLevel(9)]/5,true," for lucky")) {
 				player.clover=true
 				for(let i=0;i<fight.petal.length;i++) {
 					if(fight.petal[i].speed===1 && fight.petal[i].state==="Reloading") {
@@ -2151,7 +2196,7 @@
 				closeGridInfo()
 				addLog("[Petal] Your petals are accelerated.","#9f9fdf")
 				this.actionbar-=skillRequirement(this)
-				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].y>0 && fight.petal[i].speed>1 && fight.petal[i].name!=="Faster" && fight.petal[i].name!=="Clover" && fight.petal[i].name!=="Dice" && fight.petal[i].name!=="Chip" && fight.petal[i].name!=="Card" && fight.petal[i].name!=="Domino") {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].state!=="Suspended" && fight.petal[i].y>0 && fight.petal[i].speed>1 && fight.petal[i].name!=="Faster" && fight.petal[i].name!=="Clover" && fight.petal[i].name!=="Dice" && fight.petal[i].name!=="Chip" && fight.petal[i].name!=="Card" && fight.petal[i].name!=="Domino") {
 					let pendingProgress=45+3*this.rarity
 					fight.petal[i].progress(pendingProgress)
 				}
@@ -2312,7 +2357,8 @@
 						closestMob.injure({effectturn:3},"Doom")
 					}
 				}
-				flowerInjure(approx(fight.flower.health*(0.3-0.03*this.rarity-0.01*this.level)),"Mark")
+				let selfDamage=approx(fight.flower.health*(30-(3+TalentXList[13][getTalentLevel(13)]/2)*this.rarity-(1+TalentXList[13][getTalentLevel(13)]/4)*this.level)/100)
+				if(selfDamage>0) flowerInjure(selfDamage,"Mark")
 				return
 			}
 			if(this.name==="Dice") {
@@ -2320,6 +2366,7 @@
 				closeGridInfo()
 				this.actionbar-=skillRequirement(this)
 				this.calculate=dice()
+				if(determine(3*TalentXList[9][getTalentLevel(9)])) this.calculate=1
 				if(this.calculate===1) this.progress(250)
 				if(this.calculate===2) this.damage=2*this.origin.damage
 				if(this.calculate===3) {
@@ -2350,7 +2397,8 @@
 					fight.mob[i].print()
 				}
 				fight.turn="Mob"
-				flowerInjure(approx(fight.flower.health*(0.3-0.03*this.rarity-0.01*this.level)),"Shovel")
+				let selfDamage=approx(fight.flower.health*(30-(3+TalentXList[13][getTalentLevel(13)]/2)*this.rarity-(1+TalentXList[13][getTalentLevel(13)]/4)*this.level)/100)
+				if(selfDamage>0) flowerInjure(selfDamage,"Shovel")
 				endTurn()
 				return
 			}
@@ -2359,6 +2407,7 @@
 				closeGridInfo()
 				this.actionbar-=skillRequirement(this)
 				this.calculate=dice()
+				if(determine(10*TalentXList[9][getTalentLevel(9)])) this.calculate=roll(2,6)
 				if(this.calculate===1) this.destroy("Skill")
 				if(this.calculate>1) {
 					this.progress(250)
@@ -2373,6 +2422,11 @@
 				closeGridInfo()
 				this.actionbar-=skillRequirement(this)
 				this.calculate=dice()
+				if(determine(6*TalentXList[9][getTalentLevel(9)])) {
+					if(this.y===4) this.calculate=5
+					if(this.y===5) this.calculate=2
+					if(this.y===6) this.calculate=6
+				}
 				if(this.calculate>=1 && this.calculate<=4) {
 					this.health=approx(this.origin.health*0.5*this.calculate)
 					if(this.currenthealth>this.health) this.currenthealth=this.health
@@ -2410,7 +2464,13 @@
 				selectedGrid.select=false
 				closeGridInfo()
 				this.actionbar-=skillRequirement(this)
-				this.calculate=dice()*dice()*dice()
+				let dice1=dice()
+				if(determine(2*TalentXList[9][getTalentLevel(9)])) dice1=6
+				let dice2=dice()
+				if(determine(2*TalentXList[9][getTalentLevel(9)])) dice2=6
+				let dice3=dice()
+				if(determine(2*TalentXList[9][getTalentLevel(9)])) dice3=6
+				this.calculate=dice1*dice2*dice3
 				if(this.calculate>79 && this.health===this.origin.health) {
 					this.health=2*this.origin.health
 					this.currenthealth=this.health
@@ -2627,8 +2687,8 @@
 			if(!this.effect.noloot) this.loot()
 			for(let i=0;i<fight.mob.length;i++) if(fight.mob[i]===this) fight.mob.splice(i,1)
 			await collapseGrid(getGrid(0,this.x,this.y))
-			if(this.name==="Beetle" && fight.mob.length>0 && fight.mob[0].name==="!Summoner!") {
-				for(let i=1;i<fight.mob.length;i++) {
+			if(this.name==="Beetle" && checkBossAlive("Summoner")) {
+				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].name==="Beetle") {
 					addLog("[Mob] Beetle gets 1 rarity up.","#bfbf00")
 					fight.mob[i].rarity++
 					let newBeetle=new Mob("Beetle",fight.mob[i].rarity,0)
@@ -2707,6 +2767,9 @@
 			if(petalName==="Poison") {
 				addLog("[Mob] "+this.name+" is poisoned.","#bfbf00")
 				let resultingPoison=damage.effectdamage,resultingTurn=damage.effectturn
+				if(getTalentLevel(11)>0) {
+					resultingPoison+=approx(resultingPoison*2*TalentXList[11][getTalentLevel(11)]/100)
+				}
 				if(!this.effect.hasOwnProperty("poison")) this.effect.poison=new Array()
 				for(let i=0;i<resultingTurn;i++) {
 					if(!this.effect.poison.hasOwnProperty(i)) this.effect.poison[i]=0
@@ -3168,8 +3231,8 @@
 				addLog("[Mob] "+this.origin.name+" shoots a missile.","#bfbf00")
 			}
 			let attackFlag=true
-			if(this.name==="Beetle" && fight.mob.length>0 && fight.mob[0].name==="!Summoner!") {
-				for(let i=1;i<fight.mob.length;i++) if(determine(20,true," for level up")) {
+			if(this.name==="Beetle" && checkBossAlive("Summoner")) {
+				for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].name==="Beetle" && determine(20,true," for level up")) {
 					addLog("[Mob] Beetle gets 1 level up.","#bfbf00")
 					if(!fight.mob[i].effect.hasOwnProperty("levelup")) fight.mob[i].effect.levelup=0
 					fight.mob[i].effect.levelup++
@@ -3320,11 +3383,12 @@
 		bookHTML["Flower Artisan Guide"]="<h2>Flower Artisan Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Combine or refine common petals into powerful new forms. By combining different petals with similar characteristics, you gain stronger one improved in level, giving stronger damaging attributes. By refining petal with high level, you gain stronger one improved in rarity, guaranting better durability and wear resistance. Be proficient in the two production methods, and you can easily overwhelm your opponents during battles. This book is your guide to mastering the art of petal craft.</span><br><span>For Rarity Up, you only need to select 1 petal with positive Level (and Rarity should not be Mythic). Higher Level increases the success chance and higher Rarity decreases the chance. The chance is always 100% for petal with at least 3 Level. However, you may find it not worth in some cases. Higher rarity grants your petal higher Health but Damage might be significant decreased since <span class='bold'>Rarity Up resets Level</span>.</span><br><span>For Level Up, you need to select at least 2 petals of the same type with identical Rarity and Level. The success chance decreases as Rarity and Level increases, and the decay stops after 3 Level. To increase the success chance, you need to put more petals at once. (X+1) petals grants you X times success chance. However, success chance exceeds 100% does nothing, and you lost all petals when success or lost [1,X] petals when fail, so putting all petals together is not a wise decision.</span><br><span>Before you begin, there's one more thing to remind you: The Base Four Influencing Fators (Speed, Reload, ATKBuff, DEFBuff) is <span class='bold'>kept</span> on Rarity Up. On Level Up, they <span class='bold'>independently inherit</span> from one material. Choose your materials wisely! Here is another multifunctional calculator which is quite convenient to use by simply inputting Rarity and Level. 3 0 or 4 2 for example.</span><input type='text' tabindex='-1' id='craft-detail' onkeydown='craftdetail(event.key)' class='inner-input' list='craftdetaillist' autocomplete='off' title='Craft Detail'><datalist id='craftdetaillist'><option value='3 0'><option value='4 2'></datalist>"
 		bookHTML["Flower Combat Guide"]="<h2>Flower Combat Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>When you enter a map for the first time, mobs will be spawned and fight against you. There is a threshold depends on Floor that prevents too many mobs existing at the same time. Therefore, when you defeat a mob, a new mob may spawn.</span><br><span>The process of a round in battle is divided into the following parts: At the beginning, your petals gain action based on speed. You can move petals, use them for attack or perform special skills. Then mobs gain action. Mob with action exceeding the threshold will attack and you use petal to defend. If you skip defend or the defend fails, you take the damage. By default value, moving a petal costs 100 action, while using a petal to attack costs 200 action. The threshold for mob is 200 action.</span><br><span>Your petals can attack or defend mobs from <span class='bold'>the front or the side column</span>. The success rate of attack is based on petal ATK (atk2 for front row and atk1 for middle row) and mob Dodge. The success rate of defend is based on petal DEF (def2 for back row and def1 for middle row) and mob Dodge. These two formula have significant difference. When the mob is from side column, the formula also uses petal Size. Petal Size is capped at 20, but the best value for side-defending is <span class='bold'>17 to 18 Size</span>.</span><br><span>For shootable petal, before any bounces, the Accuracy (the petal ATK in success rate formula for shootable petals) is always 100% inside range. For each distance exceeds range, the Accuracy is decreased by Accuracy Decline. If it hits the target, it can bounce between enemies. The Accuracy is decreased by Repeated Accuracy Decline each time it hits a enemy that already hit. The Accuracy is decreased by Bounce Accuracy Decline each bounce exceeds Bounce. Any bounce hits can only hit enemy within Bounce Range.</span><br><span>Since you are facing mobs from all directions and not only from the front, <span class='bold'>the first and last columns are connected</span>, which means that both your petals and mobs can move from the first column to the last column or inverted, and the first and last columns are side columns to each other. The distance between two grids is calculated by horizontal distance plus vertical distance <span class='bold'>without using the Pythagorean theorem</span>. The word 'Retire' means a petal disappears and can't be used again in the same fight. If you are defeated, you only have 30% probability to temporary keep loot and they could be lost if you are defeated again in the same map.</span><br><span>You can calculate chance in the following box. For example, Aa-48S12 calculates the success rate of attacking 80% Dodge mob in side column with 12 Size, 100% ATK and -4 ATKbuff petal, A4+a6F calculates the success rate of attacking 60% Dodge mob in the front column with 40% ATK and +10 ATKbuff petal, D3+05F calculates the success rate of defending 50% Dodge mob in the front column with 30% DEF and +0 DEFbuff petal.</span><input type='text' tabindex='-1' id='combat-calc' onkeydown='combatcalc(event.key)' class='inner-input' list='calclist' autocomplete='off' title='Calculator'><datalist id='calclist'><option value='Aa-48S12'><option value='A4+a6F'><option value='D3+05F'></datalist>"
 		bookHTML["Flower Control Guide"]="<h2>Flower Control Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><h3>Hot Keys</h3><div class='green-bg inner-box'><span style='color: #7f7f7f'>S: Open/Close settings</span><span style='color: #7f7f7f'>H: Open/Close help</span><span style='color: #7f7f7f'>Z: Open/Close inventory</span><span style='color: #7f7f7f'>V: Open/Close gallery</span><br><span style='color: #9f9f00'>W=↑: Move up</span><span style='color: #9f9f00'>D=→: Move right</span><span style='color: #9f9f00'>S=↓: Move down</span><span style='color: #9f9f00'>A=←: Move left</span><br><span style='color: #009f9f'>T: End turn (mostly)</span><span style='color: #009f9f'>M: Move</span><span style='color: #009f9f'>R: Attack</span><span style='color: #009f9f'>X: Special actions</span><br><span style='color: #ffffff'>Enter: Confirm</span><span style='color: #ffffff'>Backspace: Cancel</span></div>"
-		bookHTML["Flower Debate Guide"]="<h2 style='color: #7eef6d'>Flower Debate Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Floor 1 Game: Debate Strategy. Reward: Some good things, including talent system.</span><br><br><span>At the beginning, you and your opponent have the same Momentum. When one's Momentum drops to zero, the opponent win. You will receive rewards only when winning for the first time. There are no punishment after failure, and attempts is not limited.</span><br><span>There are 4 types of basic cards: Rock(25%), Blood Stinger(25%), Dice(25%), Air(10%). Basic cards have random rarities from Common to Epic, and levels from 0 to 3. They are petals without attribute floating. If you get a high quality card and don't have any petals of that quality, the level will be reduced until you have a petal at same quality. If there is still no same quality petal after level reduced to 0, rarity will also be reduced.</span><br><span>There are 4 types of advanced cards: Yggdrasil(2%), Criticize(6%), Disregard(6%), Refresh(1%). The rarities of high quality cards are fixed at Legendary, and levels are fixed at 0. Each player has 6 cards.</span><br><span>There are 5 topics: Health(25%), Damage(25%), DPT(25%), Special(20%), Scarce(5%). For each topic, both players choose a card and compare. The loser will get Momentum reduced by 1. Then, both players draw a new card and start a new topic. Each topic has different judgments:</span><span>1. Health Petals: If both player use basic cards, the one with higher health wins.</span><span>2. Damage Petals: If both player use basic cards, the one with higher damage wins. Blood stinger's damage is considered twice as much.</span><span>3. DPT Petals: If both player use basic cards, the one with higher DPT wins. Dice's DPT is considered 6 times as much. Rock is considered as it can hit twice.</span><span>4. Special Petals: If both player use basic cards, the one uses Air wins.</span><span>5. Scarce Petals: If both player use basic cards, no one wins.</span><br><span>Yggdrasil: It is considered as basic cards in topic 1~3. In topic 4~5 it wins all previous cards. In topic 5, it will also cause the opponent to lose an additional 2 Momentum when win.</span><span>Criticize: It wins all previous cards in all topics.</span><span>Disregard: It wins all previous cards in all topics. However, the loser will keep the Momentum.</span><span>Refresh: It wins all previous cards in all topics. However, the loser will keep the Momentum. Instead, the winner discards all cards and draws new cards.</span><br><span>You can see the rarity of your opponent's card. And your attention is amazing, with a 20% chance of recognize when your opponent gains or moves Air.</span>"
+		bookHTML["Flower Debate Guide"]="<h2 style='color: #7eef6d'>Flower Debate Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Floor 1 Game: Debate Strategy.</span><span>Reward: Various good things, including talent system.</span><br><br><span>At the beginning, you and your opponent have the same Momentum. When one's Momentum drops to zero, the opponent win. You will receive rewards only when winning for the first time. There are <span class='bold'>no punishment</span> after failure, and attempts is not limited.</span><br><span>There are 4 types of basic cards: Rock(25%), Blood Stinger(25%), Dice(25%), Air(10%). Basic cards have random rarities from Common to Epic, and levels from 0 to 3. They are petals without attribute floating. If you get a high quality card and don't have any petals of that quality, the level will be reduced until you have a petal at same quality. If there is still no same quality petal after level reduced to 0, rarity will also be reduced.</span><br><span>There are 4 types of advanced cards: Yggdrasil(2%), Criticize(6%), Disregard(6%), Refresh(1%). The rarities of high quality cards are fixed at Legendary, and levels are fixed at 0. Each player has 6 cards.</span><br><span>There are 5 topics: Health(25%), Damage(25%), DPT(25%), Special(20%), Scarce(5%). For each topic, both players choose a card and compare. The loser will get Momentum reduced by 1. Then, both players draw a new card and start a new topic. Each topic has <span class='bold'>different judgments</span>:</span><span>1. Health Petals: If both player use basic cards, the one with higher health wins.</span><span>2. Damage Petals: If both player use basic cards, the one with higher damage wins. Blood stinger's damage is considered twice as much.</span><span>3. DPT Petals: If both player use basic cards, the one with higher DPT wins. Dice's DPT is considered 6 times as much. Rock is considered as it can hit twice.</span><span>4. Special Petals: If both player use basic cards, the one uses Air wins.</span><span>5. Scarce Petals: If both player use basic cards, no one wins.</span><br><span>Yggdrasil: It is considered as basic cards in topic 1~3. In topic 4~5 it wins all previous cards. In topic 5, it will also cause the opponent to lose an <span class='bold'>additional 2 Momentum</span> when win.</span><span>Criticize: It wins all previous cards in all topics.</span><span>Disregard: It wins all previous cards in all topics. However, the loser will keep the Momentum.</span><span>Refresh: It wins all previous cards in all topics. However, the loser will keep the Momentum. Instead, the winner discards all cards and draws new cards.</span><br><span>You can see the rarity of your opponent's card. And your attention is amazing, with a 20% chance of recognize when your opponent gains or moves Air.</span>"
 		bookHTML["Flower Evolutionary Guide"]="<h2>Flower Evolutionary Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Consume the petals to absorb their vital essence. This raw energy fuels your growth, allowing you to level up and evolve. With each infusion of experience, you grow stronger, gain access to higher tier abilities, naturally ascending to greater heights. This ancient cycle of growth is detailed within these pages.</span><br><span>You gain petals from defeated mobs, higher rarity mobs have better droprate. You can see the detail in gallery. The base Experience for a petal is <span class='bold'>(RarityFactor)*(Level+1)</span>. For Common, Unusual, Rare, Epic, Legendary, Mythic Petals, the Factors are 8, 12, 20, 40, 100, 300 respectively. Then, the Experience is multiplied by a random value from 0.8 to 1.2, and rounded to nearest integer, so the expected Experience is equivalent to base Experience.</span><br><span>Since this mechanic is not difficult to understand, you need no calculator for this. I provided another calculator here which helps you get the basic stat of petals. Your gained petals have 20% basic stat attribute floating <span class='bold'>except some special kinds</span>. To use this box, you just need to simply input Name, Rarity, Level. For example, Corn 3 0 calculates the stat of Rare Corn, Plank 4 2 calculates the stat of Epic Plank++.</span><input type='text' tabindex='-1' id='petal-stat' onkeydown='petalstat(event.key)' class='inner-input' list='petalstatlist' autocomplete='off' title='Petal Stat'><datalist id='petalstatlist'><option value='Corn 3 0'><option value='Plank 4 2'></datalist>"
 		bookHTML["Flower Game Guide"]="<h2>Flower Game Guide <span style='color: #0078d7; font-style: italic; font-size: 12px; font-weight: noremal'>//TODO</span></h2><div class='white-bg inner-box'><span style='color: #008000'>#include&lt;PFLFtools.h&gt; <span style='color: #0078d7; font-style: italic;'>//should be replaced</span></span><span style='color: #008000'>#include&lt;iostream&gt;</span><span style='color: #008000'>#include&lt;time.h&gt;</span><span style='color: #008000'>#include&lt;math.h&gt;</span><span style='color: #008000'>#include&lt;string.h&gt;</span><span style='color: #008000'>#include&lt;fstream.h&gt;</span><span><span style='font-weight: bold'>using namespace</span> std<span style='color: #ff0000; font-weight: bold'>;</span></span><span><span style='font-weight: bold'>void</span> menu<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"↓MORE GAME (CLICK!)↓\"</span><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/PFLF' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"PFLF\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>slowprint<span style='color: #ff0000; font-weight: bold'>(</span><a href='https://6triple6single.github.io/Virus1' target='_blank' style='color: #0000ff; font-weight: bold; text-decoration: none'>\"VIRUS 1\"</a><span style='color: #ff0000; font-weight: bold'>,</span><span style='color: #800080'>50</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span><span><span style='font-weight: bold'>int</span> main<span style='color: #ff0000; font-weight: bold'>()</span></span><span style='color: #ff0000; font-weight: bold'>{</span><span style='margin-left: 2em'>system<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #0000ff; font-weight: bold'>\"cls\"</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='margin-left: 2em'>Sleep<span style='color: #ff0000; font-weight: bold'>(</span><span style='color: #800080'>2000</span><span style='color: #ff0000; font-weight: bold'>);</span></span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadtext();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadgallery();</span><span style='color: #0078d7; font-style: italic; margin-left: 2em'>// loadmarvel();</span><span style='margin-left: 2em'>menu<span style='color: #ff0000; font-weight: bold'>();</span></span><span style='margin-left: 2em'><span style='font-weight: bold'>return</span> <span style='color: #800080'>0</span><span style='color: #ff0000; font-weight: bold'>;</span></span><span style='color: #ff0000; font-weight: bold'>}</span></div>"
-		bookHTML["Flower Subsist Guide"]="<h2 style='color: #7eef6d'>Flower Subsist Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>In this long journey, it is inevitable to feel bored and tired, Traveler. You need enough time to strengthen yourself and travel towards higher places. But time won't wait for you. If you don't speed up, you will be greeted by the collapse of Florroom.</span><br><span>And you have realized that things are far more than that, your energy has started to drain slowly but steadily. The cyan vertical bar on the left represents your energy, the lower the energy, the weaker you will be. The upper limit of energy is 100%, and the lower limit is 36%. Never try to cross the 64% safe line, it will only accelerate your death.</span><br><span>Let's be more specific about the effects of energy on combat. As energy is lost, your petals lose more Health when hit, increased to 1/Energy of the original value. Your petals cause lower damage to mobs, which is multiplied by Energy. After crossing the safety line, the flower will receive higher damage, multiplied by 0.3/(Energy-35%). Petals also receive fewer action bars, which is (Energy-35%)/0.3 times the speed.</span><br><span>You should strive to maintain sufficient energy to enter the next floor, where you will receive a 6% energy recovery. Do not waste any items that provide energy recovery, as these tools are extremely scarce and crucial for your survival. To avoid losing too much energy, you need to always remember the following two things:</span><span>1. Don't spend too much turns in battle, as each turn will cause you to lose 0.01% Energy.</span><span>2. Defend mob attacks as much as possible, as each injury will cause you to lose 0.03% Energy.</span><br><span>That's all. Good luck.</span>"
+		bookHTML["Flower Subsist Guide"]="<h2 style='color: #7eef6d'>Flower Subsist Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>In this long journey, it is inevitable to feel bored and tired, Traveler. You need enough time to strengthen yourself and travel towards higher places. But time won't wait for you. If you don't speed up, you will be greeted by the collapse of Florroom.</span><br><span>And you have realized that things are far more than that, your energy has started to drain slowly but steadily. The cyan vertical bar on the left represents your energy, the lower the energy, the weaker you will be. The upper limit of energy is 100%, and the lower limit is 36%. Never try to cross the <span class='bold'>64%</span> safe line, it will only accelerate your death.</span><br><span>Let's be more specific about the effects of energy on combat. As energy is lost, your petals lose more Health when hit, increased to 1/Energy of the original value. Your petals cause lower damage to mobs, which is multiplied by Energy. After crossing the safety line, the flower will receive higher damage, multiplied by 0.3/(Energy-35%). Petals also receive fewer action bars, which is (Energy-35%)/0.3 times the speed.</span><br><span>You should strive to maintain sufficient energy to enter the next floor, where you will receive a 6% energy recovery. Do not waste any items that provide energy recovery, as these tools are extremely scarce and crucial for your survival. To avoid losing too much energy, you need to always remember the following two things:</span><span>1. Don't spend too much turns in battle, as each turn will cause you to lose 0.01% Energy.</span><span>2. Defend mob attacks as much as possible, as each injury will cause you to lose 0.03% Energy.</span><br><span>That's all. Good luck.</span>"
 		bookHTML["Flower Survival Guide"]="<h2>Flower Survival Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Welcome to the Florroom! This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7. Here, you make powerful petals, travel between different regions and maps, defeat various mobs and continuously upgrade to gain stronger power!</span><br><span>This is your first book. As the story continues, you will learn more knowledge, which appears in the form of books in this section. If you don't have experience fighting in Florroom, it doesn't matter. You will receive the unique <span class='bold'>Flower Combat Guide</span> I wrote. Enter the name of this book below to get it!</span><br><span>If you remembered something, try writing in the following box to retrieve the corresponding item:</span><input type='text' tabindex='-1' id='item-code' onkeydown='itemcode(event.key)' class='inner-input' autocomplete='off' title='Code'><span>(NOt CASe SenSItiVE &amp; ign o r i ngspace s)</span>"
+		bookHTML["Flower Talent Guide"]="<h2 style='color: #7eef6d'>Flower Talent Guide</h2><span class='nowrap'>🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span><br><span>Reawaken the potential power you lost. As you have reactivated your talent, you can enhance your various innate abilities by investing in talent points obtained through leveling up. Beware, the path is not fixed. You may respec your choices and retrieve your talent points, but with each reshaping there will be <span class='bold'>a growing cost</span>. Please think twice before starting.</span><br><span>Common talents unlock at level 5, each costing 2TP. Rare talents unlock at level 10, each costing 3TP. Mythic talents unlock at level 15, each costing 5TP. Purchase STA1~3 to start. You can purchase nodes connected with branches, which are colored yellow. There are \"-XTP\" nodes that connect similar talents, allowing you to spend less TP when studying both together. For example, purchasing TRE1~5 with THR1~5 requires 20TP, while purchasing TRE1~5, -5TP and THR5 only requires 17TP. Note that <span class='bold'>only highest level</span> of a specified talent is effective.</span>"
 		let somerandomlimit1=1,somerandomlimit3=1,somerandomlimit4=1
 		function book(modify) {
 			if(modify===-1 && player.bookreading>0) player.bookreading--
@@ -3339,7 +3403,7 @@
 					} else {
 						editingStatHTML+="+"
 					}
-					editingStatHTML+="<span style='color: "+rarityColor[i].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+player.bookstat.artisan.totalraritylevelup[i]+"</span>"
+					editingStatHTML+="<span style='color: "+rarityColorEP[i]+"'>"+player.bookstat.artisan.totalraritylevelup[i]+"</span>"
 				}
 				editingStatHTML+="</span><span style='color: #7f5f9f'>Total Petal Used: "+player.bookstat.artisan.totalleveluppetalused+"</span>"
 				editingStatHTML+="<span style='color: #5f9f5f'>Total Success: "+player.bookstat.artisan.totallevelupsuccess+"</span>"
@@ -3356,7 +3420,7 @@
 					} else {
 						editingStatHTML+="+"
 					}
-					editingStatHTML+="<span style='color: "+rarityColor[i].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+player.bookstat.artisan.totalrarityrarityup[i]+"</span>"
+					editingStatHTML+="<span style='color: "+rarityColorEP[i]+"'>"+player.bookstat.artisan.totalrarityrarityup[i]+"</span>"
 				}
 				editingStatHTML+="</span><span style='color: #5f9f5f'>Total Success: "+player.bookstat.artisan.totalrarityupsuccess+"</span>"
 				editingStatHTML+="<span style='color: #9f5f5f'>Total Fail: "+player.bookstat.artisan.totalrarityupfail+"</span>"
@@ -3382,26 +3446,23 @@
 						editingStatHTML+="<button onclick='startFight("+(100+i)+")' class='lblue-bg srecbtn pointer'>Start!</button>"
 					}
 					let reward=["","2*Time Shard","3*Time Shard","Talent Activation","Nothing(WIP)","Nothing(WIP)","Nothing(WIP)","Nothing(WIP)","Nothing(WIP)","Nothing(WIP)"]
-					editingStatHTML+="<span class='llmargin' style='color: "+rarityColor[i].replace("#ffe65d","#ffe65d; filter: brightness(90%)").replace("#2bffa3","#2bffa3; filter: brightness(90%)")+"'>"+rarityName[i].slice(0,4)+".</span>"+"Flower, Reward: "+reward[i]
+					editingStatHTML+="<span class='llmargin' style='color: "+rarityColorEP[i]+"'>"+rarityName[i].slice(0,4)+".</span>"+"Flower, Reward: "+reward[i]
 					editingStatHTML+="</span>"
 				}
 				editingStatHTML+="</div>"
 				if(player.floor1gamestat[2]!=="Locked")
-				editingStatHTML+="<br><span>Opponents after <span style='color: "+rarityColor[2].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+rarityName[2]+"</span> have higher momentum.</span>"
+				editingStatHTML+="<br><span>Opponents after <span style='color: "+rarityColorEP[2]+"'>"+rarityName[2]+"</span> have higher momentum.</span>"
 				if(player.floor1gamestat[4]!=="Locked")
-				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColor[4]+"'>"+rarityName[4]+"</span> have higher DPT.</span>"
+				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColorEP[4]+"'>"+rarityName[4]+"</span> have higher DPT.</span>"
 				if(player.floor1gamestat[5]!=="Locked")
-				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColor[5]+"'>"+rarityName[5]+"</span> have higher momentum again.</span>"
+				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColorEP[5]+"'>"+rarityName[5]+"</span> have higher momentum again.</span>"
 				if(player.floor1gamestat[7]!=="Locked")
-				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColor[7].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+rarityName[7]+"</span> have higher DPT again.</span>"
+				editingStatHTML+="<span>Opponents after <span style='color: "+rarityColorEP[7]+"'>"+rarityName[7]+"</span> have higher DPT again.</span>"
 				if(player.floor1gamestat[9]!=="Locked")
 				editingStatHTML+="<span><span style='color: "+rarityColor[9]+"'>"+rarityName[9]+"</span> opponent has higher damage.</span>"
 				document.getElementById("book-content").innerHTML+=editingStatHTML
 			}
 			if(player.book[player.bookreading]==="Flower Evolutionary Guide") {
-				if(explore.floor===1) {
-					document.getElementById("book-content").innerHTML=document.getElementById("book-content").innerHTML.replace(" This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7."," This is a tower with 7 floors. As something you should have known, the goal of the game is to climb from Floor 1 to Floor 7.")
-				}
 				let editingStatHTML="<h3>Absorb Statistics</h3>"
 				editingStatHTML+="<span style='color: #9f7f5f'>Total Petal Absorbed: "+player.bookstat.evolutionary.totalabsorb
 				for(let i=1;i<=6;i++) {
@@ -3410,7 +3471,7 @@
 					} else {
 						editingStatHTML+="+"
 					}
-					editingStatHTML+="<span style='color: "+rarityColor[i].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+player.bookstat.evolutionary.totalrarityabsorb[i]+"</span>"
+					editingStatHTML+="<span style='color: "+rarityColorEP[i]+"'>"+player.bookstat.evolutionary.totalrarityabsorb[i]+"</span>"
 				}
 				editingStatHTML+="</span><span style='color: #5f9f5f'>Total Exp Gained: "+player.bookstat.evolutionary.totalgainedexp+"</span>"
 				editingStatHTML+="<span style='color: #5f9f5f'>Expected Exp: "+player.bookstat.evolutionary.totalexpectedexp+"</span>"
@@ -3434,6 +3495,51 @@
 				}
 				if(explore.floor<somerandomlimit1) editingStatHTML=editingStatHTML.replaceAll("3 Talent Point","???")
 				document.getElementById("book-content").innerHTML+=editingStatHTML
+			}
+			if(player.book[player.bookreading]==="Flower Survival Guide") {
+				if(explore.floor===1) {
+					document.getElementById("book-content").innerHTML=document.getElementById("book-content").innerHTML.replace(" This is a tower with 8 floors. As something you may not be familiar with, the goal of the game is to climb from Floor 0 (the bottom) to Floor 7."," This is a tower with 7 floors. As something you should have known, the goal of the game is to climb from Floor 1 to Floor 7.")
+				}
+			}
+			if(player.book[player.bookreading]==="Flower Talent Guide") {
+				let editingTalentHTML="<br><span id='totaltp' style='color: #5f9f5f'>Total Talent Point: "+TotalTalentPoint()+"</span>"
+				editingTalentHTML+="<span id='remaintp' style='color: #5f9f5f'>Remaining Talent Point: "+RemainingTalentPoint()+"</span>"
+				editingTalentHTML+="<h3>"+rarityName[1]+" Talent</h3>"
+				editingTalentHTML+="<div class='green-bg inner-box' style='width: 80%'><svg id='talenttree1' viewBox='0 0 90 50' class='in-svg'>"
+				for(let i of TalentTreeBranchList[1]) {
+					editingTalentHTML+="<path value='"+(10000+i)+"' class='"+talentColor(10000+i)+"-path fwidth rcap' d='M"+(betterFloor(i/100)%10*10)+" "+(betterFloor(i/1000)*10-1)+"L"+(i%10*10)+" "+(betterFloor(i/10)%10*10-1)+"'/>"
+				}
+				for(let i=1;i<=8;i++) for(let j=1;j<=4;j++) {
+					editingTalentHTML+="<path onclick='studyTalent(this)' value='"+(100+10*j+i)+"' class='f"+talentColor(100+10*j+i)+"-path pointer ns' d='M"+(10*i)+" "+(10*j-3)+"A2 2 0 0 0 "+(10*i)+" "+(10*j+1)+"A2 2 0 0 0 "+(10*i)+" "+(10*j-3)+"'/>"
+					editingTalentHTML+="<text class='in-text' x='"+(10*i)+"' y='"+(10*j+3)+"'>"+TalentTreeNodeList[1][j][i]+"</text>"
+				}
+				editingTalentHTML+="</svg></div>"
+				editingTalentHTML+="<h3>"+rarityName[3]+" Talent</h3>"
+				editingTalentHTML+="<div class='green-bg inner-box' style='width: 80%'><svg id='talenttree2' viewBox='0 0 90 50' class='in-svg'>"
+				for(let i of TalentTreeBranchList[2]) {
+					editingTalentHTML+="<path value='"+(20000+i)+"' class='"+talentColor(20000+i)+"-path fwidth rcap' d='M"+(betterFloor(i/100)%10*10)+" "+(betterFloor(i/1000)*10-1)+"L"+(i%10*10)+" "+(betterFloor(i/10)%10*10-1)+"'/>"
+				}
+				for(let i=1;i<=8;i++) for(let j=1;j<=4;j++) {
+					editingTalentHTML+="<path onclick='studyTalent(this)' value='"+(200+10*j+i)+"' class='f"+talentColor(200+10*j+i)+"-path pointer ns' d='M"+(10*i)+" "+(10*j-3)+"A2 2 0 0 0 "+(10*i)+" "+(10*j+1)+"A2 2 0 0 0 "+(10*i)+" "+(10*j-3)+"'/>"
+					editingTalentHTML+="<text class='in-text' x='"+(10*i)+"' y='"+(10*j+3)+"'>"+TalentTreeNodeList[2][j][i]+"</text>"
+				}
+				editingTalentHTML+="</svg></div>"
+				editingTalentHTML+="<h3>"+rarityName[6]+" Talent</h3>"
+				editingTalentHTML+="<div class='green-bg inner-box' style='width: 60%'><svg id='talenttree3' viewBox='0 0 60 70' class='in-svg'>"
+				for(let i of TalentTreeBranchList[3]) {
+					editingTalentHTML+="<path value='"+(30000+i)+"' class='"+talentColor(30000+i)+"-path fwidth rcap' d='M"+(betterFloor(i/100)%10*10)+" "+(betterFloor(i/1000)*10-1)+"L"+(i%10*10)+" "+(betterFloor(i/10)%10*10-1)+"'/>"
+				}
+				for(let i=1;i<=5;i++) for(let j=1;j<=6;j++) if(TalentTreeNodeList[3][j][i].length>0) {
+					editingTalentHTML+="<path onclick='studyTalent(this)' value='"+(300+10*j+i)+"' class='f"+talentColor(300+10*j+i)+"-path pointer ns' d='M"+(10*i)+" "+(10*j-3)+"A2 2 0 0 0 "+(10*i)+" "+(10*j+1)+"A2 2 0 0 0 "+(10*i)+" "+(10*j-3)+"'/>"
+					editingTalentHTML+="<text class='in-text' x='"+(10*i)+"' y='"+(10*j+3)+"'>"+TalentTreeNodeList[3][j][i]+"</text>"
+				}
+				editingTalentHTML+="</svg></div>"
+				editingTalentHTML+="<br><button type='button' tabindex='-1' id='talent-reset' onclick='resetTalent()' class='red-bg recbtn pointer mcont cself'>Reset All Talent Trees</button>"
+				editingTalentHTML+="<h3>Talent Detail</h3>"
+				for(let i=1;i<=13;i++) {
+					editingTalentHTML+="<div id='talent-des"+i+"'>"+printTalentDescription(i)+"</div>"
+				}
+				document.getElementById("book-content").innerHTML+=editingTalentHTML
 			}
 		}
 		let logDisplay=true,cleanerDegree=0
@@ -3690,6 +3796,7 @@
 		}
 		let dialogRemain="",dialogPrint=false
 		async function dialog(title,maintext,speed,bgColor="#ffffff",textColor="#000000") {
+			if(cornerDisplay()) return
 			if(title==="Skip") {
 				if(explore.event.searchlibrary===2 && dialogRemain.match(/\)/)) return
 				if(explore.event.searchlibrary===10 && dialogRemain.match(/\)/)) return
@@ -3876,6 +3983,7 @@
 					document.getElementById("dialog").style.display="none"
 					animation=false
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 					displayCentralRoom()
 					return
 				}
@@ -3972,6 +4080,7 @@
 					player.item.add("Arrow",10)
 					animation=false
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 					displayCentralRoom()
 					return
 				}
@@ -4025,6 +4134,7 @@
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
 					player.book.push("Flower Evolutionary Guide")
 					addLog("[Resource] You received Flower Evolutionary Guide.","#7fff7f")
+					localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 					return
 				}
 				if(explore.event.artisanguide===1 && player.settings.dialog==="Skip") explore.event.artisanguide=2
@@ -4056,8 +4166,10 @@
 					document.getElementById("dialog").style.display="none"
 					animation=false
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					player.friend.summoner="Floor 0 complete"
 					player.book.push("Flower Artisan Guide")
 					addLog("[Resource] You received Flower Artisan Guide.","#7fff7f")
+					localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 					return
 				}
 				if(explore.event.basefloorending===0 && player.settings.dialog==="Skip") {
@@ -4314,6 +4426,7 @@
 					addLog("[Resource] You received Flower Subsist Guide.","#7fff7f")
 					animation=false
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 					displayCentralRoom()
 					return
 				}
@@ -4355,7 +4468,6 @@
 					return
 				}
 				if(explore.event.floor1game===7) {
-					displayCentralRoom()
 					dialog("(The Florroom)","Traveler walked towards the door. He may need to first understand the content of the debate.","Unset","#dfdfdf")
 					explore.event.floor1game=8
 					return
@@ -4369,6 +4481,57 @@
 					player.floor1gamestat[1]="Incomplete"
 					animation=false
 					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
+					displayCentralRoom()
+					return
+				}
+				if(explore.event.talentactivation===0 && player.settings.dialog==="Skip") explore.event.talentactivation=6
+				if(explore.event.talentactivation===0) {
+					displayCentralRoom()
+					dialog("Traveler (You)","Finally, I can activate my talents now. My power will be returned!","Unset","#dfdfff")
+					explore.event.talentactivation=1
+					return
+				}
+				if(explore.event.talentactivation===1) {
+					dialog("(The Florroom)","Traveler entered the talent activation device. He felt mysterious power pouring into his body. When he went out, he was stopped by a book promoter.","Unset","#dfdfdf")
+					explore.event.talentactivation=2
+					return
+				}
+				if(explore.event.talentactivation===2) {
+					dialog("Book Promoter?","Hello, we provide a guide for each flower that activates talent. Please accept it!","Unset","#bfffff")
+					explore.event.talentactivation=3
+					return
+				}
+				if(explore.event.talentactivation===3) {
+					dialog("Traveler (You)","Thank you.","Unset","#dfdfff")
+					explore.event.talentactivation=4
+					if(player.book.indexOf("Flower Talent Guide")===-1) {
+						player.book.push("Flower Talent Guide")
+						addLog("[Resource] You received Flower Talent Guide from Book Promoter.","#7fff7f")
+					}
+					return
+				}
+				if(explore.event.talentactivation===4) {
+					dialog("Traveler (You)","Wait... I feel something is off.","Unset","#dfdfff")
+					explore.event.talentactivation=5
+					return
+				}
+				if(explore.event.talentactivation===5) {
+					dialog("Traveler (You)","Did I lose anything? Let me check... Time Shard! He went Ocean!","Unset","#dfdfff")
+					explore.event.talentactivation=6
+					return
+				}
+				if(explore.event.talentactivation===6) {
+					explore.event.talentactivation="Completed"
+					document.getElementById("dialog").style.display="none"
+					player.item.subtract("Time Shard",4)
+					player.talent=new Array()
+					player.talentreset=0
+					addLog("[Resource] You lost 4 pieces of Time Shard...","#7fff7f")
+					explore.event.catchthief="Incomplete"
+					animation=false
+					localStorage.setItem("FLORROOMexplore",JSON.stringify(explore))
+					localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 					displayCentralRoom()
 					return
 				}
@@ -4379,14 +4542,23 @@
 					return
 				}
 				if(explore.event.floor1exitcentral===1) {
-					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=2;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>No, I forgot something.</button><button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Yes, I'm sure.</button>","Instant","#dfdfff")
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=2;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>What's my task?</button><button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=4;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Yes, I'm sure.</button>","Instant","#dfdfff")
 					return
 				}
 				if(explore.event.floor1exitcentral===2) {
-					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=3;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>You can come back whenever you want.</button>","Instant","#dfdfff")
+					let taskString="<span class='grey'>↓Your have some available tasks↓</span>"
+					if(player.friend.summoner==="Floor 0 complete") taskString+="<br><span class='yellow'>You may try to find the one who has helped you before. Perhaps he is still farming desert.</span>"
+					if(explore.event.catchthief==="Incomplete") taskString+="<br><span class='blue'>Catch the thief who stole your Time Shard. He escaped to ocean, but should not be far away.</span>"
+					if(taskString==="<span class='green'>Your task</span>") taskString="<span class='dgreen'>You have no available task currently!</span>"
+					dialog("(The Florroom)",taskString,"Instant","#dfdfdf")
+					explore.event.floor1exitcentral=3
 					return
 				}
 				if(explore.event.floor1exitcentral===3) {
+					dialog("Traveler (You)","<button type='button' tabindex='-1' onclick='event.stopPropagation();explore.event.floor1exitcentral=4;dialog(\"Skip\")' class='llmargin white-bg srecbtn pointer'>Ok, I'm sure now.</button>","Instant","#dfdfff")
+					return
+				}
+				if(explore.event.floor1exitcentral===4) {
 					explore.event.floor1exitcentral="Completed"
 					document.getElementById("dialog").style.display="none"
 					animation=false
@@ -4425,6 +4597,7 @@
 		}
 		let EndingList=new Object()
 //		EndingList.beta="<h2>The Journey Conquered</h2><span>You have completed Base Floor. Congratulations!</span><br><span>This is the entire content of Florroom Rewritten BETA.</span><span>More content will be release soon, stay tuned!</span><br><span>↓↓This game is so balanced that I want to play again↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
+		EndingList.beta2="<h2>The Journey Conquered</h2><span>You have completed Floor 1. Congratulations!</span><br><span>This is the entire content of current version.</span><span>More content will be release soon, stay tuned!</span><br><span>↓↓This game is so balanced that I want to play again↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
 		EndingList.collapse1="<h2>The Journey Halted</h2><span>It is Day 80, and Base Floor has collapsed.</span><br><span>You made much contributions to the exploration of Florroom</span><span>during your lifetime. Flowers will always remember you.</span><br><span>↓↓I'm sure I could have finished it faster. Let's try again.↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
 		EndingList.collapse2="<h2>The Journey Halted</h2><span>It is Day 80, and Floor 1 has collapsed.</span><br><span>You made much contributions to the exploration of Florroom</span><span>during your lifetime. Flowers will always remember you.</span><br><span>↓↓I'm sure I could have gone further. Let's try again.↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
 		EndingList.exhaust1="<h2>The Journey Halted</h2><span>You felt your eyes darken and then faint, in Floor 1.</span><br><span>You made much contributions to the exploration of Florroom</span><span>during your lifetime. Flowers will always remember you.</span><br><span>↓↓I'm sure I am fully prepared now. Let's try again.↓↓</span><br><button type='button' tabindex='-1' id='endgame3' onclick='hardReset()'>Here we go again?</button>"
@@ -4445,12 +4618,12 @@
 //				endGameDisplay()
 //				return true
 //			}
-			if((player.calendar.second>=5 && explore.floor===0 && player.calendar.day===79) || player.calendar.day===80) {
+			if((player.calendar.second>=5 && explore.floor===0 && player.calendar.day===79) || player.calendar.day>=80) {
 				document.getElementById("endgame2").innerHTML=EndingList.collapse1
 				endGameDisplay()
 				return true
 			}
-			if((player.calendar.second>=5 && explore.floor===1 && player.calendar.day===79) || player.calendar.day===80) {
+			if((player.calendar.second>=5 && explore.floor===1 && player.calendar.day===79) || player.calendar.day>=80) {
 				document.getElementById("endgame2").innerHTML=EndingList.collapse2
 				endGameDisplay()
 				return true
@@ -4474,6 +4647,8 @@
 			}
 			delete player.memory
 			delete player.calendar.reset
+			if(player.hasOwnProperty("talent")) player.talent=new Array()
+			if(player.hasOwnProperty("talentreset")) player.talentreset=0
 			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
 			if(previousFloor===0) {
 				explore.event=new Object()
@@ -4488,10 +4663,11 @@
 			mouseX=mouse.clientX
 			mouseY=mouse.clientY
 		} )
-		const version=20260205,acceptedVersion=20260122
+		const version=20260221,acceptedVersion=20260122
 		const svgNS="http://www.w3.org/2000/svg"
 		const dx=[0,0,1,0,-1],dy=[0,-1,0,1,0],dx5=[0,1,2,2,1,-1,-2,-2,-1],dy5=[0,-2,-1,1,2,2,1,-1,-2]
 		let rarityColor=["#000000","#7eef6d","#ffe65d","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3","#555555"]
+		let rarityColorEP=["#000000","#7eef6d","#ffe65d; filter: brightness(90%)","#4d52e3","#861fde","#de1f1f","#1fdbde","#ff2b75","#2bffa3; filter: brightness(90%)","#555555"]
 		let rarityName=["None","Common","Unusual","Rare","Epic","Legendary","Mythic","Ultra","Super","Unique"]
 		const mapArray=[10,11,12,13,14,15,16,17,21,22,23,24,25,26,31,32,33,34,35,36,37,38,39,41,42,43,44,51,52,53,54,55,56,61,62,63,64,65,66,67]
 		const pathArray=[1011,1013,1112,1121,1131,1213,1214,1241,1314,1315,1416,1451,1516,1517,1617,1724,1739,2122,2224,2225,2226,2324,2325,2353,2461,2526,3132,3133,3233,3236,3239,3334,3335,3436,3438,3537,3538,3639,3738,3761,3943,4142,4243,4244,4344,5152,5153,5253,5354,5355,5455,5556,5664,6162,6263,6265,6364,6365,6466,6566,6667]
@@ -4594,6 +4770,7 @@
 		if(!player.settings) player.settings=new Object()
 		if(!player.gallery) player.gallery=new Object()
 		if(!player.clover) player.clover=false
+		if(!player.friend) player.friend=new Object()
 		if(!player.item) player.item=new Object()
 		player.item.add=function(itemname,itemamount) {
 			if(!player.item.hasOwnProperty(itemname)) player.item[itemname]=0
@@ -4612,6 +4789,9 @@
 			return true
 		}
 		if(!explore.floor) explore.floor=0
+//version:20260210
+		if(explore.floor===1 && !player.friend.hasOwnProperty("summoner")) player.friend.summoner="Floor 0 complete"
+//delete after some updates
 		if(!explore.floweroldspot) explore.floweroldspot=10
 		if(!explore.flowerspot) explore.flowerspot=10
 		if(!explore.event) explore.event=new Object()
@@ -4746,6 +4926,7 @@
 			newGrid.setAttribute("class","grid")
 			if(size===-2) newGrid.setAttribute("class","mingrid")
 			if(size===-1) newGrid.setAttribute("class","sgrid")
+			if(size===179) newGrid.setAttribute("class","sgrid llmargin")
 			if(size===1) newGrid.setAttribute("class","bgrid")
 			if(rarity>=1 && rarity<=9) newGrid.style["background-color"]=rarityColor[rarity]
 			newGrid.setAttribute("onclick","clickGrid(this)")
@@ -4992,18 +5173,25 @@
 						selectedGrid.x=buttonX
 						selectedGrid.y=buttonY
 						document.getElementById("gridinfo").children[0].innerHTML="(Selected) "+document.getElementById("gridinfo").children[0].innerHTML
-						if(fight.petal[i].name==="Antennae" && fight.spawnmob.length>0) {
-							let anticipateAmount=3+fight.petal[i].level
-							if(anticipateAmount>fight.spawnmob.length) anticipateAmount=fight.spawnmob.length
-							let perceivedMob=document.createElement("div")
-							perceivedMob.setAttribute("class","nlh")
-							for(let i=0;i<anticipateAmount;i++) {
-								let smallMobGrid=createGrid(79,0,0,"Mob_"+fight.spawnmob[i].name,1,fight.spawnmob[i].rarity)
-								smallMobGrid.style.scale=0.5
-								smallMobGrid.style.margin="-20px -15px"
-								perceivedMob.appendChild(smallMobGrid)
+						if(fight.petal[i].name==="Antennae") {
+							if(fight.spawnmob.length>0) {
+								let anticipateAmount=3+fight.petal[i].level
+								if(anticipateAmount>fight.spawnmob.length) anticipateAmount=fight.spawnmob.length
+								let perceivedMob=document.createElement("div")
+								perceivedMob.setAttribute("class","nlh")
+								for(let i=0;i<anticipateAmount;i++) {
+									let smallMobGrid=createGrid(79,0,0,"Mob_"+fight.spawnmob[i].name,1,fight.spawnmob[i].rarity)
+									smallMobGrid.style.scale=0.5
+									smallMobGrid.style.margin="-20px -15px"
+									perceivedMob.appendChild(smallMobGrid)
+								}
+								document.getElementById("gridinfo").appendChild(perceivedMob)
+							} else {
+								let perceivedMob=document.createElement("div")
+								perceivedMob.setAttribute("class","bottommargin")
+								perceivedMob.innerHTML="<span style='color: #5f9f5f'>No more mobs! Good game.</span>"
+								document.getElementById("gridinfo").appendChild(perceivedMob)
 							}
-							document.getElementById("gridinfo").appendChild(perceivedMob)
 						}
 						let option=document.createElement("div")
 						if(skillCheck(fight.petal[i])) option.innerHTML+="<button type='button' id='keyx-btn' onclick='fight.petal["+i+"].skill()' class='llmargin lpurple-bg srecbtn pointer'>[X] Special Skill</button>"
@@ -5047,9 +5235,9 @@
 			if(100*Math.random()<=chance) result=true
 			if(log) {
 				if(result) {
-					addLog("[Determine] True ("+chance+"%)"+logText,"#3f3f3f")
+					addLog("[Determine] True ("+betterFloor(chance)+"%)"+logText,"#3f3f3f")
 				} else {
-					addLog("[Determine] False ("+(100-chance)+"%)"+logText,"#3f3f3f")
+					addLog("[Determine] False ("+(100-betterFloor(chance))+"%)"+logText,"#3f3f3f")
 				}
 			}
 			return result
@@ -5148,6 +5336,7 @@
 		}
 		function settings(open=true) {
 			if(animation) return
+			if(document.getElementById("dialog").style.display==="flex") return
 			if(open && document.getElementById("settings").style.display==="flex") {
 				settings(false)
 				return
@@ -5316,6 +5505,13 @@
 				qolDisplay.appendChild(addButton)
 			} else {
 				let addButton=settingButton(1,4,"On")
+				qolDisplay.appendChild(addButton)
+			}
+			if(!player.settings.hasOwnProperty("strictvertical")) {
+				let addButton=settingButton(1,5,"Off")
+				qolDisplay.appendChild(addButton)
+			} else {
+				let addButton=settingButton(1,5,"On")
 				qolDisplay.appendChild(addButton)
 			}
 			document.getElementById("settings").appendChild(qolDisplay)
@@ -5612,6 +5808,20 @@
 				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
 				return addButton
 			}
+			if(setX===1 && setY===5 && state==="On") {
+				let addButton=createGrid(5,setX,setY,"Text_Strict<br>up/down<br>control",1,0)
+				addButton.classList.add("green-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
+			if(setX===1 && setY===5 && state==="Off") {
+				let addButton=createGrid(5,setX,setY,"Text_Strict<br>up/down<br>control",1,0)
+				addButton.classList.add("red-bg","llmargin")
+				addButton.style.border="2px solid"
+				addButton.setAttribute("onclick","settingClick("+setX+","+setY+")")
+				return addButton
+			}
 		}
 		function settingClick(setX,setY) {
 			if(animation) return
@@ -5828,9 +6038,19 @@
 					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
 				}
 			}
+			if(setX===1 && setY===5) {
+				if(!player.settings.hasOwnProperty("strictvertical")) {
+					player.settings.strictvertical=true
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"On"))
+				} else {
+					delete player.settings.strictvertical
+					getGrid(5,setX,setY).replaceWith(settingButton(setX,setY,"Off"))
+				}
+			}
 		}
 		function howToPlay(open=true) {
 			if(animation) return
+			if(document.getElementById("dialog").style.display==="flex") return
 			if(open && document.getElementById("help").style.display==="flex") {
 				howToPlay(false)
 				return
@@ -5851,6 +6071,7 @@
 		}
 		function openInventory(open=true,force=false) {
 			if(animation && !force) return
+			if(document.getElementById("dialog").style.display==="flex") return
 			if(open && document.getElementById("inventory").style.display==="flex") {
 				openInventory(false)
 				return
@@ -5878,6 +6099,7 @@
 		}
 		function openGallery(open=true) {
 			if(animation) return
+			if(document.getElementById("dialog").style.display==="flex") return
 			if(open && document.getElementById("gallery").style.display==="flex") {
 				openGallery(false)
 				return
@@ -6068,33 +6290,55 @@
 		}
 		function getDir(validArray,dir,oldPlaceX,oldPlaceY,placeX=8,placeY=6)
 		{
+			if(getGrid(0,oldPlaceX,oldPlaceY)===null) {
+				oldPlaceX=0
+				oldPlaceY=0
+			}
+			if(oldPlaceX===0 && selectedGrid.value===0) {
+				oldPlaceX=selectedGrid.x
+				oldPlaceY=selectedGrid.y
+			}
+			let searchStep=1
+			if(player.settings.strictvertical===true) searchStep=placeX
 			if(dir===1) {
-				for(let i=(oldPlaceY-2)*placeX+oldPlaceX-1;i>=0;i--) {
-					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				if(oldPlaceX>0) {
+					for(let i=(oldPlaceY-2)*placeX+oldPlaceX-1;i>=0;i-=searchStep) {
+						for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+					}
 				}
-				for(let i=0;i<placeX*placeY;i++) {
-					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				if(!player.settings.strictvertical) {
+					for(let i=0;i<placeX*placeY;i++) {
+						for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+					}
 				}
 			}
 			if(dir===2) {
-				for(let i=(oldPlaceY-1)*placeX+oldPlaceX;i<placeX*placeY;i++) {
-					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				if(oldPlaceX>0) {
+					for(let i=(oldPlaceY-1)*placeX+oldPlaceX;i<placeX*placeY;i++) {
+						for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+					}
 				}
 				for(let i=placeX*placeY-1;i>=0;i--) {
 					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
 				}
 			}
 			if(dir===3) {
-				for(let i=oldPlaceY*placeX+oldPlaceX-1;i<placeX*placeY;i++) {
-					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				if(oldPlaceX>0) {
+					for(let i=oldPlaceY*placeX+oldPlaceX-1;i<placeX*placeY;i+=searchStep) {
+						for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+					}
 				}
-				for(let i=placeX*placeY-1;i>=0;i--) {
-					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				if(!player.settings.strictvertical) {
+					for(let i=placeX*placeY-1;i>=0;i--) {
+						for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+					}
 				}
 			}
 			if(dir===4) {
-				for(let i=(oldPlaceY-1)*placeX+oldPlaceX-2;i>=0;i--) {
-					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+				if(oldPlaceX>0) {
+					for(let i=(oldPlaceY-1)*placeX+oldPlaceX-2;i>=0;i--) {
+						for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
+					}
 				}
 				for(let i=0;i<placeX*placeY;i++) {
 					for(let j=0;j<validArray.length;j++) if((validArray[j].y-1)*placeX+validArray[j].x-1===i) return validArray[j]
@@ -6113,6 +6357,7 @@
 					dialog("Skip",6361)
 					return
 				}
+				return
 			}
 			if(animation) return
 			if(document.getElementById("map-container").style.display==="unset" && cornerDisplay()===false && flowerMove===false) {
@@ -6186,6 +6431,10 @@
 			}
 			if(document.getElementById("inventory").style.display==="flex" && document.getElementById("lup-cancel").style.display==="unset" && num===81) {
 				document.getElementById("lup-cancel").onclick()
+				return
+			}
+			if(document.getElementById("help").style.display==="flex" && player.book[player.bookreading]==="Flower Debate Guide" && num>=1 && num<=9) {
+				startFight(100+num)
 				return
 			}
 			if(num===1) {
@@ -6312,6 +6561,7 @@
 					gridInfo(document.getElementById("inv-petal").children[newIndex])
 					return
 				}
+				if(cornerDisplay()) return
 				if(trackingGrid && trackingGrid.isConnected) {
 					if(getGrid(2,0,0)!==null) {
 						trackingY=-1
@@ -6322,10 +6572,12 @@
 					for(let i=1;i<=8;i++) for(let j=1;j<=6;j++) if(trackCheck(i,j)) validArray.push({x:i,y:j})
 					if(validArray.length===0) return
 					let newCord=getDir(validArray,num-20,trackingX,trackingY)
-					trackingX=newCord.x
-					trackingY=newCord.y
-					trackingGrid.style.top=getGrid(0,trackingX,trackingY).getBoundingClientRect().top+40+"px"
-					trackingGrid.style.left=getGrid(0,trackingX,trackingY).getBoundingClientRect().left+40+"px"
+					if(newCord!==undefined) {
+						trackingX=newCord.x
+						trackingY=newCord.y
+						trackingGrid.style.top=getGrid(0,trackingX,trackingY).getBoundingClientRect().top+40+"px"
+						trackingGrid.style.left=getGrid(0,trackingX,trackingY).getBoundingClientRect().left+40+"px"
+					}
 					return
 				}
 				if(operingGrid && operingGrid.isConnected) {
@@ -6333,15 +6585,19 @@
 					for(let i=1;i<=8;i++) for(let j=1;j<=6;j++) if(operCheck(i,j)) validArray.push({x:i,y:j})
 					if(validArray.length===0) return
 					let newCord=getDir(validArray,num-20,operingX,operingY)
-					operingX=newCord.x
-					operingY=newCord.y
-					operingGrid.style.top=getGrid(0,operingX,operingY).getBoundingClientRect().top+40+"px"
-					operingGrid.style.left=getGrid(0,operingX,operingY).getBoundingClientRect().left+40+"px"
-					updateT()
+					if(newCord!==undefined) {
+						operingX=newCord.x
+						operingY=newCord.y
+						operingGrid.style.top=getGrid(0,operingX,operingY).getBoundingClientRect().top+40+"px"
+						operingGrid.style.left=getGrid(0,operingX,operingY).getBoundingClientRect().left+40+"px"
+						updateT()
+					}
 					return
 				}
 				if(document.getElementById("fight-container").style.display==="grid") {
 					if(selectedGrid.value!==0) {
+						selectedGrid.select=false
+						closeGridInfo()
 						selectedGrid.value=0
 						selectedGrid.x=0
 						selectedGrid.y=0
@@ -6353,9 +6609,13 @@
 					}
 					if(validArray.length===0) return
 					let newCord=getDir(validArray,num-20,selectedGrid.x,selectedGrid.y)
-					selectedGrid.x=newCord.x
-					selectedGrid.y=newCord.y
-					gridInfo(getGrid(0,selectedGrid.x,selectedGrid.y))
+					if(newCord!==undefined) {
+						selectedGrid.select=false
+						closeGridInfo()
+						selectedGrid.x=newCord.x
+						selectedGrid.y=newCord.y
+						gridInfo(getGrid(0,selectedGrid.x,selectedGrid.y))
+					}
 					return
 				}
 				return
@@ -6443,6 +6703,7 @@
 				for(let i in PetalSVGArray) PetalSVGArray[i]=PetalSVGArray[i].replace(/<g>.+<\/g>/,"<g></g>").replace("20px)","0px); font-family: Consolas")
 				for(let i in MobSVGArray) MobSVGArray[i]=MobSVGArray[i].replace(/<g>.+<\/g>/,"<g></g>").replace("20px)","0px); font-family: Consolas")
 				document.getElementById("gridinfo").style["font-family"]="Consolas"
+				document.getElementById("cute6361omg").href=document.getElementById("cute6361omg").href.replace(/fill: %23....../,"fill: %23000000").replace(/stroke: %23....../,"stroke: %23ffff7f")
 			}
 			if(player.settings.rarity==="Prefixed") {
 				rarityName=["Une","Ummon","Unusual","Ure","Upic","Ugendary","Uthic","Ultra","Uper","Unique"]
@@ -6450,6 +6711,7 @@
 			if(player.settings.rarity==="Inverted") {
 				rarityColor=["#000000","#2bffa3","#ff2b75","#1fdbde","#de1f1f","#861fde","#4d52e3","#ffe65d","#7eef6d","#555555"]
 				rarityName=["None","Super","Ultra","Mythic","Legendary","Epic","Rare","Unusual","Common","Unique"]
+				rarityColor=["#000000","#2bffa3; filter: brightness(90%)","#ff2b75","#1fdbde","#de1f1f","#861fde","#4d52e3","#ffe65d; filter: brightness(90%)","#7eef6d","#555555"]
 			}
 			setInterval(cogRotate,10)
 			setInterval(flowerRotate,10)
@@ -6854,6 +7116,9 @@
 			text=text.replaceAll("&","</span>").replaceAll("TYPE","<span style='color: #000000'>Type: ").replaceAll("NAME=","<span style='color: #000000'>Name: ").replaceAll("LOOT=","<span style='color: #0000ff'>How to loot: ").replaceAll("DECORATION","<span style='color: #bfbfbf'>This petal is a decoration, which means it has no entity.").replaceAll(/COUNT=(\d+)/g,"<span style='color: #7f7f9f'>This petal has a quantity of "+petal.count+"/$1 parts").replaceAll("ATTRIBUTE=","<span style='color: #bfbf7f'>Petal attribute: ").replaceAll("EQUIP=","<span style='color: #bfbfff'>When equipped: ").replaceAll("EXIST=","<span style='color: #ffffff'>While exist: ").replaceAll("ATTACK=","<span style='color: #ff7f7f'>When attack: ").replaceAll("DEFEND=","<span style='color: #7fdf7f'>When defend: ").replaceAll("ATKDEF=","<span style='color: #df7fdf'>When attack or defend: ").replaceAll("SHOOT=","<span style='color: #7f7fff'>When shoot: ").replaceAll("SKILL=","<span style='color: #7fdfdf'>Special skill: ").replaceAll("STATURN=","<span style='color: #5fdfff'>At start of turn: ").replaceAll("ENDTURN=","<span style='color: #5fdfff'>At end of turn: ").replaceAll("DAMAGE=","<span style='color: #bf5f5f'>When destroyed a part: ").replaceAll("DESTROY=","<span style='color: #df3f3f'>When destroyed: ")+"</span>"
 			text=text.replaceAll("[poison]","<span style='font-weight: bold; color: #bf00bf; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>poison</span>").replaceAll("[lightning]","<span style='font-weight: bold; color: #7fffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>lightning</span>").replaceAll("Dice","🎲").replaceAll("[","<span style='font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>").replaceAll("]","</span>").replaceAll(/(?<!\.\s)(?<!^)Damage/g,"<span style='color: #ff7f7f'>"+petal.damage+"</span>").replaceAll(/(?<!\.\s)(?<!^)Health/g,"<span style='color: #7fdf7f'>"+petal.health+"</span>").replaceAll(/(?<!\.\s)(?<!^)Rarity/g,"<span style='color: #00dfff'>"+petal.rarity+"</span>").replaceAll(/(?<!\.\s)(?<!^)Level/g,"<span style='color: #9f5fff'>"+petal.level+"</span>").replaceAll("X","<span style='color: #9f5f9f'>"+(petal.calculate>0?petal.calculate:"X")+"</span>")
 			if(!player.clover) text=text.replaceAll("quadruples health and damage and doubles knockback (once in a fight), reloads all petals and sets their action to 250 (except 1-speed petal)","???")
+			if(getTalentLevel(6)>0 && PetalAttributeList[petal.id].match(/(?<=Costs )\d+(?= action)/)!==null && petal.name!=="Dice" && petal.name!=="Chip" && petal.name!=="Card" && petal.name!=="Domino") {
+				text=text.replace(/(?<=Costs )(\d+)(?= action)/,(num)=>(num+" ("+skillRequirement(petal)+")"))
+			}
 			if(petal.name==="Compass") {
 				let dirEnglish=["specified","North","East","South","West"]
 				text=text.replaceAll("specified",dirEnglish[petal.calculate])
@@ -6983,6 +7248,8 @@
 		function gridInfo(grid) {
 			if(animation) return
 			if(selectedGrid.select===true) return
+			if(trackingGrid && trackingGrid.isConnected) return
+			if(operingGrid && operingGrid.isConnected) return
 			if(grid.style.scale>0 && grid.style.scale<1) return
 			let gridValue=parseInt(grid.getAttribute("value")),gridX=parseInt(grid.dataset.x),gridY=parseInt(grid.dataset.y)
 			if(gridValue>6000) return
@@ -7000,7 +7267,7 @@
 					if(gridY===1 && gridX%3!==0) {
 						document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,50%)")
 						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().bottom+10+"px"
-						let editingGridCardHTML="<h3 style='color: "+rarityColor[fight.spevent.opponentcard[gridX].rarity].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>A Card</h3>"
+						let editingGridCardHTML="<h3 style='color: "+rarityColorEP[fight.spevent.opponentcard[gridX].rarity]+"'>A Card</h3>"
 						document.getElementById("gridinfo").innerHTML=editingGridCardHTML
 						document.getElementById("gridinfo").style.display="flex"
 					}
@@ -7015,7 +7282,7 @@
 					if(gridY===6 && gridX%3!==0) {
 						document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
 						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
-						let editingGridCardHTML="<h3 style='color: "+rarityColor[fight.spevent.travelercard[gridX].rarity].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+fight.spevent.travelercard[gridX].name+"<span class='black'>+</span>".repeat(fight.spevent.travelercard[gridX].level)+"</h3>"
+						let editingGridCardHTML="<h3 style='color: "+rarityColorEP[fight.spevent.travelercard[gridX].rarity]+"'>"+fight.spevent.travelercard[gridX].name+"<span class='black'>+</span>".repeat(fight.spevent.travelercard[gridX].level)+"</h3>"
 						if(fight.spevent.travelercard[gridX].id<=4) {
 							editingGridCardHTML+="<span style='color: #7fdf7f'>Health: "+fight.spevent.travelercard[gridX].health+"</span>"
 							editingGridCardHTML+="<span style='color: #ff7f7f'>Damage: "+fight.spevent.travelercard[gridX].damage+"</span>"
@@ -7040,8 +7307,8 @@
 						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().bottom+10+"px"
 					}
 					document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
-					let editingGridPetalHTML="<h3 style='color: "+rarityColor[fight.petal[i].rarity]+"'>"+fight.petal[i].name+"<span class='black'>+</span>".repeat(fight.petal[i].level)+"</h3>"
-					editingGridPetalHTML=editingGridPetalHTML.replace("#ffe65d","#ffe65d; filter: brightness(90%)")
+					let editingGridPetalHTML="<h3 style='color: "+rarityColorEP[fight.petal[i].rarity]+"'>"+fight.petal[i].name+"<span class='black'>+</span>".repeat(fight.petal[i].level)+"</h3>"
+					editingGridPetalHTML=editingGridPetalHTML
 					editingGridPetalHTML+="<span>"+PetalDescriptionList[fight.petal[i].id]+"</span><br>"
 					if(fight.petal[i].state==="Reloading") {
 						editingGridPetalHTML+="<span style='color: #bf9f7f'>Reloading</span>"
@@ -7085,11 +7352,11 @@
 					document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
 					let editingGridMobHTML=""
 					if(fight.mob[i].shiny>0) {
-						editingGridMobHTML+="<h3 style='color: "+rarityColor[fight.mob[i].rarity]+"'>⭐"+fight.mob[i].name+"⭐</h3>"
+						editingGridMobHTML+="<h3 style='color: "+rarityColorEP[fight.mob[i].rarity]+"'>⭐"+fight.mob[i].name+"⭐</h3>"
 					} else {
-						editingGridMobHTML+="<h3 style='color: "+rarityColor[fight.mob[i].rarity]+"'>"+fight.mob[i].name+"</h3>"
+						editingGridMobHTML+="<h3 style='color: "+rarityColorEP[fight.mob[i].rarity]+"'>"+fight.mob[i].name+"</h3>"
 					}
-					editingGridMobHTML=editingGridMobHTML.replace("#ffe65d","#ffe65d; filter: brightness(90%)")
+					editingGridMobHTML=editingGridMobHTML=
 					editingGridMobHTML+="<span>"+MobDescriptionList[fight.mob[i].id]+"</span><br>"
 					if(fight.mob[i].behavior==="Passive") {
 						editingGridMobHTML+="<span style='color: #7fdf7f'>Behavior: Passive</span>"
@@ -7127,8 +7394,8 @@
 				document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
 				document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
 				let editingPetal=player.inventory[gridX],editingPetalBase=new Petal(editingPetal.id,editingPetal.rarity,editingPetal.level,false)
-				let editingGridPetalHTML="<h3 style='color: "+rarityColor[editingPetal.rarity]+"'>"+(editingPetal.hasOwnProperty("temploot")? "?":"")+editingPetal.name+"<span class='black'>+</span>".repeat(editingPetal.level)+"⭐".repeat(editingPetal.star)+"</h3>"
-				editingGridPetalHTML=editingGridPetalHTML.replace("#ffe65d","#ffe65d; filter: brightness(90%)")
+				let editingGridPetalHTML="<h3 style='color: "+rarityColorEP[editingPetal.rarity]+"'>"+(editingPetal.effect.hasOwnProperty("temploot")? "?":"")+editingPetal.name+"<span class='black'>+</span>".repeat(editingPetal.level)+"⭐".repeat(editingPetal.star)+"</h3>"
+				editingGridPetalHTML=editingGridPetalHTML
 				editingGridPetalHTML+="<span>"+PetalDescriptionList[editingPetal.id]+"</span><br>"
 				if(PetalAttributeList[editingPetal.id].match("DECORATION")===null) {
 					editingGridPetalHTML+="<span style='color: #7fdf7f'>Health: "+editingPetal.health
@@ -7163,8 +7430,8 @@
 						document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
 						document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
 						document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+40+"px"
-						let editingGridPetalHTML="<h3 style='color: "+rarityColor[fight.petal[i].rarity]+"'>"+fight.petal[i].name+"<span class='black'>+</span>".repeat(fight.petal[i].level)+"</h3>"
-						editingGridPetalHTML=editingGridPetalHTML.replace("#ffe65d","#ffe65d; filter: brightness(90%)")
+						let editingGridPetalHTML="<h3 style='color: "+rarityColorEP[fight.petal[i].rarity]+"'>"+fight.petal[i].name+"<span class='black'>+</span>".repeat(fight.petal[i].level)+"</h3>"
+						editingGridPetalHTML=editingGridPetalHTML
 						editingGridPetalHTML+="<span>"+PetalDescriptionList[fight.petal[i].id]+"</span><br>"
 						if(PetalAttributeList[fight.petal[i].id].length>0) {
 							let pendingText=PetalAttributeList[fight.petal[i].id]
@@ -7285,8 +7552,10 @@
 					document.getElementById("gridinfo").style.setProperty("--transform2","translate(0%,-50%)")
 					document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
 					document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+20+"px"
-					let editingGridEffectHTML="<h3 class='cpurple'>Buff: Purity</h3>"
-					editingGridEffectHTML+="<span>Immunes all healing debuff. Also improves all healing effects.</span><br>"
+					let editingGridEffectHTML="<h3 class='cpurple'>Buff: Purity"
+					if(fight.flower.effect.purity.hightier===true) editingGridEffectHTML+="+"
+					editingGridEffectHTML+="</h3>"
+					editingGridEffectHTML+="<span>Improves all healing effects. Higher tier of this effect also makes you immune all healing debuff.</span><br>"
 					editingGridEffectHTML+="<span style='color: #5fdf5f'>Healing Buff: "+fight.flower.effect.purity.buff+"%</span>"
 					editingGridEffectHTML+="<span style='color: #3fbf3f'>Resolves Upon Effect Condition</span><br>"
 					document.getElementById("gridinfo").innerHTML=editingGridEffectHTML
@@ -7371,7 +7640,7 @@
 				document.getElementById("gridinfo").style.top=grid.getBoundingClientRect().top-10+"px"
 				document.getElementById("gridinfo").style.left=grid.getBoundingClientRect().left+20+"px"
 				let editingGridGalleryHTML="",testMob=new Mob(gridX,gridY,0,false)
-				editingGridGalleryHTML+="<h3 style='color: "+rarityColor[testMob.rarity].replace("#ffe65d","#ffe65d; filter: brightness(90%)")+"'>"+testMob.name+"</h3>"+"<span>"+MobDescriptionList[testMob.id]+"</span><br>"
+				editingGridGalleryHTML+="<h3 style='color: "+rarityColorEP[testMob.rarity]+"'>"+testMob.name+"</h3>"+"<span>"+MobDescriptionList[testMob.id]+"</span><br>"
 				if(testMob.behavior==="Passive") {
 					editingGridGalleryHTML+="<span style='color: #7fdf7f'>Behavior: Passive</span>"
 				}
@@ -7483,7 +7752,7 @@
 					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.floor1game=0;dialog(\"Skip\")' class='yellow-bg bgrid apos' style='top: 40px; left: 40px; height: 120px; width: 120px' title='Game'><svg viewBox='0 0 100 100' class='in-svg'><path class='dgrey-path rcap wide' d='M14 14L86 14M14 38L86 38M14 62L86 62M14 86L86 86M14 14L14 86M38 14L38 86M62 14L62 86M86 14L86 86'/><path class='blue-path wide' d='M50 43A7 7 0 0 1 50 57A7 7 0 0 1 50 43ZM74 67A7 7 0 0 1 74 81A7 7 0 0 1 74 67Z'/><path class='red-path rcap wide' d='M68 44L80 56M80 44L68 56M20 20L32 32M32 20L20 32'/></svg></button>"
 				}
 				if(explore.flowergrid===1 && explore.event.talentactivation==="Incomplete") {
-					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.talentactivation=0;dialog(\"Skip\")' class='red-bg bgrid apos' style='top: 40px; left: 40px; height: 120px; width: 120px' title='Game'><svg viewBox='0 0 100 100' class='in-svg'><path class='fwhite-path ns' d='M28 34.8A8 8 0 0 0 28 50.8A8 8 0 0 0 28 34.8M50 18.8A8 8 0 0 0 50 34.8A8 8 0 0 0 50 18.8M72 34.8A8 8 0 0 0 72 50.8A8 8 0 0 0 72 34.8M63.6 60.8A8 8 0 0 0 63.6 76.8A8 8 0 0 0 63.6 60.8M36.4 60.8A8 8 0 0 0 36.4 76.8A8 8 0 0 0 36.4 60.8'/><path class='white-path wide' d='M28 34.8A8 8 0 0 0 28 50.8A8 8 0 0 0 28 34.8M50 18.8A8 8 0 0 0 50 34.8A8 8 0 0 0 50 18.8M72 34.8A8 8 0 0 0 72 50.8A8 8 0 0 0 72 34.8M63.6 60.8A8 8 0 0 0 63.6 76.8A8 8 0 0 0 63.6 60.8M36.4 60.8A8 8 0 0 0 36.4 76.8A8 8 0 0 0 36.4 60.8' style='filter: brightness(90%)'/></svg></button>"
+					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.talentactivation=0;dialog(\"Skip\")' class='red-bg bgrid apos' style='top: 40px; left: 40px; height: 120px; width: 120px' title='Talent'><svg viewBox='0 0 100 100' class='in-svg'><path class='fwhite-path ns' d='M28 34.8A8 8 0 0 0 28 50.8A8 8 0 0 0 28 34.8M50 18.8A8 8 0 0 0 50 34.8A8 8 0 0 0 50 18.8M72 34.8A8 8 0 0 0 72 50.8A8 8 0 0 0 72 34.8M63.6 60.8A8 8 0 0 0 63.6 76.8A8 8 0 0 0 63.6 60.8M36.4 60.8A8 8 0 0 0 36.4 76.8A8 8 0 0 0 36.4 60.8'/><path class='white-path wide' d='M28 34.8A8 8 0 0 0 28 50.8A8 8 0 0 0 28 34.8M50 18.8A8 8 0 0 0 50 34.8A8 8 0 0 0 50 18.8M72 34.8A8 8 0 0 0 72 50.8A8 8 0 0 0 72 34.8M63.6 60.8A8 8 0 0 0 63.6 76.8A8 8 0 0 0 63.6 60.8M36.4 60.8A8 8 0 0 0 36.4 76.8A8 8 0 0 0 36.4 60.8' style='filter: brightness(90%)'/></svg></button>"
 				}
 				if(explore.flowergrid===2 && !explore.event.hasOwnProperty("floor1hotel")) {
 					document.getElementById("central-room").innerHTML+="<button type='button' tabindex='-1' onclick='explore.event.floor1hotel=0;dialog(\"Skip\")' class='green-bg mid bgrid apos' style='height: 120px; width: 120px' title='Hotel'><svg viewBox='0 0 100 100' class='in-svg'><path class='fdbrown-path' d='M10 45L50 12L90 45Z'/><path class='fgrey-path' d='M20 45L80 45L80 80L20 80Z'/><path class='fcyan-path' d='M28 51L38 51L38 61L28 61ZM45 51L55 51L55 61L45 61ZM62 51L72 51L72 61L62 61ZM28 65L38 65L38 75L28 75ZM62 65L72 65L72 75L62 75Z'/><path class='fdblue-path' d='M45 80L45 65L55 65L55 80Z'/></svg></button>"
@@ -7539,7 +7808,10 @@
 		function startFight(specialevent) {
 			if(lupoper.active===true) cancelLevelUp()
 			if(specialevent) {
+				if(fight.active) return
+				if(fight.hasOwnProperty("spevent")) return
 				if(flowerMove) return
+				if(specialevent>=101 && specialevent<=109 && player.floor1gamestat[specialevent-100]==="Locked") return
 				howToPlay(false)
 				fight.spevent=new Object()
 				fight.spevent.event=specialevent
@@ -7640,13 +7912,6 @@
 					if(!fight.flower.effect.hasOwnProperty("thorn")) fight.flower.effect.thorn={buff:0}
 					fight.flower.effect.thorn.buff=60+10*fight.petal[i].rarity
 				}
-				if(fight.petal[i].name==="Soil") {
-					for(let j=0;j<fight.petal.length;j++) if(fight.petal[j].size>2) {
-						fight.petal[j].size+=2
-						if(fight.petal[j].size>20) fight.petal[j].size=20
-						fight.petal[j].origin.size=fight.petal[j].size
-					}
-				}
 				if(fight.petal[i].name==="Concentrated Eye") {
 					for(let j=0;j<fight.petal.length;j++) {
 						if(fight.petal[i].rarity>=6 && determine(50,true," for accuracy")) {
@@ -7693,7 +7958,8 @@
 				}
 				if(fight.petal[i].name==="Basil") {
 					if(!fight.flower.effect.hasOwnProperty("purity")) fight.flower.effect.purity={buff:0}
-					fight.flower.effect.purity.buff=20*fight.petal[i].rarity+10*fight.petal[i].level-30
+					fight.flower.effect.purity.buff+=20*fight.petal[i].rarity+10*fight.petal[i].level-30
+					fight.flower.effect.purity.hightier=true
 				}
 				if(fight.petal[i].name==="Bone") {
 					if(!fight.petal[i].effect.hasOwnProperty("resistance")) fight.petal[i].effect.resistance=0
@@ -7720,24 +7986,46 @@
 					fight.petal[i].origin.atk2=fight.petal[i].atk2
 				}
 			}
-			let reloadReduction=0,damageCorruption=0
+			if(getTalentLevel(2)>0) {
+				if(!fight.flower.effect.hasOwnProperty("purity")) fight.flower.effect.purity={buff:0}
+				fight.flower.effect.purity.buff+=TalentXList[2][getTalentLevel(2)]
+			}
+			if(getTalentLevel(4)>0) {
+				if(!fight.flower.effect.hasOwnProperty("resistance")) fight.flower.effect.resistance={buff:0}
+				fight.flower.effect.resistance.buff=TalentXList[4][getTalentLevel(4)]
+			}
+			let reloadPercentage=100,damageCorruption=0,sizeExpansion=0
 			for(let i=0;i<fight.petal.length;i++) {
 				if(fight.petal[i].name==="Corruption") {
 					damageCorruption+=5*fight.petal[i].rarity*(4+fight.petal[i].level)
 				}
 				if(fight.petal[i].name==="Golden Leaf") {
-					reloadReduction+=3*fight.petal[i].rarity
-					if(reloadReduction>50) reloadReduction=50
+					reloadPercentage-=3*fight.petal[i].rarity
+					if(reloadPercentage<50) reloadPercentage=50
+				}
+				if(fight.petal[i].name==="Soil") {
+					sizeExpansion+=2
 				}
 			}
+			if(getTalentLevel(10)>0) {
+				reloadPercentage*=(1-TalentXList[10][getTalentLevel(10)]/100)
+			}
+			if(getTalentLevel(12)>0) {
+				sizeExpansion+=TalentXList[12][getTalentLevel(12)]
+			}
 			for(let i=0;i<fight.petal.length;i++) {
-				if(reloadReduction>0 && typeof(fight.petal[i].reload)==="number") {
-					fight.petal[i].reload-=approx(fight.petal[i].reload*reloadReduction/100)
+				if(reloadPercentage<100 && typeof(fight.petal[i].reload)==="number") {
+					fight.petal[i].reload=approx(fight.petal[i].reload*reloadPercentage/100)
 					fight.petal[i].origin.reload=fight.petal[i].reload
 				}
 				if(damageCorruption>0 && fight.petal[i].damage>2) {
 					fight.petal[i].damage+=approx(fight.petal[i].damage*damageCorruption/100)
 					fight.petal[i].origin.damage=fight.petal[i].damage
+				}
+				if(fight.petal[i].size>2) {
+					fight.petal[i].size+=sizeExpansion
+					if(fight.petal[i].size>20) fight.petal[i].size=20
+					fight.petal[i].origin.size=fight.petal[i].size
 				}
 			}
 			fight.flower.health=FlowerMaxHealth()
@@ -7773,6 +8061,8 @@
 					}
 				}
 				delete fight.spevent
+				selectedGrid.select=false
+				closeGridInfo()
 				if(explore.explored[10]) {
 					displayMapItem()
 					displayMap()
@@ -7801,6 +8091,7 @@
 					for(let i in PetalSVGArray) PetalSVGArray[i]=PetalSVGArray[i].replace(/<g>.+<\/g>/,"<g></g>").replace("20px)","0px); font-family: Consolas")
 					for(let i in MobSVGArray) MobSVGArray[i]=MobSVGArray[i].replace(/<g>.+<\/g>/,"<g></g>").replace("20px)","0px); font-family: Consolas")
 					document.getElementById("gridinfo").style["font-family"]="Consolas"
+					document.getElementById("cute6361omg").href=document.getElementById("cute6361omg").href.replace(/fill: %23....../,"fill: %23000000").replace(/stroke: %23....../,"stroke: %23ffff7f")
 				}
 				for(let i=1;i<=8;i++) {
 					for(let j=1;j<=6;j++) {
@@ -7824,7 +8115,8 @@
 			fight.active=false
 			fight.ready=false
 			fight.manipulate=false
-			openInventory(false)
+			selectedGrid.select=false
+			closeGridInfo()
 			if(win!==true) {
 				for(let i in player.inventory) {
 					if(player.inventory[i].effect.temploot===explore.flowerspot && !determine(30)) {
@@ -8200,6 +8492,9 @@
 			}
 			if(document.getElementById("absall-btn").innerHTML==="Absorb All Petals Without Star") {
 				document.getElementById("absall-btn").innerHTML="Confirm? "+absorbableCount+" Petals, +~"+absorbableExp+" Exp"
+				document.getElementById("absall-btn").scrollIntoView({block:"nearest"})
+				selectedGrid.select=false
+				closeGridInfo()
 				return
 			}
 			addLog("[Craft] Absorbing "+absorbableCount+" petals for "+absorbableExp+" expected experience.","#df9f7f")
@@ -8265,57 +8560,57 @@
 				document.getElementById("flower-health").innerHTML="Health: "+fight.flower.currenthealth+"/"+fight.flower.health
 				document.getElementById("bar-health-c").style.display="unset"
 				if(fight.flower.effect.hasOwnProperty("bloom")) {
-					if(getGrid(3,1,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,1,1,"Bloom",-1),document.getElementById("flower-effect").firstChild)
+					if(getGrid(3,1,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,1,1,"Bloom",179),document.getElementById("flower-effect").firstChild)
 				} else {
 					if(getGrid(3,1,1)!==null) collapseGrid(getGrid(3,1,1))
 				}
 				if(fight.flower.effect.hasOwnProperty("immunity")) {
-					if(getGrid(3,2,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,2,1,"Immunity",-1),document.getElementById("flower-effect").firstChild)
+					if(getGrid(3,2,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,2,1,"Immunity",179),document.getElementById("flower-effect").firstChild)
 				} else {
 					if(getGrid(3,2,1)!==null) collapseGrid(getGrid(3,2,1))
 				}
 				if(fight.flower.effect.hasOwnProperty("thorn")) {
-					if(getGrid(3,3,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,3,1,"Thorn",-1),document.getElementById("flower-effect").firstChild)
+					if(getGrid(3,3,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,3,1,"Thorn",179),document.getElementById("flower-effect").firstChild)
 				} else {
 					if(getGrid(3,3,1)!==null) collapseGrid(getGrid(3,3,1))
 				}
 				if(fight.flower.effect.hasOwnProperty("shield")) {
-					if(getGrid(3,4,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,4,1,"Shield",-1),document.getElementById("flower-effect").firstChild)
+					if(getGrid(3,4,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,4,1,"Shield",179),document.getElementById("flower-effect").firstChild)
 				} else {
 					if(getGrid(3,4,1)!==null) collapseGrid(getGrid(3,4,1))
 				}
 				if(fight.flower.effect.hasOwnProperty("purity")) {
-					if(getGrid(3,5,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,5,1,"Purity",-1),document.getElementById("flower-effect").firstChild)
+					if(getGrid(3,5,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,5,1,"Purity",179),document.getElementById("flower-effect").firstChild)
 				} else {
 					if(getGrid(3,5,1)!==null) collapseGrid(getGrid(3,5,1))
 				}
 				if(fight.flower.effect.hasOwnProperty("evasion")) {
-					if(getGrid(3,6,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,6,1,"Evasion",-1),document.getElementById("flower-effect").firstChild)
+					if(getGrid(3,6,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,6,1,"Evasion",179),document.getElementById("flower-effect").firstChild)
 				} else {
 					if(getGrid(3,6,1)!==null) collapseGrid(getGrid(3,6,1))
 				}
 				if(fight.flower.effect.hasOwnProperty("resistance")) {
-					if(getGrid(3,7,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,7,1,"Resistance",-1),document.getElementById("flower-effect").firstChild)
+					if(getGrid(3,7,1)===null) document.getElementById("flower-effect").insertBefore(createGrid(3,7,1,"Resistance",179),document.getElementById("flower-effect").firstChild)
 				} else {
 					if(getGrid(3,7,1)!==null) collapseGrid(getGrid(3,7,1))
 				}
 				if(fight.flower.effect.hasOwnProperty("poison")) {
-					if(getGrid(3,1,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,1,2,"Poison",-1))
+					if(getGrid(3,1,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,1,2,"Poison",179))
 				} else {
 					if(getGrid(3,1,2)!==null) collapseGrid(getGrid(3,1,2))
 				}
 				if(fight.flower.effect.hasOwnProperty("suppression")) {
-					if(getGrid(3,2,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,2,2,"Suppression",-1))
+					if(getGrid(3,2,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,2,2,"Suppression",179))
 				} else {
 					if(getGrid(3,2,2)!==null) collapseGrid(getGrid(3,2,2))
 				}
 				if(fight.flower.effect.hasOwnProperty("vulnerability")) {
-					if(getGrid(3,3,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,3,2,"Vulnerability",-1))
+					if(getGrid(3,3,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,3,2,"Vulnerability",179))
 				} else {
 					if(getGrid(3,3,2)!==null) collapseGrid(getGrid(3,3,2))
 				}
 				if(fight.flower.effect.hasOwnProperty("wither")) {
-					if(getGrid(3,4,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,4,2,"Wither",-1))
+					if(getGrid(3,4,2)===null) document.getElementById("flower-effect").appendChild(createGrid(3,4,2,"Wither",179))
 				} else {
 					if(getGrid(3,4,2)!==null) collapseGrid(getGrid(3,4,2))
 				}
@@ -8324,7 +8619,7 @@
 				document.getElementById("bar-health-c").style.display="none"
 				document.getElementById("flower-maxhealth").innerHTML="Max Health: "+FlowerMaxHealth()
 				document.getElementById("flower-level").innerHTML="Level: "+player.level
-				if(player.book.indexOf("Flower Evolutionary Guide")>-1) {
+				if(player.book.indexOf("Flower Evolutionary Guide")!==-1) {
 					let barPercentage=player.exp/LevelExp(player.level)*100
 					if(barPercentage>=12) {
 						document.getElementById("bar-exp").style.width=barPercentage+"%"
@@ -8512,7 +8807,7 @@
 						operingY=j
 						if(operingType==="Skill" && operingThing.name==="Yin" && getGrid(79,0,0)===null) {
 							let operingShift=new Array()
-							for(let k=0;k<fight.petal.length;k++) if(fight.petal[k].state!=="Retired" && fight.petal[k].x===operingThing.x) {
+							for(let k=0;k<fight.petal.length;k++) if(fight.petal[k].state!=="Retired" && fight.petal[k].x===operingThing.x && fight.petal[k].y>0) {
 								operingShift.push(fight.petal[k].clone())
 							}
 							for(let k=0;k<fight.mob.length;k++) if(fight.mob[k].x===operingThing.x) {
@@ -8670,7 +8965,7 @@
 						addLog("[Petal] Petals shifted.","#9f9fdf")
 						operingThing.actionbar-=skillRequirement(operingThing)
 						let shiftY=toCord(operingY-operingThing.y,6)
-						for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].x===operingThing.x) {
+						for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state!=="Retired" && fight.petal[i].x===operingThing.x && fight.petal[i].y>0) {
 							getGrid(0,fight.petal[i].x,fight.petal[i].y).replaceWith(createGrid(0,fight.petal[i].x,fight.petal[i].y,"Empty",1,0))
 							fight.petal[i].y=toCord(fight.petal[i].y+shiftY,6)
 							if(fight.petal[i].name!=="Pearl") fight.petal[i].y=toCord(fight.petal[i].y,3)+3
@@ -8686,7 +8981,7 @@
 								fight.petal[i].y=toCord(fight.petal[i].y,6)
 							}
 							fight.petal[i].print()
-							if(fight.petal[i]!==operingThing && fight.petal[i].speed>1) fight.petal[i].progress(5*operingThing.rarity-10)
+							if(fight.petal[i]!==operingThing && fight.petal[i].state!=="Suspended" && fight.petal[i].speed>1) fight.petal[i].progress(5*operingThing.rarity-10)
 						}
 						for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].state!=="Retired" && fight.mob[i].x===operingThing.x) {
 							fight.mob[i].print()
@@ -8927,7 +9222,7 @@
 					fight.flower.effect.evasion.turn--
 					if(!fight.flower.effect.evasion.turn) delete fight.flower.effect.evasion
 				}
-				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].name==="Talisman" && determine(20+3*fight.petal[i].rarity+fight.petal[i].level,true," for evasion")) {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].name==="Talisman" && determine(20+(3+TalentXList[13][getTalentLevel(13)]/2)*fight.petal[i].rarity+(1+TalentXList[13][getTalentLevel(13)]/4)*fight.petal[i].level,true," for evasion")) {
 					flowerHeal({effectturn:1},"Evasion")
 				}
 				updateFlowerState()
@@ -9008,10 +9303,15 @@
 							if(fight.flower.currenthealth<=fight.flower.health/2) pendingHeal+=fight.petal[i].health/10
 						}
 					}
+					if(getTalentLevel(3)>0) pendingHeal+=TalentXList[3][getTalentLevel(3)]
 					if(pendingHeal>0) flowerHeal(approx(pendingHeal),"Passive Healings")
 				}
 				if(explore.floor>=1) {
-					fight.energy--
+					let energyLoss=1
+					for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Battery" && determine(20+(3+TalentXList[13][getTalentLevel(13)]/2)*fight.petal[i].rarity+(1+TalentXList[13][getTalentLevel(13)]/4)*fight.petal[i].level,true," for recharge")) {
+						energyLoss=0
+					}
+					fight.energy-=energyLoss
 					explore.energy=fight.energy
 					updateFlowerState()
 					if(explore.energy<3600) {
@@ -9105,6 +9405,9 @@
 				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Lotus") return
 				addLog("[Flower] Flower is poisoned.","#00bfbf")
 				let resultingPoison=damage.effectdamage,resultingTurn=damage.effectturn
+				if(getTalentLevel(11)>0) {
+					resultingPoison-=approx(resultingPoison*TalentXList[11][getTalentLevel(11)]/100)
+				}
 				if(!fight.flower.effect.hasOwnProperty("poison")) fight.flower.effect.poison=new Array()
 				for(let i=0;i<resultingTurn;i++) {
 					if(!fight.flower.effect.poison.hasOwnProperty(i)) fight.flower.effect.poison[i]=0
@@ -9114,7 +9417,7 @@
 				return
 			}
 			if(mobName==="Suppression") {
-				if(fight.flower.effect.hasOwnProperty("purity")) return
+				if(fight.flower.effect.hasOwnProperty("purity") && fight.flower.effect.purity.hightier===true) return
 				addLog("[Flower] Flower is suppressed.","#00bfbf")
 				let resultingStrength=0,resultingTurn=damage.effectturn
 				if(damage.effectstrength) resultingStrength=damage.effectstrength/100
@@ -9181,7 +9484,7 @@
 			}
 			if(isMob(mob) && resultingDamage>0) {
 				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Disc") {
-					resultingDamage-=approx(resultingDamage*(0.2+0.03*fight.petal[i].rarity+0.01*fight.petal[i].level))
+					resultingDamage-=approx(resultingDamage*(20+(3+TalentXList[13][getTalentLevel(13)]/2)*fight.petal[i].rarity+(1+TalentXList[13][getTalentLevel(13)]/4)*fight.petal[i].level)/100)
 				}
 			}
 			addLog("[Flower] Flower received "+resultingDamage+" damage from "+mobName+".","#00bfbf")
@@ -9220,13 +9523,13 @@
 				fight.flower.currenthealth-=resultingInjure
 			}
 			if(isMob(mob)) {
-				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Rubber" && determine(20+3*fight.petal[i].rarity+fight.petal[i].level,true," for evasion")) {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Rubber" && determine(20+(3+TalentXList[13][getTalentLevel(13)]/2)*fight.petal[i].rarity+(1+TalentXList[13][getTalentLevel(13)]/4)*fight.petal[i].level,true," for evasion")) {
 					energyLoss*=3
 					flowerHeal({effectturn:3},"Evasion")
 				}
 			}
 			if(explore.floor>=1 && energyLoss>0) {
-				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Battery" && determine(20+3*fight.petal[i].rarity+fight.petal[i].level,true," for recharge")) {
+				for(let i=0;i<fight.petal.length;i++) if(fight.petal[i].state==="Existing" && fight.petal[i].name==="Battery" && determine(20+(3+TalentXList[13][getTalentLevel(13)]/2)*fight.petal[i].rarity+(1+TalentXList[13][getTalentLevel(13)]/4)*fight.petal[i].level,true," for recharge")) {
 					energyLoss=0
 				}
 			}
@@ -9248,6 +9551,10 @@
 			if(isMob(mob) && fight.flower.effect.hasOwnProperty("thorn") && mob.currenthealth>0) {
 				let reflectedDamage=approx(resultingDamage*fight.flower.effect.thorn.buff/100)
 				mob.injure(reflectedDamage,"Thorn")
+			}
+			if(isMob(mob) && getTalentLevel(5)>0 && mob.currenthealth>0) {
+				let bodyDamage=TalentXList[5][getTalentLevel(5)]*(5+explore.floor)
+				mob.injure(bodyDamage,"Collision")
 			}
 			if(isMob(mob) && MobAttributeList[mob.id].match("BOSS")!==null) {
 				flowerInjure({effectstrength:approx(resultingDamage/10)},"Wither")
@@ -9356,6 +9663,9 @@
 		}
 		function moveRequirement(petal,movex,movey) {
 			let answer=100
+			if(getTalentLevel(7)>0) {
+				answer=TalentXList[7][getTalentLevel(7)]
+			}
 			if(petal.name==="Beetle?") answer=4
 			if(petal.name==="Pearl") answer+=50
 			if(petal.name==="Sandstorm?") answer=8
@@ -9389,6 +9699,9 @@
 		}
 		function attackRequirement(petal) {
 			let answer=200
+			if(getTalentLevel(8)>0) {
+				answer=TalentXList[8][getTalentLevel(8)]
+			}
 			if(petal.name==="Beetle?") answer=4
 			if(petal.name==="Sandstorm?") answer=8
 			if(petal.name==="Soldier Ant?") answer=5
@@ -9417,6 +9730,9 @@
 			if(PetalAttributeList[petal.id].match(/(?<=SKILL=Costs )\d+(?= action)/)!==null) {
 				answer=parseInt(PetalAttributeList[petal.id].match(/(?<=SKILL=Costs )\d+(?= action)/))
 			}
+			if(getTalentLevel(6)>0 && petal.name!=="Dice" && petal.name!=="Chip" && petal.name!=="Card" && petal.name!=="Domino") {
+				answer-=approx(answer*TalentXList[6][getTalentLevel(6)]/100)
+			}
 			return answer
 		}
 		function skillCheck(petal) {
@@ -9426,8 +9742,15 @@
 			if(PetalAttributeList[petal.id].match("SKILL")===null) return false
 			if(petal.name.match(/\?/)!==null) return false
 			if(petal.actionbar<skillRequirement(petal)) return false
-			if(petal.name==="Shovel" && fight.flower.currenthealth<=approx(fight.flower.health*(0.3-0.03*petal.rarity-0.01*petal.level))) return false
+			if(petal.name==="Shovel") {
+				let selfDamage=approx(fight.flower.health*(30-(3+TalentXList[13][getTalentLevel(13)]/2)*this.rarity-(1+TalentXList[13][getTalentLevel(13)]/4)*this.level)/100)
+				if(fight.flower.currenthealth<=selfDamage) return false
+			}
 			return true
+		}
+		function checkBossAlive(bossName) {
+			for(let i=0;i<fight.mob.length;i++) if(fight.mob[i].name==="!"+bossName+"!") return true
+			return false
 		}
 		function mobDefend(petal) {
 			if(animation) return
@@ -9617,6 +9940,127 @@
 			missile=true
 			fight.missile[0].attack()
 			fight.missile.splice(0,1)
+		}
+		function getTalent(talentIndex,talentIndex2) {
+			if(talentIndex2!==undefined) return getTalent(betterFloor(talentIndex/100)*10000+talentIndex%100+talentIndex2%100+99*Math.min(talentIndex%100,talentIndex2%100))
+			return document.getElementById("help").querySelector("[value='"+talentIndex+"']")
+		}
+		function getTalentNodeName(talentIndex) {
+			return TalentTreeNodeList[betterFloor(talentIndex/100)][betterFloor(talentIndex/10)%10][talentIndex%10]
+		}
+		function talentState(talentIndex) {
+			if(talentIndex>10000) {
+				let endpoint1=betterFloor(talentIndex/100),endpoint2=betterFloor(talentIndex/10000)*100+talentIndex%100
+				if(talentState(endpoint1)==="Locked" || talentState(endpoint2)==="Locked") return "Locked"
+				if(talentState(endpoint1)==="Purchased" && talentState(endpoint2)==="Purchased") return "Purchased"
+				return "Unlocked"
+			}
+			if(player.talent.indexOf(talentIndex)!==-1) return "Purchased"
+			if(talentIndex===135 && player.level>=5) return "Unlocked"
+			if(talentIndex===235 && player.level>=10) return "Unlocked"
+			if(talentIndex===323 && player.level>=15) return "Unlocked"
+			for(let i of player.talent) if(betterFloor(i/100)===betterFloor(talentIndex/100) && TalentTreeBranchList[betterFloor(talentIndex/100)].indexOf(i%100+talentIndex%100+99*Math.min(i%100,talentIndex%100))!==-1) return "Unlocked"
+			return "Locked"
+		}
+		function talentColor(talentIndex) {
+			let pendingState=talentState(talentIndex)
+			if(pendingState==="Purchased") return "dgreen"
+			if(pendingState==="Unlocked") return "dyellow"
+			return "grey"
+		}
+		function talentCost(talentIndex) {
+			if(talentIndex===135 || talentIndex===235 || talentIndex===323) return 0
+			if(getTalentNodeName(talentIndex)[0]==="-") return parseInt(getTalentNodeName(talentIndex)[1])
+			let rarityTalentCost=[0,2,3,5]
+			return rarityTalentCost[betterFloor(talentIndex/100)]
+		}
+		async function studyTalent(talentNode) {
+			if(animation) return
+			let talentIndex=parseInt(talentNode.getAttribute("value"))
+			if(talentState(talentIndex)!=="Unlocked") return
+			if(RemainingTalentPoint()<talentCost(talentIndex)) return
+			animation=true
+			for(let i=0;i<=10;i++) {
+				getTalent(talentIndex).style.opacity=1-i/10
+				await delay(100)
+			}
+			getTalent(talentIndex).classList.replace("fdyellow-path","fdgreen-path")
+			player.talent.push(talentIndex)
+			document.getElementById("remaintp").innerHTML=document.getElementById("remaintp").innerHTML.replace(/\d+/,RemainingTalentPoint())
+			for(let i=0;i<=10;i++) {
+				getTalent(talentIndex).style.opacity=i/10
+				await delay(100)
+			}
+			for(let i=1;i<=13;i++) if(getTalentNodeName(talentIndex).replaceAll(" ","").slice(0,3)===TalentNameList[i].slice(0,3).toUpperCase()) {
+				document.getElementById("talent-des"+i).innerHTML=printTalentDescription(i)
+			}
+			for(let i of TalentIndexList) if(betterFloor(i/100)===betterFloor(talentIndex/100) && TalentTreeBranchList[betterFloor(talentIndex/100)].indexOf(i%100+talentIndex%100+99*Math.min(i%100,talentIndex%100))!==-1) {
+				if(talentState(i)==="Purchased") {
+					getTalent(talentIndex,i).classList.replace("dyellow-path","dgreen-path")
+				} else {
+					getTalent(talentIndex,i).classList.replace("grey-path","dyellow-path")
+					getTalent(i).classList.replace("fgrey-path","fdyellow-path")
+				}
+			}
+			updateFlowerState()
+			animation=false
+		}
+		function getTalentLevel(talentName) {
+			if(!player.hasOwnProperty("talent")) return 0
+			if(typeof(talentName)==="number") talentName=TalentNameList[talentName]
+			let maxLevel=0
+			for(let i of player.talent) if(getTalentNodeName(i).replaceAll(" ","").slice(0,3)===talentName.slice(0,3).toUpperCase()) {
+				maxLevel=Math.max(maxLevel,parseInt(getTalentNodeName(i).slice(-1)))
+			}
+			return maxLevel
+		}
+		function printTalentDescription(TalentID) {
+			let editingTalentHTML="<span style='color: "+rarityColorEP[TalentRarityList[TalentID]]+"'>"+TalentNameList[TalentID]+": "+TalentDescriptionList[TalentID].replaceAll("[poison]","<span style='font-weight: bold; color: #bf00bf; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>poison</span>").replaceAll("[","<span style='font-weight: bold; text-shadow: 1px 1px 3px rgba(0,0,0,0.7)'>").replaceAll("]","</span>").replaceAll(/Floor(?=\))/g,"<span style='color: #9f5fff'>"+explore.floor+"</span>").replaceAll("X","<span style='color: #9f5f9f'>"+TalentXList[TalentID][getTalentLevel(TalentID)]+"</span>")+"</span><br>"
+			editingTalentHTML+="<span>(<span style='color: #5fbf5f'>"+TalentXList[TalentID][0]+"</span>"
+			for(let i=1;i<TalentXList[TalentID].length;i++) {
+				editingTalentHTML+="/"
+				for(let j of player.talent) if(getTalentNodeName(j).replaceAll(" ","")===TalentNameList[TalentID].slice(0,3).toUpperCase()+i) editingTalentHTML+="<span style='color: #5fbf5f'>"+TalentXList[TalentID][i]+"</span>"
+				if(editingTalentHTML.slice(-1)==="/") editingTalentHTML+="<span style='color: #7f7f7f'>"+TalentXList[TalentID][i]+"</span>"
+			}
+			editingTalentHTML+=")"
+			if(!player.clover) editingTalentHTML=editingTalentHTML.replace(/>Luckily:.+🎲.<\/span>/,">Luckily: ??? (You need to be lucky)</span>")
+			return editingTalentHTML
+		}
+		async function resetTalent() {
+			if(animation) return
+			if(explore.floor>=5) return
+			if(fight.active===true) return
+			if(document.getElementById("talent-reset").innerHTML==="Reset All Talent Trees") {
+				document.getElementById("talent-reset").innerHTML="Confirm? Takes "+(2*player.talentreset+1)+" days"
+				return
+			}
+			document.getElementById("end1").style["pointer-events"]="unset"
+			for(let i=0;i<=10;i++) {
+				document.getElementById("end1").style.opacity=i/10
+				await delay(100)
+			}
+			player.calendar.day+=2*player.talentreset+1
+			player.talent=new Array()
+			player.talentreset++
+			localStorage.setItem("FLORROOMplayer",JSON.stringify(player))
+			if(gameEnded()) {
+				clearAllInterval()
+				return
+			}
+			await delay(7976)
+			howToPlay(false)
+			updateFlowerState()
+			for(let i=0;i<=5;i++) {
+				document.getElementById("end1").style.opacity=1-i/10
+				await delay(100)
+			}
+			await delay(6361)
+			howToPlay()
+			for(let i=6;i<=10;i++) {
+				document.getElementById("end1").style.opacity=1-i/10
+				await delay(100)
+			}
+			document.getElementById("end1").style["pointer-events"]="none"
 		}
 	</script>
 	<script>
@@ -10246,7 +10690,7 @@
 </head>
 <body>
 	<div class="tl">
-		<button type="button" tabindex='-1' onclick="settings()" class="circbtn" title="Settings">
+		<button type="button" tabindex="-1" onclick="settings()" class="circbtn" title="Settings">
 			<svg id="cog" viewBox="0 0 100 100" class="in-svg">
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"/>
 				<path class="fblack-path" d="M50 30A20 20 0 0 0 50 70L50 60A10 10 0 0 1 50 40L50 30A20 20 0 0 1 50 70L50 60A10 10 0 0 0 50 40Z"/>
@@ -10256,7 +10700,7 @@
 		</button>
 	</div>
 	<div class="tr">
-		<button type="button" tabindex='-1' onclick="howToPlay()" class="circbtn" title="How to play">
+		<button type="button" tabindex="-1" onclick="howToPlay()" class="circbtn" title="How to play">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path id="helpsvg" d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M35 35A15 15 0 1 1 59 47A22.5 22.5 0 0 0 50 65"/>
 				<path class="fblack-path" d="M50 75A4 4 0 0 0 50 83A4 4 0 0 0 50 75"/>
@@ -10264,7 +10708,7 @@
 		</button>
 	</div>
 	<div class="bl">
-		<button type="button" tabindex='-1' onclick="openInventory()" class="circbtn" title="Inventory">
+		<button type="button" tabindex="-1" onclick="openInventory()" class="circbtn" title="Inventory">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"/>
 				<path class="fyellow-path wide" d="M50 35A15 15 0 0 0 50 65A15 15 0 0 0 50 35"/>
@@ -10279,7 +10723,7 @@
 		</button>
 	</div>
 	<div class="br">
-		<button type="button" tabindex='-1' onclick="openGallery()" class="circbtn" title="Gallery">
+		<button type="button" tabindex="-1" onclick="openGallery()" class="circbtn" title="Gallery">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<g id="ladybug-bg" class="nd">
 					<path class="flgreen-path ns" d="M0 0L50 0L50 50L0 50ZM100 0L150 0L150 50L100 50ZM0 100L50 100L50 150L0 150ZM100 100L150 100L150 150L100 150Z"/>
@@ -10300,12 +10744,12 @@
 	</div>
 	<div id="settings" class="mid grey-bg box highz hsize nd"></div>
 	<div id="help" class="mid llpurple-bg box highz hsize nd">
-		<button type="button" tabindex='-1' onclick="book(-1)" class="circbtn tl" title="Previous book">
+		<button type="button" tabindex="-1" onclick="book(-1)" class="circbtn tl" title="Previous book">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path class="rcap" d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M20 50L40 30M20 50L40 70M20 50L80 50"/>
 			</svg>
 		</button>
-		<button type="button" tabindex='-1' onclick="book(1)" class="circbtn tr" title="Next book">
+		<button type="button" tabindex="-1" onclick="book(1)" class="circbtn tr" title="Next book">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path class="rcap" d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2M80 50L60 30M80 50L60 70M80 50L20 50"/>
 			</svg>
@@ -10321,21 +10765,21 @@
 	</div>
 	<div id="inventory" class="mid lblue-bg box highz hsize nd">
 		<div class="text3-c">
-			<button type="button" tabindex='-1' id="lup-cancel" onclick="cancelLevelUp()" class="lmargin lred-bg recbtn pointer nd">Cancel</button>
+			<button type="button" tabindex="-1" id="lup-cancel" onclick="cancelLevelUp()" class="lmargin lred-bg recbtn pointer nd">Cancel</button>
 			<h2>Inventory</h2>
-			<button type="button" tabindex='-1' id="lup-confirm" onclick="levelUp()" class="lmargin corange-bg recbtn pointer nd">[L] Level Up</button>
+			<button type="button" tabindex="-1" id="lup-confirm" onclick="levelUp()" class="lmargin corange-bg recbtn pointer nd">[L] Level Up</button>
 		</div>
 		<span class="nowrap">🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲</span>
 		<br>
 		<div id="inv-petal" class="col5"></div>
 		<br>
-		<button type="button" tabindex='-1' id="absall-btn" onclick="absorbAll()" class="bottommargin red-bg recbtn pointer mcont cself nd">Absorb All Petals Without Star</button>
+		<button type="button" tabindex="-1" id="absall-btn" onclick="absorbAll()" class="bottommargin red-bg recbtn pointer mcont cself nd">Absorb All Petals Without Star</button>
 	</div>
 	<div id="gallery" class="mid lyellow-bg box highz hsize nd"></div>
 	<div class="cmargin text3-c">
-		<button type="button" tabindex='-1' onclick="importSave()" class="lmargin lblue-bg recbtn pointer" title="Import Save">Retrieve Memories</button>
-		<button type="button" tabindex='-1' onclick="hardReset()" class="lmargin lred-bg recbtn forbidden" title="HARD RESET">Restart the Universe</button>
-		<button type="button" tabindex='-1' id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer" title="Export Save">Store Memories</button>
+		<button type="button" tabindex="-1" onclick="importSave()" class="lmargin lblue-bg recbtn pointer" title="Import Save">Retrieve Memories</button>
+		<button type="button" tabindex="-1" onclick="hardReset()" class="lmargin lred-bg recbtn forbidden" title="HARD RESET">Restart the Universe</button>
+		<button type="button" tabindex="-1" id="export-btn" onclick="exportSave()" class="lmargin lyellow-bg recbtn pointer" title="Export Save">Store Memories</button>
 	</div>
 	<div id="calendar" class="cmargin text2-c nd">
 		<span id="calendar-day"></span>
@@ -10345,7 +10789,7 @@
 		<span id="calendar-minute"></span>
 	</div>
 	<div id="fight-btn" class="mid text3-c nd">
-		<button type="button" tabindex='-1' id="fight-t-btn" class="lmargin grey-bg recbtn forbidden">[T]</button>
+		<button type="button" tabindex="-1" id="fight-t-btn" class="lmargin grey-bg recbtn forbidden">[T]</button>
 	</div>
 	<div id="fight-container" class="mid square48 nd">
 	</div>
@@ -10397,7 +10841,7 @@
 				<path id="flowerspot" class="fyellow-path pointer narrowp npe" d="M50 48.5A1.5 1.5 0 0 0 50 51.5A1.5 1.5 0 0 0 50 48.5M49.2 50.4A1 1 0 0 0 50.8 50.4M49.5 49.2L49.5 50M50.5 49.2L50.5 50"/>
 			</g>
 		</svg>
-		<button type="button" tabindex='-1' id="home-btn" onclick="home('origin')" class="mid circbtn nd" title="Home">
+		<button type="button" tabindex="-1" id="home-btn" onclick="home('origin')" class="mid circbtn nd" title="Home">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"/>
 				<path class="fyellow-path" d="M20 45L50 20L80 45Z"/>
@@ -10405,7 +10849,7 @@
 				<path class="fdgreen-path" d="M52 75L52 55L64 55L64 75Z"/>
 			</svg>
 		</button>
-		<button type="button" tabindex='-1' id="flower-btn" onclick="home('flower')" class="mid circbtn nd" title="Flower">
+		<button type="button" tabindex="-1" id="flower-btn" onclick="home('flower')" class="mid circbtn nd" title="Flower">
 			<svg viewBox="0 0 100 100" class="in-svg">
 				<path d="M50 2A48 48 0 0 0 50 98A48 48 0 0 0 50 2"/>
 				<path class="fyellow-path" d="M50 20A30 30 0 0 0 50 80A30 30 0 0 0 50 20M34 58A20 20 0 0 0 66 58M40 34L40 50M60 34L60 50"/>
@@ -10424,7 +10868,7 @@
 	</div>
 	<div id="log" class="side-log"></div>
 	<div id="command" class="side-command text3-c">
-		<input type="text" tabindex='-1' id="command-call" onkeydown="command(event.key)" class="side-input" autocomplete="off" title="Command">
+		<input type="text" tabindex="-1" id="command-call" onkeydown="command(event.key)" class="side-input" autocomplete="off" title="Command">
 		<svg viewBox="0 0 10 10" id="cleaner" onclick="cleanLog()" class="llmargin small-svg circ">
 			<path class="fred-path black-path mwidth" d="M5 0A5 5 0 0 0 5 10A5 5 0 0 0 5 0"/>
 			<path class="cyan-path mwidth" d="M3 3L7 7"/>
@@ -10460,22 +10904,22 @@
 		<span>This game was updated again when you left!</span>
 		<span>Do you want to perform a <span class="bold">hard reset</span> before starting the game?</span>
 		<br>
+		<span>The last update was on 2026/2/21,</span>
+		<span>which updated Talent system.</span>
+		<span>Some content of Floor 1 is still not available.</span>
+		<br>
 		<span>The last update was on 2026/2/5,</span>
 		<span>which updated keyboard control.</span>
 		<span>More QoL will be complemented later.</span>
-		<br>
-		<span>The last update before was on 2026/2/3,</span>
-		<span>which updated Time Shard (minigame reward).</span>
-		<span>"T" key is available now, more keyboard control soon.</span>
 		<br>
 		<span>The last important update before was on 2026/1/22,</span>
 		<span>which updated Floor 1.</span>
 		<span>Fixed some bugs. Small rebalancing (shootable petals mostly).</span>
 		<span>Some special event, floor ending, talent is still not available.</span>
 		<br>
-		<button type="button" tabindex='-1' id="version3" onclick="updateVersion(false)">No, just update the version.</button>
+		<button type="button" tabindex="-1" id="version3" onclick="updateVersion(false)">No, just update the version.</button>
 		<br>
-		<button type="button" tabindex='-1' id="version4" onclick="updateVersion(true)">Yes, hard reset before starting.</button>
+		<button type="button" tabindex="-1" id="version4" onclick="updateVersion(true)">Yes, hard reset before starting.</button>
 	</div>
 	<div id="endgame1"></div>
 	<div id="endgame2"></div>
